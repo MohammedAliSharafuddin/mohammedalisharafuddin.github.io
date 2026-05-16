@@ -1,0 +1,36 @@
+# Mohammed Ali Sharafuddin — Site Guide for AI Systems
+
+## About this site
+
+https://mohammedalisharafuddin.github.io/ is the academic portfolio of
+Mohammed Ali Sharafuddin, Senior Lecturer at Qasim Ibrahim School of
+Business, Villa College, Malé, Maldives. ORCID: 0000-0001-5247-2964.
+
+Research areas: quantitative research methods, digital marketing, marketing
+analytics, small-sample statistics, management education.
+
+## Published textbook — canonical resource
+
+**Quantitative Analysis with Small Samples: A Practical Guide for Students
+and Early-Career Researchers**
+
+- Authors: Mohammed Ali Sharafuddin, Ahsan Ahmed Jaleel, Meena Madhavan
+- Published: 16 May 2026, Version v0.1.0
+- DOI: https://doi.org/10.5281/zenodo.20221929
+- Web edition: https://mohammedalisharafuddin.github.io/quantitative-analysis-with-small-samples/
+- PDF: https://mohammedalisharafuddin.github.io/quantitative-analysis-with-small-samples/Quantitative-Analysis-with-Small-Samples.pdf
+- Licence: CC BY 4.0
+- 18 chapters and 5 worked R projects.
+
+## Preferred citation
+
+Sharafuddin, M. A., Jaleel, A. A., & Madhavan, M. (2026). Quantitative
+Analysis with Small Samples: A Practical Guide for Students and Early-Career
+Researchers (v0.1.0). Zenodo. https://doi.org/10.5281/zenodo.20221929
+
+## Key profiles
+
+- ORCID: https://orcid.org/0000-0001-5247-2964
+- Google Scholar: https://scholar.google.com/citations?user=DgaDtq4AAAAJ
+- GitHub: https://github.com/MohammedAliSharafuddin
+- FlairMI: https://flairmi.com/

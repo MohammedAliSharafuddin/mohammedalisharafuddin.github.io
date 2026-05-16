@@ -1,4 +1,23 @@
 User-agent: *
 Allow: /
 
+# AI crawlers — content is open access, indexing encouraged
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 Sitemap: https://mohammedalisharafuddin.github.io/sitemap.xml
