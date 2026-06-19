@@ -15,9 +15,41 @@
   --grey:       #71717a;   /* zinc-500 */
   --accent:     #18181b;   /* zinc-900 */
   --accent-lt:  #a1a1aa;   /* zinc-400 */
+  --accent-fg:  #ffffff;   /* text colour on filled accent buttons */
   --tag-bg:     #18181b;   /* zinc-900 — dark tag background */
   --tag-fg:     #ffffff;
+  --card-bg:    #ffffff;
   --max-w:      1180px;
+}
+
+/* ── DARK THEME ── */
+[data-theme="dark"] {
+  --ink:        #f4f4f5;   /* zinc-100 */
+  --ink-soft:   #a1a1aa;   /* zinc-400 */
+  --rule:       #3f3f46;   /* zinc-700 */
+  --rule-light: #27272a;   /* zinc-800 */
+  --warm-white: #09090b;   /* zinc-950 */
+  --warm-mid:   #18181b;   /* zinc-900 */
+  --grey:       #71717a;   /* zinc-500 */
+  --accent:     #f4f4f5;   /* light in dark mode */
+  --accent-lt:  #52525b;   /* zinc-600 */
+  --accent-fg:  #09090b;   /* dark text on light accent buttons */
+  --tag-bg:     #3f3f46;   /* zinc-700 */
+  --tag-fg:     #e4e4e7;   /* zinc-200 */
+  --card-bg:    #18181b;   /* zinc-900 */
+}
+[data-theme="dark"] .card,
+[data-theme="dark"] .card.card-review,
+[data-theme="dark"] .feature-showcase,
+[data-theme="dark"] .tool-entry {
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+}
+[data-theme="dark"] .card:hover {
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.55);
+}
+[data-theme="dark"] .hero-cta:not(.hero-cta-outline):hover {
+  background: #d4d4d8;
+  border-color: #d4d4d8;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -93,9 +125,9 @@ body {
 }
 
 .nav-links a.nav-cta:hover {
-  border-color: var(--accent-lt);
-  color: var(--accent);
-  background: var(--rule-light);
+  background: var(--ink);
+  color: var(--accent-fg);
+  border-color: var(--ink);
 }
 
 /* ── PAGE MASTHEAD ── */
@@ -216,16 +248,16 @@ body {
   font-size: 0.82rem;
   font-weight: 600;
   text-decoration: none;
-  color: #ffffff;
+  color: var(--accent-fg);
   background: var(--accent);
   border: 1px solid var(--accent);
   padding: 0.5rem 1.1rem;
   border-radius: 6px;
   white-space: nowrap;
-  transition: opacity 0.18s;
+  transition: background 0.18s, border-color 0.18s, opacity 0.18s;
   letter-spacing: -0.01em;
 }
-.hero-cta:hover { opacity: 0.78; }
+.hero-cta:hover { background: #3f3f46; border-color: #3f3f46; opacity: 1; }
 
 .hero-cta-outline {
   background: transparent;
@@ -313,7 +345,7 @@ body {
 
 .card {
   border: 1px solid var(--rule);
-  background: #fff;
+  background: var(--card-bg);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -394,7 +426,7 @@ body {
 .card.card-review {
   position: relative;
   overflow: hidden;
-  background: #ffffff;
+  background: var(--card-bg);
 }
 
 .card.card-review::before {
@@ -418,6 +450,13 @@ body {
 .card.card-review .card-link {
   color: var(--ink);
   border-color: var(--rule);
+}
+
+.card.card-review .card-link:hover {
+  background: var(--ink);
+  color: var(--accent-fg);
+  border-color: var(--ink);
+  opacity: 1;
 }
 
 .card.card-review .card-footer {
@@ -487,7 +526,7 @@ body {
 }
 .card-link:hover {
   background: var(--ink);
-  color: #fff;
+  color: var(--accent-fg);
   border-color: var(--ink);
   opacity: 1;
 }
@@ -550,7 +589,7 @@ body {
 
 .feature-showcase {
   border: 1px solid var(--rule);
-  background: #fff;
+  background: var(--card-bg);
   border-radius: 8px;
   margin-bottom: 1.5rem;
 }
@@ -655,7 +694,7 @@ body {
   border: 1px solid var(--rule);
   border-radius: 8px;
   padding: 1.2rem 1.4rem;
-  background: #fff;
+  background: var(--card-bg);
   margin-bottom: 0.85rem;
   transition: border-color 0.18s, box-shadow 0.18s;
 }
@@ -872,6 +911,28 @@ a.pub-title:hover { color: var(--accent); text-decoration: underline; }
   font-size: 0.75rem;
 }
 
+/* ── THEME TOGGLE ── */
+.theme-toggle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+  background: none;
+  border: 1px solid var(--rule);
+  padding: 0.28rem 0.65rem;
+  border-radius: 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+  white-space: nowrap;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+.theme-toggle:hover {
+  background: var(--ink);
+  color: var(--accent-fg);
+  border-color: var(--ink);
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 700px) {
   .nav-links { display: none; }
@@ -881,4 +942,5 @@ a.pub-title:hover { color: var(--accent); text-decoration: underline; }
   .hero-header { align-items: flex-start; }
   .hero-meta { text-align: left; }
   .feature-showcase-body { padding: 1.25rem; }
+  .theme-toggle { font-size: 0.55rem; padding: 0.22rem 0.5rem; }
 }

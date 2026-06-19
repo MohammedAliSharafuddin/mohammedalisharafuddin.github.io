@@ -7,6 +7,12 @@
 <meta name="description" content="Mohammed Ali Sharafuddin: researcher and educator publishing open statistics textbooks, free Excel templates, and marketing analytics tools. Author of Quantitative Analysis with Small Samples (free, CC BY 4.0).">
 <link rel="canonical" href="https://mohammedalisharafuddin.github.io/">
 <link rel="stylesheet" href="assets/css/portfolio.css">
+<script>
+(function(){
+  var t=localStorage.getItem('theme');
+  if(t==='dark') document.documentElement.setAttribute('data-theme','dark');
+})();
+</script>
 <script defer src="/assets/js/ga4.js"></script>
 <script defer src="/assets/js/contact-form.js"></script>
 <meta name="robots" content="index,follow">
@@ -78,7 +84,7 @@
 
 <nav class="site-nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-brand">Mohammed Ali <span>Sharafuddin</span></a>
+    <a href="index.html" class="nav-brand">MAS</a>
     <div class="nav-links">
       <a href="textbooks.html">Textbooks</a>
       <a href="templates.html">Templates</a>
@@ -89,6 +95,7 @@
       <a href="research.html">Research</a>
       <a href="#contact" class="nav-cta">Contact</a>
     </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">Dark</button>
   </div>
 </nav>
 
@@ -599,11 +606,11 @@
   <section class="section" id="contact">
     <div class="section-label">Contact</div>
     <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1.2rem;">
-      <div style="border:1px solid var(--rule-light); padding:1.2rem 1.4rem; background:#fff;">
+      <div style="border:1px solid var(--rule-light); padding:1.2rem 1.4rem; background:var(--card-bg);">
         <div style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--grey); margin-bottom:0.35rem;">Affiliation</div>
         <p style="font-size:0.9rem; color:var(--ink);">Senior Lecturer, Qasim Ibrahim School of Business, Villa College, Malé, Maldives</p>
       </div>
-      <div style="border:1px solid var(--rule-light); padding:1.2rem 1.4rem; background:#fff;">
+      <div style="border:1px solid var(--rule-light); padding:1.2rem 1.4rem; background:var(--card-bg);">
         <div style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--grey); margin-bottom:0.35rem;">Profiles</div>
         <div style="display:flex; flex-direction:column; gap:0.3rem;">
           <a href="https://scholar.google.com/citations?hl=en&user=DgaDtq4AAAAJ" target="_blank" rel="noopener" style="font-size:0.85rem; color:var(--ink); text-decoration:none; border-bottom:1px solid var(--rule-light);">Google Scholar</a>
@@ -611,7 +618,7 @@
         </div>
       </div>
     </div>
-    <div style="border:1px solid var(--rule-light); padding:1.35rem 1.4rem; background:#fff; margin-top:1.2rem;">
+    <div style="border:1px solid var(--rule-light); padding:1.35rem 1.4rem; background:var(--card-bg); margin-top:1.2rem;">
       <div style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--grey); margin-bottom:0.45rem;">Direct Message</div>
       <p style="font-size:0.9rem; color:var(--ink-soft); line-height:1.7; max-width:64ch;">
         Use this form if you want updates on new tools, collaboration, or teaching-related enquiries.
@@ -619,15 +626,15 @@
       <form data-contact-form data-status-id="portfolio-contact-status" data-form-subject="Portfolio website enquiry" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0.9rem; margin-top:1rem;">
         <label style="display:flex; flex-direction:column; gap:0.35rem; font-size:0.82rem; color:var(--ink-soft);">
           <span>Name</span>
-          <input name="name" type="text" placeholder="Your name" style="padding:0.75rem 0.85rem; border:1px solid var(--rule); background:#fff; font:inherit; color:var(--ink);">
+          <input name="name" type="text" placeholder="Your name" style="padding:0.75rem 0.85rem; border:1px solid var(--rule); background:var(--card-bg); font:inherit; color:var(--ink);">
         </label>
         <label style="display:flex; flex-direction:column; gap:0.35rem; font-size:0.82rem; color:var(--ink-soft);">
           <span>Email</span>
-          <input name="email" type="email" placeholder="your@email.com" required style="padding:0.75rem 0.85rem; border:1px solid var(--rule); background:#fff; font:inherit; color:var(--ink);">
+          <input name="email" type="email" placeholder="your@email.com" required style="padding:0.75rem 0.85rem; border:1px solid var(--rule); background:var(--card-bg); font:inherit; color:var(--ink);">
         </label>
         <label style="display:flex; flex-direction:column; gap:0.35rem; font-size:0.82rem; color:var(--ink-soft);">
           <span>Topic</span>
-          <select name="topic" style="padding:0.75rem 0.85rem; border:1px solid var(--rule); background:#fff; font:inherit; color:var(--ink);">
+          <select name="topic" style="padding:0.75rem 0.85rem; border:1px solid var(--rule); background:var(--card-bg); font:inherit; color:var(--ink);">
             <option value="General enquiry">General enquiry</option>
             <option value="Workshop invitation">Workshop invitation</option>
             <option value="Research collaboration">Research collaboration</option>
@@ -636,10 +643,10 @@
         </label>
         <label style="display:flex; flex-direction:column; gap:0.35rem; font-size:0.82rem; color:var(--ink-soft); grid-column:1 / -1;">
           <span>Message</span>
-          <textarea name="message" placeholder="How can I help?" style="padding:0.85rem; border:1px solid var(--rule); background:#fff; font:inherit; color:var(--ink); min-height:130px; resize:vertical;"></textarea>
+          <textarea name="message" placeholder="How can I help?" style="padding:0.85rem; border:1px solid var(--rule); background:var(--card-bg); font:inherit; color:var(--ink); min-height:130px; resize:vertical;"></textarea>
         </label>
         <div style="display:flex; flex-wrap:wrap; gap:0.85rem; align-items:center; grid-column:1 / -1;">
-          <button type="submit" style="border:1px solid var(--ink); background:var(--ink); color:#fff; padding:0.72rem 1.2rem; font-family:'JetBrains Mono',monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; cursor:pointer;">Send message</button>
+          <button type="submit" style="border:1px solid var(--ink); background:var(--ink); color:var(--warm-white); padding:0.72rem 1.2rem; font-family:'JetBrains Mono',monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; cursor:pointer;">Send message</button>
           <p style="font-size:0.84rem; color:var(--ink-soft);">You can also write directly to <a href="mailto:mohammedali.page@gmail.com" style="color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent-lt);">mohammedali.page@gmail.com</a>.</p>
         </div>
       </form>
@@ -656,5 +663,24 @@
   </div>
 </footer>
 
+<script>
+(function(){
+  var btn=document.getElementById('theme-toggle');
+  if(!btn)return;
+  function sync(){
+    var dark=document.documentElement.getAttribute('data-theme')==='dark';
+    btn.textContent=dark?'Light':'Dark';
+    btn.setAttribute('aria-pressed',String(dark));
+  }
+  sync();
+  btn.addEventListener('click',function(){
+    var dark=document.documentElement.getAttribute('data-theme')==='dark';
+    var next=dark?'light':'dark';
+    document.documentElement.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+    sync();
+  });
+})();
+</script>
 </body>
 </html>
