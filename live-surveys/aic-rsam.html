@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>AIC-RSAM Room-Service Study Prototype</title>
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --primary-soft: #e7f7f4;
+      --bg-outside: #d7dde3;
+      --bg-inside: #ffffff;
+      --bg-chat: #f4f7f9;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #d7e0e8;
+      --bubble-bot: #ffffff;
+      --bubble-user: #0f766e;
+      --text-user: #ffffff;
+      --shadow: 0 10px 28px rgba(15, 23, 42, 0.16);
+      --radius: 18px;
+      --danger: #9f1239;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      min-height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg-outside);
+      color: var(--text);
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+    }
+    button, input, textarea { font: inherit; }
+
+    .app-container {
+      width: 100%;
+      max-width: 430px;
+      min-height: 100dvh;
+      background: var(--bg-inside);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    @media (min-width: 460px) {
+      body { padding: 14px; }
+      .app-container {
+        min-height: calc(100dvh - 28px);
+        max-height: calc(100dvh - 28px);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+    }
+
+    .progress-container { height: 4px; background: #dde5ea; width: 100%; flex-shrink: 0; }
+    .progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary), #22a39a); transition: width 0.28s ease; }
+
+    header {
+      background: var(--primary);
+      color: white;
+      padding: max(14px, env(safe-area-inset-top)) 16px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .brand-block strong { display: block; font-size: 1rem; }
+    .brand-block span { display: block; opacity: 0.92; font-size: 0.76rem; }
+    .restart-link {
+      color: white;
+      text-decoration: underline;
+      font-size: 0.78rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      opacity: 0.9;
+      padding: 4px;
+    }
+
+    #chat-window {
+      flex: 1;
+      overflow-y: auto;
+      background: var(--bg-chat);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      scroll-behavior: smooth;
+    }
+
+    .message {
+      display: flex;
+      flex-direction: column;
+      max-width: 86%;
+      animation: fadeIn 0.25s ease;
+    }
+    .message.bot { align-self: flex-start; }
+    .message.user { align-self: flex-end; align-items: flex-end; }
+    .sender-name { font-size: 0.72rem; color: var(--muted); margin-bottom: 4px; padding-inline: 6px; }
+    .bubble {
+      padding: 12px 14px;
+      border-radius: 18px;
+      line-height: 1.45;
+      font-size: 0.95rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      word-break: break-word;
+    }
+    .message.bot .bubble {
+      background: var(--bubble-bot);
+      border-bottom-left-radius: 6px;
+    }
+    .message.user .bubble {
+      background: var(--bubble-user);
+      color: var(--text-user);
+      border-bottom-right-radius: 6px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .typing {
+      display: none;
+      width: fit-content;
+      background: #fff;
+      padding: 11px 14px;
+      border-radius: 16px;
+      border-bottom-left-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .typing.active { display: inline-flex; gap: 5px; align-items: center; }
+    .typing span {
+      width: 7px; height: 7px; border-radius: 999px; background: #8fb6b1; display: inline-block;
+      animation: bounce 1s infinite;
+    }
+    .typing span:nth-child(2) { animation-delay: 0.12s; }
+    .typing span:nth-child(3) { animation-delay: 0.24s; }
+    @keyframes bounce {
+      0%, 80%, 100% { transform: translateY(0); opacity: .5; }
+      40% { transform: translateY(-3px); opacity: 1; }
+    }
+
+    .options-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      max-width: 100%;
+      animation: fadeIn 0.25s ease;
+    }
+    .option-chip {
+      appearance: none;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      background: #fff;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      min-height: 42px;
+      transition: all .15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .option-chip:active { transform: scale(.98); }
+    .option-chip:hover { background: var(--primary); color: white; }
+
+    .full-width-options {
+      display: grid;
+      gap: 9px;
+      width: 100%;
+    }
+    .reply-card {
+      appearance: none;
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: #fff;
+      border-radius: 16px;
+      padding: 14px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-align: left;
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .reply-card small { display: block; font-weight: 500; color: var(--muted); margin-top: 4px; }
+
+    .stage-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      animation: fadeIn 0.25s ease;
+    }
+    .stage-card h3 { font-size: 0.98rem; margin-bottom: 8px; }
+    .stage-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.45; margin-bottom: 10px; }
+
+    .search-box {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 13px 14px;
+      margin-bottom: 12px;
+      min-height: 46px;
+      outline: none;
+    }
+    .search-box:focus, #user-input:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
+    }
+
+    .menu-list, .recommend-list { display: grid; gap: 10px; }
+    .menu-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 13px;
+      background: white;
+      display: grid;
+      gap: 7px;
+    }
+    .menu-top { display: flex; justify-content: space-between; gap: 10px; align-items: start; }
+    .menu-name { font-weight: 800; line-height: 1.35; }
+    .menu-price { color: var(--primary); font-weight: 800; white-space: nowrap; }
+    .menu-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.4; }
+    .menu-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .menu-tags span {
+      font-size: 0.73rem; color: var(--muted); background: #f4f7fa; border: 1px solid var(--line); border-radius: 999px; padding: 5px 8px;
+    }
+    .card-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .small-btn {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .small-btn.primary { border-color: var(--primary); color: var(--primary); }
+
+    .cart-summary {
+      display: grid; gap: 10px;
+    }
+    .cart-item {
+      display: flex; justify-content: space-between; gap: 10px;
+      border: 1px solid var(--line); border-radius: 14px; padding: 11px 12px; background: #fbfcfd;
+    }
+    .cart-item strong { display: block; }
+    .cart-item span { color: var(--muted); font-size: .86rem; }
+    .cart-total {
+      display: flex; justify-content: space-between; font-weight: 800; padding-top: 2px;
+    }
+
+    .survey-screen {
+      padding: 14px;
+      background: var(--bg-chat);
+      overflow-y: auto;
+      flex: 1;
+    }
+    .survey-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+    .survey-card h2 { font-size: 1rem; margin-bottom: 6px; }
+    .survey-card p { color: var(--muted); font-size: .9rem; line-height: 1.45; margin-bottom: 12px; }
+    .question-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px;
+      margin-bottom: 10px;
+      background: #fff;
+    }
+    .q-code {
+      display: inline-block;
+      font-size: .74rem;
+      font-weight: 800;
+      color: var(--primary);
+      background: var(--primary-soft);
+      padding: 5px 8px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .q-statement { font-weight: 700; line-height: 1.45; margin-bottom: 10px; }
+    .likert-labels {
+      display: flex; justify-content: space-between; gap: 10px; color: var(--muted); font-size: .72rem; margin-bottom: 8px;
+    }
+    .likert-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px;
+    }
+    .likert-grid input { display: none; }
+    .likert-pill {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      font-weight: 800;
+      background: #fff;
+      cursor: pointer;
+    }
+    .likert-grid input:checked + .likert-pill { background: var(--primary); color: white; border-color: var(--primary); }
+
+    .profile-options { display: grid; gap: 8px; }
+    .survey-option {
+      appearance: none;
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 14px;
+      padding: 12px 13px;
+      text-align: left;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .survey-option.active { background: var(--primary-soft); border-color: #bfe1dc; color: var(--primary-dark); }
+
+    .field { margin-bottom: 12px; }
+    .field label { display: block; font-weight: 700; margin-bottom: 6px; }
+    textarea {
+      width: 100%; min-height: 100px; border: 1px solid var(--line); border-radius: 14px; padding: 12px;
+    }
+
+    .footer-actions {
+      padding: 12px 14px calc(12px + env(safe-area-inset-bottom));
+      border-top: 1px solid var(--line);
+      background: #fff;
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .btn {
+      appearance: none;
+      border: none;
+      border-radius: 14px;
+      min-height: 48px;
+      padding: 12px 14px;
+      font-weight: 800;
+      cursor: pointer;
+      flex: 1;
+    }
+    .btn-primary { background: linear-gradient(135deg, var(--primary), #149b91); color: #fff; }
+    .btn-secondary { background: #fff; border: 1px solid var(--line); color: var(--text); }
+
+    #input-area {
+      background: #fff;
+      padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+      border-top: 1px solid var(--line);
+      display: none;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    #user-input {
+      flex: 1;
+      min-height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0 14px;
+      outline: none;
+    }
+    #send-btn {
+      border: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    #send-btn:disabled { background: #c7d2da; cursor: not-allowed; }
+
+    .hidden { display: none !important; }
+    .fine { font-size: .8rem; color: var(--muted); line-height: 1.45; }
+    .danger { color: var(--danger); font-weight: 700; }
+    .route-grid { display: grid; gap: 9px; margin-top: 10px; }
+    .route-copy {
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--primary);
+      border-radius: 14px;
+      padding: 11px 12px;
+      background: #fbfefd;
+    }
+    .route-copy strong { display: block; margin-bottom: 3px; }
+    .route-copy span { display: block; color: var(--muted); font-size: .84rem; line-height: 1.35; }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div class="progress-container"><div id="progress-bar" class="progress-bar"></div></div>
+    <header>
+      <div class="brand-block">
+        <strong>AIC-RSAM Room Service</strong>
+        <span>Prototype task first, questionnaire second</span>
+      </div>
+      <button class="restart-link" onclick="restartApp()">Restart</button>
+    </header>
+
+    <div id="chat-window">
+      <div class="typing" id="typing-indicator"><span></span><span></span><span></span></div>
+    </div>
+
+    <div id="survey-screen" class="survey-screen hidden"></div>
+
+    <div id="input-area">
+      <input id="user-input" type="text" placeholder="Type your answer..." autocomplete="off">
+      <button id="send-btn">➤</button>
+    </div>
+
+    <div id="survey-footer" class="footer-actions hidden">
+      <button class="btn btn-secondary" onclick="scrollSurveyTop()">Top</button>
+      <button class="btn btn-primary" onclick="submitSurvey()">Finish study</button>
+    </div>
+  </div>
+
+<script>
+const menuItems = [
+  { id:'m1', name:'House Blend Coffee', price:8, desc:'Freshly brewed coffee served hot.', tags:['beverage','breakfast','vegetarian'] },
+  { id:'m2', name:'Cappuccino', price:9, desc:'Espresso with foamed milk.', tags:['beverage','breakfast','vegetarian'] },
+  { id:'m3', name:'Tropical Fruit Platter', price:16, desc:'Seasonal fruit with mint and lime.', tags:['light','breakfast','vegan','vegetarian'] },
+  { id:'m4', name:'Veggie Breakfast Bowl', price:20, desc:'Roasted vegetables, grains, avocado, and herbs.', tags:['breakfast','vegetarian','healthy'] },
+  { id:'m5', name:'Maldivian Tuna Rice', price:24, desc:'Fragrant rice with spiced tuna and coconut notes.', tags:['lunch','dinner','seafood','hearty'] },
+  { id:'m6', name:'Garden Pasta', price:22, desc:'Creamy pasta with seasonal vegetables.', tags:['lunch','dinner','vegetarian','hearty'] },
+  { id:'m7', name:'Grilled Reef Fish', price:29, desc:'Fresh fish with lemon butter and island greens.', tags:['dinner','seafood','healthy'] },
+  { id:'m8', name:'Chocolate Lava Cake', price:14, desc:'Warm chocolate cake with vanilla cream.', tags:['dessert','sweet','snack','vegetarian'] },
+  { id:'m9', name:'Club Sandwich', price:18, desc:'Chicken, lettuce, tomato, and fries.', tags:['lunch','snack','hearty'] },
+  { id:'m10', name:'Island Herbal Tea', price:7, desc:'A calming local herb infusion.', tags:['beverage','light','vegan','vegetarian'] }
+];
+
+const state = {
+  step: 'start',
+  currentPrompt: null,
+  currentTextKey: null,
+  mode: null,
+  profile: {},
+  survey: {},
+  cart: [],
+  conv: {},
+  finished: false
+};
+
+const stepsOrder = [
+  'start','consent','e1','e2','e3','e4','e5','e6','e7','mode','quick','conv_diet','conv_persons','conv_meal','conv_mood','conv_reco','room','request','confirm','success','survey'
+];
+
+const flows = {
+  start: {
+    bot: "Welcome. This prototype is for a pilot study on AI-assisted room-service booking in Maldivian resorts. You will complete the booking flow first and the questionnaire second. Quick Book uses direct search. Conversational Book guides you through structured prompts.",
+    choices: ["Start study"]
+  },
+  consent: {
+    bot: "Participation is voluntary. Do you agree to take part in this pilot study?",
+    choices: ["I agree", "I do not agree"]
+  },
+  e1: { bot: "Are you 18 years or older?", choices: ["Yes", "No"] },
+  e2: { bot: "Are you a Maldivian national or resident?", choices: ["Yes", "No"] },
+  e3: { bot: "Have you stayed in a Maldivian resort within the past 12 months?", choices: ["Yes", "No"] },
+  e4: { bot: "How long was your most recent stay?", choices: ["1 night", "2 nights", "3–4 nights", "5 nights or more"] },
+  e5: { bot: "During that stay, did you order or attempt to order room service?", choices: ["Yes", "No"] },
+  e6: { bot: "If yes, about how many times?", choices: ["1 time", "2–3 times", "4 or more times", "Not applicable"] },
+  e7: { bot: "Do you use a smartphone for online ordering or app-based services?", choices: ["Yes", "No"] },
+  mode: {
+    bot: "You are eligible. Which path would you like to try first?",
+    cards: [
+      {label:'Quick Book', sub:'Use a search bar and add items directly.'},
+      {label:'Conversational Book', sub:'Answer one chat question at a time and receive recommendations.'}
+    ]
+  },
+  conv_diet: { bot: "Let’s start with your food preference. What suits you best?", cards:[
+    {label:'Vegetarian', sub:'No meat or fish'},
+    {label:'Seafood', sub:'Fish and seafood focus'},
+    {label:'No strong preference', sub:'Show me balanced options'},
+    {label:'Vegan or light plant-based', sub:'Plant-focused choices'}
+  ]},
+  conv_persons: { bot: "How many people are you ordering for?", choices:["1 person","2 persons","3 or more"] },
+  conv_meal: { bot: "What kind of order do you want to place?", cards:[
+    {label:'Breakfast', sub:'Morning meal or coffee'},
+    {label:'Lunch or dinner', sub:'Main meal choices'},
+    {label:'Snack or dessert', sub:'Light bites and sweets'},
+    {label:'Beverage only', sub:'Coffee, tea, and drinks'}
+  ]},
+  conv_mood: { bot: "What feels right at the moment?", choices:["Light and healthy","Filling and hearty","Sweet treat","Something simple"] },
+  room: { bot: "Please type your room number.", textKey:'room' },
+  request: { bot: "Any special request? Type 'None' if not.", textKey:'request' }
+};
+
+const SF_SRCDOC = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AIC-RSAM Post-Use Questionnaire</title>
+<style>
+:root{
+  --cp:#0f766e;
+  --cf:#ffffff;--cg:#f4f6fb;--cb:#e2e8f0;
+  --t1:#0f172a;--t2:#475569;--t3:#94a3b8;
+  --cd:#dc2626;--cs:#16a34a;
+  --font:system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:10px;--card-w:640px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;background:var(--cg);font-family:var(--font);font-size:14px;color:var(--t1);line-height:1.6}
+button{font-family:inherit;cursor:pointer;border:none}
+input,textarea,select{font-family:inherit;font-size:14px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+/* Header (Fix A) */
+.sf-hdr{display:flex;align-items:center;gap:14px;max-width:var(--card-w);margin:20px auto 0;padding:0 16px 16px;border-bottom:1px solid var(--cb)}
+.sf-hdr-logo{height:48px;width:auto;max-width:240px;object-fit:contain}
+.sf-hdr-inst{font-size:15px;font-weight:600;color:var(--t1)}
+
+/* Progress */
+.prog-bar-wrap{position:sticky;top:0;z-index:50;background:var(--cf);border-bottom:1px solid var(--cb);padding:0}
+.prog-bar-inner{height:4px;background:var(--cp);transition:width .3s ease;min-width:0}
+.prog-hdr{display:flex;align-items:center;gap:10px;padding:10px 20px}
+.prog-title{font-size:12px;font-weight:600;color:var(--t2);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.prog-pct{font-size:11px;color:var(--t3);flex-shrink:0}
+
+/* Layout */
+.frame{max-width:var(--card-w);margin:0 auto;padding:28px 16px 60px}
+.card{background:var(--cf);border-radius:var(--r);box-shadow:0 2px 8px rgba(0,0,0,.07);overflow:hidden}
+.card-body{padding:32px}
+
+/* Welcome / thankyou */
+.wl-title{font-size:24px;font-weight:700;margin-bottom:8px}
+.wl-intro{color:var(--t2);margin-bottom:20px;white-space:pre-wrap}
+.consent-box{background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:8px;padding:14px 16px;font-size:13px;color:#1e40af;margin-bottom:16px;white-space:pre-wrap}
+.consent-chk{display:flex;align-items:flex-start;gap:8px;font-size:13px;margin-bottom:20px;cursor:pointer}
+.consent-chk input{margin-top:3px;accent-color:var(--cp)}
+.ty-ic{font-size:52px;text-align:center;margin-bottom:14px}
+.ty-title{font-size:22px;font-weight:700;text-align:center;margin-bottom:8px}
+.ty-msg{color:var(--t2);text-align:center;font-size:14px;margin-bottom:22px;white-space:pre-wrap}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;
+  transition:all .15s;border:2px solid transparent;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn-p{background:var(--cp);color:#fff;border-color:var(--cp)}
+.btn-p:hover:not(:disabled){filter:brightness(.92)}
+.btn-s{background:var(--cf);color:var(--t1);border-color:var(--cb)}
+.btn-s:hover:not(:disabled){background:var(--cg)}
+.btn-lg{padding:13px 30px;font-size:15px;width:100%;margin-top:24px}
+.nav-row{display:flex;gap:10px;margin-top:24px}
+.nav-row .sp{flex:1}
+
+/* Section / text block */
+.sec-div{border-top:3px solid var(--cp);margin:28px 0 20px;padding-top:18px}
+.sec-title{font-size:18px;font-weight:700}
+.sec-sub{color:var(--t2);font-size:13px;margin-top:4px;white-space:pre-wrap}
+.txt-blk{background:#eff6ff;border-left:4px solid var(--cp);border-radius:0 8px 8px 0;
+  padding:12px 16px;margin:14px 0;font-size:13px;color:#1e40af;white-space:pre-wrap}
+
+/* Items */
+.item{margin-bottom:24px}
+.item.hidden{display:none}
+.item-q{font-weight:600;margin-bottom:8px;display:flex;gap:6px;font-size:14px}
+.req-mk{color:var(--cd);font-size:11px;margin-top:2px;flex-shrink:0}
+.item-help{font-size:12px;color:var(--t3);margin-bottom:8px;margin-top:-4px}
+.item-err{font-size:12px;color:var(--cd);margin-top:5px;display:none}
+.item-err.show{display:block}
+
+/* Likert (inline radios) */
+.likert-row{display:flex;gap:0;overflow-x:auto}
+.likert-opt{flex:1;min-width:60px;display:flex;flex-direction:column;align-items:center;
+  gap:5px;padding:8px 4px;border-radius:6px;cursor:pointer;transition:background .12s;text-align:center}
+.likert-opt:hover{background:var(--cg)}
+.likert-opt input{accent-color:var(--cp)}
+.likert-lbl{font-size:11px;color:var(--t2);line-height:1.3;max-width:72px}
+
+/* Choice (stacked) */
+.choice-opt{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;
+  border-radius:6px;cursor:pointer;transition:background .12s;font-size:13px}
+.choice-opt:hover{background:var(--cg)}
+.choice-opt input{margin-top:2px;accent-color:var(--cp);flex-shrink:0}
+
+/* Short text / number / date */
+.inp-std{width:100%;border:1.5px solid var(--cb);border-radius:8px;
+  padding:9px 12px;font-size:14px;color:var(--t1);background:var(--cf);
+  transition:border-color .15s,box-shadow .15s}
+.inp-std:focus{outline:none;border-color:var(--cp);box-shadow:0 0 0 3px color-mix(in srgb,var(--cp) 15%,transparent)}
+textarea.inp-std{resize:vertical;min-height:80px}
+.inp-narrow{max-width:220px}
+
+/* Slider */
+.slider-wrap{display:flex;flex-direction:column;gap:6px}
+.slider-inp{width:100%;accent-color:var(--cp);height:6px;cursor:pointer}
+.slider-lbls{display:flex;justify-content:space-between;font-size:11px;color:var(--t3)}
+.slider-val{font-size:13px;font-weight:600;color:var(--cp);text-align:center}
+
+/* Rating */
+.star-row{display:flex;gap:4px}
+.star-btn{font-size:28px;background:none;border:none;cursor:pointer;
+  color:var(--cb);transition:color .12s;line-height:1}
+.star-btn.active{color:var(--cp)}
+
+/* Matrix */
+.matrix-wrap{overflow-x:auto;margin-top:6px}
+.matrix-tbl{width:100%;border-collapse:collapse;font-size:12px}
+.matrix-tbl th{background:var(--cg);padding:7px 10px;text-align:center;
+  border:1px solid var(--cb);font-weight:600;vertical-align:bottom}
+.matrix-tbl td{padding:7px 10px;border:1px solid var(--cb);text-align:center;vertical-align:middle}
+.matrix-tbl .rl{text-align:left;font-weight:500}
+.matrix-tbl input{accent-color:var(--cp)}
+.matrix-tbl tr:nth-child(even) td{background:#fafbfd}
+
+/* Ranking */
+.rank-list{border:1.5px solid var(--cb);border-radius:8px;overflow:hidden}
+.rank-item{display:flex;align-items:center;gap:10px;padding:10px 14px;
+  background:var(--cf);border-bottom:1px solid var(--cb);cursor:grab;
+  user-select:none;transition:background .12s}
+.rank-item:last-child{border-bottom:none}
+.rank-item:hover{background:var(--cg)}
+.rank-item.drag-over{border-top:2px solid var(--cp)}
+.rank-item.dragging{opacity:.4}
+.rank-num{width:20px;height:20px;border-radius:9999px;background:var(--cp);
+  color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rank-handle{color:var(--t3);font-size:13px;flex-shrink:0}
+.rank-lbl{flex:1;font-size:13px}
+
+/* Error banner */
+.err-banner{background:#fef2f2;border:1.5px solid #fecaca;border-radius:8px;
+  padding:12px 16px;margin-bottom:18px;font-size:13px;color:#991b1b;display:none}
+.err-banner.show{display:block}
+
+/* Footer */
+.sf-footer{text-align:center;font-size:11px;color:var(--t3);padding:8px 16px 36px}
+.sf-footer a{color:var(--t3);font-weight:600;text-decoration:none}
+.sf-footer a:hover{text-decoration:underline}
+
+/* Mobile */
+@media (max-width:600px){
+  .card-body{padding:20px}
+  .frame{padding:16px 10px 48px}
+  .sf-hdr{margin-top:14px;padding-bottom:12px}
+  .wl-title{font-size:20px}
+  .star-btn{font-size:24px}
+  .prog-hdr{padding:9px 14px}
+  .btn{padding:10px 18px}
+}
+</style>
+</head>
+<body data-endpoint="https://script.google.com/macros/s/AKfycbycCSKHyiWk4sVW5-4L1PvnWrdwqoZbkItpN9bBI39cxpfEOqMwKTHBtXNNFEuIEeHuiw/exec">
+
+<!-- Fix A: header region reads R.header for logo and institution -->
+<div id="sf-hdr" class="sf-hdr" style="display:none"></div>
+
+<div id="prog-bar-wrap" class="prog-bar-wrap" hidden>
+  <div class="prog-bar-inner" id="progBar" style="width:0%"></div>
+  <div class="prog-hdr">
+    <span class="prog-title" id="progTitle"></span>
+    <span class="prog-pct" id="progPct">0%</span>
+  </div>
+</div>
+
+<div class="frame" id="app"></div>
+<div class="sf-footer">Built with <a href="https://cran.r-project.org/package=surveyframe" target="_blank" rel="noopener">surveyframe</a></div>
+
+<script type="application/json" id="sf-data">{"meta":{"title":"AIC-RSAM Post-Use Questionnaire","version":"0.1.0","description":"Post-use questionnaire completed immediately after the AIC-RSAM prototype booking session. Eligibility was confirmed by the prototype flow. Population: Maldivian adults who have stayed in a Maldivian resort within the past 12 months and completed at least one booking in the prototype.","authors":"Sharafuddin, M. A.","languages":"en","validated":false,"created_at":"2026-06-22T08:31:57Z"},"items":[{"id":"sec_profile","label":"Part 2: Respondent Profile","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":"A few background questions about your experience with the prototype.","page":null},{"id":"prof_mode_first","label":"Which mode did you try first in the prototype?","type":"single_choice","required":true,"choice_set":"mode_cs","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"prof_tried_other","label":"Did you also try the other mode?","type":"single_choice","required":true,"choice_set":"yn","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"prof_app_frequency","label":"How often do you use food-ordering apps?","type":"single_choice","required":true,"choice_set":"freq_cs","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"prof_chatbot_prior","label":"Have you used a chatbot or conversational ordering system before?","type":"single_choice","required":true,"choice_set":"yn","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"prof_age_group","label":"Age group","type":"single_choice","required":true,"choice_set":"age_grp_cs","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"prof_gender","label":"Gender","type":"single_choice","required":true,"choice_set":"gender_cs","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"sec_aia","label":"Section A: Perceived AI Assistance","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":"Please rate your agreement with the following statements about the AI features in the prototype. Use the scale: 1 = Strongly disagree, 5 = Strongly agree.","page":null},{"id":"aia_1","label":"The AI-assisted features helped me find suitable menu options more easily.","type":"likert","required":true,"choice_set":"agree5","scale_id":"aia","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"aia_2","label":"The conversational guidance helped me express my food preferences clearly.","type":"likert","required":true,"choice_set":"agree5","scale_id":"aia","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"aia_3","label":"The recommendations matched my likely needs well.","type":"likert","required":true,"choice_set":"agree5","scale_id":"aia","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"aia_4","label":"The system reduced the effort needed to decide what to order.","type":"likert","required":true,"choice_set":"agree5","scale_id":"aia","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"sec_poa","label":"Section B: Perceived Order Assurance","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"poa_1","label":"I believe this system can record a room-service order accurately.","type":"likert","required":true,"choice_set":"agree5","scale_id":"poa","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"poa_2","label":"I believe this system can reduce misunderstandings compared with telephone ordering.","type":"likert","required":true,"choice_set":"agree5","scale_id":"poa","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"poa_3","label":"I believe this system can route the order correctly to the relevant hotel units.","type":"likert","required":true,"choice_set":"agree5","scale_id":"poa","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"poa_4","label":"The confirmation process gave me confidence that the order was captured properly.","type":"likert","required":true,"choice_set":"agree5","scale_id":"poa","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"sec_peou","label":"Section C: Perceived Ease of Use","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"peou_1","label":"Learning to use this system would be easy for me.","type":"likert","required":true,"choice_set":"agree5","scale_id":"peou","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"peou_2","label":"It was easy for me to complete an order using this system.","type":"likert","required":true,"choice_set":"agree5","scale_id":"peou","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"peou_3","label":"The booking steps were clear and understandable.","type":"likert","required":true,"choice_set":"agree5","scale_id":"peou","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"peou_4","label":"The overall interface was simple and user-friendly.","type":"likert","required":true,"choice_set":"agree5","scale_id":"peou","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"sec_pu","label":"Section D: Perceived Usefulness","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"pu_1","label":"This system would make room-service ordering faster.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pu","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"pu_2","label":"This system would make room-service ordering more convenient.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pu","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"pu_3","label":"This system would help reduce booking errors.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pu","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"pu_4","label":"This system would be useful during a real resort stay.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pu","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"sec_pr","label":"Section E: Perceived Risk","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"pr_1","label":"I worry that the system may record the wrong order.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pr","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"pr_2","label":"I worry that technical problems may interrupt the ordering process.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pr","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"pr_3","label":"I worry that using this system may reduce access to staff assistance when needed.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pr","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"pr_4","label":"I worry about the privacy or security of information entered into this system.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pr","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"sec_bi","label":"Section F: Behavioural Intention to Use","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"bi_1","label":"I would use this system if it were available in a resort room.","type":"likert","required":true,"choice_set":"agree5","scale_id":"bi","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"bi_2","label":"I would choose this system for routine room-service requests if it were available.","type":"likert","required":true,"choice_set":"agree5","scale_id":"bi","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"bi_3","label":"I would use this system again during future resort stays.","type":"likert","required":true,"choice_set":"agree5","scale_id":"bi","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"bi_4","label":"I would recommend this system to other resort guests.","type":"likert","required":true,"choice_set":"agree5","scale_id":"bi","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"sec_fe","label":"Section G: Feature Evaluation","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":"These items are for prototype refinement only and are not part of the structural model.","page":null},{"id":"fe_1","label":"Having both Quick Book and Conversational Book in the same system is useful.","type":"likert","required":false,"choice_set":"agree5","scale_id":"fe","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"fe_2","label":"Quick Book is suitable when I already know what I want.","type":"likert","required":false,"choice_set":"agree5","scale_id":"fe","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"fe_3","label":"Conversational Book is suitable when I need help deciding.","type":"likert","required":false,"choice_set":"agree5","scale_id":"fe","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"fe_4","label":"I would like the option to switch between the two modes during ordering.","type":"likert","required":false,"choice_set":"agree5","scale_id":"fe","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"fe_5","label":"The menu search function should remain available throughout the process.","type":"likert","required":false,"choice_set":"agree5","scale_id":"fe","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"fe_6","label":"Visual menu cards would improve the ordering experience.","type":"likert","required":false,"choice_set":"agree5","scale_id":"fe","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"sec_od","label":"Section H: Design Feedback","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":"Your written responses will be used for prototype refinement only.","page":null},{"id":"od_1","label":"What did you like most about the system?","type":"text","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null},{"id":"od_2","label":"What should be improved before this system is tested in an actual resort?","type":"text","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"section_intro":null,"page":null}],"choices":[{"id":"agree5","values":[1,2,3,4,5],"labels":["Strongly disagree","Disagree","Neutral","Agree","Strongly agree"],"allow_other":false,"randomise":false},{"id":"mode_cs","values":["quick_book","conv_book"],"labels":["Quick Book","Conversational Book"],"allow_other":false,"randomise":false},{"id":"freq_cs","values":["never","rarely","sometimes","often","very_often"],"labels":["Never","Rarely","Sometimes","Often","Very often"],"allow_other":false,"randomise":false},{"id":"age_grp_cs","values":["18_24","25_34","35_44","45_plus"],"labels":["18 to 24","25 to 34","35 to 44","45 and above"],"allow_other":false,"randomise":false},{"id":"gender_cs","values":["male","female","prefer_not","other"],"labels":["Male","Female","Prefer not to say","Other"],"allow_other":false,"randomise":false},{"id":"yn","values":["yes","no"],"labels":["Yes","No"],"allow_other":false,"randomise":false}],"scales":[{"id":"aia","label":"Perceived AI Assistance","items":["aia_1","aia_2","aia_3","aia_4"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null},{"id":"poa","label":"Perceived Order Assurance","items":["poa_1","poa_2","poa_3","poa_4"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null},{"id":"peou","label":"Perceived Ease of Use","items":["peou_1","peou_2","peou_3","peou_4"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null},{"id":"pu","label":"Perceived Usefulness","items":["pu_1","pu_2","pu_3","pu_4"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null},{"id":"pr","label":"Perceived Risk","items":["pr_1","pr_2","pr_3","pr_4"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null},{"id":"bi","label":"Behavioural Intention to Use","items":["bi_1","bi_2","bi_3","bi_4"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null},{"id":"fe","label":"Feature Evaluation","items":["fe_1","fe_2","fe_3","fe_4","fe_5","fe_6"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null}],"branching":[],"checks":[],"analysis_plan":[{"id":"RQ1","research_question":"Which AIC-RSAM factors explain behavioural intention to use the AI-assisted room-service system, and which hypotheses (H1 to H9) are supported?","family":"measurement","method":"pls_sem","roles":{"model":"aic_rsam"},"options":{"alpha":0.05}},{"id":"RQ1a","research_question":"Do the six reflective construct scales demonstrate adequate internal consistency and convergent validity?","family":"measurement","method":"reliability_alpha","roles":{"items":["aia_1","aia_2","aia_3","aia_4","poa_1","poa_2","poa_3","poa_4","peou_1","peou_2","peou_3","peou_4","pu_1","pu_2","pu_3","pu_4","pr_1","pr_2","pr_3","pr_4","bi_1","bi_2","bi_3","bi_4"]},"options":{"alpha":0.05}},{"id":"RQ2","research_question":"How do participants evaluate the two-mode interface design (Quick Book and Conversational Book)?","family":"measurement","method":"reliability_alpha","roles":{"items":["fe_1","fe_2","fe_3","fe_4","fe_5","fe_6"]},"options":{"alpha":0.05}}],"models":[{"id":"aic_rsam","label":"AIC-RSAM: AI-Assisted Conversational Room-Service Acceptance Model","type":"pls_sem","engine":"seminr","measurement":{"constructs":[{"id":"aia","label":"Perceived AI Assistance","mode":"reflective","items":["aia_1","aia_2","aia_3","aia_4"],"weights":null},{"id":"poa","label":"Perceived Order Assurance","mode":"reflective","items":["poa_1","poa_2","poa_3","poa_4"],"weights":null},{"id":"peou","label":"Perceived Ease of Use","mode":"reflective","items":["peou_1","peou_2","peou_3","peou_4"],"weights":null},{"id":"pu","label":"Perceived Usefulness","mode":"reflective","items":["pu_1","pu_2","pu_3","pu_4"],"weights":null},{"id":"pr","label":"Perceived Risk","mode":"reflective","items":["pr_1","pr_2","pr_3","pr_4"],"weights":null},{"id":"bi","label":"Behavioural Intention to Use","mode":"reflective","items":["bi_1","bi_2","bi_3","bi_4"],"weights":null}]},"structural":{"paths":[{"from":"aia","to":"peou","label":"H1: AIA positively influences PEOU"},{"from":"aia","to":"pu","label":"H2: AIA positively influences PU"},{"from":"aia","to":"poa","label":"H3: AIA positively influences POA"},{"from":"peou","to":"pu","label":"H4: PEOU positively influences PU"},{"from":"peou","to":"bi","label":"H5: PEOU positively influences BI"},{"from":"poa","to":"pu","label":"H6: POA positively influences PU"},{"from":"poa","to":"bi","label":"H7: POA positively influences BI"},{"from":"pu","to":"bi","label":"H8: PU positively influences BI"},{"from":"pr","to":"bi","label":"H9: PR negatively influences BI"}],"covariances":[],"indirect":[]},"options":[]}],"render":{"mode":"conversational","theme":"#0f766e","welcome":{"title":"Post-Use Questionnaire","intro_text":"You have completed the prototype booking session. Please answer the following questions based on your experience with the system. There are no right or wrong answers. All responses are anonymous.","consent_text":"I understand that my responses will be used for research purposes only, that participation is voluntary, and that I may stop at any time.","consent_required":true,"start_label":"Begin Questionnaire"},"thankyou":{"message":"Thank you for completing the questionnaire. Your responses have been saved. You may now close this window.","show_download":false},"header":{"institution":"AIC-RSAM Pilot Study","show_progress":true},"submit_label":"Submit Questionnaire"}}<\/script>
+<script>
+'use strict';
+const SF       = JSON.parse(document.getElementById('sf-data').textContent);
+const R        = (SF.render||{});
+const THEME    = R.theme||'#0f766e'||'#2563eb';
+const ENDPOINT = document.body.dataset.endpoint||'';
+const MODE     = R.mode||'standard';
+const WL       = R.welcome||{};
+const TY       = R.thankyou||{};
+
+// Apply theme color
+document.documentElement.style.setProperty('--cp', THEME);
+
+// Fix A: render header (logo + institution) from R.header
+(function(){
+  var hdr=R.header||{};
+  var b64=hdr.logo_base64||'';
+  var inst=hdr.institution||'';
+  if(!b64&&!inst)return;
+  // Fix E/F: use stored media type; default to image/png for backward compat
+  var mtype=hdr.logo_media_type||'image/png';
+  var el=document.getElementById('sf-hdr');
+  if(!el)return;
+  var html='';
+  if(b64)html+='<img class="sf-hdr-logo" src="data:'+mtype+';base64,'+b64+'" alt="Logo">';
+  if(inst)html+='<span class="sf-hdr-inst">'+inst.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];})+'</span>';
+  el.innerHTML=html;
+  el.style.display='flex';
+})();
+
+// ── Lookups ────────────────────────────────────────────────────────────────
+const choiceMap={};
+(SF.choices||[]).forEach(function(cs){choiceMap[cs.id]=cs;});
+
+const branchMap={};
+(SF.branching||[]).forEach(function(rule){branchMap[rule.item_id]=rule;});
+
+// Items designated as quality checks render as Likert (inline radio) so
+// their choice layout matches regular scale items visually.
+const checkItemIds=new Set();
+(SF.checks||[]).forEach(function(ck){if(ck.item_id)checkItemIds.add(ck.item_id);});
+
+// ── Response state ─────────────────────────────────────────────────────────
+const responses={};
+const startedAt=new Date().toISOString();
+const respId='R'+Math.random().toString(36).slice(2,10).toUpperCase();
+let screen='welcome';
+let currentPage=1;
+let rankOrders={};
+let starValues={};
+
+// ── Page builder ───────────────────────────────────────────────────────────
+function buildPages(){
+  if(MODE==='conversational'){
+    return SF.items.map(function(i){return[i];});
+  }
+  var pagesMap={};
+  SF.items.forEach(function(item){
+    var p=item.page||1;
+    if(!pagesMap[p])pagesMap[p]=[];
+    pagesMap[p].push(item);
+  });
+  var keys=Object.keys(pagesMap).map(Number).sort(function(a,b){return a-b;});
+  if(!keys.length)return[SF.items];
+  return keys.map(function(k){return pagesMap[k];});
+}
+const pages=buildPages();
+const maxPage=pages.length;
+
+// ── Branching ──────────────────────────────────────────────────────────────
+function evaluate(op,actual,value){
+  if(actual===null||actual===undefined||actual==='')return false;
+  var an=parseFloat(actual),vn=parseFloat(value);
+  switch(op){
+    case'==':return String(actual)===String(value);
+    case'!=':return String(actual)!==String(value);
+    case'%in%':return value.split(',').map(function(s){return s.trim();}).includes(String(actual));
+    case'>': return !isNaN(an)&&!isNaN(vn)&&an>vn;
+    case'>=':return !isNaN(an)&&!isNaN(vn)&&an>=vn;
+    case'<': return !isNaN(an)&&!isNaN(vn)&&an<vn;
+    case'<=':return !isNaN(an)&&!isNaN(vn)&&an<=vn;
+    default:return false;
+  }
+}
+function isVisible(itemId){
+  var rule=branchMap[itemId];
+  if(!rule)return true;
+  var actual=responses[rule.depends_on];
+  var cond=evaluate(rule.operator,actual,rule.value);
+  return rule.action==='show'?cond:!cond;
+}
+
+// ── Helpers ────────────────────────────────────────────────────────────────
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function h(tag,attrs,inner){return'<'+tag+' '+(attrs||'')+'>'+inner+'</'+tag+'>';}
+function wrapItem(item,inner){
+  return'<div class="item'+(isVisible(item.id)?'':' hidden')+'" id="item_'+esc(item.id)+'" data-id="'+esc(item.id)+'">'
+    +'<div class="item-q">'+esc(item.label)+(item.required?'<span class="req-mk" aria-hidden="true">*</span>':'')+'</div>'
+    +(item.help?'<div class="item-help">'+esc(item.help)+'</div>':'')
+    +inner
+    +'<div class="item-err" id="err_'+esc(item.id)+'">This question is required.</div>'
+    +'</div>';
+}
+
+// ── Renderers ──────────────────────────────────────────────────────────────
+function renderItem(item){
+  var t=item.type;
+  var cs=choiceMap[item.choice_set||'']||{values:[],labels:[]};
+  if(t==='section_break') return renderSection(item);
+  if(t==='text_block')    return renderTextBlock(item);
+  // Quality check items (attention / trap / instructional) that have a choice
+  // set render as Likert (inline radios) so their layout matches regular scale
+  // items. A check item with type single_choice would otherwise render stacked.
+  if(checkItemIds.has(item.id)&&item.choice_set)return wrapItem(item,renderLikert(item,cs));
+  if(t==='likert')        return wrapItem(item,renderLikert(item,cs));
+  if(t==='single_choice') return wrapItem(item,renderSingle(item,cs));
+  if(t==='multiple_choice')return wrapItem(item,renderMulti(item,cs));
+  if(t==='matrix')        return wrapItem(item,renderMatrix(item,cs));
+  if(t==='numeric')       return wrapItem(item,renderNumeric(item));
+  if(t==='text')          return wrapItem(item,renderText(item));
+  if(t==='textarea')      return wrapItem(item,renderTextarea(item));
+  if(t==='date')          return wrapItem(item,renderDate(item));
+  if(t==='slider')        return wrapItem(item,renderSlider(item));
+  if(t==='rating')        return wrapItem(item,renderRating(item));
+  if(t==='ranking')       return wrapItem(item,renderRanking(item,cs));
+  return wrapItem(item,'<p style="color:var(--t3);font-size:12px">Unsupported item type: '+esc(t)+'</p>');
+}
+
+function renderSection(item){
+  return'<div class="sec-div"><div class="sec-title">'+esc(item.label)+'</div>'+(item.section_intro?'<div class="sec-sub">'+esc(item.section_intro)+'</div>':'')+'</div>';
+}
+function renderTextBlock(item){
+  return'<div class="txt-blk">'+esc(item.label)+'</div>';
+}
+function renderLikert(item,cs){
+  var saved=responses[item.id];
+  return'<div class="likert-row" role="radiogroup">'+cs.values.map(function(v,i){
+    var checked=String(saved)===String(v);
+    return'<label class="likert-opt"><input type="radio" name="'+esc(item.id)+'" value="'+esc(v)+'"'+(checked?' checked':'')
+      +' onchange="setResp(\\''+esc(item.id)+'\\',this.value)">'
+      +'<span class="likert-lbl">'+esc(cs.labels[i]||v)+'</span></label>';
+  }).join('')+'</div>';
+}
+function renderSingle(item,cs){
+  var saved=responses[item.id];
+  return cs.values.map(function(v,i){
+    var checked=String(saved)===String(v);
+    return'<label class="choice-opt"><input type="radio" name="'+esc(item.id)+'" value="'+esc(v)+'"'
+      +(checked?' checked':'')
+      +' onchange="setResp(\\''+esc(item.id)+'\\',this.value)">'
+      +esc(cs.labels[i]||v)+'</label>';
+  }).join('');
+}
+function renderMulti(item,cs){
+  var saved=(responses[item.id]||'').split(',').filter(Boolean);
+  return cs.values.map(function(v,i){
+    var chk=saved.includes(String(v));
+    return'<label class="choice-opt"><input type="checkbox" name="'+esc(item.id)+'" value="'+esc(v)+'"'
+      +(chk?' checked':'')
+      +' onchange="toggleMulti(\\''+esc(item.id)+'\\',this)">'
+      +esc(cs.labels[i]||v)+'</label>';
+  }).join('');
+}
+function renderMatrix(item,cs){
+  var rows=item.matrix_items||[];
+  var hdr='<tr><th></th>'+cs.labels.map(function(l){return'<th>'+esc(l)+'</th>';}).join('')+'</tr>';
+  var body=rows.map(function(row){
+    var rowKey=item.id+'__'+row;
+    var saved=responses[rowKey];
+    return'<tr>'
+      +'<td class="rl">'+esc(row)+'</td>'
+      +cs.values.map(function(v){
+        return'<td><input type="radio" name="'+esc(rowKey)+'" value="'+esc(v)+'"'
+          +(String(saved)===String(v)?' checked':'')
+          +' onchange="setResp(\\''+esc(rowKey)+'\\',this.value)"></td>';
+      }).join('')
+      +'</tr>';
+  }).join('');
+  return'<div class="matrix-wrap"><table class="matrix-tbl"><thead>'+hdr+'</thead><tbody>'+body+'</tbody></table></div>';
+}
+function renderNumeric(item){
+  var saved=responses[item.id]||'';
+  return'<input type="number" class="inp-std inp-narrow" id="inp_'+esc(item.id)+'" value="'+esc(saved)+'"'
+    +' onchange="setResp(\\''+esc(item.id)+'\\',this.value)">';
+}
+function renderText(item){
+  var saved=responses[item.id]||'';
+  return'<input type="text" class="inp-std" id="inp_'+esc(item.id)+'" value="'+esc(saved)+'"'
+    +' placeholder="'+esc(item.placeholder||'')+'"'
+    +' oninput="setResp(\\''+esc(item.id)+'\\',this.value)">';
+}
+function renderTextarea(item){
+  var saved=responses[item.id]||'';
+  return'<textarea class="inp-std" id="inp_'+esc(item.id)+'" placeholder="'+esc(item.placeholder||'')+'"'
+    +' oninput="setResp(\\''+esc(item.id)+'\\',this.value)">'+esc(saved)+'</textarea>';
+}
+function renderDate(item){
+  var saved=responses[item.id]||'';
+  return'<input type="date" class="inp-std inp-narrow" id="inp_'+esc(item.id)+'" value="'+esc(saved)+'"'
+    +' onchange="setResp(\\''+esc(item.id)+'\\',this.value)">';
+}
+function renderSlider(item){
+  var mn=item.slider_min!=null?item.slider_min:0;
+  var mx=item.slider_max!=null?item.slider_max:100;
+  var st=item.slider_step||1;
+  var saved=responses[item.id]!=null?responses[item.id]:Math.round((mn+mx)/2);
+  return'<div class="slider-wrap">'
+    +'<div class="slider-val" id="slv_'+esc(item.id)+'">'+saved+'</div>'
+    +'<input type="range" class="slider-inp" min="'+mn+'" max="'+mx+'" step="'+st+'" value="'+saved+'"'
+    +' oninput="setResp(\\''+esc(item.id)+'\\',this.value);document.getElementById(\\'slv_'+esc(item.id)+'\\').textContent=this.value">'
+    +'<div class="slider-lbls"><span>'+esc(mn)+'</span><span>'+esc(mx)+'</span></div>'
+    +'</div>';
+}
+function renderRating(item){
+  var mx=item.rating_max||5;
+  var icon=item.rating_icon==='heart'?'&#10084;':'&#9733;';
+  var saved=parseInt(responses[item.id])||0;
+  var stars='';
+  for(var i=1;i<=mx;i++){
+    stars+='<button type="button" class="star-btn'+(i<=saved?' active':'')+'" data-id="'+esc(item.id)+'" data-v="'+i+'"'
+      +' onclick="setRating(\\''+esc(item.id)+'\\','+i+','+mx+')"'
+      +' aria-label="'+i+' of '+mx+'">'+icon+'</button>';
+  }
+  return'<div class="star-row" id="stars_'+esc(item.id)+'">'+stars+'</div>';
+}
+function renderRanking(item,cs){
+  if(!rankOrders[item.id]){
+    rankOrders[item.id]=cs.values.map(function(v,i){return{v:String(v),l:cs.labels[i]||String(v)};});
+  }
+  var order=rankOrders[item.id];
+  return'<div class="rank-list" id="rank_'+esc(item.id)+'" ondragover="event.preventDefault()">'+order.map(function(opt,i){
+    return'<div class="rank-item" draggable="true" data-id="'+esc(item.id)+'" data-v="'+esc(opt.v)+'"'
+      +' ondragstart="rankDragStart(event)" ondragover="rankDragOver(event)" ondrop="rankDrop(event,\\''+esc(item.id)+'\\')" ondragleave="this.classList.remove(\\'drag-over\\')">'
+      +'<span class="rank-num">'+(i+1)+'</span>'
+      +'<span class="rank-handle">&#8942;</span>'
+      +'<span class="rank-lbl">'+esc(opt.l)+'</span>'
+      +'</div>';
+  }).join('')+'</div>';
+}
+
+// ── Response handlers ──────────────────────────────────────────────────────
+function setResp(id,val){
+  responses[id]=val;
+  var err=document.getElementById('err_'+id);
+  if(err)err.classList.remove('show');
+  updateBranching();
+}
+function toggleMulti(id,cb){
+  var current=(responses[id]||'').split(',').filter(Boolean);
+  if(cb.checked){if(!current.includes(cb.value))current.push(cb.value);}
+  else{current=current.filter(function(v){return v!==cb.value;});}
+  responses[id]=current.join(',');
+  var err=document.getElementById('err_'+id);
+  if(err)err.classList.remove('show');
+  updateBranching();
+}
+function setRating(id,val,max){
+  responses[id]=String(val);
+  var err=document.getElementById('err_'+id);
+  if(err)err.classList.remove('show');
+  var btns=document.querySelectorAll('.star-btn[data-id="'+id+'"]');
+  btns.forEach(function(b){b.classList.toggle('active',parseInt(b.dataset.v)<=val);});
+}
+function updateBranching(){
+  SF.items.forEach(function(item){
+    var el=document.getElementById('item_'+item.id);
+    if(!el)return;
+    el.classList.toggle('hidden',!isVisible(item.id));
+  });
+}
+
+// ── Ranking drag-and-drop ─────────────────────────────────────────────────
+var dragSrc=null;
+function rankDragStart(e){
+  dragSrc=e.currentTarget;
+  e.currentTarget.classList.add('dragging');
+}
+function rankDragOver(e){
+  e.preventDefault();
+  document.querySelectorAll('.rank-item.drag-over').forEach(function(el){el.classList.remove('drag-over');});
+  e.currentTarget.classList.add('drag-over');
+}
+function rankDrop(e,itemId){
+  e.preventDefault();
+  if(!dragSrc||dragSrc===e.currentTarget)return;
+  e.currentTarget.classList.remove('drag-over');
+  dragSrc.classList.remove('dragging');
+  var list=document.getElementById('rank_'+itemId);
+  var items=[].slice.call(list.querySelectorAll('.rank-item'));
+  var srcIdx=items.indexOf(dragSrc);
+  var tgtIdx=items.indexOf(e.currentTarget);
+  if(srcIdx>tgtIdx)list.insertBefore(dragSrc,e.currentTarget);
+  else list.insertBefore(dragSrc,e.currentTarget.nextSibling);
+  // Update numbers
+  [].slice.call(list.querySelectorAll('.rank-item')).forEach(function(el,i){
+    el.querySelector('.rank-num').textContent=i+1;
+  });
+  // Persist order
+  var newOrder=[].slice.call(list.querySelectorAll('.rank-item')).map(function(el){return el.dataset.v;});
+  responses[itemId]=newOrder.join(',');
+  dragSrc=null;
+}
+
+// ── Validation ─────────────────────────────────────────────────────────────
+function validatePage(items){
+  var ok=true;
+  items.forEach(function(item){
+    if(!item.required||!isVisible(item.id))return;
+    var t=item.type;
+    var missing=false;
+    if(t==='matrix'){
+      (item.matrix_items||[]).forEach(function(row){
+        var key=item.id+'__'+row;
+        if(!responses[key]||responses[key]==='')missing=true;
+      });
+    } else if(t==='multiple_choice'){
+      var v=responses[item.id];
+      if(!v||v==='')missing=true;
+    } else {
+      var v2=responses[item.id];
+      if(v2===null||v2===undefined||String(v2).trim()==='')missing=true;
+    }
+    if(missing){
+      var err=document.getElementById('err_'+item.id);
+      if(err){err.textContent='This question is required.';err.classList.add('show');}
+      if(ok){
+        var el=document.getElementById('item_'+item.id);
+        if(el)el.scrollIntoView({behavior:'smooth',block:'center'});
+      }
+      ok=false;
+    }
+  });
+  var banner=document.getElementById('survey-err');
+  if(banner)banner.classList.toggle('show',!ok);
+  return ok;
+}
+
+// ── Navigation ─────────────────────────────────────────────────────────────
+function startSurvey(){
+  if(WL.consent_required){
+    var chk=document.getElementById('consent-chk');
+    if(!chk||!chk.checked){
+      var err=document.getElementById('consent-err');
+      if(err){err.textContent='Please confirm your consent before continuing.';err.classList.add('show');}
+      return;
+    }
+  }
+  screen='survey';
+  currentPage=1;
+  renderScreen();
+}
+function nextPage(){
+  var items=pages[currentPage-1]||[];
+  if(!validatePage(items))return;
+  if(currentPage>=maxPage){doSubmit();return;}
+  currentPage++;
+  renderScreen();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function prevPage(){
+  if(currentPage<=1)return;
+  currentPage--;
+  renderScreen();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── Submission ─────────────────────────────────────────────────────────────
+function doSubmit(){
+  var submittedAt=new Date().toISOString();
+  // Fix C: use respondent_id to match Apps Script header and read_responses()
+  var row={respondent_id:respId,started_at:startedAt,submitted_at:submittedAt};
+  SF.items.forEach(function(item){
+    if(!isVisible(item.id))return;
+    if(item.type==='matrix'){
+      (item.matrix_items||[]).forEach(function(r){
+        var key=item.id+'__'+r;
+        row[key]=responses[key]||'';
+      });
+    } else {
+      row[item.id]=responses[item.id]!=null?responses[item.id]:'';
+    }
+  });
+  try {
+    var _bk=JSON.parse(sessionStorage.getItem('aic_rsam_booking')||'null');
+    if(_bk){
+      var _p=_bk.profile||{};
+      row['bk_e1']=_p.E1||'';
+      row['bk_e2']=_p.E2||'';
+      row['bk_e3']=_p.E3||'';
+      row['bk_e4']=_p.E4||'';
+      row['bk_e5']=_p.E5||'';
+      row['bk_e6']=_p.E6||'';
+      row['bk_e7']=_p.E7||'';
+      row['bk_mode_first']=_p.P1||'';
+      row['bk_tried_other']=_p.P2||'';
+      var _c=_bk.conv||{};
+      row['bk_conv_diet']=_c.diet||'';
+      row['bk_conv_persons']=_c.persons||'';
+      row['bk_conv_meal']=_c.meal||'';
+      row['bk_conv_mood']=_c.mood||'';
+      row['bk_final_mode']=_bk.mode||'';
+      row['bk_cart_count']=(_bk.cart||[]).length;
+      row['bk_cart_items']=(_bk.cart||[]).map(function(i){return i.name||String(i);}).join(' | ');
+    }
+  } catch(e) {}
+  var csvStr=toCsv([row]);
+  downloadCsv(csvStr,(SF.meta.title||'survey')+'_response_'+respId+'.csv');
+  if(ENDPOINT){
+    fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(row)})
+      .catch(function(){});
+  }
+  screen='thankyou';
+  renderScreen();
+  var wrap=document.getElementById('prog-bar-wrap');
+  if(wrap)wrap.hidden=true;
+}
+function toCsv(rows){
+  if(!rows.length)return'';
+  var keys=Object.keys(rows[0]);
+  var lines=[keys.map(csvCell).join(',')];
+  rows.forEach(function(r){lines.push(keys.map(function(k){return csvCell(r[k]);}).join(','));});
+  return lines.join('\\r\\n');
+}
+function csvCell(v){
+  var s=String(v==null?'':v);
+  if(s.includes(',')||s.includes('"')||s.includes('\\n'))return'"'+s.replace(/"/g,'""')+'"';
+  return s;
+}
+function downloadCsv(csv,name){
+  var a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);
+  a.download=name;a.click();
+}
+
+// ── Screen rendering ───────────────────────────────────────────────────────
+function renderScreen(){
+  updateProgress();
+  if(screen==='welcome')renderWelcome();
+  else if(screen==='survey')renderSurvey();
+  else renderThankyou();
+}
+function updateProgress(){
+  var wrap=document.getElementById('prog-bar-wrap');
+  var bar=document.getElementById('progBar');
+  var pct=document.getElementById('progPct');
+  var title=document.getElementById('progTitle');
+  if(!wrap)return;
+  // Honour the show-progress toggle and hide on single-page surveys, where a
+  // progress bar is meaningless.
+  var showProg=!(R.header&&R.header.show_progress===false);
+  if(screen!=='survey'||!showProg||maxPage<=1){wrap.hidden=true;return;}
+  wrap.hidden=false;
+  var p=Math.round((currentPage/maxPage)*100);
+  if(bar)bar.style.width=p+'%';
+  if(pct)pct.textContent=p+'%';
+  if(title)title.textContent='Page '+currentPage+' of '+maxPage;
+}
+function renderWelcome(){
+  var el=document.getElementById('app');
+  if(!WL.intro_text&&!WL.consent_text&&!SF.meta.description){
+    startSurvey();return;
+  }
+  el.innerHTML='<div class="card"><div class="card-body">'
+    +'<div class="wl-title">'+esc(WL.title||SF.meta.title)+'</div>'
+    +(WL.intro_text?'<div class="wl-intro">'+esc(WL.intro_text)+'</div>':'')
+    +(WL.consent_text?'<div class="consent-box">'+esc(WL.consent_text)+'</div>':'')
+    +(WL.consent_required?'<label class="consent-chk"><input type="checkbox" id="consent-chk" style="accent-color:var(--cp)"><span>I have read and consent to participate.</span></label>':'')
+    +'<div class="item-err" id="consent-err" style="margin-bottom:12px"></div>'
+    +'<button type="button" class="btn btn-p btn-lg" onclick="startSurvey()">'+esc(WL.start_label||'Start Survey')+'</button>'
+    +'</div></div>';
+}
+function renderSurvey(){
+  var el=document.getElementById('app');
+  var items=pages[currentPage-1]||[];
+  var nav='<div class="nav-row">'
+    +(currentPage>1?'<button type="button" class="btn btn-s" onclick="prevPage()">&#8592; Back</button>':'')
+    +'<div class="sp"></div>'
+    +(currentPage<maxPage
+      ?'<button type="button" class="btn btn-p" onclick="nextPage()">Next &#8594;</button>'
+      :'<button type="button" class="btn btn-p" onclick="nextPage()">'+esc(R.submit_label||'Submit')+'</button>')
+    +'</div>';
+  var paginationInfo=maxPage>1?'<div style="font-size:11px;color:var(--t3);margin-bottom:14px">Page '+currentPage+' of '+maxPage+'</div>':'';
+  el.innerHTML='<div class="card"><div class="card-body">'
+    +(currentPage===1?'<div style="font-size:22px;font-weight:700;margin-bottom:6px">'+esc(SF.meta.title)+'</div>'+(SF.meta.description?'<div style="color:var(--t2);font-size:13px;line-height:1.5;margin-bottom:20px">'+esc(SF.meta.description)+'</div>':''):'')
+    +paginationInfo
+    +'<div id="survey-err" class="err-banner">Please answer all required questions before continuing.</div>'
+    +items.map(renderItem).join('')
+    +nav
+    +'</div></div>';
+  // Restore multi-checkbox and slider states (already handled via re-render)
+}
+function renderThankyou(){
+  var el=document.getElementById('app');
+  el.innerHTML='<div class="card"><div class="card-body">'
+    +'<div class="ty-ic">&#10004;</div>'
+    +'<div class="ty-title">Thank You</div>'
+    +'<div class="ty-msg">'+esc(TY.message||'Your response has been recorded. Thank you for participating.')+'</div>'
+    +(TY.show_download?'<button type="button" class="btn btn-s" style="margin:0 auto;display:flex" onclick="window.location.reload()">Submit another response</button>':'')
+    +'</div></div>';
+}
+
+// ── Init ───────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded',function(){
+  renderScreen();
+});
+<\/script>
+</body>
+</html>`;
+
+const chatWindow = document.getElementById('chat-window');
+const typingIndicator = document.getElementById('typing-indicator');
+const inputArea = document.getElementById('input-area');
+const userInput = document.getElementById('user-input');
+const sendBtn = document.getElementById('send-btn');
+const surveyScreen = document.getElementById('survey-screen');
+const surveyFooter = document.getElementById('survey-footer');
+const progressBar = document.getElementById('progress-bar');
+
+function scrollChat(){ chatWindow.scrollTop = chatWindow.scrollHeight; }
+function showTyping(){ typingIndicator.classList.add('active'); scrollChat(); }
+function hideTyping(){ typingIndicator.classList.remove('active'); }
+
+function addBotMessage(text) {
+  const el = document.createElement('div');
+  el.className = 'message bot';
+  el.innerHTML = `<div class="sender-name">Assistant</div><div class="bubble">${text}</div>`;
+  chatWindow.insertBefore(el, typingIndicator);
+  scrollChat();
+}
+
+function addUserMessage(text) {
+  const el = document.createElement('div');
+  el.className = 'message user';
+  el.innerHTML = `<div class="sender-name">You</div><div class="bubble">${text}</div>`;
+  chatWindow.insertBefore(el, typingIndicator);
+  scrollChat();
+}
+
+function clearInteractiveBlocks() {
+  Array.from(chatWindow.querySelectorAll('.options-container,.stage-card')).forEach(el => el.remove());
+}
+
+function renderChoices(choices, fullWidth=false) {
+  clearInteractiveBlocks();
+  const wrap = document.createElement('div');
+  wrap.className = fullWidth ? 'full-width-options' : 'options-container';
+  choices.forEach(choice => {
+    const btn = document.createElement('button');
+    btn.className = fullWidth ? 'reply-card' : 'option-chip';
+    btn.textContent = choice;
+    btn.onclick = () => handleChoice(choice);
+    wrap.appendChild(btn);
+  });
+  chatWindow.insertBefore(wrap, typingIndicator);
+  scrollChat();
+}
+
+function renderCardChoices(cards) {
+  clearInteractiveBlocks();
+  const wrap = document.createElement('div');
+  wrap.className = 'full-width-options';
+  cards.forEach(card => {
+    const btn = document.createElement('button');
+    btn.className = 'reply-card';
+    btn.innerHTML = `${card.label}<small>${card.sub || ''}</small>`;
+    btn.onclick = () => handleChoice(card.label);
+    wrap.appendChild(btn);
+  });
+  chatWindow.insertBefore(wrap, typingIndicator);
+  scrollChat();
+}
+
+function showTextInput(placeholder='Type your answer...') {
+  clearInteractiveBlocks();
+  userInput.value = '';
+  userInput.placeholder = placeholder;
+  inputArea.style.display = 'flex';
+  userInput.focus();
+}
+
+function hideTextInput() {
+  inputArea.style.display = 'none';
+  userInput.value = '';
+}
+
+function askStep(key) {
+  state.step = key;
+  updateProgress();
+  const step = flows[key];
+  if (!step) return;
+  addBotMessage(step.bot);
+  hideTextInput();
+  if (step.choices) renderChoices(step.choices, step.choices.length > 3 || step.choices.some(c => c.length > 16));
+  else if (step.cards) renderCardChoices(step.cards);
+  else if (step.textKey) {
+    state.currentTextKey = step.textKey;
+    showTextInput(step.textKey === 'room' ? 'Example: 204' : 'Type your message');
+  }
+}
+
+function handleChoice(choice) {
+  clearInteractiveBlocks();
+  addUserMessage(choice);
+  proceed(choice);
+}
+
+function proceed(input) {
+  showTyping();
+  setTimeout(() => {
+    hideTyping();
+    switch(state.step) {
+      case 'start':
+        askStep('consent');
+        break;
+      case 'consent':
+        if (input === 'I do not agree') {
+          addBotMessage('Thank you. The study will now close.');
+          renderChoices(['Restart study']);
+          state.step = 'end_ineligible';
+        } else {
+          askStep('e1');
+        }
+        break;
+      case 'e1':
+        state.profile.E1 = input;
+        if (input === 'No') return screenOut();
+        askStep('e2');
+        break;
+      case 'e2':
+        state.profile.E2 = input;
+        if (input === 'No') return screenOut();
+        askStep('e3');
+        break;
+      case 'e3':
+        state.profile.E3 = input;
+        if (input === 'No') return screenOut();
+        askStep('e4');
+        break;
+      case 'e4':
+        state.profile.E4 = input;
+        if (input === '1 night') return screenOut();
+        askStep('e5');
+        break;
+      case 'e5':
+        state.profile.E5 = input;
+        askStep('e6');
+        break;
+      case 'e6':
+        state.profile.E6 = input;
+        askStep('e7');
+        break;
+      case 'e7':
+        state.profile.E7 = input;
+        addBotMessage('You are eligible. Now choose how you want to book.');
+        askStep('mode');
+        break;
+      case 'mode':
+        state.mode = input;
+        state.profile.P1 = input;
+        if (input === 'Quick Book') {
+          renderQuickBook();
+        } else {
+          askStep('conv_diet');
+        }
+        break;
+      case 'conv_diet':
+        state.conv.diet = input;
+        askStep('conv_persons');
+        break;
+      case 'conv_persons':
+        state.conv.persons = input;
+        askStep('conv_meal');
+        break;
+      case 'conv_meal':
+        state.conv.meal = input;
+        askStep('conv_mood');
+        break;
+      case 'conv_mood':
+        state.conv.mood = input;
+        renderRecommendations();
+        break;
+      case 'confirm':
+        if (input === 'Confirm order') {
+          addBotMessage('Order recorded. This is a mock order and no real resort order has been placed.');
+          clearInteractiveBlocks();
+          renderRoutingConfirmation();
+          state.step = 'success';
+        } else if (input === 'Edit order') {
+          state.cart = [];
+          if (state.mode === 'Quick Book') renderQuickBook(); else askStep('conv_diet');
+        }
+        break;
+      case 'success':
+        if (input === 'Try the other booking path') {
+          state.profile.P2 = 'Yes';
+          state.cart = [];
+          state.conv = {};
+          state.mode = state.mode === 'Quick Book' ? 'Conversational Book' : 'Quick Book';
+          addBotMessage(`Great. Let’s switch to ${state.mode}.`);
+          if (state.mode === 'Quick Book') renderQuickBook(); else askStep('conv_diet');
+        } else {
+          if (!state.profile.P2) state.profile.P2 = 'No';
+          launchSurvey();
+        }
+        break;
+      case 'end_ineligible':
+        if (input === 'Restart study') restartApp();
+        break;
+    }
+  }, 450);
+}
+
+function screenOut() {
+  addBotMessage('You do not meet the eligibility criteria for this pilot study. Thank you for your time.');
+  renderChoices(['Restart study']);
+  state.step = 'end_ineligible';
+}
+
+function renderQuickBook() {
+  state.step = 'quick';
+  updateProgress();
+  hideTextInput();
+  clearInteractiveBlocks();
+  addBotMessage('Quick Book is now open. Use the search bar to find items, then add them to your mock order.');
+
+  const card = document.createElement('div');
+  card.className = 'stage-card';
+  card.innerHTML = `
+    <h3>Quick Book</h3>
+    <p>Only this path uses a search bar. Start typing a keyword such as coffee, breakfast, pasta, fish, or dessert.</p>
+    <input id="quick-search-box" class="search-box" type="search" placeholder="Search menu items">
+    <div id="quick-menu-list" class="menu-list"></div>
+    <div class="card-actions" style="margin-top:12px;">
+      <button class="small-btn primary" onclick="finishQuickSelection()">I am done selecting</button>
+    </div>
+  `;
+  chatWindow.insertBefore(card, typingIndicator);
+  scrollChat();
+  const input = document.getElementById('quick-search-box');
+  input.addEventListener('input', renderQuickList);
+  renderQuickList();
+}
+
+function renderQuickList() {
+  const list = document.getElementById('quick-menu-list');
+  if (!list) return;
+  const term = (document.getElementById('quick-search-box').value || '').toLowerCase().trim();
+  const filtered = menuItems.filter(item => {
+    if (!term) return true;
+    return item.name.toLowerCase().includes(term) || item.desc.toLowerCase().includes(term) || item.tags.join(' ').toLowerCase().includes(term);
+  });
+  list.innerHTML = '';
+  if (!filtered.length) {
+    list.innerHTML = `<p class="fine">No items match that search. Try another word.</p>`;
+    return;
+  }
+  filtered.forEach(item => list.appendChild(menuCard(item, true)));
+}
+
+function menuCard(item, quick = false) {
+  const card = document.createElement('div');
+  card.className = 'menu-card';
+  card.innerHTML = `
+    <div class="menu-top">
+      <div class="menu-name">${item.name}</div>
+      <div class="menu-price">$${item.price.toFixed(2)}</div>
+    </div>
+    <div class="menu-desc">${item.desc}</div>
+    <div class="menu-tags">${item.tags.slice(0,4).map(t => `<span>${t}</span>`).join('')}</div>
+    <div class="card-actions">
+      <button class="small-btn primary">Add to order</button>
+    </div>
+  `;
+  card.querySelector('button').onclick = () => {
+    addToCart(item);
+    addUserMessage(`Add ${item.name}`);
+    addBotMessage(`${item.name} has been added to your mock order.`);
+    if (!quick) {
+      const more = document.createElement('div');
+      more.className = 'options-container';
+      more.innerHTML = `<button class="option-chip">Add another recommendation</button><button class="option-chip">Continue with this order</button>`;
+      const btns = more.querySelectorAll('button');
+      btns[0].onclick = () => { more.remove(); renderRecommendations(true); };
+      btns[1].onclick = () => { more.remove(); askStep('room'); };
+      chatWindow.insertBefore(more, typingIndicator);
+      scrollChat();
+    }
+  };
+  return card;
+}
+
+function addToCart(item) {
+  state.cart.push(item);
+}
+
+function finishQuickSelection() {
+  if (!state.cart.length) {
+    addBotMessage('Please add at least one item before continuing.');
+    return;
+  }
+  clearInteractiveBlocks();
+  askStep('room');
+}
+
+function renderRecommendations(skipIntro = false) {
+  state.step = 'conv_reco';
+  updateProgress();
+  hideTextInput();
+  clearInteractiveBlocks();
+
+  const picks = recommendItems();
+  if (!skipIntro) {
+    addBotMessage('Based on your replies, these options seem to fit your needs best. Tap one item to add it to your mock order.');
+  }
+  const card = document.createElement('div');
+  card.className = 'stage-card';
+  card.innerHTML = `<h3>Recommended for you</h3><p>This simulated assistant uses your answers to narrow the menu and present suitable items.</p><div id="reco-list" class="recommend-list"></div>`;
+  chatWindow.insertBefore(card, typingIndicator);
+  const list = document.getElementById('reco-list');
+  picks.forEach(item => list.appendChild(menuCard(item, false)));
+  scrollChat();
+}
+
+function recommendItems() {
+  const diet = (state.conv.diet || '').toLowerCase();
+  const meal = (state.conv.meal || '').toLowerCase();
+  const mood = (state.conv.mood || '').toLowerCase();
+
+  let filtered = menuItems.filter(item => {
+    const tags = item.tags.join(' ').toLowerCase();
+    if (diet.includes('vegetarian') && !tags.includes('vegetarian')) return false;
+    if (diet.includes('vegan') && !tags.includes('vegan')) return false;
+    if (diet.includes('seafood') && !tags.includes('seafood')) return false;
+    if (meal.includes('breakfast') && !tags.includes('breakfast') && !tags.includes('beverage')) return false;
+    if (meal.includes('lunch') && !tags.includes('lunch') && !tags.includes('dinner')) return false;
+    if (meal.includes('snack') && !tags.includes('snack') && !tags.includes('dessert')) return false;
+    if (meal.includes('beverage') && !tags.includes('beverage')) return false;
+    if (mood.includes('light') && !tags.includes('light') && !tags.includes('healthy')) return false;
+    if (mood.includes('hearty') && !tags.includes('hearty')) return false;
+    if (mood.includes('sweet') && !tags.includes('sweet') && !tags.includes('dessert')) return false;
+    return true;
+  });
+
+  if (filtered.length < 2) filtered = menuItems.filter(item => !filtered.includes(item)).slice(0, 3).concat(filtered);
+  return filtered.slice(0, 3);
+}
+
+function handleTextSubmit() {
+  const value = userInput.value.trim();
+  if (!value) return;
+  addUserMessage(value);
+  if (state.step === 'room') {
+    state.profile.roomNumber = value;
+    userInput.value = '';
+    askStep('request');
+  } else if (state.step === 'request') {
+    state.profile.specialRequest = value;
+    userInput.value = '';
+    hideTextInput();
+    renderOrderSummary();
+  }
+}
+
+function renderOrderSummary() {
+  state.step = 'confirm';
+  updateProgress();
+  clearInteractiveBlocks();
+  const total = state.cart.reduce((sum, item) => sum + item.price, 0);
+  addBotMessage('Please review your mock order before confirmation.');
+  const card = document.createElement('div');
+  card.className = 'stage-card';
+  card.innerHTML = `<h3>Order review</h3><div id="cart-summary" class="cart-summary"></div>`;
+  chatWindow.insertBefore(card, typingIndicator);
+  const wrap = document.getElementById('cart-summary');
+  state.cart.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'cart-item';
+    row.innerHTML = `<div><strong>${item.name}</strong><span>${item.desc}</span></div><div>$${item.price.toFixed(2)}</div>`;
+    wrap.appendChild(row);
+  });
+  const totalRow = document.createElement('div');
+  totalRow.className = 'cart-total';
+  totalRow.innerHTML = `<span>Total</span><span>$${total.toFixed(2)}</span>`;
+  wrap.appendChild(totalRow);
+  const meta = document.createElement('p');
+  meta.className = 'fine';
+  meta.style.marginTop = '10px';
+  meta.textContent = `Room number: ${state.profile.roomNumber || ''} | Special request: ${state.profile.specialRequest || 'None'}`;
+  wrap.appendChild(meta);
+  renderChoices(['Confirm order','Edit order'], true);
+}
+
+function renderRoutingConfirmation() {
+  const card = document.createElement('div');
+  card.className = 'stage-card';
+  card.innerHTML = `
+    <h3>Intended back-office routing</h3>
+    <p>This screen makes the order-assurance logic visible to the participant.</p>
+    <div class="route-grid">
+      <div class="route-copy"><strong>Room service copy</strong><span>Room number, guest note, delivery coordination, tray setup.</span></div>
+      <div class="route-copy"><strong>Kitchen copy</strong><span>Selected items, quantities, modifiers, dietary notes, preparation queue.</span></div>
+      <div class="route-copy"><strong>Cashier copy</strong><span>Room number, mock total, billing reference, order timestamp.</span></div>
+    </div>
+  `;
+  chatWindow.insertBefore(card, typingIndicator);
+  renderChoices(['Continue to questionnaire','Try the other booking path'], true);
+  scrollChat();
+}
+
+function launchSurvey() {
+  state.step = 'survey';
+  try { sessionStorage.setItem('aic_rsam_booking', JSON.stringify(state)); } catch(e) {}
+  updateProgress(100);
+  hideTextInput();
+  chatWindow.classList.add('hidden');
+  surveyScreen.style.padding = '0';
+  surveyScreen.classList.remove('hidden');
+  surveyScreen.innerHTML = '';
+  const iframe = document.createElement('iframe');
+  iframe.style.cssText = 'width:100%;height:100dvh;border:none;display:block;';
+  iframe.srcdoc = SF_SRCDOC;
+  surveyScreen.appendChild(iframe);
+}
+
+function submitSurvey() {}
+
+function updateProgress(forcePercent = null) {
+  if (forcePercent !== null) {
+    progressBar.style.width = `${forcePercent}%`;
+    return;
+  }
+  const index = Math.max(0, stepsOrder.indexOf(state.step));
+  const percent = Math.max(4, Math.round((index / (stepsOrder.length - 1)) * 100));
+  progressBar.style.width = `${percent}%`;
+}
+
+function scrollSurveyTop() { surveyScreen.scrollTop = 0; }
+
+function restartApp() {
+  state.step = 'start';
+  state.currentPrompt = null;
+  state.currentTextKey = null;
+  state.mode = null;
+  state.profile = {};
+  state.survey = {};
+  state.cart = [];
+  state.conv = {};
+  state.finished = false;
+  surveyFooter.classList.add('hidden');
+  surveyScreen.classList.add('hidden');
+  chatWindow.classList.remove('hidden');
+  hideTextInput();
+  chatWindow.innerHTML = '';
+  chatWindow.appendChild(typingIndicator);
+  updateProgress(0);
+  init();
+}
+
+function init() {
+  addBotMessage(flows.start.bot);
+  renderChoices(flows.start.choices);
+  state.step = 'start';
+  updateProgress();
+}
+
+sendBtn.addEventListener('click', handleTextSubmit);
+userInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    handleTextSubmit();
+  }
+});
+
+init();
+</script>
+</body>
+</html>
