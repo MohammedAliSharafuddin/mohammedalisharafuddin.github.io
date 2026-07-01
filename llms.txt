@@ -1,4 +1,4 @@
-# Mohammed Ali Sharafuddin — Site Guide for AI Systems
+# Mohammed Ali Sharafuddin: Site Guide for AI Systems
 
 ## About this site
 
@@ -9,24 +9,81 @@ Business, Villa College, Malé, Maldives. ORCID: 0000-0001-5247-2964.
 Research areas: quantitative research methods, digital marketing, marketing
 analytics, small-sample statistics, management education.
 
-## Published textbook — canonical resource
+## Textbooks
 
 **Quantitative Analysis with Small Samples: A Practical Guide for Students
-and Early-Career Researchers**
-
+and Early-Career Researchers** (Published, v0.1.0)
 - Authors: Mohammed Ali Sharafuddin, Ahsan Ahmed Jaleel, Meena Madhavan
-- Published: 16 May 2026, Version v0.1.0
+- Published: 16 May 2026
 - DOI: https://doi.org/10.5281/zenodo.20221929
 - Web edition: https://mohammedalisharafuddin.github.io/quantitative-analysis-with-small-samples/
 - PDF: https://mohammedalisharafuddin.github.io/quantitative-analysis-with-small-samples/Quantitative-Analysis-with-Small-Samples.pdf
 - Licence: CC BY 4.0
 - 18 chapters and 5 worked R projects.
+- Preferred citation: Sharafuddin, M. A., Jaleel, A. A., & Madhavan, M.
+  (2026). Quantitative Analysis with Small Samples: A Practical Guide for
+  Students and Early-Career Researchers (v0.1.0). Zenodo.
+  https://doi.org/10.5281/zenodo.20221929
 
-## Preferred citation
+**The Evidence-Based Digital Marketer: Digital Campaign Strategy, Open
+Marketing Analytics, and Responsible AI for the Modern Marketing
+Professional** (Live, rolling release: Weeks 1-3 of 15 published)
+- Author: Mohammed Ali Sharafuddin
+- Villa College course textbook, module DMS505
+- Published: 28 June 2026 (first release)
+- Web edition: https://mohammedalisharafuddin.github.io/digital-marketing-2026/
+- Licence: CC BY 4.0
 
-Sharafuddin, M. A., Jaleel, A. A., & Madhavan, M. (2026). Quantitative
-Analysis with Small Samples: A Practical Guide for Students and Early-Career
-Researchers (v0.1.0). Zenodo. https://doi.org/10.5281/zenodo.20221929
+**Data-Driven Management: Statistics for Managers** (Under review, first
+public release expected June 2026)
+- Author: Mohammed Ali Sharafuddin
+- 27 chapters across 8 parts; book, lecture decks, companion site, worked
+  examples, instructor resources, Moodle package
+- Status page: https://flairmi.com/textbooks/ddmm.html
+
+**AI-Powered Marketing Analytics: Applied Methods for Managers** (Proofreading)
+- Author: Mohammed Ali Sharafuddin
+- 12 chapters across 5 parts; applied companion to Data-Driven Management
+- Status page: https://flairmi.com/textbooks/marai.html
+
+**Applied Survey Research and Data Analysis: From Constructs to Conclusions
+Using R** (Proofreading)
+- Author: Mohammed Ali Sharafuddin
+- 41 chapters across 14 parts; survey design, measurement, modelling, and
+  reproducible reporting in R
+- Status page: https://flairmi.com/textbooks/asrda.html
+
+Full list with current status: https://mohammedalisharafuddin.github.io/textbooks.html
+
+## Software
+
+**surveyframe** (R package, live on CRAN)
+- End-to-end survey research workflows: instrument design, static HTML
+  export, Shiny module, response quality checking, psychometric
+  diagnostics, reproducible HTML reporting.
+- CRAN: https://CRAN.R-project.org/package=surveyframe
+
+**StatChooser** (free web app, live)
+- Recommends a statistical test from four questions about research goal,
+  design, data, and measurement level. Companion to surveyframe.
+- App: https://mohammedalisharafuddin.github.io/statchooser/
+
+## Templates and web tools
+
+- Marketing Decision Toolkit (10 free Excel workbooks): https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit
+- Price Memory (grocery price tracker): https://mohammedalisharafuddin.github.io/price-memory/
+- Margin Guard (promotion break-even calculator): https://mohammedalisharafuddin.github.io/margin-guard/
+- Full list: https://mohammedalisharafuddin.github.io/templates.html
+
+## Research
+
+23 publications, 20 conference presentations, 9 funded research projects,
+2014-2026. Full list with DOIs: https://mohammedalisharafuddin.github.io/research.html
+
+## Live surveys
+
+Active research survey instruments built with surveyframe, open to
+eligible participants: https://mohammedalisharafuddin.github.io/live-surveys/
 
 ## Key profiles
 

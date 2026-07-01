@@ -3,10 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mohammed Ali Sharafuddin: Research, Textbooks, Templates &amp; Tools</title>
-<meta name="description" content="Mohammed Ali Sharafuddin: researcher and educator publishing open statistics textbooks, free Excel templates, and marketing analytics tools. Author of Quantitative Analysis with Small Samples (free, CC BY 4.0).">
+<title>Mohammed Ali Sharafuddin: Research, Textbooks &amp; Tools</title>
+<meta name="description" content="Mohammed Ali Sharafuddin: researcher publishing open textbooks, Excel templates, and marketing analytics tools. Author of Quantitative Analysis with Small Samples.">
 <link rel="canonical" href="https://mohammedalisharafuddin.github.io/">
-<link rel="stylesheet" href="assets/css/portfolio.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theme.css">
 <script>
 (function(){
   var t=localStorage.getItem('theme');
@@ -17,16 +20,19 @@
 <script defer src="/assets/js/contact-form.js"></script>
 <meta name="robots" content="index,follow">
 <meta name="google-site-verification" content="__clvg1zlth9VpTJA0obgFwwiM2eF3sMekhOkMxjnhQ">
-<meta property="og:title" content="Mohammed Ali Sharafuddin: Research, Textbooks, Templates &amp; Tools">
-<meta property="og:description" content="Mohammed Ali Sharafuddin: researcher and educator publishing open statistics textbooks, free Excel templates, and marketing analytics tools. Author of Quantitative Analysis with Small Samples (free, CC BY 4.0).">
+<meta property="og:title" content="Mohammed Ali Sharafuddin: Research, Textbooks &amp; Tools">
+<meta property="og:description" content="Mohammed Ali Sharafuddin: researcher publishing open textbooks, Excel templates, and marketing analytics tools. Author of Quantitative Analysis with Small Samples.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mohammedalisharafuddin.github.io/">
-<meta property="og:image" content="https://mohammedalisharafuddin.github.io/assets/images/mas-og.svg">
+<meta property="og:image" content="https://mohammedalisharafuddin.github.io/assets/images/mas-og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Mohammed Ali Sharafuddin">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Mohammed Ali Sharafuddin: Research, Textbooks, Templates &amp; Tools">
-<meta name="twitter:description" content="Mohammed Ali Sharafuddin: researcher and educator publishing open statistics textbooks, free Excel templates, and marketing analytics tools. Author of Quantitative Analysis with Small Samples (free, CC BY 4.0).">
-<meta name="twitter:image" content="https://mohammedalisharafuddin.github.io/assets/images/mas-og.svg">
+<meta name="twitter:title" content="Mohammed Ali Sharafuddin: Research, Textbooks &amp; Tools">
+<meta name="twitter:description" content="Mohammed Ali Sharafuddin: researcher publishing open textbooks, Excel templates, and marketing analytics tools. Author of Quantitative Analysis with Small Samples.">
+<meta name="twitter:image" content="https://mohammedalisharafuddin.github.io/assets/images/mas-og.png">
 <script type="application/ld+json">
 [
   {
@@ -83,9 +89,15 @@
 <body>
 
 <nav class="site-nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-brand">MAS</a>
-    <div class="nav-links">
+  <div class="site-nav__inner">
+    <a href="index.html" class="site-nav__brand">
+      <span class="monogram">MAS</span>
+      <span class="site-nav__name">Mohammed Ali Sharafuddin</span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav-links">
+      <span class="nav-toggle__bars"></span>
+    </button>
+    <div class="site-nav__links" id="site-nav-links">
       <a href="textbooks.html">Textbooks</a>
       <a href="templates.html">Templates</a>
       <a href="#software">Software</a>
@@ -94,50 +106,38 @@
       <a href="blog.html">Blog</a>
       <a href="research.html">Research</a>
       <a href="live-surveys/index.html">Live Surveys</a>
-      <a href="#contact" class="nav-cta">Contact</a>
+      <a href="#contact" class="btn btn--sm">Contact</a>
+      <button class="btn-ghost btn--sm" id="theme-toggle" aria-label="Toggle dark mode">Dark</button>
     </div>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">Dark</button>
   </div>
 </nav>
 
 <!-- ── HERO ── -->
-<header class="hero-shell">
-  <div class="hero-frame">
-    <div class="hero-header">
-      <h1 class="hero-title">
-        Mohammed Ali <span class="hero-title-accent">Sharafuddin</span>
-      </h1>
-      <div class="hero-meta">
-        Senior Lecturer, Qasim Ibrahim School of Business<br>
-        Villa College<br>
-        Malé, Maldives
-      </div>
-    </div>
-    <div class="hero-intro">
-      <p class="hero-lead">
-        Research, textbooks, templates, and open-source tools for marketing, statistics, and management education.
-      </p>
-      <div class="hero-links">
-        <a href="#software" class="hero-cta">surveyframe</a>
-        <a href="#software" class="hero-cta">StatChooser</a>
-        <a href="https://mohammedalisharafuddin.github.io/quantitative-analysis-with-small-samples/" target="_blank" rel="noopener" class="hero-cta hero-cta-outline">Small Samples Book</a>
-        <a href="live-surveys/index.html" class="hero-cta hero-cta-outline">Live Surveys</a>
-      </div>
-    </div>
+<header class="hero">
+  <div class="eyebrow">Senior Lecturer &middot; Villa College &middot; Malé, Maldives</div>
+  <h1>Mohammed Ali <span style="color:var(--accent)">Sharafuddin</span></h1>
+  <p style="font-size:18px;line-height:1.6;color:var(--ink-soft);max-width:36em;margin-top:24px;">
+    Research, textbooks, templates, and open-source tools for marketing, statistics, and management education.
+  </p>
+  <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:32px;">
+    <a href="#software" class="btn">StatChooser <span class="arrow">→</span></a>
+    <a href="#software" class="btn-ghost">surveyframe</a>
+    <a href="https://mohammedalisharafuddin.github.io/quantitative-analysis-with-small-samples/" target="_blank" rel="noopener" class="link-action">Small Samples Book <span class="arrow">→</span></a>
+    <a href="live-surveys/index.html" class="link-action">Live Surveys <span class="arrow">→</span></a>
   </div>
 </header>
 
-<main class="page-body">
+<main>
 
   <!-- ── ABOUT ── -->
   <section class="section">
-    <div class="section-label">About</div>
-    <div class="about-grid">
-      <div class="portrait-shell">
-        <img src="assets/images/Mohammed_Ali_Sharafuddin_cropped.jpg" alt="Mohammed Ali Sharafuddin" class="portrait-image">
+    <div class="eyebrow">01 &middot; About</div>
+    <div class="grid grid--two">
+      <div class="portrait" style="max-width:280px;">
+        <img src="assets/images/Mohammed_Ali_Sharafuddin_cropped.jpg" alt="Mohammed Ali Sharafuddin">
       </div>
       <div>
-        <p class="about-copy">
+        <p style="font-size:16px;line-height:1.6;color:var(--ink-soft);">
           Senior Lecturer at the Qasim Ibrahim School of Business, Villa College, Malé, Maldives. This
           site brings together research outputs, textbooks, templates, and browser-based tools for
           management, marketing, and statistics. Current work centres on practical analytics, open
@@ -148,520 +148,453 @@
     </div>
   </section>
 
-  <hr class="divider">
-
   <!-- ── TEXTBOOKS ── -->
   <section class="section">
-    <div class="section-label">Textbooks &amp; Teaching Materials</div>
-    <div class="card-grid">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">02 &middot; Textbooks &amp; Teaching Materials</div>
+        <h2>Open textbooks and teaching suites</h2>
+      </div>
+      <a href="textbooks.html" class="link-action">All textbooks and teaching materials <span class="arrow">→</span></a>
+    </div>
+    <article class="card card--dark card--pad-lg" style="margin-bottom:24px;">
+      <div class="card__header">
+        <h3 class="card__title" style="font-size:22px;">Quantitative Analysis with Small Samples</h3>
+        <span class="badge badge--on-dark">Published v0.1.0</span>
+      </div>
+      <p class="card__subtitle" style="margin-top:-8px;margin-bottom:8px;">A Practical Guide for Students and Early-Career Researchers</p>
+      <p class="card__body" style="max-width:70ch;">A published open textbook on rigorous quantitative analysis for small samples. Covers exact and resampling tests, nonparametric methods, penalised and Bayesian regression, missing data, and five worked R projects. Free to read under CC BY 4.0. DOI: <a href="https://doi.org/10.5281/zenodo.20221929" target="_blank" rel="noopener" style="color:var(--accent-bright);">10.5281/zenodo.20221929</a></p>
+      <div class="tag-row">
+        <span class="tag tag--on-dark">Published</span><span class="tag tag--on-dark">R</span><span class="tag tag--on-dark">CC BY 4.0</span><span class="tag tag--on-dark">Zenodo</span>
+      </div>
+      <div class="card__footer">
+        <span class="card__meta">Published &middot; 16 May 2026</span>
+        <a href="https://mohammedalisharafuddin.github.io/quantitative-analysis-with-small-samples/" class="link-action link-action--cta" style="color:var(--accent-bright);" target="_blank" rel="noopener">Read the book <span class="arrow">→</span></a>
+      </div>
+    </article>
 
-      <article class="card card-review">
-        <div class="card-band band-textbook"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <div>
-              <h2 class="card-title">Data-Driven Management</h2>
-              <p class="card-subtitle">Statistics for Managers</p>
-            </div>
-            <span class="card-badge badge-review">Under Review</span>
-          </div>
-          <p class="card-desc">A Quarto-based textbook and teaching suite for management students and practitioners. The first public release is being proofread ahead of a planned June 2026 launch, with the book, decks, datasets, and Moodle-ready teaching materials being finalised together.</p>
-          <div class="card-tags">
-            <span class="tag">Quarto</span><span class="tag">R</span><span class="tag">RevealJS</span><span class="tag">Moodle</span>
-          </div>
+    <div class="grid grid--tight">
+
+      <article class="card">
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:20px;">Data-Driven Management</h3>
+          <span class="badge badge--beta">Under Review</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">First public release: June 2026</span>
-          <a href="https://flairmi.com/textbooks/ddmm.html" class="card-link">Review status →</a>
+        <p class="card__subtitle" style="margin-top:-8px;margin-bottom:8px;">Statistics for Managers</p>
+        <p class="card__body">A Quarto-based textbook and teaching suite for management students and practitioners. The first public release is being proofread ahead of a planned June 2026 launch, with the book, decks, datasets, and Moodle-ready teaching materials being finalised together.</p>
+        <div class="tag-row">
+          <span class="tag">Quarto</span><span class="tag">R</span><span class="tag">RevealJS</span><span class="tag">Moodle</span>
+        </div>
+        <div class="card__footer">
+          <span class="card__meta">First public release: June 2026</span>
+          <a href="https://flairmi.com/textbooks/ddmm.html" class="link-action">Review status <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-textbook"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <div>
-              <h2 class="card-title">Applied Marketing Intelligence and Analytics Using R</h2>
-            </div>
-            <span class="card-badge badge-wip">Work in Progress</span>
-          </div>
-          <p class="card-desc">A Quarto textbook manuscript for marketing intelligence workflows in R, covering data cleaning, text analysis, campaign performance, network analysis, web and search analytics, customer segmentation, and experimentation.</p>
-          <div class="card-tags">
-            <span class="tag">Quarto</span><span class="tag">R</span><span class="tag">Marketing</span><span class="tag">Teaching Resources</span>
-          </div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:20px;">The Evidence-Based Digital Marketer</h3>
+          <span class="badge badge--live">Live</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">In Development</span>
-          <span class="card-link disabled">Work in Progress</span>
+        <p class="card__subtitle" style="margin-top:-8px;margin-bottom:8px;">Digital Campaign Strategy &amp; Responsible AI</p>
+        <p class="card__body">A Villa College course textbook (DMS505) teaching digital marketing as an evidence-to-decision system, publishing on a rolling basis: Weeks 1–3 of 15 are live now.</p>
+        <div class="tag-row">
+          <span class="tag">Quarto</span><span class="tag">Digital Marketing</span><span class="tag">AI</span><span class="tag">CC BY 4.0</span>
+        </div>
+        <div class="card__footer">
+          <span class="card__meta">Rolling release &middot; 3 of 15 weeks</span>
+          <a href="https://mohammedalisharafuddin.github.io/digital-marketing-2026/" class="link-action link-action--cta" target="_blank" rel="noopener">Read the book <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-textbook"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <div>
-              <h2 class="card-title">AI-Powered Marketing Analytics</h2>
-              <p class="card-subtitle">Applied Methods for Managers</p>
-            </div>
-            <span class="card-badge badge-wip">Work in Progress</span>
-          </div>
-          <p class="card-desc">A Quarto textbook in active development on AI-augmented marketing analysis for managers, spanning marketing data, customer understanding, campaign measurement, attribution, forecasting, reporting, and a full case-study workflow.</p>
-          <div class="card-tags">
-            <span class="tag">Quarto</span><span class="tag">Marketing</span><span class="tag">AI</span><span class="tag">CC BY 4.0</span>
-          </div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:20px;">AI-Powered Marketing Analytics</h3>
+          <span class="badge badge--beta">Proofreading</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">In Development</span>
-          <span class="card-link disabled">Work in Progress</span>
+        <p class="card__subtitle" style="margin-top:-8px;margin-bottom:8px;">Applied Methods for Managers</p>
+        <p class="card__body">A twelve-chapter marketing analytics textbook in proofreading, the applied companion to Data-Driven Management, covering customer analysis, campaign measurement, attribution, forecasting, and AI-assisted reporting.</p>
+        <div class="tag-row">
+          <span class="tag">Quarto</span><span class="tag">Marketing</span><span class="tag">AI</span><span class="tag">CC BY 4.0</span>
         </div>
-      </article>
-
-      <article class="card">
-        <div class="card-band band-textbook"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <div>
-              <h2 class="card-title">Quantitative Analysis with Small Samples</h2>
-              <p class="card-subtitle">A Practical Guide for Students and Early-Career Researchers</p>
-            </div>
-            <span class="card-badge badge-live">Published v0.1.0</span>
-          </div>
-          <p class="card-desc">A published open textbook on rigorous quantitative analysis for small samples. Covers exact and resampling tests, nonparametric methods, penalised and Bayesian regression, missing data, and five worked R projects. Free to read under CC BY 4.0. DOI: <a href="https://doi.org/10.5281/zenodo.20221929" target="_blank" rel="noopener">10.5281/zenodo.20221929</a></p>
-          <div class="card-tags">
-            <span class="tag">Published</span><span class="tag">R</span><span class="tag">CC BY 4.0</span><span class="tag">Zenodo</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <span class="card-meta">Published — 16 May 2026</span>
-          <a href="https://mohammedalisharafuddin.github.io/quantitative-analysis-with-small-samples/" class="card-link" target="_blank" rel="noopener">Read the book →</a>
+        <div class="card__footer">
+          <span class="card__meta">Proofreading</span>
+          <a href="https://flairmi.com/textbooks/marai.html" class="link-action">Open page <span class="arrow">→</span></a>
         </div>
       </article>
 
     </div>
-    <a href="textbooks.html" class="mono-link mono-link-accent section-link">All textbooks and teaching materials →</a>
   </section>
-
-  <hr class="divider">
 
   <!-- ── TEMPLATES ── -->
   <section class="section">
-    <div class="section-label">Excel Templates &amp; Dashboards</div>
-    <p class="section-intro">Ten downloadable Excel tools for campaign planning, sales visibility, forecasting, segmentation, and marketing performance measurement. The full collection now lives in the Marketing Decision Toolkit repository.</p>
-    <div class="card-grid">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">03 &middot; Excel Templates &amp; Dashboards</div>
+        <h2>Ten free workbooks for marketing &amp; sales decisions</h2>
+      </div>
+      <a href="templates.html" class="link-action">Full toolkit and all downloads <span class="arrow">→</span></a>
+    </div>
+    <p style="font-size:15px;line-height:1.6;color:var(--ink-soft);max-width:42em;margin-bottom:32px;">Ten downloadable Excel tools for campaign planning, sales visibility, forecasting, segmentation, and marketing performance measurement. The full collection now lives in the Marketing Decision Toolkit repository.</p>
+
+    <article class="card card--dark card--pad-lg" style="margin-bottom:24px;">
+      <div class="card__header">
+        <h3 class="card__title" style="font-size:20px;">Marketing Decision Toolkit</h3>
+        <span class="badge badge--on-dark">Live</span>
+      </div>
+      <p class="card__body" style="max-width:70ch;">A public GitHub collection of ten Excel workbooks covering campaign ROI, CAC, CLV, churn, funnel analysis, revenue forecasting, RFM segmentation, break-even analysis, and competitive positioning.</p>
+      <div class="tag-row">
+        <span class="tag tag--on-dark">GitHub</span><span class="tag tag--on-dark">Excel</span><span class="tag tag--on-dark">Toolkit</span>
+      </div>
+      <div class="card__footer">
+        <span class="card__meta">Repository</span>
+        <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit" class="link-action link-action--cta" style="color:var(--dark-text);" target="_blank" rel="noopener">Open Repo <span class="arrow">→</span></a>
+      </div>
+    </article>
+
+    <div class="grid grid--tight">
 
       <article class="card">
-        <div class="card-band band-template"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">Campaign ROI Tracker</h2>
-            <span class="card-badge badge-free">Free</span>
-          </div>
-          <p class="card-desc">Compare spend, revenue, and ROI across marketing channels.</p>
-          <div class="card-tags"><span class="tag">Excel</span><span class="tag">Marketing</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:20px;">Campaign ROI Tracker</h3>
+          <span class="badge badge--live">Free</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Dashboard</span>
-          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/Campaign_ROI_Tracker.xlsx" class="card-link">Download →</a>
+        <p class="card__body">Compare spend, revenue, and ROI across marketing channels.</p>
+        <div class="tag-row"><span class="tag">Excel</span><span class="tag">Marketing</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Dashboard</span>
+          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/Campaign_ROI_Tracker.xlsx" class="link-action link-action--cta">Download <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-template"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">Sales Pipeline Tracker</h2>
-            <span class="card-badge badge-free">Free</span>
-          </div>
-          <p class="card-desc">Track deal stages, weighted pipeline value, and rep-level performance.</p>
-          <div class="card-tags"><span class="tag">Excel</span><span class="tag">Sales</span><span class="tag">Pipeline</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:20px;">Sales Pipeline Tracker</h3>
+          <span class="badge badge--live">Free</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Sales Dashboard</span>
-          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/Sales_Pipeline_Tracker.xlsx" class="card-link">Download →</a>
+        <p class="card__body">Track deal stages, weighted pipeline value, and rep-level performance.</p>
+        <div class="tag-row"><span class="tag">Excel</span><span class="tag">Sales</span><span class="tag">Pipeline</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Sales Dashboard</span>
+          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/Sales_Pipeline_Tracker.xlsx" class="link-action link-action--cta">Download <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-template"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">Revenue Forecast Model</h2>
-            <span class="card-badge badge-free">Free</span>
-          </div>
-          <p class="card-desc">Build a 12-month scenario forecast with actual-versus-plan tracking.</p>
-          <div class="card-tags"><span class="tag">Excel</span><span class="tag">Forecasting</span><span class="tag">Finance</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:20px;">Revenue Forecast Model</h3>
+          <span class="badge badge--live">Free</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Forecast Model</span>
-          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/Revenue_Forecast_Model.xlsx" class="card-link">Download →</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-band band-template"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">Marketing Decision Toolkit</h2>
-            <span class="card-badge badge-live">Live</span>
-          </div>
-          <p class="card-desc">A public GitHub collection of ten Excel workbooks covering campaign ROI, CAC, CLV, churn, funnel analysis, revenue forecasting, RFM segmentation, break-even analysis, and competitive positioning.</p>
-          <div class="card-tags"><span class="tag">GitHub</span><span class="tag">Excel</span><span class="tag">Toolkit</span></div>
-        </div>
-        <div class="card-footer">
-          <span class="card-meta">Repository</span>
-          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit" class="card-link" target="_blank" rel="noopener">Open Repo →</a>
+        <p class="card__body">Build a 12-month scenario forecast with actual-versus-plan tracking.</p>
+        <div class="tag-row"><span class="tag">Excel</span><span class="tag">Forecasting</span><span class="tag">Finance</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Forecast Model</span>
+          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/Revenue_Forecast_Model.xlsx" class="link-action link-action--cta">Download <span class="arrow">→</span></a>
         </div>
       </article>
 
     </div>
-    <a href="templates.html" class="mono-link mono-link-accent section-link">Full toolkit and all downloads →</a>
   </section>
-
-  <hr class="divider">
 
   <section class="section" id="software">
-    <div class="section-label">Software</div>
-    <p class="section-intro">surveyframe is live on CRAN — an R package for end-to-end survey research workflows. StatChooser is its free companion web tool: answer four short questions and get a recommended statistical test with assumptions, runnable R code, JASP steps, and a ready survey skeleton. The next FlairMI software line is in active testing: QuartoPad focuses on Quarto authoring, TrimWrite on revision and voice cleanup, and Ethos on survey workflow from instrument design to reproducible reporting.</p>
+    <div class="eyebrow">04 &middot; Software</div>
+    <h2>Survey &amp; statistics software</h2>
+    <p style="font-size:15px;line-height:1.6;color:var(--ink-soft);max-width:42em;margin-top:16px;margin-bottom:36px;">surveyframe is live on CRAN, an R package for end-to-end survey research workflows. StatChooser is its free companion web tool: answer four short questions and get a recommended statistical test with assumptions, runnable R code, JASP steps, and a ready survey skeleton. The next FlairMI software line is in active testing: QuartoPad focuses on Quarto authoring, TrimWrite on revision and voice cleanup, and Ethos on survey workflow from instrument design to reproducible reporting.</p>
 
-    <div style="font-family:'JetBrains Mono',monospace; font-size:0.63rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:1.3rem;">Live</div>
-    <div class="card-grid">
+    <div class="subhead-mono">Live</div>
+    <div class="grid">
 
       <article class="card">
-        <div class="card-band band-tool"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">surveyframe</h2>
-            <span class="card-badge badge-live">On CRAN</span>
-          </div>
-          <p class="card-desc">An R package for end-to-end survey research workflows: visual instrument design via SurveyBuilder or SurveyStudio, static HTML survey export, Shiny module, response quality checking, scale scoring, psychometric diagnostics, analysis-plan execution, codebook generation, and reproducible HTML reporting. Powered by the .sframe format with SHA-256 integrity checking.</p>
-          <div class="card-tags"><span class="tag">R</span><span class="tag">CRAN</span><span class="tag">Survey</span><span class="tag">Psychometrics</span><span class="tag">Reproducible</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:20px;">surveyframe</h3>
+          <span class="badge badge--live">On CRAN</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">install.packages("surveyframe")</span>
-          <a href="https://CRAN.R-project.org/package=surveyframe" class="card-link" target="_blank" rel="noopener">View on CRAN →</a>
+        <p class="card__body">An R package for end-to-end survey research workflows: visual instrument design via SurveyBuilder or SurveyStudio, static HTML survey export, Shiny module, response quality checking, scale scoring, psychometric diagnostics, analysis-plan execution, codebook generation, and reproducible HTML reporting. Powered by the .sframe format with SHA-256 integrity checking.</p>
+        <div class="tag-row"><span class="tag">R</span><span class="tag">CRAN</span><span class="tag">Survey</span><span class="tag">Psychometrics</span><span class="tag">Questionnaire</span></div>
+        <div class="code" style="margin-top:16px;">install.packages(<span class="str">"surveyframe"</span>)</div>
+        <div class="card__footer">
+          <span class="card__meta">GitHub Pages</span>
+          <a href="https://CRAN.R-project.org/package=surveyframe" class="link-action link-action--cta" target="_blank" rel="noopener">View on CRAN <span class="arrow">→</span></a>
         </div>
       </article>
 
-      <article class="card">
-        <div class="card-band band-tool"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">StatChooser</h2>
-            <span class="card-badge badge-live">Live</span>
-          </div>
-          <p class="card-desc">A free, static web tool that recommends a statistical test from four short questions about your research goal, design, data, and measurement level. Every recommendation includes the test assumptions, runnable surveyframe R code, JASP steps, an APA reporting sentence, a small-sample note, and a ready-to-adopt survey skeleton. Companion front end to the surveyframe R package.</p>
-          <div class="card-tags"><span class="tag">Web App</span><span class="tag">Statistics</span><span class="tag">Survey</span><span class="tag">R</span><span class="tag">Open Source</span></div>
+      <article class="card card--dark">
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:20px;">StatChooser</h3>
+          <span class="badge badge--on-dark">Live</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">GitHub Pages</span>
-          <a href="https://mohammedalisharafuddin.github.io/statchooser/" class="card-link" target="_blank" rel="noopener">Open App →</a>
+        <p class="card__body">A free, static web tool that recommends a statistical test from four short questions about your research goal, design, data, and measurement level. Every recommendation includes the test assumptions, runnable surveyframe R code, JASP steps, an APA reporting sentence, a small-sample note, and a ready-to-adopt survey skeleton. Companion front end to the surveyframe R package.</p>
+        <div class="tag-row"><span class="tag tag--on-dark">Web App</span><span class="tag tag--on-dark">Statistics</span><span class="tag tag--on-dark">Survey</span><span class="tag tag--on-dark">R</span><span class="tag tag--on-dark">Open Source</span></div>
+        <div class="card__footer">
+          <span class="card__meta">GitHub Pages</span>
+          <a href="https://mohammedalisharafuddin.github.io/statchooser/" class="link-action link-action--cta" style="color:var(--accent-bright);" target="_blank" rel="noopener">Open App <span class="arrow">→</span></a>
         </div>
       </article>
 
     </div>
 
-    <div style="font-family:'JetBrains Mono',monospace; font-size:0.63rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:1.3rem; margin-top:2rem;">Coming Soon On FlairMI</div>
-    <div class="card-grid">
+    <div class="subhead-mono" style="margin-top:40px;">Coming soon on FlairMI</div>
+    <div class="grid grid--tight">
 
       <article class="card">
-        <div class="card-band band-web"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">QuartoPad</h2>
-            <span class="card-badge badge-wip">Private Beta</span>
-          </div>
-          <p class="card-desc">A local, browser-based editor for Quarto projects with live rendering, chunk execution, citation tools, and dataset previews. Built as an R package for local-first Quarto workflows.</p>
-          <div class="card-tags"><span class="tag">Quarto</span><span class="tag">R</span><span class="tag">Local-first</span><span class="tag">Writing</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:19px;">QuartoPad</h3>
+          <span class="badge badge--beta">Private Beta</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Coming Soon on FlairMI</span>
-          <a href="https://flairmi.com/products/quartopad.html" class="card-link" target="_blank" rel="noopener">Preview →</a>
+        <p class="card__body">A local, browser-based editor for Quarto projects with live rendering, chunk execution, citation tools, and dataset previews. Built as an R package for local-first Quarto workflows.</p>
+        <div class="tag-row"><span class="tag">Quarto</span><span class="tag">R</span><span class="tag">Local-first</span><span class="tag">Writing</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Coming soon on FlairMI</span>
+          <a href="https://flairmi.com/products/quartopad.html" class="link-action" target="_blank" rel="noopener">Preview <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-web"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">TrimWrite</h2>
-            <span class="card-badge badge-wip">Testing</span>
-          </div>
-          <p class="card-desc">A revision tool for checking AI-like phrasing, flattening repetitive voice patterns, and tightening final drafts before publication or submission. Positioned alongside QuartoPad as part of the same writing workflow.</p>
-          <div class="card-tags"><span class="tag">Revision</span><span class="tag">Writing</span><span class="tag">Local-first</span><span class="tag">Beta</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:19px;">TrimWrite</h3>
+          <span class="badge badge--beta">Testing</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Coming Soon on FlairMI</span>
-          <a href="https://flairmi.com/products/trimwrite.html" class="card-link" target="_blank" rel="noopener">Preview →</a>
+        <p class="card__body">A revision tool for checking AI-like phrasing, flattening repetitive voice patterns, and tightening final drafts before publication or submission. Positioned alongside QuartoPad as part of the same writing workflow.</p>
+        <div class="tag-row"><span class="tag">Revision</span><span class="tag">Writing</span><span class="tag">Local-first</span><span class="tag">Beta</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Coming soon on FlairMI</span>
+          <a href="https://flairmi.com/products/trimwrite.html" class="link-action" target="_blank" rel="noopener">Preview <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-web"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">Ethos</h2>
-            <span class="card-badge badge-wip">Alpha</span>
-          </div>
-          <p class="card-desc">A survey workflow product that links instrument design, versioned publishing, defensible data collection, guided analysis, and reproducible reporting.</p>
-          <div class="card-tags"><span class="tag">Survey Workflow</span><span class="tag">Reporting</span><span class="tag">Research</span><span class="tag">Alpha</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:19px;">Ethos</h3>
+          <span class="badge badge--beta">Alpha</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Coming Soon on FlairMI</span>
-          <a href="https://flairmi.com/products/ethos.html" class="card-link" target="_blank" rel="noopener">Preview →</a>
+        <p class="card__body">A survey workflow product that links instrument design, versioned publishing, defensible data collection, guided analysis, and reproducible reporting.</p>
+        <div class="tag-row"><span class="tag">Survey Workflow</span><span class="tag">Reporting</span><span class="tag">Research</span><span class="tag">Alpha</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Coming soon on FlairMI</span>
+          <a href="https://flairmi.com/products/ethos.html" class="link-action" target="_blank" rel="noopener">Preview <span class="arrow">→</span></a>
         </div>
       </article>
 
     </div>
-    <a href="https://flairmi.com/products/index.html" target="_blank" rel="noopener" class="mono-link mono-link-accent section-link">Full product preview on FlairMI →</a>
+    <a href="https://flairmi.com/products/index.html" target="_blank" rel="noopener" class="link-action" style="display:inline-block;margin-top:32px;">Full product preview on FlairMI <span class="arrow">→</span></a>
   </section>
-
-  <hr class="divider">
 
   <section class="section" id="web-tools">
-    <div class="section-label">Web Tools</div>
-    <p class="section-intro">Small browser-based utilities built for practical teaching and everyday decision support. The current collection includes Price Memory for local grocery price tracking and Margin Guard for promotion break-even analysis.</p>
-    <a href="https://github.com/MohammedAliSharafuddin?tab=repositories" target="_blank" rel="noopener" class="mono-link mono-link-accent section-link-spaced">Browse tool source on GitHub →</a>
-    <div class="card-grid">
+    <div class="eyebrow">05 &middot; Web Tools</div>
+    <h2>Browser utilities for everyday decisions</h2>
+    <p style="font-size:15px;line-height:1.6;color:var(--ink-soft);max-width:42em;margin-top:16px;margin-bottom:32px;">Small browser-based utilities built for practical teaching and everyday decision support. The current collection includes Price Memory for local grocery price tracking and Margin Guard for promotion break-even analysis.</p>
+    <div class="grid grid--tight">
 
       <article class="card">
-        <div class="card-band band-web"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">Price Memory</h2>
-            <span class="card-badge badge-live">Live</span>
-          </div>
-          <p class="card-desc">A local grocery price tracker built as a single-page web app. It stores item, store, price, and date in IndexedDB so you can build a personal price history and check whether a sale is actually below your usual price.</p>
-          <div class="card-tags"><span class="tag">PWA</span><span class="tag">IndexedDB</span><span class="tag">Canvas API</span><span class="tag">Vanilla JS</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:20px;">Price Memory</h3>
+          <span class="badge badge--live">Live</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">GitHub Pages App</span>
-          <a href="https://mohammedalisharafuddin.github.io/price-memory/" class="card-link" target="_blank" rel="noopener">Open App →</a>
+        <p class="card__body">A local grocery price tracker built as a single-page web app. It stores item, store, price, and date in IndexedDB so you can build a personal price history and check whether a sale is actually below your usual price.</p>
+        <div class="tag-row"><span class="tag">PWA</span><span class="tag">IndexedDB</span><span class="tag">Canvas API</span><span class="tag">Vanilla JS</span></div>
+        <div class="card__footer">
+          <span class="card__meta">GitHub Pages App</span>
+          <a href="https://mohammedalisharafuddin.github.io/price-memory/" class="link-action link-action--cta" target="_blank" rel="noopener">Open App <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-web"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">Margin Guard</h2>
-            <span class="card-badge badge-live">Live</span>
-          </div>
-          <p class="card-desc">A single-page promotion break-even calculator for pricing and campaign decisions. It compares baseline contribution against promo-period contribution and shows discount depth, promo contribution per unit, break-even units, required unit lift, and expected net contribution delta.</p>
-          <div class="card-tags"><span class="tag">Pricing</span><span class="tag">Promotion</span><span class="tag">Local Storage</span><span class="tag">Vanilla JS</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:20px;">Margin Guard</h3>
+          <span class="badge badge--live">Live</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">GitHub Pages App</span>
-          <a href="https://mohammedalisharafuddin.github.io/margin-guard/" class="card-link" target="_blank" rel="noopener">Open App →</a>
+        <p class="card__body">A single-page promotion break-even calculator for pricing and campaign decisions. It compares baseline contribution against promo-period contribution and shows discount depth, promo contribution per unit, break-even units, required unit lift, and expected net contribution delta.</p>
+        <div class="tag-row"><span class="tag">Pricing</span><span class="tag">Promotion</span><span class="tag">Local Storage</span><span class="tag">Vanilla JS</span></div>
+        <div class="card__footer">
+          <span class="card__meta">GitHub Pages App</span>
+          <a href="https://mohammedalisharafuddin.github.io/margin-guard/" class="link-action link-action--cta" target="_blank" rel="noopener">Open App <span class="arrow">→</span></a>
         </div>
       </article>
 
     </div>
   </section>
-
-  <hr class="divider">
 
   <!-- ── OPEN-SOURCE TOOLS ── -->
   <section class="section">
-    <div class="section-label">Open-Source Tools I Use and Teach</div>
-    <div class="card-grid two-col">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">06 &middot; Open-Source Tools I Use and Teach</div>
+        <h2>Free tools behind the teaching materials</h2>
+      </div>
+      <a href="tools.html" class="link-action">Full open-source tools guide <span class="arrow">→</span></a>
+    </div>
+    <div class="grid grid--quad">
 
       <article class="card">
-        <div class="card-band band-tool"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">R &amp; RStudio</h2>
-            <span class="card-badge badge-open">Teaching &amp; Research</span>
-          </div>
-          <p class="card-desc">The primary statistical environment used across the statistics teaching suite and related course materials. It supports descriptive statistics, modelling, and reproducible reporting for classroom and research workflows.</p>
-          <div class="card-tags"><span class="tag">Statistics</span><span class="tag">Research</span><span class="tag">Workshop</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:19px;">R &amp; RStudio</h3>
+          <span class="badge badge--info">Teaching &amp; Research</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Statistics</span>
-          <a href="tools.html" class="card-link">Full guide →</a>
+        <p class="card__body">The primary statistical environment used across the statistics teaching suite and related course materials. It supports descriptive statistics, modelling, and reproducible reporting for classroom and research workflows.</p>
+        <div class="tag-row"><span class="tag">Statistics</span><span class="tag">Research</span><span class="tag">Workshop</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Statistics</span>
+          <a href="tools.html" class="link-action">Full guide <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-tool"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">JASP &amp; jamovi</h2>
-            <span class="card-badge badge-open">Teaching</span>
-          </div>
-          <p class="card-desc">Point-and-click statistical analysis tools recommended for students new to quantitative methods. Covered in the open-source research workshop series as no-cost SPSS alternatives.</p>
-          <div class="card-tags"><span class="tag">Statistics</span><span class="tag">No-Code</span><span class="tag">Teaching</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:19px;">JASP &amp; jamovi</h3>
+          <span class="badge badge--info">Teaching</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Statistics</span>
-          <a href="tools.html" class="card-link">Full guide →</a>
+        <p class="card__body">Point-and-click statistical analysis tools recommended for students new to quantitative methods. Covered in the open-source research workshop series as no-cost SPSS alternatives.</p>
+        <div class="tag-row"><span class="tag">Statistics</span><span class="tag">No-Code</span><span class="tag">Teaching</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Statistics</span>
+          <a href="tools.html" class="link-action">Full guide <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-tool"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">Quarto</h2>
-            <span class="card-badge badge-open">Teaching &amp; Publishing</span>
-          </div>
-          <p class="card-desc">The publishing system behind the statistics teaching suite. It is used to produce the book, companion site, lecture decks, and related teaching materials from a single source project.</p>
-          <div class="card-tags"><span class="tag">Publishing</span><span class="tag">Reproducible</span><span class="tag">Teaching</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:19px;">Quarto</h3>
+          <span class="badge badge--info">Teaching &amp; Publishing</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Writing &amp; Publishing</span>
-          <a href="tools.html" class="card-link">Full guide →</a>
+        <p class="card__body">The publishing system behind the statistics teaching suite. It is used to produce the book, companion site, lecture decks, and related teaching materials from a single source project.</p>
+        <div class="tag-row"><span class="tag">Publishing</span><span class="tag">Reproducible</span><span class="tag">Teaching</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Writing &amp; Publishing</span>
+          <a href="tools.html" class="link-action">Full guide <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-tool"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">Zotero</h2>
-            <span class="card-badge badge-open">Research</span>
-          </div>
-          <p class="card-desc">Reference management recommended to all postgraduate students. Covered in the open-source research workshop as a free alternative to Mendeley or EndNote.</p>
-          <div class="card-tags"><span class="tag">References</span><span class="tag">Research</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:19px;">Zotero</h3>
+          <span class="badge badge--info">Research</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Writing &amp; Publishing</span>
-          <a href="tools.html" class="card-link">Full guide →</a>
+        <p class="card__body">Reference management recommended to all postgraduate students. Covered in the open-source research workshop as a free alternative to Mendeley or EndNote.</p>
+        <div class="tag-row"><span class="tag">References</span><span class="tag">Research</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Writing &amp; Publishing</span>
+          <a href="tools.html" class="link-action">Full guide <span class="arrow">→</span></a>
         </div>
       </article>
 
     </div>
-    <a href="tools.html" class="mono-link mono-link-accent section-link">Full open-source tools guide →</a>
   </section>
-
-  <hr class="divider">
 
   <!-- ── FLAIRMI ── -->
   <section class="section">
-    <div class="section-label">FlairMI: Marketing Analytics Made Simple</div>
-    <article class="card card-wide">
-      <div class="card-band band-web"></div>
-      <div class="card-body">
-        <div class="card-header">
-          <h2 class="card-title">FlairMI</h2>
-          <span class="card-badge badge-live">Live</span>
-        </div>
-        <p class="card-desc">Practical, reproducible statistical tutorials for marketing professionals. Each post includes interactive WebR code: run R directly in the browser, alongside real business cases, decision frameworks, and sample size planning. No installation is required.</p>
-        <div class="card-tags">
-          <span class="tag">WebR</span><span class="tag">Tutorials</span><span class="tag">Marketing</span><span class="tag">Statistics</span>
-        </div>
+    <div class="eyebrow">07 &middot; FlairMI</div>
+    <h2>Marketing analytics made simple</h2>
+    <article class="card card--pad-lg" style="margin-top:28px;max-width:640px;">
+      <div class="card__header">
+        <h3 class="card__title" style="font-size:22px;">FlairMI</h3>
+        <span class="badge badge--live">Live</span>
       </div>
-      <div class="card-footer">
-        <span class="card-meta">Analytics Blog</span>
-        <a href="https://flairmi.com/" class="card-link">Visit FlairMI →</a>
+      <p class="card__body">Practical, reproducible statistical tutorials for marketing professionals. Each post includes interactive WebR code: run R directly in the browser, alongside real business cases, decision frameworks, and sample size planning. No installation is required.</p>
+      <div class="tag-row">
+        <span class="tag">WebR</span><span class="tag">Tutorials</span><span class="tag">Marketing</span><span class="tag">Statistics</span>
+      </div>
+      <div class="card__footer">
+        <span class="card__meta">Analytics Blog</span>
+        <a href="https://flairmi.com/" class="link-action link-action--cta">Visit FlairMI <span class="arrow">→</span></a>
       </div>
     </article>
   </section>
 
-  <hr class="divider">
-
   <!-- ── SELECTED RESEARCH ── -->
-  <section class="section">
-    <div class="section-label">Selected Publications</div>
-    <div class="stat-row">
-      <div class="stat-cell"><span class="stat-num">23</span><span class="stat-label">Publications</span></div>
-      <div class="stat-cell"><span class="stat-num">20</span><span class="stat-label">Conferences</span></div>
-      <div class="stat-cell"><span class="stat-num">9</span><span class="stat-label">Funded Projects</span></div>
-      <div class="stat-cell"><span class="stat-num">2026</span><span class="stat-label">Most Recent</span></div>
+  <section class="section section--dark">
+    <div class="section--dark__inner">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">08 &middot; Selected Publications</div>
+          <h2>Peer-reviewed research</h2>
+        </div>
+        <a href="research.html" class="link-action">Full publication list <span class="arrow">→</span></a>
+      </div>
+      <div class="grid grid--stats" style="margin-bottom:32px;">
+        <div><div class="stat__num">23</div><div class="stat__label">Publications</div></div>
+        <div><div class="stat__num">20</div><div class="stat__label">Conferences</div></div>
+        <div><div class="stat__num">9</div><div class="stat__label">Funded Projects</div></div>
+        <div><div class="stat__num">2026</div><div class="stat__label">Most Recent</div></div>
+      </div>
+      <a class="pub-row" href="https://doi.org/10.3390/encyclopedia5040212" target="_blank" rel="noopener">
+        <strong style="font-family:var(--font-display);font-size:19px;font-weight:500;">Why Method Matters: A Systematic Review and Meta-Analysis of the Marketing Capability–Performance Relationship</strong>
+        <div style="color:var(--dark-soft);font-size:14px;margin-top:6px;">Encyclopedia, 5(4), 212 &middot; Sharafuddin &amp; Janarthanam &middot; 2025 &middot; <span class="tag tag--on-dark">SCOPUS</span></div>
+      </a>
+      <a class="pub-row" href="https://doi.org/10.3390/su17083632" target="_blank" rel="noopener">
+        <strong style="font-family:var(--font-display);font-size:19px;font-weight:500;">Factors Influencing Cross-Border E-Commerce Adoption of Thai MSMEs: A Fuzzy DEMATEL Approach</strong>
+        <div style="color:var(--dark-soft);font-size:14px;margin-top:6px;">Sustainability, 17(8), 3632 &middot; Madhavan, Sharafuddin &amp; Wangtueai &middot; 2025 &middot; <span class="tag tag--on-dark">Q1</span></div>
+      </a>
+      <a class="pub-row" href="https://doi.org/10.31893/multirev.2025252" target="_blank" rel="noopener">
+        <strong style="font-family:var(--font-display);font-size:19px;font-weight:500;">A Bibliometric and Conceptual Analysis of Digital Marketing: Capabilities, Strategies, Innovation, and Firm Performance</strong>
+        <div style="color:var(--dark-soft);font-size:14px;margin-top:6px;">Multidisciplinary Reviews, 8(8), 2025252 &middot; Sharafuddin &amp; Janarthanam &middot; 2025 &middot; <span class="tag tag--on-dark">SCOPUS</span></div>
+      </a>
+      <a class="pub-row" href="https://doi.org/10.3390/admsci14110273" target="_blank" rel="noopener">
+        <strong style="font-family:var(--font-display);font-size:19px;font-weight:500;">Assessing the Effectiveness of Digital Marketing in Enhancing Tourist Experiences and Satisfaction</strong>
+        <div style="color:var(--dark-soft);font-size:14px;margin-top:6px;">Administrative Sciences, 14(11), 273 &middot; Sharafuddin, Madhavan &amp; Wangtueai &middot; 2024 &middot; <span class="tag tag--on-dark">Q2</span></div>
+      </a>
     </div>
-    <ul class="pub-list">
-      <li class="pub-item">
-        <div class="pub-year">2025</div>
-        <div class="pub-content">
-          <a href="https://doi.org/10.3390/encyclopedia5040212" class="pub-title" target="_blank" rel="noopener">Why Method Matters: A Systematic Review and Meta-Analysis of the Marketing Capability–Performance Relationship</a>
-          <div class="pub-venue">Encyclopedia, 5(4), 212 &middot; Sharafuddin &amp; Janarthanam <span class="pub-badge q3">SCOPUS</span></div>
-        </div>
-      </li>
-      <li class="pub-item">
-        <div class="pub-year">2025</div>
-        <div class="pub-content">
-          <a href="https://doi.org/10.3390/su17083632" class="pub-title" target="_blank" rel="noopener">Factors Influencing Cross-Border E-Commerce Adoption of Thai MSMEs: A Fuzzy DEMATEL Approach</a>
-          <div class="pub-venue">Sustainability, 17(8), 3632 &middot; Madhavan, Sharafuddin &amp; Wangtueai <span class="pub-badge q1">Q1</span></div>
-        </div>
-      </li>
-      <li class="pub-item">
-        <div class="pub-year">2025</div>
-        <div class="pub-content">
-          <a href="https://doi.org/10.31893/multirev.2025252" class="pub-title" target="_blank" rel="noopener">A Bibliometric and Conceptual Analysis of Digital Marketing: Capabilities, Strategies, Innovation, and Firm Performance</a>
-          <div class="pub-venue">Multidisciplinary Reviews, 8(8), 2025252 &middot; Sharafuddin &amp; Janarthanam <span class="pub-badge q3">SCOPUS</span></div>
-        </div>
-      </li>
-      <li class="pub-item">
-        <div class="pub-year">2024</div>
-        <div class="pub-content">
-          <a href="https://doi.org/10.3390/admsci14110273" class="pub-title" target="_blank" rel="noopener">Assessing the Effectiveness of Digital Marketing in Enhancing Tourist Experiences and Satisfaction</a>
-          <div class="pub-venue">Administrative Sciences, 14(11), 273 &middot; Sharafuddin, Madhavan &amp; Wangtueai <span class="pub-badge q2">Q2</span></div>
-        </div>
-      </li>
-    </ul>
-    <a href="research.html" class="mono-link mono-link-accent section-link">Full publication list →</a>
   </section>
-
-  <hr class="divider">
 
   <!-- ── CONTACT ── -->
   <section class="section" id="contact">
-    <div class="section-label">Contact</div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1.2rem;">
-      <div style="border:1px solid var(--rule-light); padding:1.2rem 1.4rem; background:var(--card-bg);">
-        <div style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--grey); margin-bottom:0.35rem;">Affiliation</div>
-        <p style="font-size:0.9rem; color:var(--ink);">Senior Lecturer, Qasim Ibrahim School of Business, Villa College, Malé, Maldives</p>
+    <div class="eyebrow">09 &middot; Contact</div>
+    <h2>Let's work together</h2>
+    <div class="grid grid--two" style="margin-top:32px;">
+      <div class="card card--static">
+        <div class="field__label">Affiliation</div>
+        <p style="font-size:15px;color:var(--ink);">Senior Lecturer, Qasim Ibrahim School of Business, Villa College, Malé, Maldives</p>
       </div>
-      <div style="border:1px solid var(--rule-light); padding:1.2rem 1.4rem; background:var(--card-bg);">
-        <div style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--grey); margin-bottom:0.35rem;">Profiles</div>
-        <div style="display:flex; flex-direction:column; gap:0.3rem;">
-          <a href="https://scholar.google.com/citations?hl=en&user=DgaDtq4AAAAJ" target="_blank" rel="noopener" style="font-size:0.85rem; color:var(--ink); text-decoration:none; border-bottom:1px solid var(--rule-light);">Google Scholar</a>
-          <a href="https://orcid.org/0000-0001-5247-2964" target="_blank" rel="noopener" style="font-size:0.85rem; color:var(--ink); text-decoration:none; border-bottom:1px solid var(--rule-light);">ORCID</a>
+      <div class="card card--static">
+        <div class="field__label">Profiles</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="https://scholar.google.com/citations?hl=en&user=DgaDtq4AAAAJ" target="_blank" rel="noopener" class="link-inline">Google Scholar</a>
+          <a href="https://orcid.org/0000-0001-5247-2964" target="_blank" rel="noopener" class="link-inline">ORCID</a>
         </div>
       </div>
     </div>
-    <div style="border:1px solid var(--rule-light); padding:1.35rem 1.4rem; background:var(--card-bg); margin-top:1.2rem;">
-      <div style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--grey); margin-bottom:0.45rem;">Direct Message</div>
-      <p style="font-size:0.9rem; color:var(--ink-soft); line-height:1.7; max-width:64ch;">
+    <div class="form-card" style="margin-top:24px;">
+      <div class="field__label">Direct Message</div>
+      <p style="font-size:15px;color:var(--ink-soft);line-height:1.6;max-width:64ch;margin-bottom:20px;">
         Use this form if you want updates on new tools, collaboration, or teaching-related enquiries.
       </p>
-      <form data-contact-form data-status-id="portfolio-contact-status" data-form-subject="Portfolio website enquiry" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0.9rem; margin-top:1rem;">
-        <label style="display:flex; flex-direction:column; gap:0.35rem; font-size:0.82rem; color:var(--ink-soft);">
-          <span>Name</span>
-          <input name="name" type="text" placeholder="Your name" style="padding:0.75rem 0.85rem; border:1px solid var(--rule); background:var(--card-bg); font:inherit; color:var(--ink);">
+      <form data-contact-form data-status-id="portfolio-contact-status" data-form-subject="Portfolio website enquiry" class="field-row">
+        <label class="field">
+          <span class="field__label">Name</span>
+          <input name="name" type="text" placeholder="Your name" class="input">
         </label>
-        <label style="display:flex; flex-direction:column; gap:0.35rem; font-size:0.82rem; color:var(--ink-soft);">
-          <span>Email</span>
-          <input name="email" type="email" placeholder="your@email.com" required style="padding:0.75rem 0.85rem; border:1px solid var(--rule); background:var(--card-bg); font:inherit; color:var(--ink);">
+        <label class="field">
+          <span class="field__label">Email</span>
+          <input name="email" type="email" placeholder="your@email.com" required class="input">
         </label>
-        <label style="display:flex; flex-direction:column; gap:0.35rem; font-size:0.82rem; color:var(--ink-soft);">
-          <span>Topic</span>
-          <select name="topic" style="padding:0.75rem 0.85rem; border:1px solid var(--rule); background:var(--card-bg); font:inherit; color:var(--ink);">
+        <label class="field" style="grid-column:1 / -1;">
+          <span class="field__label">Topic</span>
+          <select name="topic" class="select">
             <option value="General enquiry">General enquiry</option>
             <option value="Workshop invitation">Workshop invitation</option>
             <option value="Research collaboration">Research collaboration</option>
             <option value="Tool feedback">Tool feedback</option>
           </select>
         </label>
-        <label style="display:flex; flex-direction:column; gap:0.35rem; font-size:0.82rem; color:var(--ink-soft); grid-column:1 / -1;">
-          <span>Message</span>
-          <textarea name="message" placeholder="How can I help?" style="padding:0.85rem; border:1px solid var(--rule); background:var(--card-bg); font:inherit; color:var(--ink); min-height:130px; resize:vertical;"></textarea>
+        <label class="field" style="grid-column:1 / -1;">
+          <span class="field__label">Message</span>
+          <textarea name="message" placeholder="How can I help?" class="textarea" rows="5"></textarea>
         </label>
-        <div style="display:flex; flex-wrap:wrap; gap:0.85rem; align-items:center; grid-column:1 / -1;">
-          <button type="submit" style="border:1px solid var(--ink); background:var(--ink); color:var(--warm-white); padding:0.72rem 1.2rem; font-family:'JetBrains Mono',monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; cursor:pointer;">Send message</button>
-          <p style="font-size:0.84rem; color:var(--ink-soft);">You can also write directly to <a href="mailto:mohammedali.page@gmail.com" style="color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent-lt);">mohammedali.page@gmail.com</a>.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;grid-column:1 / -1;">
+          <button type="submit" class="btn">Send message</button>
+          <p style="font-size:14px;color:var(--ink-soft);">You can also write directly to <a href="mailto:mohammedali.page@gmail.com" class="link-inline">mohammedali.page@gmail.com</a>.</p>
         </div>
       </form>
-      <p id="portfolio-contact-status" style="font-size:0.84rem; color:var(--accent); margin-top:0.85rem;"></p>
+      <p id="portfolio-contact-status" style="font-size:14px;color:var(--accent);margin-top:14px;"></p>
     </div>
   </section>
 
 </main>
 
 <footer class="site-footer">
-  <div class="footer-inner">
-    <p class="footer-note">Mohammed Ali Sharafuddin, Senior Lecturer, Qasim Ibrahim School of Business, Villa College, Malé, Maldives.</p>
-    <span class="footer-mono">Updated March 2026</span>
+  <div class="site-footer__inner">
+    <span class="monogram">MAS</span>
+    <p style="font-size:14px;color:var(--ink-muted);margin:0;">Mohammed Ali Sharafuddin, Senior Lecturer, Qasim Ibrahim School of Business, Villa College, Malé, Maldives.</p>
+    <span class="site-footer__meta">Updated July 2026</span>
   </div>
 </footer>
 
@@ -681,6 +614,25 @@
     document.documentElement.setAttribute('data-theme',next);
     localStorage.setItem('theme',next);
     sync();
+  });
+})();
+</script>
+<script>
+(function(){
+  var toggle=document.getElementById('nav-toggle');
+  var links=document.getElementById('site-nav-links');
+  if(!toggle||!links)return;
+  toggle.addEventListener('click',function(){
+    var open=links.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded',String(open));
+    toggle.classList.toggle('is-open',open);
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      links.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded','false');
+      toggle.classList.remove('is-open');
+    });
   });
 })();
 </script>

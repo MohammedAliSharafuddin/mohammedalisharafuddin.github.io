@@ -3,11 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Live Surveys — Mohammed Ali Sharafuddin</title>
+<title>Live Surveys: Mohammed Ali Sharafuddin</title>
 <meta name="description" content="Active research survey instruments by Mohammed Ali Sharafuddin, built with surveyframe. Open to eligible participants.">
 <link rel="canonical" href="https://mohammedalisharafuddin.github.io/live-surveys/">
-<link rel="stylesheet" href="../assets/css/portfolio.css">
-<meta property="og:title" content="Live Surveys — Mohammed Ali Sharafuddin">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<script>
+(function(){
+  var t=localStorage.getItem('theme');
+  if(t==='dark') document.documentElement.setAttribute('data-theme','dark');
+})();
+</script>
+<meta property="og:title" content="Live Surveys: Mohammed Ali Sharafuddin">
 <meta property="og:description" content="Active research survey instruments built with surveyframe. Open to eligible participants.">
 <meta property="og:url" content="https://mohammedalisharafuddin.github.io/live-surveys/">
 <meta property="og:type" content="website">
@@ -17,9 +26,15 @@
 <body>
 
 <nav class="site-nav">
-  <div class="nav-inner">
-    <a href="../index.html" class="nav-brand">MAS</a>
-    <div class="nav-links">
+  <div class="site-nav__inner">
+    <a href="../index.html" class="site-nav__brand">
+      <span class="monogram">MAS</span>
+      <span class="site-nav__name">Mohammed Ali Sharafuddin</span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav-links">
+      <span class="nav-toggle__bars"></span>
+    </button>
+    <div class="site-nav__links" id="site-nav-links">
       <a href="../textbooks.html">Textbooks</a>
       <a href="../templates.html">Templates</a>
       <a href="../index.html#software">Software</a>
@@ -27,63 +42,64 @@
       <a href="../tools.html">Open-Source Tools</a>
       <a href="../blog.html">Blog</a>
       <a href="../research.html">Research</a>
-      <a href="index.html" class="active">Live Surveys</a>
-      <a href="../index.html#contact" class="nav-cta">Contact</a>
+      <a href="index.html" aria-current="page">Live Surveys</a>
+      <a href="../index.html#contact" class="btn btn--sm">Contact</a>
+      <button class="btn-ghost btn--sm" id="theme-toggle" aria-label="Toggle dark mode">Dark</button>
     </div>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">Dark</button>
   </div>
 </nav>
 
-<main class="page-body">
-  <section class="section">
-    <h1 class="page-title">Live Surveys</h1>
-    <p class="section-intro">
-      Active research survey instruments open to eligible participants. Each survey is built with
-      <a href="https://CRAN.R-project.org/package=surveyframe" target="_blank" rel="noopener">surveyframe</a>
-      and deployed here as a self-contained static instrument. Responses are collected anonymously
-      via Google Sheets. The instrument object, analysis plan, and structural model are declared
-      before data collection.
-    </p>
-  </section>
+<header class="hero">
+  <h1>Live Surveys</h1>
+  <p style="font-size:16px;line-height:1.6;color:var(--ink-soft);max-width:72ch;margin-top:24px;">
+    Active research survey instruments open to eligible participants. Each survey is built with
+    <a href="https://CRAN.R-project.org/package=surveyframe" target="_blank" rel="noopener" class="link-inline">surveyframe</a>
+    and deployed here as a self-contained static instrument. Responses are collected anonymously
+    via Google Sheets. The instrument object, analysis plan, and structural model are declared
+    before data collection.
+  </p>
+</header>
 
+<main>
   <section class="section">
-    <div class="section-label">Open Now</div>
-    <div class="card-grid">
+    <div class="eyebrow">01 &middot; Open Now</div>
+    <div class="grid grid--tight">
 
-      <div class="card">
-        <div class="card-inner">
-          <div class="card-head">
-            <h2 class="card-title">AIC-RSAM Pilot Study</h2>
-            <span class="card-badge card-badge-live">Open</span>
-          </div>
-          <p class="card-desc">
-            A pre-registered acceptance test of an AI-assisted conversational room-service booking
-            system in Maldivian resorts. Participants complete a simulated booking prototype, then
-            answer a post-use questionnaire covering six reflective constructs: Perceived AI
-            Assistance, Perceived Order Assurance, Perceived Ease of Use, Perceived Usefulness,
-            Perceived Risk, and Behavioural Intention to Use.
-          </p>
-          <div class="card-meta-block">
-            <span class="card-meta">Model: AIC-RSAM (PLS-SEM, 9 paths)</span>
-            <span class="card-meta">Tool: surveyframe 0.3.2</span>
-            <span class="card-meta">Conference: ICSRI 2026, Villa College</span>
-          </div>
-          <div class="card-eligibility">
-            <strong>Eligibility:</strong> Maldivian nationals or residents, aged 18 or above,
-            who have stayed in a Maldivian resort within the past 12 months for at least 2 nights.
-          </div>
-          <a href="aic-rsam.html" class="card-link card-link-primary">Take the survey →</a>
+      <article class="card">
+        <div class="card__header">
+          <h2 class="card__title" style="font-size:20px;">AIC-RSAM Pilot Study</h2>
+          <span class="badge badge--live">Open</span>
         </div>
-      </div>
+        <p class="card__body">
+          A pre-registered acceptance test of an AI-assisted conversational room-service booking
+          system in Maldivian resorts. Participants complete a simulated booking prototype, then
+          answer a post-use questionnaire covering six reflective constructs: Perceived AI
+          Assistance, Perceived Order Assurance, Perceived Ease of Use, Perceived Usefulness,
+          Perceived Risk, and Behavioural Intention to Use.
+        </p>
+        <div style="margin-top:16px;display:flex;flex-direction:column;gap:4px;">
+          <span class="card__meta">Model: AIC-RSAM (PLS-SEM, 9 paths)</span>
+          <span class="card__meta">Tool: surveyframe 0.3.2</span>
+          <span class="card__meta">Conference: ICSRI 2026, Villa College</span>
+        </div>
+        <p style="margin-top:14px;font-size:13px;color:var(--ink-muted);line-height:1.6;">
+          <strong style="color:var(--ink);">Eligibility:</strong> Maldivian nationals or residents, aged 18 or above,
+          who have stayed in a Maldivian resort within the past 12 months for at least 2 nights.
+        </p>
+        <div class="card__footer">
+          <span></span>
+          <a href="aic-rsam.html" class="link-action link-action--cta">Take the survey <span class="arrow">→</span></a>
+        </div>
+      </article>
 
     </div>
   </section>
 
   <section class="section">
-    <div class="section-label">About These Surveys</div>
-    <p style="max-width:72ch; line-height:1.75; color:var(--ink-soft); font-size:0.92rem;">
+    <div class="eyebrow">02 &middot; About These Surveys</div>
+    <p style="max-width:72ch;line-height:1.7;color:var(--ink-soft);font-size:15px;">
       All instruments on this page are built with the
-      <a href="https://CRAN.R-project.org/package=surveyframe" target="_blank" rel="noopener">surveyframe</a>
+      <a href="https://CRAN.R-project.org/package=surveyframe" target="_blank" rel="noopener" class="link-inline">surveyframe</a>
       R package and exported as single self-contained HTML files. Each file runs entirely in the
       browser with no server dependency. Responses are collected via a Google Apps Script endpoint
       and a local CSV download fires on every submission as a backup. The instrument definition,
@@ -93,21 +109,49 @@
 </main>
 
 <footer class="site-footer">
-  <div class="footer-inner">
-    <a href="mailto:mohammedali.page@gmail.com?subject=Live%20Surveys%20Feedback">Feedback</a>
+  <div class="site-footer__inner">
+    <span class="monogram">MAS</span>
+    <a href="mailto:mohammedali.page@gmail.com?subject=Live%20Surveys%20Feedback" class="link-inline">Feedback</a>
   </div>
 </footer>
 
 <script>
-  const toggle = document.getElementById('theme-toggle');
-  if (toggle) {
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark') document.body.classList.add('dark');
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-    });
+(function(){
+  var btn=document.getElementById('theme-toggle');
+  if(!btn)return;
+  function sync(){
+    var dark=document.documentElement.getAttribute('data-theme')==='dark';
+    btn.textContent=dark?'Light':'Dark';
+    btn.setAttribute('aria-pressed',String(dark));
   }
+  sync();
+  btn.addEventListener('click',function(){
+    var dark=document.documentElement.getAttribute('data-theme')==='dark';
+    var next=dark?'light':'dark';
+    document.documentElement.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+    sync();
+  });
+})();
+</script>
+<script>
+(function(){
+  var toggle=document.getElementById('nav-toggle');
+  var links=document.getElementById('site-nav-links');
+  if(!toggle||!links)return;
+  toggle.addEventListener('click',function(){
+    var open=links.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded',String(open));
+    toggle.classList.toggle('is-open',open);
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      links.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded','false');
+      toggle.classList.remove('is-open');
+    });
+  });
+})();
 </script>
 
 </body>

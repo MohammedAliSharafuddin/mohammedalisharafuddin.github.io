@@ -6,7 +6,16 @@
 <title>Open-Source Tools: Mohammed Ali Sharafuddin</title>
 <meta name="description" content="Open-source software for surveys, statistics, writing, and reproducible research, curated for practical academic and teaching use.">
 <link rel="canonical" href="https://mohammedalisharafuddin.github.io/tools.html">
-<link rel="stylesheet" href="assets/css/portfolio.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theme.css">
+<script>
+(function(){
+  var t=localStorage.getItem('theme');
+  if(t==='dark') document.documentElement.setAttribute('data-theme','dark');
+})();
+</script>
 <script defer src="/assets/js/ga4.js"></script>
 <script defer src="/assets/js/contact-form.js"></script>
 <meta name="robots" content="index,follow">
@@ -14,207 +23,280 @@
 <meta property="og:description" content="Open-source software for surveys, statistics, writing, and reproducible research, curated for practical academic and teaching use.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mohammedalisharafuddin.github.io/tools.html">
-<meta property="og:image" content="https://mohammedalisharafuddin.github.io/assets/images/mas-og.svg">
+<meta property="og:image" content="https://mohammedalisharafuddin.github.io/assets/images/mas-og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Mohammed Ali Sharafuddin">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Open-Source Tools: Mohammed Ali Sharafuddin">
 <meta name="twitter:description" content="Open-source software for surveys, statistics, writing, and reproducible research, curated for practical academic and teaching use.">
-<meta name="twitter:image" content="https://mohammedalisharafuddin.github.io/assets/images/mas-og.svg">
+<meta name="twitter:image" content="https://mohammedalisharafuddin.github.io/assets/images/mas-og.png">
 </head>
 <body>
 
 <nav class="site-nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-brand">Mohammed Ali <span>Sharafuddin</span></a>
-    <div class="nav-links">
+  <div class="site-nav__inner">
+    <a href="index.html" class="site-nav__brand">
+      <span class="monogram">MAS</span>
+      <span class="site-nav__name">Mohammed Ali Sharafuddin</span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav-links">
+      <span class="nav-toggle__bars"></span>
+    </button>
+    <div class="site-nav__links" id="site-nav-links">
       <a href="textbooks.html">Textbooks</a>
       <a href="templates.html">Templates</a>
       <a href="index.html#software">Software</a>
       <a href="index.html#web-tools">Web Tools</a>
-      <a href="tools.html" class="active">Open-Source Tools</a>
+      <a href="tools.html" aria-current="page">Open-Source Tools</a>
       <a href="blog.html">Blog</a>
       <a href="research.html">Research</a>
-      <a href="index.html#contact" class="nav-cta">Contact</a>
+      <a href="live-surveys/index.html">Live Surveys</a>
+      <a href="index.html#contact" class="btn btn--sm">Contact</a>
+      <button class="btn-ghost btn--sm" id="theme-toggle" aria-label="Toggle dark mode">Dark</button>
     </div>
   </div>
 </nav>
 
-<div class="site-frame">
-  <div class="page-masthead">
-    <div class="eyebrow">Curated by Mohammed Ali Sharafuddin</div>
-    <h1>Open-Source Tools</h1>
-    <p class="lead">Software for surveys, statistics, writing, and reproducible research, selected for practical academic and teaching workflows. All are free and open-source.</p>
-  </div>
-</div>
+<header class="hero">
+  <div class="eyebrow">Curated by Mohammed Ali Sharafuddin</div>
+  <h1>Open-Source Tools</h1>
+  <p style="font-size:18px;line-height:1.6;color:var(--ink-soft);max-width:36em;margin-top:24px;">Software for surveys, statistics, writing, and reproducible research, selected for practical academic and teaching workflows. All are free and open-source.</p>
+</header>
 
-<div class="page-body">
+<main>
 
   <section class="section">
-    <div class="section-label">Start Here</div>
-
-    <div class="tool-entry">
-      <p class="tool-desc">If you are choosing quickly, start with <strong>JASP</strong> or <strong>jamovi</strong> for point-and-click statistics teaching, move to <strong>R + RStudio</strong> when you need programmable analysis and full reproducibility, use <strong>Quarto</strong> for reports and teaching materials, choose <strong>surveyframe</strong> when you need a full survey research pipeline from instrument design to analysis report inside R, and choose <strong>LimeSurvey</strong> or <strong>KoboToolbox</strong> when your data collection requires structured logic or offline fieldwork.</p>
+    <div class="eyebrow">01 &middot; Start Here</div>
+    <div class="card card--pad-lg">
+      <p class="card__body" style="font-size:15px;">If you are choosing quickly, start with <strong style="color:var(--ink);">JASP</strong> or <strong style="color:var(--ink);">jamovi</strong> for point-and-click statistics teaching, move to <strong style="color:var(--ink);">R + RStudio</strong> when you need programmable analysis and full reproducibility, use <strong style="color:var(--ink);">Quarto</strong> for reports and teaching materials, choose <strong style="color:var(--ink);">surveyframe</strong> when you need a full survey research pipeline from instrument design to analysis report inside R, and choose <strong style="color:var(--ink);">LimeSurvey</strong> or <strong style="color:var(--ink);">KoboToolbox</strong> when your data collection requires structured logic or offline fieldwork.</p>
     </div>
   </section>
-
-  <hr class="divider">
 
   <!-- Statistics -->
   <section class="section">
-    <div class="section-label">Statistics &amp; Analysis</div>
+    <div class="eyebrow">02 &middot; Statistics &amp; Analysis</div>
 
-    <div class="tool-entry">
-      <div class="tool-header">
-        <span class="tool-name">R + RStudio</span>
-        <span class="tool-role">Teaching &amp; Research</span>
+    <article class="card" style="margin-bottom:16px;">
+      <div class="card__header">
+        <h3 class="card__title" style="font-size:19px;">R + RStudio</h3>
+        <span class="badge badge--info">Teaching &amp; Research</span>
       </div>
-      <p class="tool-desc">R is the statistical language behind the teaching suite, and RStudio Desktop is the open-source development environment used for most of that work. Together they support descriptive statistics, modelling, visualisation, and reproducible reporting for classroom and research workflows.</p>
-      <p class="tool-desc"><strong>Who should use it:</strong> Researchers and postgraduate students who want full analytical control, reproducible outputs, and a toolchain that scales from coursework to publishable analysis.</p>
-      <a href="https://posit.co/download/rstudio-desktop/" class="tool-link" target="_blank" rel="noopener">Get R + RStudio →</a>
-    </div>
+      <p class="card__body">R is the statistical language behind the teaching suite, and RStudio Desktop is the open-source development environment used for most of that work. Together they support descriptive statistics, modelling, visualisation, and reproducible reporting for classroom and research workflows.</p>
+      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Researchers and postgraduate students who want full analytical control, reproducible outputs, and a toolchain that scales from coursework to publishable analysis.</p>
+      <div class="card__footer">
+        <span></span>
+        <a href="https://posit.co/download/rstudio-desktop/" class="link-action link-action--cta" target="_blank" rel="noopener">Get R + RStudio <span class="arrow">→</span></a>
+      </div>
+    </article>
 
-    <div class="tool-entry">
-      <div class="tool-header">
-        <span class="tool-name">JASP</span>
-        <span class="tool-role">Teaching</span>
+    <article class="card" style="margin-bottom:16px;">
+      <div class="card__header">
+        <h3 class="card__title" style="font-size:19px;">JASP</h3>
+        <span class="badge badge--info">Teaching</span>
       </div>
-      <p class="tool-desc">A point-and-click statistics application developed by the University of Amsterdam. Covers standard frequentist tests and adds Bayesian counterparts alongside them, making it useful for teaching the conceptual difference between the two. Output is formatted in APA style and exported directly to Word or PDF. It works well as a no-cost SPSS replacement.</p>
-      <p class="tool-desc"><strong>Who should use it:</strong> Undergraduate and postgraduate students, faculty who want a clean teaching tool, and practitioners who need statistical results without writing code.</p>
-      <a href="https://jasp-stats.org/download/" class="tool-link" target="_blank" rel="noopener">Download JASP →</a>
-    </div>
+      <p class="card__body">A point-and-click statistics application developed by the University of Amsterdam. Covers standard frequentist tests and adds Bayesian counterparts alongside them, making it useful for teaching the conceptual difference between the two. Output is formatted in APA style and exported directly to Word or PDF. It works well as a no-cost SPSS replacement.</p>
+      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Undergraduate and postgraduate students, faculty who want a clean teaching tool, and practitioners who need statistical results without writing code.</p>
+      <div class="card__footer">
+        <span></span>
+        <a href="https://jasp-stats.org/download/" class="link-action link-action--cta" target="_blank" rel="noopener">Download JASP <span class="arrow">→</span></a>
+      </div>
+    </article>
 
-    <div class="tool-entry">
-      <div class="tool-header">
-        <span class="tool-name">jamovi</span>
-        <span class="tool-role">Teaching</span>
+    <article class="card" style="margin-bottom:16px;">
+      <div class="card__header">
+        <h3 class="card__title" style="font-size:19px;">jamovi</h3>
+        <span class="badge badge--info">Teaching</span>
       </div>
-      <p class="tool-desc">Like JASP, jamovi provides a free, open-source interface for common statistical tests, with a spreadsheet-like data view that many students find easier to navigate. It supports mediation, moderation, and factor analysis via the jmv and medmod modules. Because it runs R beneath the surface, it also works well as a bridge toward programming.</p>
-      <p class="tool-desc"><strong>Who should use it:</strong> Students transitioning from Excel to proper statistical software, or anyone who needs a familiar spreadsheet layout alongside inferential statistics.</p>
-      <a href="https://www.jamovi.org/download.html" class="tool-link" target="_blank" rel="noopener">Download jamovi →</a>
-    </div>
+      <p class="card__body">Like JASP, jamovi provides a free, open-source interface for common statistical tests, with a spreadsheet-like data view that many students find easier to navigate. It supports mediation, moderation, and factor analysis via the jmv and medmod modules. Because it runs R beneath the surface, it also works well as a bridge toward programming.</p>
+      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Students transitioning from Excel to proper statistical software, or anyone who needs a familiar spreadsheet layout alongside inferential statistics.</p>
+      <div class="card__footer">
+        <span></span>
+        <a href="https://www.jamovi.org/download.html" class="link-action link-action--cta" target="_blank" rel="noopener">Download jamovi <span class="arrow">→</span></a>
+      </div>
+    </article>
 
-    <div class="tool-entry">
-      <div class="tool-header">
-        <span class="tool-name">PSPP</span>
-        <span class="tool-role">Teaching</span>
+    <article class="card">
+      <div class="card__header">
+        <h3 class="card__title" style="font-size:19px;">PSPP</h3>
+        <span class="badge badge--info">Teaching</span>
       </div>
-      <p class="tool-desc">A free drop-in replacement for SPSS, maintained by the GNU project. Reads and writes .sav files, supports the most common SPSS syntax, and covers regression, ANOVA, factor analysis, and non-parametric tests. It is useful wherever learners need SPSS-style work without a licence.</p>
-      <p class="tool-desc"><strong>Who should use it:</strong> Students and instructors who still work in SPSS-oriented environments but need a fully open-source option for teaching, practice, or light applied analysis.</p>
-      <a href="https://www.gnu.org/software/pspp/" class="tool-link" target="_blank" rel="noopener">Download PSPP →</a>
-    </div>
+      <p class="card__body">A free drop-in replacement for SPSS, maintained by the GNU project. Reads and writes .sav files, supports the most common SPSS syntax, and covers regression, ANOVA, factor analysis, and non-parametric tests. It is useful wherever learners need SPSS-style work without a licence.</p>
+      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Students and instructors who still work in SPSS-oriented environments but need a fully open-source option for teaching, practice, or light applied analysis.</p>
+      <div class="card__footer">
+        <span></span>
+        <a href="https://www.gnu.org/software/pspp/" class="link-action link-action--cta" target="_blank" rel="noopener">Download PSPP <span class="arrow">→</span></a>
+      </div>
+    </article>
   </section>
-
-  <hr class="divider">
 
   <!-- Survey -->
   <section class="section">
-    <div class="section-label">Survey &amp; Data Collection</div>
+    <div class="eyebrow">03 &middot; Survey &amp; Data Collection</div>
 
-    <div class="tool-entry">
-      <div class="tool-header">
-        <span class="tool-name">surveyframe</span>
-        <span class="tool-role">Research &amp; Teaching</span>
+    <article class="card" style="margin-bottom:16px;">
+      <div class="card__header">
+        <h3 class="card__title" style="font-size:19px;">surveyframe</h3>
+        <span class="badge badge--info">Research &amp; Teaching</span>
       </div>
-      <p class="tool-desc">An R package for end-to-end survey research workflows built around a typed instrument object (the sframe). Features include visual instrument design via a browser-based builder or Shiny studio, export to a self-contained static HTML survey that runs without a server, an embeddable Shiny module, SHA-256 integrity-checked serialisation to the .sframe format, multi-page survey rendering, branching logic, response quality checking, scale scoring, psychometric diagnostics, analysis-plan execution, model syntax planning, an interactive response dashboard, codebook generation, and reproducible HTML reporting. Version 0.3.0 is live on CRAN.</p>
-      <p class="tool-desc"><strong>Who should use it:</strong> Researchers and postgraduate students who design, deploy, and analyse questionnaire-based studies in R and want a reproducible, self-contained pipeline from instrument design to analysis report.</p>
-      <a href="https://CRAN.R-project.org/package=surveyframe" class="tool-link" target="_blank" rel="noopener">surveyframe on CRAN →</a>
-    </div>
+      <p class="card__body">An R package for end-to-end survey research workflows built around a typed instrument object (the sframe). Features include visual instrument design via a browser-based builder or Shiny studio, export to a self-contained static HTML survey that runs without a server, an embeddable Shiny module, SHA-256 integrity-checked serialisation to the .sframe format, multi-page survey rendering, branching logic, response quality checking, scale scoring, psychometric diagnostics, analysis-plan execution, model syntax planning, an interactive response dashboard, codebook generation, and reproducible HTML reporting. Version 0.3.0 is live on CRAN.</p>
+      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Researchers and postgraduate students who design, deploy, and analyse questionnaire-based studies in R and want a reproducible, self-contained pipeline from instrument design to analysis report.</p>
+      <div class="card__footer">
+        <span></span>
+        <a href="https://CRAN.R-project.org/package=surveyframe" class="link-action link-action--cta" target="_blank" rel="noopener">surveyframe on CRAN <span class="arrow">→</span></a>
+      </div>
+    </article>
 
-    <div class="tool-entry">
-      <div class="tool-header">
-        <span class="tool-name">LimeSurvey</span>
-        <span class="tool-role">Research</span>
+    <article class="card" style="margin-bottom:16px;">
+      <div class="card__header">
+        <h3 class="card__title" style="font-size:19px;">LimeSurvey</h3>
+        <span class="badge badge--info">Research</span>
       </div>
-      <p class="tool-desc">A full-featured open-source survey platform that supports complex branching logic, quota management, multiple languages, and direct SPSS/R export. It is well suited to academic research designs that need randomisation, conditional questions, or multi-page instruments. It can be self-hosted on university servers for data sovereignty or deployed through institutional hosting.</p>
-      <p class="tool-desc"><strong>Who should use it:</strong> Researchers designing structured questionnaires with complex logic, multi-language instruments, or any study requiring formal sampling controls.</p>
-      <a href="https://www.limesurvey.org/" class="tool-link" target="_blank" rel="noopener">LimeSurvey.org →</a>
-    </div>
+      <p class="card__body">A full-featured open-source survey platform that supports complex branching logic, quota management, multiple languages, and direct SPSS/R export. It is well suited to academic research designs that need randomisation, conditional questions, or multi-page instruments. It can be self-hosted on university servers for data sovereignty or deployed through institutional hosting.</p>
+      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Researchers designing structured questionnaires with complex logic, multi-language instruments, or any study requiring formal sampling controls.</p>
+      <div class="card__footer">
+        <span></span>
+        <a href="https://www.limesurvey.org/" class="link-action link-action--cta" target="_blank" rel="noopener">LimeSurvey.org <span class="arrow">→</span></a>
+      </div>
+    </article>
 
-    <div class="tool-entry">
-      <div class="tool-header">
-        <span class="tool-name">KoboToolbox</span>
-        <span class="tool-role">Field Research</span>
+    <article class="card">
+      <div class="card__header">
+        <h3 class="card__title" style="font-size:19px;">KoboToolbox</h3>
+        <span class="badge badge--info">Field Research</span>
       </div>
-      <p class="tool-desc">Designed for data collection in low-connectivity environments. Used extensively in humanitarian and development research but equally suitable for fieldwork in tourism, maritime, or SME contexts where internet access is unreliable. Supports offline collection on Android, GPS stamping, image capture, and direct export to SPSS, Stata, or Excel. Hosted free for academic researchers.</p>
-      <p class="tool-desc"><strong>Who should use it:</strong> Researchers collecting field data in locations with unstable internet, distributed teams, or device-based data capture requirements.</p>
-      <a href="https://www.kobotoolbox.org/" class="tool-link" target="_blank" rel="noopener">KoboToolbox →</a>
-    </div>
+      <p class="card__body">Designed for data collection in low-connectivity environments. Used extensively in humanitarian and development research but equally suitable for fieldwork in tourism, maritime, or SME contexts where internet access is unreliable. Supports offline collection on Android, GPS stamping, image capture, and direct export to SPSS, Stata, or Excel. Hosted free for academic researchers.</p>
+      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Researchers collecting field data in locations with unstable internet, distributed teams, or device-based data capture requirements.</p>
+      <div class="card__footer">
+        <span></span>
+        <a href="https://www.kobotoolbox.org/" class="link-action link-action--cta" target="_blank" rel="noopener">KoboToolbox <span class="arrow">→</span></a>
+      </div>
+    </article>
   </section>
-
-  <hr class="divider">
 
   <!-- Writing -->
   <section class="section">
-    <div class="section-label">Writing &amp; Publishing</div>
+    <div class="eyebrow">04 &middot; Writing &amp; Publishing</div>
 
-    <div class="tool-entry">
-      <div class="tool-header">
-        <span class="tool-name">Quarto</span>
-        <span class="tool-role">Teaching &amp; Publishing</span>
+    <article class="card" style="margin-bottom:16px;">
+      <div class="card__header">
+        <h3 class="card__title" style="font-size:19px;">Quarto</h3>
+        <span class="badge badge--info">Teaching &amp; Publishing</span>
       </div>
-      <p class="tool-desc">The publishing system behind the statistics teaching suite. It is used to produce the book, companion site, lecture decks, worked examples, and related teaching materials from a single source project. Quarto keeps content and output format separate, which makes it well suited to reproducible teaching and structured publishing workflows.</p>
-      <p class="tool-desc"><strong>Who should use it:</strong> Anyone producing textbooks, course materials, technical reports, or academic papers who wants reproducible, version-controlled outputs.</p>
-      <a href="https://quarto.org/docs/get-started/" class="tool-link" target="_blank" rel="noopener">Get started with Quarto →</a>
-    </div>
+      <p class="card__body">The publishing system behind the statistics teaching suite. It is used to produce the book, companion site, lecture decks, worked examples, and related teaching materials from a single source project. Quarto keeps content and output format separate, which makes it well suited to reproducible teaching and structured publishing workflows.</p>
+      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Anyone producing textbooks, course materials, technical reports, or academic papers who wants reproducible, version-controlled outputs.</p>
+      <div class="card__footer">
+        <span></span>
+        <a href="https://quarto.org/docs/get-started/" class="link-action link-action--cta" target="_blank" rel="noopener">Get started with Quarto <span class="arrow">→</span></a>
+      </div>
+    </article>
 
-    <div class="tool-entry">
-      <div class="tool-header">
-        <span class="tool-name">Zotero</span>
-        <span class="tool-role">Research</span>
+    <article class="card" style="margin-bottom:16px;">
+      <div class="card__header">
+        <h3 class="card__title" style="font-size:19px;">Zotero</h3>
+        <span class="badge badge--info">Research</span>
       </div>
-      <p class="tool-desc">Reference management software that captures references directly from browser pages, PDFs, and DOI lookups. Generates citations and bibliographies in APA, MLA, Chicago, and hundreds of journal-specific formats. The Word and LibreOffice plugins handle in-text citations automatically and help reduce formatting errors.</p>
-      <p class="tool-desc"><strong>Who should use it:</strong> Students, researchers, and faculty who manage literature reviews, academic writing, or citation-heavy teaching materials.</p>
-      <a href="https://www.zotero.org/download/" class="tool-link" target="_blank" rel="noopener">Download Zotero →</a>
-    </div>
+      <p class="card__body">Reference management software that captures references directly from browser pages, PDFs, and DOI lookups. Generates citations and bibliographies in APA, MLA, Chicago, and hundreds of journal-specific formats. The Word and LibreOffice plugins handle in-text citations automatically and help reduce formatting errors.</p>
+      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Students, researchers, and faculty who manage literature reviews, academic writing, or citation-heavy teaching materials.</p>
+      <div class="card__footer">
+        <span></span>
+        <a href="https://www.zotero.org/download/" class="link-action link-action--cta" target="_blank" rel="noopener">Download Zotero <span class="arrow">→</span></a>
+      </div>
+    </article>
 
-    <div class="tool-entry">
-      <div class="tool-header">
-        <span class="tool-name">LibreOffice</span>
-        <span class="tool-role">Teaching</span>
+    <article class="card">
+      <div class="card__header">
+        <h3 class="card__title" style="font-size:19px;">LibreOffice</h3>
+        <span class="badge badge--info">Teaching</span>
       </div>
-      <p class="tool-desc">A complete Microsoft Office alternative: Writer for documents, Calc for spreadsheets, and Impress for presentations, maintained by the Document Foundation. Reads and writes .docx, .xlsx, and .pptx formats without conversion loss in most cases.</p>
-      <p class="tool-desc"><strong>Who should use it:</strong> Students and instructors who want a fully open-source office suite for everyday writing, spreadsheets, and slide preparation.</p>
-      <a href="https://www.libreoffice.org/download/libreoffice/" class="tool-link" target="_blank" rel="noopener">Download LibreOffice →</a>
-    </div>
+      <p class="card__body">A complete Microsoft Office alternative: Writer for documents, Calc for spreadsheets, and Impress for presentations, maintained by the Document Foundation. Reads and writes .docx, .xlsx, and .pptx formats without conversion loss in most cases.</p>
+      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Students and instructors who want a fully open-source office suite for everyday writing, spreadsheets, and slide preparation.</p>
+      <div class="card__footer">
+        <span></span>
+        <a href="https://www.libreoffice.org/download/download-libreoffice/" class="link-action link-action--cta" target="_blank" rel="noopener">Download LibreOffice <span class="arrow">→</span></a>
+      </div>
+    </article>
   </section>
-
-  <hr class="divider">
 
   <!-- Reproducible Research -->
   <section class="section">
-    <div class="section-label">Reproducible Research &amp; Teaching</div>
+    <div class="eyebrow">05 &middot; Reproducible Research &amp; Teaching</div>
 
-    <div class="tool-entry">
-      <div class="tool-header">
-        <span class="tool-name">Git</span>
-        <span class="tool-role">Research &amp; Publishing</span>
+    <article class="card" style="margin-bottom:16px;">
+      <div class="card__header">
+        <h3 class="card__title" style="font-size:19px;">Git</h3>
+        <span class="badge badge--info">Research &amp; Publishing</span>
       </div>
-      <p class="tool-desc">Git is the version-control system behind reproducible teaching and research workflows. It keeps manuscripts, slides, datasets, and code in a traceable history, makes collaboration reviewable, and allows teaching materials to be rebuilt from known states. It can be used locally or paired with open-source forges such as Gitea, Forgejo, or self-hosted GitLab CE.</p>
-      <p class="tool-desc"><strong>Who should use it:</strong> Anyone maintaining textbooks, lecture materials, code, or analysis scripts who wants version history, safer collaboration, and repeatable release workflows.</p>
-      <a href="https://git-scm.com/downloads" class="tool-link" target="_blank" rel="noopener">Download Git →</a>
-    </div>
+      <p class="card__body">Git is the version-control system behind reproducible teaching and research workflows. It keeps manuscripts, slides, datasets, and code in a traceable history, makes collaboration reviewable, and allows teaching materials to be rebuilt from known states. It can be used locally or paired with open-source forges such as Gitea, Forgejo, or self-hosted GitLab CE.</p>
+      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Anyone maintaining textbooks, lecture materials, code, or analysis scripts who wants version history, safer collaboration, and repeatable release workflows.</p>
+      <div class="card__footer">
+        <span></span>
+        <a href="https://git-scm.com/downloads" class="link-action link-action--cta" target="_blank" rel="noopener">Download Git <span class="arrow">→</span></a>
+      </div>
+    </article>
 
-    <div class="tool-entry">
-      <div class="tool-header">
-        <span class="tool-name">WebR</span>
-        <span class="tool-role">Teaching</span>
+    <article class="card">
+      <div class="card__header">
+        <h3 class="card__title" style="font-size:19px;">WebR</h3>
+        <span class="badge badge--info">Teaching</span>
       </div>
-      <p class="tool-desc">WebR compiles R to WebAssembly, allowing R code to run directly in a web browser with no server, no installation, and no account. It is particularly effective for interactive statistical examples because readers can experiment with parameters and see results change in real time. Quarto has native WebR support via the quarto-webr extension.</p>
-      <p class="tool-desc"><strong>Who should use it:</strong> Instructors and authors who want interactive browser-based statistical examples without requiring students to install software first.</p>
-      <a href="https://docs.r-wasm.org/webr/latest/" class="tool-link" target="_blank" rel="noopener">WebR documentation →</a>
-    </div>
+      <p class="card__body">WebR compiles R to WebAssembly, allowing R code to run directly in a web browser with no server, no installation, and no account. It is particularly effective for interactive statistical examples because readers can experiment with parameters and see results change in real time. Quarto has native WebR support via the quarto-webr extension.</p>
+      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Instructors and authors who want interactive browser-based statistical examples without requiring students to install software first.</p>
+      <div class="card__footer">
+        <span></span>
+        <a href="https://docs.r-wasm.org/webr/latest/" class="link-action link-action--cta" target="_blank" rel="noopener">WebR documentation <span class="arrow">→</span></a>
+      </div>
+    </article>
   </section>
 
-  <hr class="divider">
-
-  </div>
+</main>
 
 <footer class="site-footer">
-  <div class="footer-inner">
-    <p class="footer-note">Mohammed Ali Sharafuddin, Senior Lecturer, Qasim Ibrahim School of Business, Villa College, Malé, Maldives.</p>
-    <span class="footer-mono">Updated May 2026</span>
+  <div class="site-footer__inner">
+    <span class="monogram">MAS</span>
+    <p style="font-size:14px;color:var(--ink-muted);margin:0;">Mohammed Ali Sharafuddin, Senior Lecturer, Qasim Ibrahim School of Business, Villa College, Malé, Maldives.</p>
+    <span class="site-footer__meta">Updated May 2026</span>
   </div>
 </footer>
 
+<script>
+(function(){
+  var btn=document.getElementById('theme-toggle');
+  if(!btn)return;
+  function sync(){
+    var dark=document.documentElement.getAttribute('data-theme')==='dark';
+    btn.textContent=dark?'Light':'Dark';
+    btn.setAttribute('aria-pressed',String(dark));
+  }
+  sync();
+  btn.addEventListener('click',function(){
+    var dark=document.documentElement.getAttribute('data-theme')==='dark';
+    var next=dark?'light':'dark';
+    document.documentElement.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+    sync();
+  });
+})();
+</script>
+<script>
+(function(){
+  var toggle=document.getElementById('nav-toggle');
+  var links=document.getElementById('site-nav-links');
+  if(!toggle||!links)return;
+  toggle.addEventListener('click',function(){
+    var open=links.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded',String(open));
+    toggle.classList.toggle('is-open',open);
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      links.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded','false');
+      toggle.classList.remove('is-open');
+    });
+  });
+})();
+</script>
 </body>
 </html>

@@ -6,7 +6,16 @@
 <title>Templates &amp; Dashboards: Mohammed Ali Sharafuddin</title>
 <meta name="description" content="Excel dashboards, analytical worksheets, and practical templates created by Mohammed Ali Sharafuddin / FlairMI.">
 <link rel="canonical" href="https://mohammedalisharafuddin.github.io/templates.html">
-<link rel="stylesheet" href="assets/css/portfolio.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theme.css">
+<script>
+(function(){
+  var t=localStorage.getItem('theme');
+  if(t==='dark') document.documentElement.setAttribute('data-theme','dark');
+})();
+</script>
 <script defer src="/assets/js/ga4.js"></script>
 <script defer src="/assets/js/contact-form.js"></script>
 <meta name="robots" content="index,follow">
@@ -14,329 +23,326 @@
 <meta property="og:description" content="Excel dashboards, analytical worksheets, and practical templates created by Mohammed Ali Sharafuddin / FlairMI.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mohammedalisharafuddin.github.io/templates.html">
-<meta property="og:image" content="https://mohammedalisharafuddin.github.io/assets/images/mas-og.svg">
+<meta property="og:image" content="https://mohammedalisharafuddin.github.io/assets/images/mas-og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Mohammed Ali Sharafuddin">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Templates &amp; Dashboards: Mohammed Ali Sharafuddin">
 <meta name="twitter:description" content="Excel dashboards, analytical worksheets, and practical templates created by Mohammed Ali Sharafuddin / FlairMI.">
-<meta name="twitter:image" content="https://mohammedalisharafuddin.github.io/assets/images/mas-og.svg">
+<meta name="twitter:image" content="https://mohammedalisharafuddin.github.io/assets/images/mas-og.png">
 </head>
 <body>
 
 <nav class="site-nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-brand">Mohammed Ali <span>Sharafuddin</span></a>
-    <div class="nav-links">
+  <div class="site-nav__inner">
+    <a href="index.html" class="site-nav__brand">
+      <span class="monogram">MAS</span>
+      <span class="site-nav__name">Mohammed Ali Sharafuddin</span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav-links">
+      <span class="nav-toggle__bars"></span>
+    </button>
+    <div class="site-nav__links" id="site-nav-links">
       <a href="textbooks.html">Textbooks</a>
-      <a href="templates.html" class="active">Templates</a>
+      <a href="templates.html" aria-current="page">Templates</a>
       <a href="index.html#software">Software</a>
       <a href="index.html#web-tools">Web Tools</a>
       <a href="tools.html">Open-Source Tools</a>
       <a href="blog.html">Blog</a>
       <a href="research.html">Research</a>
-      <a href="index.html#contact" class="nav-cta">Contact</a>
+      <a href="live-surveys/index.html">Live Surveys</a>
+      <a href="index.html#contact" class="btn btn--sm">Contact</a>
+      <button class="btn-ghost btn--sm" id="theme-toggle" aria-label="Toggle dark mode">Dark</button>
     </div>
   </div>
 </nav>
 
-<div style="max-width:var(--max-w); margin:0 auto;">
-  <div class="page-masthead">
-    <div class="eyebrow">Created by Mohammed Ali Sharafuddin / FlairMI</div>
-    <h1>Templates &amp; Dashboards</h1>
-    <p class="lead">Excel dashboards, web tools, and analytical worksheets, practical outputs built for real business and academic use. All free to download.</p>
-  </div>
-</div>
+<header class="hero">
+  <div class="eyebrow">Created by Mohammed Ali Sharafuddin / FlairMI</div>
+  <h1>Templates &amp; Dashboards</h1>
+  <p style="font-size:18px;line-height:1.6;color:var(--ink-soft);max-width:36em;margin-top:24px;">Excel dashboards, web tools, and analytical worksheets, practical outputs built for real business and academic use. All free to download.</p>
+</header>
 
-<div class="page-body">
+<main>
 
   <!-- Excel Dashboards -->
   <section class="section">
-    <div class="section-label">Excel Dashboards</div>
-    <p style="font-size:0.9rem; color:var(--ink-soft); margin-bottom:1.5rem; max-width:62ch;">This public toolkit includes ten downloadable Excel workbooks covering campaign ROI, funnel conversion, customer value, churn, forecasting, segmentation, break-even analysis, and competitive positioning.</p>
-    <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit" target="_blank" rel="noopener" style="font-family:'JetBrains Mono',monospace; font-size:0.63rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent-lt); padding-bottom:1px; margin-bottom:1.5rem; display:inline-block;">Open marketing-decision-toolkit on GitHub →</a>
+    <div class="eyebrow">01 &middot; Excel Dashboards</div>
+    <p style="font-size:15px;line-height:1.6;color:var(--ink-soft);max-width:62em;margin-bottom:16px;">This public toolkit includes ten downloadable Excel workbooks covering campaign ROI, funnel conversion, customer value, churn, forecasting, segmentation, break-even analysis, and competitive positioning.</p>
+    <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit" target="_blank" rel="noopener" class="link-action" style="display:inline-block;margin-bottom:32px;">Open marketing-decision-toolkit on GitHub <span class="arrow">→</span></a>
 
-    <div class="card-grid">
+    <div class="grid grid--quad">
 
       <article class="card">
-        <div class="card-band band-template"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">Campaign ROI Tracker</h2>
-            <span class="card-badge badge-free">Free</span>
-          </div>
-          <p class="card-desc">Compare spend, revenue, and ROI across marketing channels.</p>
-          <div class="card-tags"><span class="tag">Excel</span><span class="tag">Marketing</span><span class="tag">ROI</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:18px;">Campaign ROI Tracker</h3>
+          <span class="badge badge--live">Free</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Marketing Dashboard</span>
-          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/Campaign_ROI_Tracker.xlsx" class="card-link">Download →</a>
+        <p class="card__body">Compare spend, revenue, and ROI across marketing channels.</p>
+        <div class="tag-row"><span class="tag">Excel</span><span class="tag">Marketing</span><span class="tag">ROI</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Marketing Dashboard</span>
+          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/Campaign_ROI_Tracker.xlsx" class="link-action link-action--cta">Download <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-template"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">Sales Pipeline Tracker</h2>
-            <span class="card-badge badge-free">Free</span>
-          </div>
-          <p class="card-desc">Track deal stages, weighted pipeline value, and rep-level performance.</p>
-          <div class="card-tags"><span class="tag">Excel</span><span class="tag">Sales</span><span class="tag">CRM</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:18px;">Sales Pipeline Tracker</h3>
+          <span class="badge badge--live">Free</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Sales Dashboard</span>
-          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/Sales_Pipeline_Tracker.xlsx" class="card-link">Download →</a>
+        <p class="card__body">Track deal stages, weighted pipeline value, and rep-level performance.</p>
+        <div class="tag-row"><span class="tag">Excel</span><span class="tag">Sales</span><span class="tag">CRM</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Sales Dashboard</span>
+          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/Sales_Pipeline_Tracker.xlsx" class="link-action link-action--cta">Download <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-template"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">Break-Even Analysis Tool</h2>
-            <span class="card-badge badge-free">Free</span>
-          </div>
-          <p class="card-desc">Model break-even volume, revenue thresholds, and profit sensitivity.</p>
-          <div class="card-tags"><span class="tag">Excel</span><span class="tag">Finance</span><span class="tag">Teaching</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:18px;">Break-Even Analysis Tool</h3>
+          <span class="badge badge--live">Free</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Financial Tool</span>
-          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/Break_Even_Analysis.xlsx" class="card-link">Download →</a>
+        <p class="card__body">Model break-even volume, revenue thresholds, and profit sensitivity.</p>
+        <div class="tag-row"><span class="tag">Excel</span><span class="tag">Finance</span><span class="tag">Teaching</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Financial Tool</span>
+          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/Break_Even_Analysis.xlsx" class="link-action link-action--cta">Download <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-template"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">Customer Lifetime Value Calculator</h2>
-            <span class="card-badge badge-free">Free</span>
-          </div>
-          <p class="card-desc">Estimate customer lifetime value and compare segments against acquisition cost.</p>
-          <div class="card-tags"><span class="tag">Excel</span><span class="tag">Marketing</span><span class="tag">CLV</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:18px;">Customer Lifetime Value Calculator</h3>
+          <span class="badge badge--live">Free</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Marketing Tool</span>
-          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/CLV_Calculator.xlsx" class="card-link">Download →</a>
+        <p class="card__body">Estimate customer lifetime value and compare segments against acquisition cost.</p>
+        <div class="tag-row"><span class="tag">Excel</span><span class="tag">Marketing</span><span class="tag">CLV</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Marketing Tool</span>
+          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/CLV_Calculator.xlsx" class="link-action link-action--cta">Download <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-template"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">Competitive Positioning Map</h2>
-            <span class="card-badge badge-free">Free</span>
-          </div>
-          <p class="card-desc">Plot competitors across two strategic dimensions and identify market gaps.</p>
-          <div class="card-tags"><span class="tag">Excel</span><span class="tag">Strategy</span><span class="tag">Marketing</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:18px;">Competitive Positioning Map</h3>
+          <span class="badge badge--live">Free</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Strategy Tool</span>
-          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/Competitive_Positioning_Map.xlsx" class="card-link">Download →</a>
+        <p class="card__body">Plot competitors across two strategic dimensions and identify market gaps.</p>
+        <div class="tag-row"><span class="tag">Excel</span><span class="tag">Strategy</span><span class="tag">Marketing</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Strategy Tool</span>
+          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/Competitive_Positioning_Map.xlsx" class="link-action link-action--cta">Download <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-template"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">Marketing Funnel Dashboard</h2>
-            <span class="card-badge badge-free">Free</span>
-          </div>
-          <p class="card-desc">Analyse conversion, drop-off, and channel contribution across the funnel.</p>
-          <div class="card-tags"><span class="tag">Excel</span><span class="tag">Funnel</span><span class="tag">Conversion</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:18px;">Marketing Funnel Dashboard</h3>
+          <span class="badge badge--live">Free</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Funnel Dashboard</span>
-          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/Marketing_Funnel_Dashboard.xlsx" class="card-link">Download →</a>
+        <p class="card__body">Analyse conversion, drop-off, and channel contribution across the funnel.</p>
+        <div class="tag-row"><span class="tag">Excel</span><span class="tag">Funnel</span><span class="tag">Conversion</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Funnel Dashboard</span>
+          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/Marketing_Funnel_Dashboard.xlsx" class="link-action link-action--cta">Download <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-template"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">CAC Calculator</h2>
-            <span class="card-badge badge-free">Free</span>
-          </div>
-          <p class="card-desc">Compare customer acquisition cost by channel and estimate payback period.</p>
-          <div class="card-tags"><span class="tag">Excel</span><span class="tag">CAC</span><span class="tag">Performance</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:18px;">CAC Calculator</h3>
+          <span class="badge badge--live">Free</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Acquisition Tool</span>
-          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/CAC_Calculator.xlsx" class="card-link">Download →</a>
+        <p class="card__body">Compare customer acquisition cost by channel and estimate payback period.</p>
+        <div class="tag-row"><span class="tag">Excel</span><span class="tag">CAC</span><span class="tag">Performance</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Acquisition Tool</span>
+          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/CAC_Calculator.xlsx" class="link-action link-action--cta">Download <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-template"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">Revenue Forecast Model</h2>
-            <span class="card-badge badge-free">Free</span>
-          </div>
-          <p class="card-desc">Build a 12-month scenario forecast with actual-versus-plan tracking.</p>
-          <div class="card-tags"><span class="tag">Excel</span><span class="tag">Forecasting</span><span class="tag">Finance</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:18px;">Revenue Forecast Model</h3>
+          <span class="badge badge--live">Free</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Forecast Model</span>
-          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/Revenue_Forecast_Model.xlsx" class="card-link">Download →</a>
+        <p class="card__body">Build a 12-month scenario forecast with actual-versus-plan tracking.</p>
+        <div class="tag-row"><span class="tag">Excel</span><span class="tag">Forecasting</span><span class="tag">Finance</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Forecast Model</span>
+          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/Revenue_Forecast_Model.xlsx" class="link-action link-action--cta">Download <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-template"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">RFM Segmentation</h2>
-            <span class="card-badge badge-free">Free</span>
-          </div>
-          <p class="card-desc">Segment customers by recency, frequency, and monetary value.</p>
-          <div class="card-tags"><span class="tag">Excel</span><span class="tag">RFM</span><span class="tag">Segmentation</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:18px;">RFM Segmentation</h3>
+          <span class="badge badge--live">Free</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Segmentation Tool</span>
-          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/RFM_Segmentation.xlsx" class="card-link">Download →</a>
+        <p class="card__body">Segment customers by recency, frequency, and monetary value.</p>
+        <div class="tag-row"><span class="tag">Excel</span><span class="tag">RFM</span><span class="tag">Segmentation</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Segmentation Tool</span>
+          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/RFM_Segmentation.xlsx" class="link-action link-action--cta">Download <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-template"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">Churn Rate Dashboard</h2>
-            <span class="card-badge badge-free">Free</span>
-          </div>
-          <p class="card-desc">Monitor customer churn, revenue churn, and retention trends.</p>
-          <div class="card-tags"><span class="tag">Excel</span><span class="tag">Churn</span><span class="tag">Retention</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:18px;">Churn Rate Dashboard</h3>
+          <span class="badge badge--live">Free</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Retention Dashboard</span>
-          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/Churn_Rate_Dashboard.xlsx" class="card-link">Download →</a>
+        <p class="card__body">Monitor customer churn, revenue churn, and retention trends.</p>
+        <div class="tag-row"><span class="tag">Excel</span><span class="tag">Churn</span><span class="tag">Retention</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Retention Dashboard</span>
+          <a href="https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit/raw/master/Churn_Rate_Dashboard.xlsx" class="link-action link-action--cta">Download <span class="arrow">→</span></a>
         </div>
       </article>
 
     </div>
   </section>
-
-  <hr class="divider">
 
   <!-- Web Tools -->
   <section class="section" id="web-tools">
-    <div class="section-label">Web Tools</div>
-    <p style="font-size:0.9rem; color:var(--ink-soft); margin-bottom:1.5rem; max-width:62ch;">Standalone browser-based tools built for quick, useful decisions. Price Memory turns your own purchase log into a grocery price baseline, while Margin Guard checks whether a promotion can recover the contribution margin it gives away.</p>
-    <a href="https://github.com/MohammedAliSharafuddin?tab=repositories" target="_blank" rel="noopener" style="font-family:'JetBrains Mono',monospace; font-size:0.63rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent-lt); padding-bottom:1px; margin-bottom:1.5rem; display:inline-block;">Browse web tool repositories on GitHub →</a>
+    <div class="eyebrow">02 &middot; Web Tools</div>
+    <p style="font-size:15px;line-height:1.6;color:var(--ink-soft);max-width:62em;margin-bottom:16px;">Standalone browser-based tools built for quick, useful decisions. Price Memory turns your own purchase log into a grocery price baseline, while Margin Guard checks whether a promotion can recover the contribution margin it gives away.</p>
+    <a href="https://github.com/MohammedAliSharafuddin?tab=repositories" target="_blank" rel="noopener" class="link-action" style="display:inline-block;margin-bottom:32px;">Browse web tool repositories on GitHub <span class="arrow">→</span></a>
 
-    <div class="card-grid">
+    <div class="grid grid--tight">
       <article class="card">
-        <div class="card-band band-web"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">Price Memory</h2>
-            <span class="card-badge badge-live">Live</span>
-          </div>
-          <p class="card-desc">A local grocery price tracker built as a single-page web app. It stores item, store, price, and date in IndexedDB so you can build a personal price history and check whether a sale is actually below your usual price.</p>
-          <div class="card-tags"><span class="tag">PWA</span><span class="tag">IndexedDB</span><span class="tag">Canvas API</span><span class="tag">Vanilla JS</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:18px;">Price Memory</h3>
+          <span class="badge badge--live">Live</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Web Application</span>
-          <a href="https://mohammedalisharafuddin.github.io/price-memory/" class="card-link" target="_blank" rel="noopener">Open App →</a>
+        <p class="card__body">A local grocery price tracker built as a single-page web app. It stores item, store, price, and date in IndexedDB so you can build a personal price history and check whether a sale is actually below your usual price.</p>
+        <div class="tag-row"><span class="tag">PWA</span><span class="tag">IndexedDB</span><span class="tag">Canvas API</span><span class="tag">Vanilla JS</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Web Application</span>
+          <a href="https://mohammedalisharafuddin.github.io/price-memory/" class="link-action link-action--cta" target="_blank" rel="noopener">Open App <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-web"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">Margin Guard</h2>
-            <span class="card-badge badge-live">Live</span>
-          </div>
-          <p class="card-desc">A single-page promotion break-even calculator for pricing and campaign decisions. It compares baseline contribution against promo-period contribution and shows discount depth, promo contribution per unit, break-even units, required unit lift, and expected net contribution delta.</p>
-          <div class="card-tags"><span class="tag">Pricing</span><span class="tag">Promotion</span><span class="tag">Local Storage</span><span class="tag">Vanilla JS</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:18px;">Margin Guard</h3>
+          <span class="badge badge--live">Live</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Web Application</span>
-          <a href="https://mohammedalisharafuddin.github.io/margin-guard/" class="card-link" target="_blank" rel="noopener">Open App →</a>
+        <p class="card__body">A single-page promotion break-even calculator for pricing and campaign decisions. It compares baseline contribution against promo-period contribution and shows discount depth, promo contribution per unit, break-even units, required unit lift, and expected net contribution delta.</p>
+        <div class="tag-row"><span class="tag">Pricing</span><span class="tag">Promotion</span><span class="tag">Local Storage</span><span class="tag">Vanilla JS</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Web Application</span>
+          <a href="https://mohammedalisharafuddin.github.io/margin-guard/" class="link-action link-action--cta" target="_blank" rel="noopener">Open App <span class="arrow">→</span></a>
         </div>
       </article>
     </div>
   </section>
 
-  <hr class="divider">
-
   <section class="section">
-    <div class="section-label">Coming Soon On FlairMI</div>
-    <p class="section-intro">Alongside the live templates and web tools, the next FlairMI product line is focused on writing, revision, and survey workflow. These teaser pages show what is in testing now.</p>
+    <div class="eyebrow">03 &middot; Coming Soon On FlairMI</div>
+    <p style="font-size:15px;line-height:1.6;color:var(--ink-soft);max-width:62em;margin-bottom:32px;">Alongside the live templates and web tools, the next FlairMI product line is focused on writing, revision, and survey workflow. These teaser pages show what is in testing now.</p>
 
-    <div class="card-grid">
+    <div class="grid grid--tight">
       <article class="card">
-        <div class="card-band band-web"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">QuartoPad</h2>
-            <span class="card-badge badge-wip">Private Beta</span>
-          </div>
-          <p class="card-desc">A local-first Quarto workspace with live rendering, chunk execution, citation tools, and project-aware editing.</p>
-          <div class="card-tags"><span class="tag">Quarto</span><span class="tag">R</span><span class="tag">Writing</span><span class="tag">Local-first</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:19px;">QuartoPad</h3>
+          <span class="badge badge--beta">Private Beta</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Coming Soon on FlairMI</span>
-          <a href="https://flairmi.com/products/quartopad.html" class="card-link" target="_blank" rel="noopener">Preview →</a>
+        <p class="card__body">A local-first Quarto workspace with live rendering, chunk execution, citation tools, and project-aware editing.</p>
+        <div class="tag-row"><span class="tag">Quarto</span><span class="tag">R</span><span class="tag">Writing</span><span class="tag">Local-first</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Coming Soon on FlairMI</span>
+          <a href="https://flairmi.com/products/quartopad.html" class="link-action link-action--cta" target="_blank" rel="noopener">Preview <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-web"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">TrimWrite</h2>
-            <span class="card-badge badge-wip">Testing</span>
-          </div>
-          <p class="card-desc">A revision environment for voice cleanup, AI-pattern checks, and final-draft tightening before submission.</p>
-          <div class="card-tags"><span class="tag">Revision</span><span class="tag">Writing</span><span class="tag">Editing</span><span class="tag">Beta</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:19px;">TrimWrite</h3>
+          <span class="badge badge--beta">Testing</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Coming Soon on FlairMI</span>
-          <a href="https://flairmi.com/products/trimwrite.html" class="card-link" target="_blank" rel="noopener">Preview →</a>
+        <p class="card__body">A revision environment for voice cleanup, AI-pattern checks, and final-draft tightening before submission.</p>
+        <div class="tag-row"><span class="tag">Revision</span><span class="tag">Writing</span><span class="tag">Editing</span><span class="tag">Beta</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Coming Soon on FlairMI</span>
+          <a href="https://flairmi.com/products/trimwrite.html" class="link-action link-action--cta" target="_blank" rel="noopener">Preview <span class="arrow">→</span></a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-band band-web"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <h2 class="card-title">Ethos</h2>
-            <span class="card-badge badge-wip">Alpha</span>
-          </div>
-          <p class="card-desc">A survey workflow product for versioned instrument design, defensible data collection, guided analysis, and reproducible reporting.</p>
-          <div class="card-tags"><span class="tag">Survey Workflow</span><span class="tag">Analysis</span><span class="tag">Reporting</span><span class="tag">Alpha</span></div>
+        <div class="card__header">
+          <h3 class="card__title" style="font-size:19px;">Ethos</h3>
+          <span class="badge badge--beta">Alpha</span>
         </div>
-        <div class="card-footer">
-          <span class="card-meta">Coming Soon on FlairMI</span>
-          <a href="https://flairmi.com/products/ethos.html" class="card-link" target="_blank" rel="noopener">Preview →</a>
+        <p class="card__body">A survey workflow product for versioned instrument design, defensible data collection, guided analysis, and reproducible reporting.</p>
+        <div class="tag-row"><span class="tag">Survey Workflow</span><span class="tag">Analysis</span><span class="tag">Reporting</span><span class="tag">Alpha</span></div>
+        <div class="card__footer">
+          <span class="card__meta">Coming Soon on FlairMI</span>
+          <a href="https://flairmi.com/products/ethos.html" class="link-action link-action--cta" target="_blank" rel="noopener">Preview <span class="arrow">→</span></a>
         </div>
       </article>
     </div>
 
-    <a href="https://flairmi.com/products/index.html" target="_blank" rel="noopener" class="mono-link mono-link-accent section-link">See all upcoming product previews →</a>
+    <a href="https://flairmi.com/products/index.html" target="_blank" rel="noopener" class="link-action" style="display:inline-block;margin-top:32px;">See all upcoming product previews <span class="arrow">→</span></a>
   </section>
-
-  <hr class="divider">
 
   <section class="section">
-    <div class="section-label">Download Note</div>
-    <p style="font-size:0.93rem; color:var(--ink-soft); max-width:60ch; line-height:1.78;">All toolkit files are hosted in the public <em>marketing-decision-toolkit</em> repository and linked above for direct download. The templates are free for academic and professional use. If you adapt any template for a course or workshop, attribution to <em>Mohammed Ali Sharafuddin / FlairMI</em> is appreciated. Questions about classroom use or adaptation can be sent to <a href="mailto:mohammedali.page@gmail.com" style="color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent-lt);">mohammedali.page@gmail.com</a>.</p>
+    <div class="eyebrow">04 &middot; Download Note</div>
+    <p style="font-size:15px;line-height:1.7;color:var(--ink-soft);max-width:60em;">All toolkit files are hosted in the public <em>marketing-decision-toolkit</em> repository and linked above for direct download. The templates are free for academic and professional use. If you adapt any template for a course or workshop, attribution to <em>Mohammed Ali Sharafuddin / FlairMI</em> is appreciated. Questions about classroom use or adaptation can be sent to <a href="mailto:mohammedali.page@gmail.com" class="link-inline">mohammedali.page@gmail.com</a>.</p>
   </section>
 
-</div>
+</main>
 
 <footer class="site-footer">
-  <div class="footer-inner">
-    <p class="footer-note">Mohammed Ali Sharafuddin, Senior Lecturer, Qasim Ibrahim School of Business, Villa College, Malé, Maldives.</p>
-    <span class="footer-mono">Updated March 2026</span>
+  <div class="site-footer__inner">
+    <span class="monogram">MAS</span>
+    <p style="font-size:14px;color:var(--ink-muted);margin:0;">Mohammed Ali Sharafuddin, Senior Lecturer, Qasim Ibrahim School of Business, Villa College, Malé, Maldives.</p>
+    <span class="site-footer__meta">Updated May 2026</span>
   </div>
 </footer>
 
+<script>
+(function(){
+  var btn=document.getElementById('theme-toggle');
+  if(!btn)return;
+  function sync(){
+    var dark=document.documentElement.getAttribute('data-theme')==='dark';
+    btn.textContent=dark?'Light':'Dark';
+    btn.setAttribute('aria-pressed',String(dark));
+  }
+  sync();
+  btn.addEventListener('click',function(){
+    var dark=document.documentElement.getAttribute('data-theme')==='dark';
+    var next=dark?'light':'dark';
+    document.documentElement.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+    sync();
+  });
+})();
+</script>
+<script>
+(function(){
+  var toggle=document.getElementById('nav-toggle');
+  var links=document.getElementById('site-nav-links');
+  if(!toggle||!links)return;
+  toggle.addEventListener('click',function(){
+    var open=links.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded',String(open));
+    toggle.classList.toggle('is-open',open);
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      links.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded','false');
+      toggle.classList.remove('is-open');
+    });
+  });
+})();
+</script>
 </body>
 </html>
