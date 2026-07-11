@@ -1295,8 +1295,8 @@ function proceed(input) {
       case 'consent':
         if (input === 'I do not agree') {
           addBotMessage('Thank you. The study will now close.');
-          renderChoices(['Restart study']);
           state.step = 'end_ineligible';
+          renderChoices(['Restart study']);
         } else {
           askStep('e1');
         }
@@ -1362,8 +1362,8 @@ function proceed(input) {
         if (input === 'Confirm order') {
           addBotMessage('Order recorded. This is a mock order and no real resort order has been placed.');
           clearInteractiveBlocks();
-          renderRoutingConfirmation();
           state.step = 'success';
+          renderRoutingConfirmation();
         } else if (input === 'Edit order') {
           state.cart = [];
           if (state.mode === 'Quick Book') renderQuickBook(); else askStep('conv_diet');
@@ -1391,8 +1391,8 @@ function proceed(input) {
 
 function screenOut() {
   addBotMessage('You do not meet the eligibility criteria for this pilot study. Thank you for your time.');
-  renderChoices(['Restart study']);
   state.step = 'end_ineligible';
+  renderChoices(['Restart study']);
 }
 
 function renderQuickBook() {
