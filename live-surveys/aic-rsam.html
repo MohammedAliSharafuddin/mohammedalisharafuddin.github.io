@@ -450,6 +450,8 @@ const state = {
   finished: false
 };
 
+let uiLocked = false;
+
 const stepsOrder = [
   'start','consent','e1','e2','e3','e4','e5','e6','e7','mode','quick','conv_diet','conv_persons','conv_meal','conv_mood','conv_reco','room','request','confirm','success','survey'
 ];
@@ -1213,13 +1215,15 @@ function clearInteractiveBlocks() {
 
 function renderChoices(choices, fullWidth=false) {
   clearInteractiveBlocks();
+  uiLocked = false;
+  const renderedStep = state.step;
   const wrap = document.createElement('div');
   wrap.className = fullWidth ? 'full-width-options' : 'options-container';
   choices.forEach(choice => {
     const btn = document.createElement('button');
     btn.className = fullWidth ? 'reply-card' : 'option-chip';
     btn.textContent = choice;
-    btn.onclick = () => handleChoice(choice);
+    btn.onclick = () => handleChoice(choice, renderedStep);
     wrap.appendChild(btn);
   });
   chatWindow.insertBefore(wrap, typingIndicator);
@@ -1228,13 +1232,15 @@ function renderChoices(choices, fullWidth=false) {
 
 function renderCardChoices(cards) {
   clearInteractiveBlocks();
+  uiLocked = false;
+  const renderedStep = state.step;
   const wrap = document.createElement('div');
   wrap.className = 'full-width-options';
   cards.forEach(card => {
     const btn = document.createElement('button');
     btn.className = 'reply-card';
     btn.innerHTML = `${card.label}<small>${card.sub || ''}</small>`;
-    btn.onclick = () => handleChoice(card.label);
+    btn.onclick = () => handleChoice(card.label, renderedStep);
     wrap.appendChild(btn);
   });
   chatWindow.insertBefore(wrap, typingIndicator);
@@ -1269,7 +1275,10 @@ function askStep(key) {
   }
 }
 
-function handleChoice(choice) {
+function handleChoice(choice, renderedStep) {
+  if (uiLocked) return;
+  if (renderedStep !== undefined && renderedStep !== state.step) return;
+  uiLocked = true;
   clearInteractiveBlocks();
   addUserMessage(choice);
   proceed(choice);
