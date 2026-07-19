@@ -73,6 +73,7 @@ Full list with current status: https://mohammedalisharafuddin.github.io/textbook
 - Marketing Decision Toolkit (10 free Excel workbooks): https://github.com/MohammedAliSharafuddin/marketing-decision-toolkit
 - Price Memory (grocery price tracker): https://mohammedalisharafuddin.github.io/price-memory/
 - Margin Guard (promotion break-even calculator): https://mohammedalisharafuddin.github.io/margin-guard/
+- Persona Builder (UX and marketing persona card builder, PNG/PDF export): https://mohammedalisharafuddin.github.io/persona-builder/
 - Full list: https://mohammedalisharafuddin.github.io/templates.html
 
 ## Research

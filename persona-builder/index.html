@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona Builder: Free Browser Tool for UX and Marketing Personas</title>
+<meta name="description" content="Build a UX or marketing persona card in the browser, from a one-field basic card to a full research profile, then export it as a PNG or PDF. No sign-up, no data leaves your device.">
+<link rel="canonical" href="https://mohammedalisharafuddin.github.io/persona-builder/">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Persona Builder: Free Browser Tool for UX and Marketing Personas">
+<meta property="og:description" content="Build a UX or marketing persona card in the browser, from a one-field basic card to a full research profile, then export it as a PNG or PDF.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mohammedalisharafuddin.github.io/persona-builder/">
+<meta property="og:site_name" content="Mohammed Ali Sharafuddin">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Persona Builder: Free Browser Tool for UX and Marketing Personas">
+<meta name="twitter:description" content="Build a UX or marketing persona card in the browser, from a one-field basic card to a full research profile, then export it as a PNG or PDF.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Persona Builder",
+  "url": "https://mohammedalisharafuddin.github.io/persona-builder/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any (runs in browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "A free browser-based tool for building UX and marketing personas at three levels of detail, basic, standard, and full, with PNG and PDF export. All data stays on the user's device.",
+  "author": { "@type": "Person", "name": "Mohammed Ali Sharafuddin", "url": "https://mohammedalisharafuddin.github.io/" },
+  "isAccessibleForFree": true
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script defer src="../assets/js/ga4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+  :root {
+    --paper: #f6f4ee;
+    --paper-alt: #edeae1;
+    --ink: #1e1c19;
+    --ink-muted: #6b665e;
+    --rule: #d7d1c2;
+    --accent: #3d5a68;
+    --accent-soft: #dfe6e6;
+    --accent-ink: #f6f4ee;
+    --danger: #8a3b2c;
+    --radius: 3px;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  [data-theme="dark"] {
+    --paper: #16171a;
+    --paper-alt: #1e2023;
+    --ink: #eae6dd;
+    --ink-muted: #8f8b83;
+    --rule: #34363a;
+    --accent: #8fb3bd;
+    --accent-soft: #23303380;
+    --accent-ink: #14181a;
+    --danger: #c97a63;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+
+  .topbar {
+    display: flex; align-items: baseline; justify-content: space-between;
+    padding: 22px clamp(16px, 4vw, 48px) 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .brand { display: flex; align-items: baseline; gap: 12px; }
+  .brand-mark {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em;
+    color: var(--ink-muted); border: 1px solid var(--rule); padding: 3px 7px; border-radius: var(--radius);
+  }
+  .brand h1 {
+    font-family: var(--serif); font-weight: 600; font-size: 20px; margin: 0; letter-spacing: 0.01em;
+  }
+  .back-link {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--ink-muted); text-decoration: none; margin-right: 14px;
+  }
+  .back-link:hover { color: var(--accent); }
+  .topbar-right { display: flex; align-items: center; gap: 14px; }
+  .theme-toggle {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+    background: none; border: 1px solid var(--rule); color: var(--ink-muted);
+    padding: 7px 12px; border-radius: var(--radius); cursor: pointer;
+  }
+  .theme-toggle:hover { color: var(--ink); border-color: var(--ink-muted); }
+
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(320px, 460px) 1fr;
+    gap: 0;
+    min-height: calc(100vh - 66px);
+  }
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+
+  .panel-form {
+    padding: clamp(16px, 3vw, 32px);
+    border-right: 1px solid var(--rule);
+    overflow-y: auto;
+  }
+  @media (max-width: 900px) { .panel-form { border-right: none; border-bottom: 1px solid var(--rule); } }
+
+  .template-select {
+    display: flex; gap: 8px; margin-bottom: 26px;
+  }
+  .template-pill {
+    flex: 1; font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase;
+    text-align: center; padding: 10px 6px; border: 1px solid var(--rule); border-radius: var(--radius);
+    cursor: pointer; background: var(--paper-alt); color: var(--ink-muted);
+    transition: border-color .15s, color .15s, background .15s, transform .15s, box-shadow .15s;
+  }
+  .template-pill:hover { transform: translateY(-1px); }
+  .template-pill.active {
+    border-color: var(--accent); color: var(--accent); background: var(--accent-soft);
+    font-weight: 600;
+    box-shadow: 0 4px 12px -7px var(--accent);
+  }
+
+  fieldset {
+    border: none; margin: 0 0 22px; padding: 0;
+  }
+  .field-eyebrow {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);
+  }
+  .field-eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+
+  .field { margin-bottom: 14px; }
+  .field label {
+    display: block; font-size: 12.5px; color: var(--ink-muted); margin-bottom: 5px; font-weight: 500;
+  }
+  .field input[type="text"],
+  .field input[type="number"],
+  .field select,
+  .field textarea {
+    width: 100%; font-family: var(--sans); font-size: 14px; color: var(--ink);
+    background: var(--paper-alt); border: 1px solid var(--rule); border-radius: var(--radius);
+    padding: 9px 10px; resize: vertical;
+  }
+  .field textarea { min-height: 66px; line-height: 1.5; }
+  .field input:focus, .field textarea:focus, .field select:focus {
+    outline: none; border-color: var(--accent);
+  }
+  .field-hint { font-size: 11px; color: var(--ink-muted); margin-top: 4px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .chip-group { display: flex; flex-wrap: wrap; gap: 7px; }
+  .chip {
+    font-size: 12.5px; padding: 6px 11px; border: 1px solid var(--rule); border-radius: 999px;
+    cursor: pointer; color: var(--ink-muted); background: var(--paper-alt); user-select: none;
+  }
+  .chip.selected { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+  .photo-row { display: flex; align-items: center; gap: 12px; }
+  .photo-upload-btn {
+    font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;
+    border: 1px dashed var(--rule); color: var(--ink-muted); background: none; border-radius: var(--radius);
+    padding: 8px 12px; cursor: pointer;
+  }
+  .photo-upload-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .avatar-presets-label {
+    font-size: 11px; color: var(--ink-muted); margin: 12px 0 7px; letter-spacing: 0.02em;
+  }
+  .avatar-presets { display: flex; flex-wrap: wrap; gap: 8px; }
+  .avatar-swatch {
+    width: 36px; height: 36px; border-radius: 50%; overflow: hidden; cursor: pointer;
+    border: 2px solid transparent; padding: 0; background: none; flex-shrink: 0;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .avatar-swatch img, .avatar-swatch .initials-swatch { width: 100%; height: 100%; display: block; }
+  .avatar-swatch.selected { border-color: var(--accent); box-shadow: 0 4px 10px -5px rgba(20,18,14,0.5); }
+  .avatar-swatch:hover { opacity: 0.85; transform: translateY(-2px); }
+  .initials-swatch {
+    display: flex; align-items: center; justify-content: center;
+    background: var(--paper-alt); color: var(--ink-muted); font-family: var(--mono); font-size: 10px;
+    border: 1px dashed var(--rule); box-sizing: border-box;
+  }
+
+  .form-actions {
+    display: flex; gap: 10px; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--rule);
+  }
+  button.btn {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase;
+    border-radius: var(--radius); padding: 10px 14px; cursor: pointer; border: 1px solid var(--rule);
+    background: var(--paper-alt); color: var(--ink);
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, opacity .15s ease;
+  }
+  button.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  button.btn:hover { border-color: var(--ink-muted); transform: translateY(-1px); box-shadow: 0 6px 14px -8px rgba(20, 18, 14, 0.4); }
+  button.btn.primary:hover { opacity: 0.92; box-shadow: 0 8px 18px -8px rgba(61, 90, 104, 0.55); }
+  button.btn:active { transform: translateY(0); box-shadow: none; }
+  button.btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; box-shadow: none; }
+
+  /* ---- preview panel ---- */
+  .panel-preview {
+    padding: clamp(16px, 3vw, 40px);
+    display: flex; flex-direction: column; gap: 22px;
+    overflow-y: auto;
+    background-image: radial-gradient(var(--rule) 1px, transparent 1px);
+    background-size: 22px 22px;
+    background-position: -8px -8px;
+  }
+  .preview-toolbar { display: flex; justify-content: flex-end; gap: 10px; flex-wrap: wrap; }
+
+  .card-wrap { display: flex; justify-content: center; padding-top: 14px; }
+  .persona-card {
+    --level-color: var(--accent);
+    width: 100%; max-width: 640px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(20, 18, 14, 0.04), 0 18px 40px -20px rgba(20, 18, 14, 0.28);
+    overflow: visible;
+    transition: box-shadow .2s ease;
+  }
+  .persona-card::before {
+    content: "";
+    position: absolute; top: 0; left: 28px; right: 28px; height: 3px;
+    background: var(--level-color);
+    border-radius: 0 0 3px 3px;
+    opacity: 0.85;
+  }
+  .card-stamp {
+    position: absolute; top: -13px; left: 28px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent-ink); background: var(--level-color); border-radius: 2px; padding: 5px 10px;
+    box-shadow: 0 3px 8px -3px rgba(20, 18, 14, 0.4);
+  }
+  .card-header {
+    display: flex; gap: 18px; align-items: center;
+    padding: 28px 28px 20px;
+  }
+  .avatar {
+    width: 76px; height: 76px; border-radius: 50%; flex-shrink: 0;
+    background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 26px; font-weight: 600;
+    border: 3px solid var(--paper); overflow: hidden;
+    box-shadow: 0 0 0 1px var(--rule), 0 6px 16px -6px rgba(20, 18, 14, 0.35);
+    transition: transform .2s ease;
+  }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .card-name {
+    font-family: var(--serif); font-size: 27px; font-weight: 600; margin: 0; line-height: 1.15;
+    position: relative; display: inline-block;
+  }
+  .card-role { font-size: 13.5px; color: var(--ink-muted); margin-top: 5px; }
+  .card-meta { font-family: var(--mono); font-size: 11px; color: var(--ink-muted); margin-top: 7px; letter-spacing: 0.02em; }
+
+  .card-divider {
+    border: none; border-top: 1px dashed var(--rule); margin: 0;
+  }
+
+  .card-body { padding: 22px 28px 28px; }
+  .card-section {
+    margin-bottom: 20px;
+    animation: cardSectionIn .35s ease both;
+  }
+  .card-section:last-child { margin-bottom: 0; }
+  .card-section-title {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--level-color); margin-bottom: 8px;
+    display: flex; align-items: center; gap: 7px;
+  }
+  .card-section-title::before {
+    content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--level-color); flex-shrink: 0;
+  }
+  .card-tagline {
+    font-family: var(--serif); font-style: italic; font-size: 16.5px; color: var(--ink); line-height: 1.55;
+  }
+  .card-quote {
+    font-family: var(--serif); font-style: italic; font-size: 17.5px; color: var(--ink); line-height: 1.5;
+    border-left: 2px solid var(--level-color); padding: 2px 0 2px 16px; position: relative;
+  }
+  .card-list { margin: 0; padding-left: 18px; font-size: 13.5px; line-height: 1.7; }
+  .card-list li { margin-bottom: 3px; }
+  .card-list li::marker { color: var(--level-color); }
+  .card-grid-two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .card-fact { font-size: 13.5px; }
+  .card-fact strong { display: block; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); font-weight: 500; margin-bottom: 3px; }
+  .card-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .card-chip {
+    font-size: 12px; padding: 4px 11px; border: 1px solid var(--rule); border-radius: 999px; color: var(--ink-muted);
+    background: var(--paper-alt);
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  }
+  .card-chip:hover { transform: translateY(-1px); box-shadow: 0 4px 10px -6px rgba(20,18,14,0.4); border-color: var(--level-color); color: var(--level-color); }
+  .card-empty-note { font-size: 13px; color: var(--ink-muted); font-style: italic; }
+  .card-footer {
+    padding: 12px 28px; border-top: 1px dashed var(--rule);
+    font-family: var(--mono); font-size: 10px; color: var(--ink-muted); letter-spacing: 0.05em;
+    display: flex; justify-content: space-between;
+  }
+
+  .card-section:nth-child(1) { animation-delay: 0s; }
+  .card-section:nth-child(2) { animation-delay: .04s; }
+  .card-section:nth-child(3) { animation-delay: .08s; }
+  .card-section:nth-child(4) { animation-delay: .12s; }
+  .card-section:nth-child(5) { animation-delay: .16s; }
+  .card-section:nth-child(6) { animation-delay: .2s; }
+  .card-section:nth-child(7) { animation-delay: .24s; }
+  .card-section:nth-child(8) { animation-delay: .28s; }
+
+  .persona-card.exporting .card-section { animation: none !important; opacity: 1 !important; transform: none !important; }
+  @keyframes cardSectionIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---- saved personas ---- */
+  .saved-section { border-top: 1px solid var(--rule); padding-top: 18px; }
+  .saved-title {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);
+    margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+  }
+  .saved-title::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+  .saved-list { display: flex; flex-direction: column; gap: 8px; }
+  .saved-item {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    border: 1px solid var(--rule); border-radius: var(--radius); padding: 9px 12px;
+    background: var(--paper-alt);
+    transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+  }
+  .saved-item:hover { border-color: var(--accent); box-shadow: 0 6px 14px -9px rgba(20,18,14,0.45); transform: translateY(-1px); }
+  .saved-item-info { display: flex; flex-direction: column; cursor: pointer; }
+  .saved-item-name { font-size: 13.5px; font-weight: 500; }
+  .saved-item-meta { font-family: var(--mono); font-size: 10.5px; color: var(--ink-muted); }
+  .saved-item-actions { display: flex; gap: 6px; }
+  .icon-btn {
+    background: none; border: 1px solid var(--rule); border-radius: var(--radius);
+    font-size: 11px; padding: 5px 8px; cursor: pointer; color: var(--ink-muted); font-family: var(--mono);
+  }
+  .icon-btn:hover { color: var(--danger); border-color: var(--danger); }
+  .saved-empty { font-size: 12.5px; color: var(--ink-muted); font-style: italic; }
+  .status-msg {
+    font-family: var(--mono); font-size: 11px; color: var(--accent); min-height: 16px;
+  }
+</style>
+</head>
+<body data-theme="light">
+
+<div class="topbar">
+  <div class="brand">
+    <a href="../index.html#web-tools" class="back-link">&larr; Portfolio</a>
+    <span class="brand-mark">PB &middot; 01</span>
+    <h1>Persona Builder</h1>
+  </div>
+  <div class="topbar-right">
+    <span class="status-msg" id="statusMsg"></span>
+    <button class="theme-toggle" id="themeToggle">Dark</button>
+  </div>
+</div>
+
+<div class="layout">
+
+  <!-- FORM PANEL -->
+  <div class="panel-form">
+
+    <div class="template-select" id="templateSelect">
+      <div class="template-pill active" data-level="basic">Basic</div>
+      <div class="template-pill" data-level="standard">Standard</div>
+      <div class="template-pill" data-level="full">Full</div>
+    </div>
+
+    <!-- 01 Identity (always visible) -->
+    <fieldset data-tier="basic">
+      <div class="field-eyebrow">01 &middot; Identity</div>
+      <div class="photo-row field">
+        <div class="avatar" id="avatarPreview">?</div>
+        <button class="photo-upload-btn" id="photoBtn" type="button">Upload photo</button>
+        <input type="file" id="photoInput" accept="image/*" style="display:none">
+      </div>
+      <div class="avatar-presets-label">Or choose a sample avatar</div>
+      <div class="avatar-presets" id="avatarPresets"></div>
+      <div class="field">
+        <label for="f-name">Name</label>
+        <input type="text" id="f-name" placeholder="e.g. Amina Rasheed">
+      </div>
+      <div class="field">
+        <label for="f-role">Role or archetype</label>
+        <input type="text" id="f-role" placeholder="e.g. Busy department head">
+      </div>
+      <div class="field">
+        <label for="f-tagline">One-line summary</label>
+        <textarea id="f-tagline" placeholder="A short sentence capturing who this person is."></textarea>
+      </div>
+    </fieldset>
+
+    <!-- 02 Snapshot (standard+) -->
+    <fieldset data-tier="standard">
+      <div class="field-eyebrow">02 &middot; Snapshot</div>
+      <div class="two-col">
+        <div class="field">
+          <label for="f-age">Age or range</label>
+          <input type="text" id="f-age" placeholder="e.g. 34, or 30 to 40">
+        </div>
+        <div class="field">
+          <label for="f-location">Location</label>
+          <input type="text" id="f-location" placeholder="e.g. Male, Maldives">
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-occupation">Occupation or context</label>
+        <input type="text" id="f-occupation" placeholder="e.g. Marketing manager, mid-sized retailer">
+      </div>
+      <div class="field">
+        <label for="f-goals">Goals (one per line)</label>
+        <textarea id="f-goals" placeholder="What is this person trying to achieve?"></textarea>
+      </div>
+      <div class="field">
+        <label for="f-pains">Pain points (one per line)</label>
+        <textarea id="f-pains" placeholder="What gets in their way?"></textarea>
+      </div>
+    </fieldset>
+
+    <!-- 03 Behaviour (standard+) -->
+    <fieldset data-tier="standard">
+      <div class="field-eyebrow">03 &middot; Behaviour</div>
+      <div class="field">
+        <label for="f-behaviours">Typical behaviours (one per line)</label>
+        <textarea id="f-behaviours" placeholder="Habits, routines, decision patterns."></textarea>
+      </div>
+      <div class="field">
+        <label>Preferred channels</label>
+        <div class="chip-group" id="channelChips">
+          <div class="chip" data-value="Email">Email</div>
+          <div class="chip" data-value="Social media">Social media</div>
+          <div class="chip" data-value="Phone">Phone</div>
+          <div class="chip" data-value="In person">In person</div>
+          <div class="chip" data-value="Mobile app">Mobile app</div>
+          <div class="chip" data-value="Search">Search</div>
+          <div class="chip" data-value="Community forums">Community forums</div>
+          <div class="chip" data-value="Video">Video</div>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- 04 Voice and notes (full only) -->
+    <fieldset data-tier="full">
+      <div class="field-eyebrow">04 &middot; Voice &amp; motivation</div>
+      <div class="field">
+        <label for="f-quote">Representative quote</label>
+        <textarea id="f-quote" placeholder="A short quote in their voice."></textarea>
+      </div>
+      <div class="field">
+        <label for="f-motivations">Motivations (one per line)</label>
+        <textarea id="f-motivations" placeholder="What drives their decisions?"></textarea>
+      </div>
+      <div class="field">
+        <label for="f-traits">Personality traits (comma separated)</label>
+        <input type="text" id="f-traits" placeholder="e.g. Pragmatic, cautious, detail-oriented">
+      </div>
+    </fieldset>
+
+    <fieldset data-tier="full">
+      <div class="field-eyebrow">05 &middot; Research notes</div>
+      <div class="two-col">
+        <div class="field">
+          <label for="f-techcomfort">Technology comfort</label>
+          <select id="f-techcomfort">
+            <option value="">Not set</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-kpis">Key metrics tracked</label>
+          <input type="text" id="f-kpis" placeholder="e.g. Retention, NPS">
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-notes">Notes</label>
+        <textarea id="f-notes" placeholder="Sources, caveats, or context for other researchers."></textarea>
+      </div>
+    </fieldset>
+
+    <div class="form-actions">
+      <button class="btn primary" id="saveBtn">Save persona</button>
+      <button class="btn" id="newBtn">New</button>
+      <button class="btn" id="sampleBtn">Load sample</button>
+    </div>
+
+    <div class="saved-section">
+      <div class="saved-title">Saved personas</div>
+      <div class="saved-list" id="savedList"></div>
+    </div>
+
+  </div>
+
+  <!-- PREVIEW PANEL -->
+  <div class="panel-preview">
+    <div class="preview-toolbar">
+      <button class="btn" id="exportPngBtn">Export PNG</button>
+      <button class="btn" id="exportPdfBtn">Export PDF</button>
+    </div>
+    <div class="card-wrap">
+      <div class="persona-card" id="personaCard">
+        <!-- rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var state = {
+    level: 'basic',
+    photoData: null,
+    currentId: null
+  };
+
+  var fieldIds = ['f-name','f-role','f-tagline','f-age','f-location','f-occupation','f-goals','f-pains',
+    'f-behaviours','f-quote','f-motivations','f-traits','f-techcomfort','f-kpis','f-notes'];
+
+  var channelState = {};
+
+  function el(id) { return document.getElementById(id); }
+
+  function setStatus(msg) {
+    el('statusMsg').textContent = msg || '';
+    if (msg) setTimeout(function () {
+      if (el('statusMsg').textContent === msg) el('statusMsg').textContent = '';
+    }, 2600);
+  }
+
+  // ---- theme ----
+  el('themeToggle').addEventListener('click', function () {
+    var body = document.body;
+    var isDark = body.getAttribute('data-theme') === 'dark';
+    body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    el('themeToggle').textContent = isDark ? 'Dark' : 'Light';
+  });
+
+  // ---- template level ----
+  document.getElementById('templateSelect').addEventListener('click', function (e) {
+    var pill = e.target.closest('.template-pill');
+    if (!pill) return;
+    state.level = pill.getAttribute('data-level');
+    document.querySelectorAll('.template-pill').forEach(function (p) { p.classList.remove('active'); });
+    pill.classList.add('active');
+    applyTierVisibility();
+    renderCard();
+  });
+
+  function applyTierVisibility() {
+    var order = { basic: 1, standard: 2, full: 3 };
+    var current = order[state.level];
+    document.querySelectorAll('fieldset[data-tier]').forEach(function (fs) {
+      var tier = order[fs.getAttribute('data-tier')];
+      fs.style.display = (tier <= current) ? '' : 'none';
+    });
+  }
+
+  // ---- channel chips ----
+  document.getElementById('channelChips').addEventListener('click', function (e) {
+    var chip = e.target.closest('.chip');
+    if (!chip) return;
+    var val = chip.getAttribute('data-value');
+    channelState[val] = !channelState[val];
+    chip.classList.toggle('selected', !!channelState[val]);
+    renderCard();
+  });
+
+  // ---- photo ----
+  el('photoBtn').addEventListener('click', function () { el('photoInput').click(); });
+  el('photoInput').addEventListener('change', function (e) {
+    var file = e.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function (ev) {
+      var img = new Image();
+      img.onload = function () {
+        var canvas = document.createElement('canvas');
+        var size = 240;
+        canvas.width = size; canvas.height = size;
+        var ctx = canvas.getContext('2d');
+        var scale = Math.max(size / img.width, size / img.height);
+        var w = img.width * scale, h = img.height * scale;
+        ctx.drawImage(img, (size - w) / 2, (size - h) / 2, w, h);
+        state.photoData = canvas.toDataURL('image/jpeg', 0.85);
+        renderCard();
+      };
+      img.src = ev.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // ---- sample avatar presets (generated inline SVG, no network needed) ----
+  var avatarPalettes = [
+    { bg: '#dfe6e6', fg: '#3d5a68' },
+    { bg: '#ece0d6', fg: '#8a5a3b' },
+    { bg: '#e3ded0', fg: '#6e6b3f' },
+    { bg: '#e6dde3', fg: '#6e3b58' },
+    { bg: '#dde3d6', fg: '#3f6e4a' },
+    { bg: '#e9dcd3', fg: '#8a3b2c' },
+    { bg: '#dbe0e6', fg: '#33465e' },
+    { bg: '#e6e0c9', fg: '#7a6222' }
+  ];
+
+  function avatarSvgDataUri(bg, fg) {
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">' +
+      '<rect width="100" height="100" fill="' + bg + '"/>' +
+      '<circle cx="50" cy="40" r="17" fill="' + fg + '"/>' +
+      '<path d="M18 92 C18 65 34 55 50 55 C66 55 82 65 82 92 Z" fill="' + fg + '"/>' +
+      '</svg>';
+    return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+  }
+
+  function renderAvatarPresets() {
+    var container = el('avatarPresets');
+    var html = '';
+    // "none" option, uses initials
+    html += '<button type="button" class="avatar-swatch" data-preset="none" aria-label="Use initials" title="Use initials">' +
+      '<span class="initials-swatch">Aa</span></button>';
+    avatarPalettes.forEach(function (p, i) {
+      var uri = avatarSvgDataUri(p.bg, p.fg);
+      html += '<button type="button" class="avatar-swatch" data-preset="' + i + '" aria-label="Sample avatar ' + (i + 1) + '" title="Sample avatar ' + (i + 1) + '">' +
+        '<img src="' + uri + '" alt=""></button>';
+    });
+    container.innerHTML = html;
+    container.querySelectorAll('.avatar-swatch').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var preset = btn.getAttribute('data-preset');
+        if (preset === 'none') {
+          state.photoData = null;
+        } else {
+          var p = avatarPalettes[parseInt(preset, 10)];
+          state.photoData = avatarSvgDataUri(p.bg, p.fg);
+        }
+        highlightSelectedSwatch();
+        renderCard();
+      });
+    });
+    highlightSelectedSwatch();
+  }
+
+  function highlightSelectedSwatch() {
+    document.querySelectorAll('#avatarPresets .avatar-swatch').forEach(function (btn) {
+      var preset = btn.getAttribute('data-preset');
+      var isMatch = false;
+      if (preset === 'none') {
+        isMatch = !state.photoData;
+      } else {
+        var p = avatarPalettes[parseInt(preset, 10)];
+        isMatch = state.photoData === avatarSvgDataUri(p.bg, p.fg);
+      }
+      btn.classList.toggle('selected', isMatch);
+    });
+  }
+
+  renderAvatarPresets();
+
+  // ---- sample data for previewing the full view ----
+  var samplePersona = {
+    level: 'full',
+    photoData: avatarSvgDataUri(avatarPalettes[3].bg, avatarPalettes[3].fg),
+    'f-name': 'Aisha Waheed',
+    'f-role': 'Marketing manager, mid-sized retail chain',
+    'f-tagline': 'Juggles three campaigns at once and trusts data over instinct, but only when the dashboard is fast to read.',
+    'f-age': '34',
+    'f-location': 'Male, Maldives',
+    'f-occupation': 'Manages a team of four across social, email, and in-store promotions for a regional retail chain.',
+    'f-goals': 'Prove marketing ROI to the finance team each quarter\nCut the time spent building reports by half\nGrow repeat customer rate without discounting more',
+    'f-pains': 'Data lives in four disconnected tools\nCampaign results arrive too late to adjust mid-flight\nLeadership asks for numbers she has to chase manually',
+    'f-behaviours': 'Checks dashboards first thing every morning\nPrefers a single summary screen over granular tables\nDelegates execution but reviews every report personally',
+    channels: ['Email', 'Mobile app', 'In person'],
+    'f-quote': 'If I cannot explain the number in one sentence, I do not trust it yet.',
+    'f-motivations': 'Wants to be seen as the data-literate voice in leadership meetings\nWants her team to leave work on time more often\nWants a system she will not have to replace again next year',
+    'f-traits': 'Pragmatic, direct, mildly skeptical of new tools, protective of her team',
+    'f-techcomfort': 'Medium',
+    'f-kpis': 'Campaign ROI, repeat purchase rate, report turnaround time',
+    'f-notes': 'Composite persona built from four customer interviews and one internal stakeholder session, Q2 2026. Revisit after the next loyalty programme launch.'
+  };
+
+  el('sampleBtn').addEventListener('click', function () {
+    setFormData(samplePersona);
+    state.currentId = null;
+    setStatus('Sample loaded');
+  });
+
+  // ---- live field binding ----
+  fieldIds.forEach(function (id) {
+    var node = el(id);
+    if (node) node.addEventListener('input', renderCard);
+  });
+
+  function linesToArray(text) {
+    return (text || '').split('\n').map(function (s) { return s.trim(); }).filter(Boolean);
+  }
+
+  function getFormData() {
+    var data = { level: state.level, photoData: state.photoData, channels: [] };
+    fieldIds.forEach(function (id) {
+      var node = el(id);
+      data[id] = node ? node.value : '';
+    });
+    for (var k in channelState) if (channelState[k]) data.channels.push(k);
+    return data;
+  }
+
+  function setFormData(data) {
+    fieldIds.forEach(function (id) {
+      var node = el(id);
+      if (node) node.value = data[id] || '';
+    });
+    state.photoData = data.photoData || null;
+    channelState = {};
+    (data.channels || []).forEach(function (c) { channelState[c] = true; });
+    document.querySelectorAll('#channelChips .chip').forEach(function (chip) {
+      chip.classList.toggle('selected', !!channelState[chip.getAttribute('data-value')]);
+    });
+    state.level = data.level || 'basic';
+    document.querySelectorAll('.template-pill').forEach(function (p) {
+      p.classList.toggle('active', p.getAttribute('data-level') === state.level);
+    });
+    applyTierVisibility();
+    highlightSelectedSwatch();
+    renderCard();
+  }
+
+  function initials(name) {
+    if (!name) return '?';
+    var parts = name.trim().split(/\s+/);
+    var s = parts[0][0] || '';
+    if (parts.length > 1) s += parts[parts.length - 1][0];
+    return s.toUpperCase();
+  }
+
+  function esc(s) {
+    return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function listHtml(items) {
+    if (!items.length) return '<div class="card-empty-note">Not specified</div>';
+    return '<ul class="card-list">' + items.map(function (i) { return '<li>' + esc(i) + '</li>'; }).join('') + '</ul>';
+  }
+
+  var levelColors = { basic: 'var(--accent)', standard: '#6e6b3f', full: '#7a3226' };
+
+  function renderCard() {
+    var d = getFormData();
+    var name = d['f-name'] || 'Unnamed persona';
+    var role = d['f-role'] || '';
+    var tagline = d['f-tagline'] || '';
+
+    el('personaCard').style.setProperty('--level-color', levelColors[d.level] || 'var(--accent)');
+
+    // update avatar in form panel too
+    el('avatarPreview').innerHTML = state.photoData
+      ? '<img src="' + state.photoData + '" alt="">'
+      : esc(initials(d['f-name']));
+
+    var levelLabel = { basic: 'Basic', standard: 'Standard', full: 'Full' }[d.level];
+
+    var html = '';
+    html += '<div class="card-stamp">' + levelLabel + '</div>';
+    html += '<div class="card-header">';
+    html += '<div class="avatar">' + (state.photoData ? '<img src="' + state.photoData + '" alt="">' : esc(initials(name))) + '</div>';
+    html += '<div><h2 class="card-name">' + esc(name) + '</h2>';
+    if (role) html += '<div class="card-role">' + esc(role) + '</div>';
+    html += '<div class="card-meta">' + [d['f-location'], d['f-age'] ? 'Age ' + d['f-age'] : ''].filter(Boolean).map(esc).join(' &middot; ') + '</div>';
+    html += '</div></div>';
+    html += '<hr class="card-divider">';
+    html += '<div class="card-body">';
+
+    // 01 tagline
+    if (tagline) {
+      html += '<div class="card-section"><div class="card-tagline">' + esc(tagline) + '</div></div>';
+    }
+
+    if (d.level !== 'basic') {
+      html += '<div class="card-section"><div class="card-section-title">Context</div>';
+      html += '<div class="card-grid-two">';
+      html += '<div class="card-fact"><strong>Occupation</strong>' + (d['f-occupation'] ? esc(d['f-occupation']) : '<span class="card-empty-note">Not specified</span>') + '</div>';
+      html += '<div class="card-fact"><strong>Channels</strong>' + (d.channels.length ? '<div class="card-chips">' + d.channels.map(function (c) { return '<span class="card-chip">' + esc(c) + '</span>'; }).join('') + '</div>' : '<span class="card-empty-note">Not specified</span>') + '</div>';
+      html += '</div></div>';
+
+      html += '<div class="card-section"><div class="card-section-title">Goals</div>' + listHtml(linesToArray(d['f-goals'])) + '</div>';
+      html += '<div class="card-section"><div class="card-section-title">Pain points</div>' + listHtml(linesToArray(d['f-pains'])) + '</div>';
+      html += '<div class="card-section"><div class="card-section-title">Typical behaviour</div>' + listHtml(linesToArray(d['f-behaviours'])) + '</div>';
+    }
+
+    if (d.level === 'full') {
+      if (d['f-quote']) {
+        html += '<div class="card-section"><div class="card-section-title">In their words</div><div class="card-quote">&ldquo;' + esc(d['f-quote']) + '&rdquo;</div></div>';
+      }
+      html += '<div class="card-section"><div class="card-section-title">Motivations</div>' + listHtml(linesToArray(d['f-motivations'])) + '</div>';
+
+      var traitsArr = (d['f-traits'] || '').split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+      html += '<div class="card-section"><div class="card-section-title">Traits</div>' + (traitsArr.length ? '<div class="card-chips">' + traitsArr.map(function (t) { return '<span class="card-chip">' + esc(t) + '</span>'; }).join('') + '</div>' : '<div class="card-empty-note">Not specified</div>') + '</div>';
+
+      html += '<div class="card-section"><div class="card-grid-two">';
+      html += '<div class="card-fact"><strong>Tech comfort</strong>' + (d['f-techcomfort'] ? esc(d['f-techcomfort']) : '<span class="card-empty-note">Not set</span>') + '</div>';
+      html += '<div class="card-fact"><strong>Key metrics</strong>' + (d['f-kpis'] ? esc(d['f-kpis']) : '<span class="card-empty-note">Not specified</span>') + '</div>';
+      html += '</div></div>';
+
+      if (d['f-notes']) {
+        html += '<div class="card-section"><div class="card-section-title">Research notes</div><div style="font-size:13px; color:var(--ink-muted); line-height:1.6;">' + esc(d['f-notes']) + '</div></div>';
+      }
+    }
+
+    html += '</div>';
+    html += '<div class="card-footer"><span>PERSONA &middot; ' + levelLabel.toUpperCase() + '</span><span>' + new Date().toLocaleDateString() + '</span></div>';
+
+    el('personaCard').innerHTML = html;
+  }
+
+  // ---- storage (browser localStorage, all data stays on this device) ----
+  var STORAGE_PREFIX = 'persona-builder:';
+  var STORAGE_INDEX_KEY = STORAGE_PREFIX + 'index';
+
+  function uid() {
+    return 'p_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+  }
+
+  async function getIndex() {
+    try {
+      var raw = localStorage.getItem(STORAGE_INDEX_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  async function setIndex(list) {
+    localStorage.setItem(STORAGE_INDEX_KEY, JSON.stringify(list));
+  }
+
+  async function saveCurrentPersona() {
+    var data = getFormData();
+    var name = data['f-name'] || 'Untitled persona';
+    var id = state.currentId || uid();
+    state.currentId = id;
+    try {
+      localStorage.setItem(STORAGE_PREFIX + id, JSON.stringify(data));
+      var list = await getIndex();
+      var existing = list.find(function (item) { return item.id === id; });
+      var entry = { id: id, name: name, updatedAt: Date.now() };
+      if (existing) {
+        list = list.map(function (item) { return item.id === id ? entry : item; });
+      } else {
+        list.push(entry);
+      }
+      await setIndex(list);
+      await renderSavedList();
+      setStatus('Saved');
+    } catch (e) {
+      setStatus('Save failed');
+      console.error(e);
+    }
+  }
+
+  async function loadPersona(id) {
+    try {
+      var raw = localStorage.getItem(STORAGE_PREFIX + id);
+      if (!raw) return;
+      var data = JSON.parse(raw);
+      state.currentId = id;
+      setFormData(data);
+      setStatus('Loaded');
+    } catch (e) {
+      setStatus('Load failed');
+      console.error(e);
+    }
+  }
+
+  async function deletePersona(id, ev) {
+    ev.stopPropagation();
+    if (!confirm('Delete this saved persona? This cannot be undone.')) return;
+    try {
+      localStorage.removeItem(STORAGE_PREFIX + id);
+      var list = await getIndex();
+      list = list.filter(function (item) { return item.id !== id; });
+      await setIndex(list);
+      if (state.currentId === id) {
+        state.currentId = null;
+      }
+      await renderSavedList();
+      setStatus('Deleted');
+    } catch (e) {
+      setStatus('Delete failed');
+      console.error(e);
+    }
+  }
+
+  async function renderSavedList() {
+    var list = await getIndex();
+    list.sort(function (a, b) { return b.updatedAt - a.updatedAt; });
+    var container = el('savedList');
+    if (!list.length) {
+      container.innerHTML = '<div class="saved-empty">No saved personas yet.</div>';
+      return;
+    }
+    container.innerHTML = list.map(function (item) {
+      var d = new Date(item.updatedAt);
+      return '<div class="saved-item">' +
+        '<div class="saved-item-info" data-id="' + item.id + '">' +
+          '<span class="saved-item-name">' + esc(item.name) + '</span>' +
+          '<span class="saved-item-meta">' + d.toLocaleDateString() + '</span>' +
+        '</div>' +
+        '<div class="saved-item-actions"><button class="icon-btn" data-del="' + item.id + '">Delete</button></div>' +
+      '</div>';
+    }).join('');
+
+    container.querySelectorAll('.saved-item-info').forEach(function (node) {
+      node.addEventListener('click', function () { loadPersona(node.getAttribute('data-id')); });
+    });
+    container.querySelectorAll('[data-del]').forEach(function (node) {
+      node.addEventListener('click', function (e) { deletePersona(node.getAttribute('data-del'), e); });
+    });
+  }
+
+  el('saveBtn').addEventListener('click', saveCurrentPersona);
+  el('newBtn').addEventListener('click', function () {
+    fieldIds.forEach(function (id) { var n = el(id); if (n) n.value = ''; });
+    state.photoData = null;
+    state.currentId = null;
+    channelState = {};
+    document.querySelectorAll('#channelChips .chip').forEach(function (c) { c.classList.remove('selected'); });
+    renderCard();
+    setStatus('New persona');
+  });
+
+  // ---- export ----
+  function safeFilename(s) {
+    return (s || 'persona').toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '') || 'persona';
+  }
+
+  el('exportPngBtn').addEventListener('click', async function () {
+    setStatus('Rendering PNG');
+    try {
+      var node = el('personaCard');
+      node.classList.add('exporting');
+      var canvas = await html2canvas(node, { backgroundColor: getComputedStyle(document.body).getPropertyValue('--paper'), scale: 2 });
+      node.classList.remove('exporting');
+      var link = document.createElement('a');
+      var name = safeFilename(getFormData()['f-name']);
+      link.download = name + '.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      setStatus('PNG downloaded');
+    } catch (e) {
+      el('personaCard').classList.remove('exporting');
+      setStatus('Export failed');
+      console.error(e);
+    }
+  });
+
+  el('exportPdfBtn').addEventListener('click', async function () {
+    setStatus('Rendering PDF');
+    try {
+      var node = el('personaCard');
+      node.classList.add('exporting');
+      var canvas = await html2canvas(node, { backgroundColor: getComputedStyle(document.body).getPropertyValue('--paper'), scale: 2 });
+      node.classList.remove('exporting');
+      var imgData = canvas.toDataURL('image/png');
+      var jsPDFCtor = window.jspdf.jsPDF;
+      var pxWidth = canvas.width, pxHeight = canvas.height;
+      var pdf = new jsPDFCtor({
+        orientation: pxWidth > pxHeight ? 'landscape' : 'portrait',
+        unit: 'pt',
+        format: [pxWidth * 0.75, pxHeight * 0.75]
+      });
+      pdf.addImage(imgData, 'PNG', 0, 0, pxWidth * 0.75, pxHeight * 0.75);
+      var name = safeFilename(getFormData()['f-name']);
+      pdf.save(name + '.pdf');
+      setStatus('PDF downloaded');
+    } catch (e) {
+      el('personaCard').classList.remove('exporting');
+      setStatus('Export failed');
+      console.error(e);
+    }
+  });
+
+  // ---- init ----
+  applyTierVisibility();
+  renderCard();
+  renderSavedList();
+})();
+</script>
+</body>
+</html>
