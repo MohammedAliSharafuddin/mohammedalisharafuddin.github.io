@@ -1,73 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mohammedalisharafuddin.github.io/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://mohammedalisharafuddin.github.io/research.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://mohammedalisharafuddin.github.io/textbooks.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://mohammedalisharafuddin.github.io/templates.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://mohammedalisharafuddin.github.io/live-surveys/index.html</loc>
+    <lastmod>2026-07-24T13:16:48.636Z</lastmod>
   </url>
   <url>
     <loc>https://mohammedalisharafuddin.github.io/tools.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-07-24T13:17:21.397Z</lastmod>
   </url>
   <url>
-    <loc>https://mohammedalisharafuddin.github.io/live-surveys/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://mohammedalisharafuddin.github.io/research.html</loc>
+    <lastmod>2026-07-24T09:24:23.911Z</lastmod>
   </url>
   <url>
-    <loc>https://mohammedalisharafuddin.github.io/live-surveys/aic-rsam.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://mohammedalisharafuddin.github.io/about.html</loc>
+    <lastmod>2026-07-24T21:30:23.641Z</lastmod>
   </url>
   <url>
-    <loc>https://mohammedalisharafuddin.github.io/blog.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://mohammedalisharafuddin.github.io/index.html</loc>
+    <lastmod>2026-07-24T13:39:29.406Z</lastmod>
   </url>
   <url>
-    <loc>https://mohammedalisharafuddin.github.io/blog/posts/01-margin-of-error.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://mohammedalisharafuddin.github.io/teaching.html</loc>
+    <lastmod>2026-07-24T13:41:46.226Z</lastmod>
   </url>
   <url>
-    <loc>https://mohammedalisharafuddin.github.io/blog/posts/02-two-proportion-test.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://mohammedalisharafuddin.github.io/books.html</loc>
+    <lastmod>2026-07-24T15:36:59.589Z</lastmod>
   </url>
   <url>
-    <loc>https://mohammedalisharafuddin.github.io/blog/posts/03-t-test.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://mohammedalisharafuddin.github.io/blog/posts/04-welch-t.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://mohammedalisharafuddin.github.io/blog/posts/05-simple-regression.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://mohammedalisharafuddin.github.io/blog/posts/06-logistic-basics.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://mohammedalisharafuddin.github.io/software.html</loc>
+    <lastmod>2026-07-24T21:33:49.700Z</lastmod>
   </url>
 </urlset>

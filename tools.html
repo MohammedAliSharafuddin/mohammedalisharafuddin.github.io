@@ -1,302 +1,1167 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Open-Source Tools: Mohammed Ali Sharafuddin</title>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Mohammed Ali Sharafuddin">
 <meta name="description" content="Open-source software for surveys, statistics, writing, and reproducible research, curated for practical academic and teaching use.">
-<link rel="canonical" href="https://mohammedalisharafuddin.github.io/tools.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/theme.css">
-<script>
-(function(){
-  var t=localStorage.getItem('theme');
-  if(t==='dark') document.documentElement.setAttribute('data-theme','dark');
-})();
-</script>
-<script defer src="/assets/js/ga4.js"></script>
-<script defer src="/assets/js/contact-form.js"></script>
+
+<title>Open-Source Tools - Mohammed Ali Sharafuddin</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-eb8120af4a629074991278064e0e7ba3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-27579a0194b50c7049aacb36a3dd776e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-eb8120af4a629074991278064e0e7ba3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="Open-Source Tools: Mohammed Ali Sharafuddin">
+<meta name="google-site-verification" content="__clvg1zlth9VpTJA0obgFwwiM2eF3sMekhOkMxjnhQ">
+<meta name="googlebot" content="index,follow">
+<meta name="bingbot" content="index,follow">
+<script defer="" src="./assets/js/ga4.js"></script>
+<script defer="" src="./assets/js/contact-form.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://mohammedalisharafuddin.github.io/#person",
+    "name": "Mohammed Ali Sharafuddin",
+    "url": "https://mohammedalisharafuddin.github.io/",
+    "image": "https://mohammedalisharafuddin.github.io/assets/images/Mohammed_Ali_Sharafuddin_cropped.jpg",
+    "jobTitle": "Senior Lecturer",
+    "worksFor": {
+      "@type": "EducationalOrganization",
+      "name": "Qasim Ibrahim School of Business, Villa College",
+      "address": {"@type": "PostalAddress", "addressLocality": "Malé", "addressCountry": "MV"}
+    },
+    "knowsAbout": ["quantitative research methods", "marketing analytics", "small-sample statistics", "R programming", "management education"],
+    "sameAs": [
+      "https://orcid.org/0000-0001-5247-2964",
+      "https://github.com/MohammedAliSharafuddin",
+      "https://scholar.google.com/citations?user=DgaDtq4AAAAJ",
+      "https://flairmi.com/about.html"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "@id": "https://mohammedalisharafuddin.github.io/quantitative-analysis-with-small-samples/#book",
+    "name": "Quantitative Analysis with Small Samples: A Practical Guide for Students and Early-Career Researchers",
+    "url": "https://mohammedalisharafuddin.github.io/quantitative-analysis-with-small-samples/",
+    "author": [
+      {"@type": "Person", "name": "Mohammed Ali Sharafuddin", "sameAs": "https://orcid.org/0000-0001-5247-2964"},
+      {"@type": "Person", "name": "Ahsan Ahmed Jaleel", "sameAs": "https://orcid.org/0009-0004-5576-8700"},
+      {"@type": "Person", "name": "Meena Madhavan", "sameAs": "https://orcid.org/0000-0003-1244-5392"}
+    ],
+    "datePublished": "2026-05-16",
+    "publisher": {"@type": "Organization", "name": "Zenodo"},
+    "identifier": {"@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.20221929"},
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "isAccessibleForFree": true,
+    "inLanguage": "en",
+    "sameAs": "https://doi.org/10.5281/zenodo.20221929"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://mohammedalisharafuddin.github.io/#website",
+    "name": "Mohammed Ali Sharafuddin",
+    "url": "https://mohammedalisharafuddin.github.io/",
+    "author": {"@id": "https://mohammedalisharafuddin.github.io/#person"}
+  }
+]
+</script>
+
+
+<meta property="og:title" content="Open-Source Tools – Mohammed Ali Sharafuddin">
 <meta property="og:description" content="Open-source software for surveys, statistics, writing, and reproducible research, curated for practical academic and teaching use.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://mohammedalisharafuddin.github.io/tools.html">
 <meta property="og:image" content="https://mohammedalisharafuddin.github.io/assets/images/mas-og.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Mohammed Ali Sharafuddin">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Open-Source Tools: Mohammed Ali Sharafuddin">
+<meta property="og:image:alt" content="Mohammed Ali Sharafuddin — research, textbooks, and tools">
+<meta name="twitter:title" content="Open-Source Tools – Mohammed Ali Sharafuddin">
 <meta name="twitter:description" content="Open-source software for surveys, statistics, writing, and reproducible research, curated for practical academic and teaching use.">
 <meta name="twitter:image" content="https://mohammedalisharafuddin.github.io/assets/images/mas-og.png">
+<meta name="twitter:image:alt" content="Mohammed Ali Sharafuddin — research, textbooks, and tools">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://mohammedalisharafuddin.github.io/tools.html">
 </head>
-<body>
 
-<nav class="site-nav">
-  <div class="site-nav__inner">
-    <a href="index.html" class="site-nav__brand">
-      <span class="monogram">MAS</span>
-      <span class="site-nav__name">Mohammed Ali Sharafuddin</span>
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav-links">
-      <span class="nav-toggle__bars"></span>
-    </button>
-    <div class="site-nav__links" id="site-nav-links">
-      <a href="textbooks.html">Textbooks</a>
-      <a href="templates.html">Templates</a>
-      <a href="index.html#software">Software</a>
-      <a href="index.html#web-tools">Web Tools</a>
-      <a href="tools.html" aria-current="page">Open-Source Tools</a>
-      <a href="blog.html">Blog</a>
-      <a href="research.html">Research</a>
-      <a href="live-surveys/index.html">Live Surveys</a>
-      <a href="index.html#contact" class="btn btn--sm">Contact</a>
-      <button class="btn-ghost btn--sm" id="theme-toggle" aria-label="Toggle dark mode">Dark</button>
-    </div>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Mohammed Ali Sharafuddin</span>
+    </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./teaching.html"> 
+<span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./books.html"> 
+<span class="menu-text">Books</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-toolkit" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Toolkit</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-toolkit">    
+        <li>
+    <a class="dropdown-item" href="./software.html">
+ <span class="dropdown-text">Software</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./tools.html">
+ <span class="dropdown-text">Tools</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./templates.html">
+ <span class="dropdown-text">Templates</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./persona-builder/index.html">
+ <span class="dropdown-text">Persona Builder</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-blog" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Blog</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-blog">    
+        <li>
+    <a class="dropdown-item" href="https://flairmi.com/blog/index.html">
+ <span class="dropdown-text">All posts</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Statistics Tutorials</li>
+        <li>
+    <a class="dropdown-item" href="https://flairmi.com/blog/posts/01-margin-of-error.html">
+ <span class="dropdown-text">Confidence Interval for a Proportion</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://flairmi.com/blog/posts/02-two-proportion-test.html">
+ <span class="dropdown-text">Two-Proportion Test</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://flairmi.com/blog/posts/03-t-test.html">
+ <span class="dropdown-text">t-Test: Average Order Value</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://flairmi.com/blog/posts/04-welch-t.html">
+ <span class="dropdown-text">Welch vs Equal-Variance t-Test</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://flairmi.com/blog/posts/05-simple-regression.html">
+ <span class="dropdown-text">Simple Linear Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://flairmi.com/blog/posts/06-logistic-basics.html">
+ <span class="dropdown-text">Logistic Regression Basics</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">surveyframe &amp; Research Methods</li>
+        <li>
+    <a class="dropdown-item" href="https://flairmi.com/blog/posts/07-surveyframe-0-3-3-cran.html">
+ <span class="dropdown-text">surveyframe 0.3.3 on CRAN</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://flairmi.com/blog/posts/08-analysis-plan-before-data.html">
+ <span class="dropdown-text">Why the Analysis Plan Comes First</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://flairmi.com/blog/posts/09-surveyframe-single-choice.html">
+ <span class="dropdown-text">surveyframe Field Types: Single Choice</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Tools &amp; Announcements</li>
+        <li>
+    <a class="dropdown-item" href="https://flairmi.com/blog/posts/10-persona-builder.html">
+ <span class="dropdown-text">Persona Builder Announcement</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./live-surveys/index.html"> 
+<span class="menu-text">Live Surveys</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#start-here" id="toc-start-here" class="nav-link active" data-scroll-target="#start-here">Start here</a></li>
+  <li><a href="#statistics-and-analysis" id="toc-statistics-and-analysis" class="nav-link" data-scroll-target="#statistics-and-analysis">Statistics and analysis</a></li>
+  <li><a href="#survey-and-data-collection" id="toc-survey-and-data-collection" class="nav-link" data-scroll-target="#survey-and-data-collection">Survey and data collection</a></li>
+  <li><a href="#writing-and-publishing" id="toc-writing-and-publishing" class="nav-link" data-scroll-target="#writing-and-publishing">Writing and publishing</a></li>
+  <li><a href="#reproducible-research-and-teaching" id="toc-reproducible-research-and-teaching" class="nav-link" data-scroll-target="#reproducible-research-and-teaching">Reproducible research and teaching</a></li>
+  </ul>
 </nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
 
-<header class="hero">
-  <div class="eyebrow">Curated by Mohammed Ali Sharafuddin</div>
-  <h1>Open-Source Tools</h1>
-  <p style="font-size:18px;line-height:1.6;color:var(--ink-soft);max-width:36em;margin-top:24px;">Software for surveys, statistics, writing, and reproducible research, selected for practical academic and teaching workflows. All are free and open-source.</p>
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Open-Source Tools</h1>
+</div>
+
+<div>
+  <div class="description">
+    Open-source software for surveys, statistics, writing, and reproducible research, curated for practical academic and teaching use.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p><a href="https://mohammedalisharafuddin.github.io/about.html">Mohammed Ali Sharafuddin</a> <a href="https://orcid.org/0000-0001-5247-2964" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
 </header>
 
-<main>
 
-  <section class="section">
-    <div class="eyebrow">01 &middot; Start Here</div>
-    <div class="card card--pad-lg">
-      <p class="card__body" style="font-size:15px;">If you are choosing quickly, start with <strong style="color:var(--ink);">JASP</strong> or <strong style="color:var(--ink);">jamovi</strong> for point-and-click statistics teaching, move to <strong style="color:var(--ink);">R + RStudio</strong> when you need programmable analysis and full reproducibility, use <strong style="color:var(--ink);">Quarto</strong> for reports and teaching materials, choose <strong style="color:var(--ink);">surveyframe</strong> when you need a full survey research pipeline from instrument design to analysis report inside R, and choose <strong style="color:var(--ink);">LimeSurvey</strong> or <strong style="color:var(--ink);">KoboToolbox</strong> when your data collection requires structured logic or offline fieldwork.</p>
+<p>Software for surveys, statistics, writing, and reproducible research, selected for practical academic and teaching workflows. All are free and open-source.</p>
+<section id="start-here" class="level2">
+<h2 class="anchored" data-anchor-id="start-here">Start here</h2>
+<p>If you are choosing quickly, start with <strong>JASP</strong> or <strong>jamovi</strong> for point-and-click statistics teaching, move to <strong>R + RStudio</strong> when you need programmable analysis and full reproducibility, use <strong>Quarto</strong> for reports and teaching materials, choose <strong>surveyframe</strong> when you need a full survey research pipeline from instrument design to analysis report inside R, and choose <strong>LimeSurvey</strong> or <strong>KoboToolbox</strong> when your data collection requires structured logic or offline fieldwork.</p>
+</section>
+<section id="statistics-and-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="statistics-and-analysis">Statistics and analysis</h2>
+<div class="grid mb-4">
+
+  <div class="g-col-12 g-col-md-6 g-col-lg-6 d-flex">
+    <div class="card h-100">
+      <div class="card-header">R + RStudio</div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="badge">Free &amp; open-source</span>
+        </div>
+        <p class="card-text">R is the statistical language behind the teaching suite, and RStudio Desktop is the open-source development environment used for most of that work. Supports descriptive statistics, modelling, visualisation, and reproducible reporting.</p>
+        <h6 class="card-subtitle mb-2 text-muted anchored">Who should use it</h6>
+        <p class="card-text">Researchers and postgraduate students who want full analytical control, reproducible outputs, and a toolchain that scales from coursework to publishable analysis.</p>
+      </div>
+      <div class="card-body pt-0">
+        <a href="https://posit.co/download/rstudio-desktop/" class="card-link" target="_blank" rel="noopener">Get R + RStudio</a>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Statistics -->
-  <section class="section">
-    <div class="eyebrow">02 &middot; Statistics &amp; Analysis</div>
+  <div class="g-col-12 g-col-md-6 g-col-lg-6 d-flex">
+    <div class="card h-100">
+      <div class="card-header">JASP</div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="badge">Free &amp; open-source</span>
+        </div>
+        <p class="card-text">A point-and-click statistics application developed by the University of Amsterdam. Covers standard frequentist tests and adds Bayesian counterparts alongside them. Output is formatted in APA style and exported directly to Word or PDF.</p>
+        <h6 class="card-subtitle mb-2 text-muted anchored">Who should use it</h6>
+        <p class="card-text">Undergraduate and postgraduate students, faculty who want a clean teaching tool, and practitioners who need statistical results without writing code.</p>
+      </div>
+      <div class="card-body pt-0">
+        <a href="https://jasp-stats.org/download/" class="card-link" target="_blank" rel="noopener">Download JASP</a>
+      </div>
+    </div>
+  </div>
 
-    <article class="card" style="margin-bottom:16px;">
-      <div class="card__header">
-        <h3 class="card__title" style="font-size:19px;">R + RStudio</h3>
-        <span class="badge badge--info">Teaching &amp; Research</span>
+  <div class="g-col-12 g-col-md-6 g-col-lg-6 d-flex">
+    <div class="card h-100">
+      <div class="card-header">jamovi</div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="badge">Free &amp; open-source</span>
+        </div>
+        <p class="card-text">Like JASP, jamovi provides a free, open-source interface for common statistical tests, with a spreadsheet-like data view. Supports mediation, moderation, and factor analysis via the jmv and medmod modules, and runs R beneath the surface.</p>
+        <h6 class="card-subtitle mb-2 text-muted anchored">Who should use it</h6>
+        <p class="card-text">Students transitioning from Excel to proper statistical software, or anyone who needs a familiar spreadsheet layout alongside inferential statistics.</p>
       </div>
-      <p class="card__body">R is the statistical language behind the teaching suite, and RStudio Desktop is the open-source development environment used for most of that work. Together they support descriptive statistics, modelling, visualisation, and reproducible reporting for classroom and research workflows.</p>
-      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Researchers and postgraduate students who want full analytical control, reproducible outputs, and a toolchain that scales from coursework to publishable analysis.</p>
-      <div class="card__footer">
-        <span></span>
-        <a href="https://posit.co/download/rstudio-desktop/" class="link-action link-action--cta" target="_blank" rel="noopener">Get R + RStudio <span class="arrow">→</span></a>
+      <div class="card-body pt-0">
+        <a href="https://www.jamovi.org/download.html" class="card-link" target="_blank" rel="noopener">Download jamovi</a>
       </div>
-    </article>
+    </div>
+  </div>
 
-    <article class="card" style="margin-bottom:16px;">
-      <div class="card__header">
-        <h3 class="card__title" style="font-size:19px;">JASP</h3>
-        <span class="badge badge--info">Teaching</span>
+  <div class="g-col-12 g-col-md-6 g-col-lg-6 d-flex">
+    <div class="card h-100">
+      <div class="card-header">PSPP</div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="badge">Free &amp; open-source</span>
+        </div>
+        <p class="card-text">A free drop-in replacement for SPSS, maintained by the GNU project. Reads and writes .sav files, supports the most common SPSS syntax, and covers regression, ANOVA, factor analysis, and non-parametric tests.</p>
+        <h6 class="card-subtitle mb-2 text-muted anchored">Who should use it</h6>
+        <p class="card-text">Students and instructors who still work in SPSS-oriented environments but need a fully open-source option for teaching, practice, or light applied analysis.</p>
       </div>
-      <p class="card__body">A point-and-click statistics application developed by the University of Amsterdam. Covers standard frequentist tests and adds Bayesian counterparts alongside them, making it useful for teaching the conceptual difference between the two. Output is formatted in APA style and exported directly to Word or PDF. It works well as a no-cost SPSS replacement.</p>
-      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Undergraduate and postgraduate students, faculty who want a clean teaching tool, and practitioners who need statistical results without writing code.</p>
-      <div class="card__footer">
-        <span></span>
-        <a href="https://jasp-stats.org/download/" class="link-action link-action--cta" target="_blank" rel="noopener">Download JASP <span class="arrow">→</span></a>
+      <div class="card-body pt-0">
+        <a href="https://www.gnu.org/software/pspp/" class="card-link" target="_blank" rel="noopener">Download PSPP</a>
       </div>
-    </article>
+    </div>
+  </div>
 
-    <article class="card" style="margin-bottom:16px;">
-      <div class="card__header">
-        <h3 class="card__title" style="font-size:19px;">jamovi</h3>
-        <span class="badge badge--info">Teaching</span>
-      </div>
-      <p class="card__body">Like JASP, jamovi provides a free, open-source interface for common statistical tests, with a spreadsheet-like data view that many students find easier to navigate. It supports mediation, moderation, and factor analysis via the jmv and medmod modules. Because it runs R beneath the surface, it also works well as a bridge toward programming.</p>
-      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Students transitioning from Excel to proper statistical software, or anyone who needs a familiar spreadsheet layout alongside inferential statistics.</p>
-      <div class="card__footer">
-        <span></span>
-        <a href="https://www.jamovi.org/download.html" class="link-action link-action--cta" target="_blank" rel="noopener">Download jamovi <span class="arrow">→</span></a>
-      </div>
-    </article>
+</div>
+</section>
+<section id="survey-and-data-collection" class="level2">
+<h2 class="anchored" data-anchor-id="survey-and-data-collection">Survey and data collection</h2>
+<div class="grid mb-4">
 
-    <article class="card">
-      <div class="card__header">
-        <h3 class="card__title" style="font-size:19px;">PSPP</h3>
-        <span class="badge badge--info">Teaching</span>
+  <div class="g-col-12 g-col-md-6 g-col-lg-6 d-flex">
+    <div class="card h-100">
+      <div class="card-header">surveyframe</div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="badge">Free &amp; open-source</span>
+        </div>
+        <p class="card-text">An R package for end-to-end survey research workflows built around a typed instrument object. Visual instrument design, static HTML export, an embeddable Shiny module, response quality checking, psychometric diagnostics, and reproducible HTML reporting. Live on CRAN.</p>
+        <h6 class="card-subtitle mb-2 text-muted anchored">Who should use it</h6>
+        <p class="card-text">Researchers and postgraduate students who design, deploy, and analyse questionnaire-based studies in R and want a reproducible, self-contained pipeline from instrument design to analysis report.</p>
       </div>
-      <p class="card__body">A free drop-in replacement for SPSS, maintained by the GNU project. Reads and writes .sav files, supports the most common SPSS syntax, and covers regression, ANOVA, factor analysis, and non-parametric tests. It is useful wherever learners need SPSS-style work without a licence.</p>
-      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Students and instructors who still work in SPSS-oriented environments but need a fully open-source option for teaching, practice, or light applied analysis.</p>
-      <div class="card__footer">
-        <span></span>
-        <a href="https://www.gnu.org/software/pspp/" class="link-action link-action--cta" target="_blank" rel="noopener">Download PSPP <span class="arrow">→</span></a>
+      <div class="card-body pt-0">
+        <a href="https://CRAN.R-project.org/package=surveyframe" class="card-link" target="_blank" rel="noopener">surveyframe on CRAN</a>
       </div>
-    </article>
-  </section>
+    </div>
+  </div>
 
-  <!-- Survey -->
-  <section class="section">
-    <div class="eyebrow">03 &middot; Survey &amp; Data Collection</div>
+  <div class="g-col-12 g-col-md-6 g-col-lg-6 d-flex">
+    <div class="card h-100">
+      <div class="card-header">LimeSurvey</div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="badge">Free &amp; open-source</span>
+        </div>
+        <p class="card-text">A full-featured open-source survey platform that supports complex branching logic, quota management, multiple languages, and direct SPSS/R export. Can be self-hosted for data sovereignty or deployed through institutional hosting.</p>
+        <h6 class="card-subtitle mb-2 text-muted anchored">Who should use it</h6>
+        <p class="card-text">Researchers designing structured questionnaires with complex logic, multi-language instruments, or any study requiring formal sampling controls.</p>
+      </div>
+      <div class="card-body pt-0">
+        <a href="https://www.limesurvey.org/" class="card-link" target="_blank" rel="noopener">LimeSurvey.org</a>
+      </div>
+    </div>
+  </div>
 
-    <article class="card" style="margin-bottom:16px;">
-      <div class="card__header">
-        <h3 class="card__title" style="font-size:19px;">surveyframe</h3>
-        <span class="badge badge--info">Research &amp; Teaching</span>
+  <div class="g-col-12 g-col-md-6 g-col-lg-6 d-flex">
+    <div class="card h-100">
+      <div class="card-header">KoboToolbox</div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="badge">Free &amp; open-source</span>
+        </div>
+        <p class="card-text">Designed for data collection in low-connectivity environments. Supports offline collection on Android, GPS stamping, image capture, and direct export to SPSS, Stata, or Excel. Hosted free for academic researchers.</p>
+        <h6 class="card-subtitle mb-2 text-muted anchored">Who should use it</h6>
+        <p class="card-text">Researchers collecting field data in locations with unstable internet, distributed teams, or device-based data capture requirements.</p>
       </div>
-      <p class="card__body">An R package for end-to-end survey research workflows built around a typed instrument object (the sframe). Features include visual instrument design via a browser-based builder or Shiny studio, export to a self-contained static HTML survey that runs without a server, an embeddable Shiny module, SHA-256 integrity-checked serialisation to the .sframe format, multi-page survey rendering, branching logic, response quality checking, scale scoring, psychometric diagnostics, analysis-plan execution, model syntax planning, an interactive response dashboard, codebook generation, and reproducible HTML reporting. Version 0.3.0 is live on CRAN.</p>
-      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Researchers and postgraduate students who design, deploy, and analyse questionnaire-based studies in R and want a reproducible, self-contained pipeline from instrument design to analysis report.</p>
-      <div class="card__footer">
-        <span></span>
-        <a href="https://CRAN.R-project.org/package=surveyframe" class="link-action link-action--cta" target="_blank" rel="noopener">surveyframe on CRAN <span class="arrow">→</span></a>
+      <div class="card-body pt-0">
+        <a href="https://www.kobotoolbox.org/" class="card-link" target="_blank" rel="noopener">KoboToolbox</a>
       </div>
-    </article>
+    </div>
+  </div>
 
-    <article class="card" style="margin-bottom:16px;">
-      <div class="card__header">
-        <h3 class="card__title" style="font-size:19px;">LimeSurvey</h3>
-        <span class="badge badge--info">Research</span>
-      </div>
-      <p class="card__body">A full-featured open-source survey platform that supports complex branching logic, quota management, multiple languages, and direct SPSS/R export. It is well suited to academic research designs that need randomisation, conditional questions, or multi-page instruments. It can be self-hosted on university servers for data sovereignty or deployed through institutional hosting.</p>
-      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Researchers designing structured questionnaires with complex logic, multi-language instruments, or any study requiring formal sampling controls.</p>
-      <div class="card__footer">
-        <span></span>
-        <a href="https://www.limesurvey.org/" class="link-action link-action--cta" target="_blank" rel="noopener">LimeSurvey.org <span class="arrow">→</span></a>
-      </div>
-    </article>
+</div>
+</section>
+<section id="writing-and-publishing" class="level2">
+<h2 class="anchored" data-anchor-id="writing-and-publishing">Writing and publishing</h2>
+<div class="grid mb-4">
 
-    <article class="card">
-      <div class="card__header">
-        <h3 class="card__title" style="font-size:19px;">KoboToolbox</h3>
-        <span class="badge badge--info">Field Research</span>
+  <div class="g-col-12 g-col-md-6 g-col-lg-6 d-flex">
+    <div class="card h-100">
+      <div class="card-header">Quarto</div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="badge">Free &amp; open-source</span>
+        </div>
+        <p class="card-text">The publishing system behind the statistics teaching suite. Produces the book, companion site, lecture decks, worked examples, and related materials from a single source project, keeping content and output format separate.</p>
+        <h6 class="card-subtitle mb-2 text-muted anchored">Who should use it</h6>
+        <p class="card-text">Anyone producing textbooks, course materials, technical reports, or academic papers who wants reproducible, version-controlled outputs.</p>
       </div>
-      <p class="card__body">Designed for data collection in low-connectivity environments. Used extensively in humanitarian and development research but equally suitable for fieldwork in tourism, maritime, or SME contexts where internet access is unreliable. Supports offline collection on Android, GPS stamping, image capture, and direct export to SPSS, Stata, or Excel. Hosted free for academic researchers.</p>
-      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Researchers collecting field data in locations with unstable internet, distributed teams, or device-based data capture requirements.</p>
-      <div class="card__footer">
-        <span></span>
-        <a href="https://www.kobotoolbox.org/" class="link-action link-action--cta" target="_blank" rel="noopener">KoboToolbox <span class="arrow">→</span></a>
+      <div class="card-body pt-0">
+        <a href="https://quarto.org/docs/get-started/" class="card-link" target="_blank" rel="noopener">Get started with Quarto</a>
       </div>
-    </article>
-  </section>
+    </div>
+  </div>
 
-  <!-- Writing -->
-  <section class="section">
-    <div class="eyebrow">04 &middot; Writing &amp; Publishing</div>
+  <div class="g-col-12 g-col-md-6 g-col-lg-6 d-flex">
+    <div class="card h-100">
+      <div class="card-header">Zotero</div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="badge">Free &amp; open-source</span>
+        </div>
+        <p class="card-text">Reference management software that captures references directly from browser pages, PDFs, and DOI lookups. Generates citations and bibliographies in APA, MLA, Chicago, and hundreds of journal-specific formats.</p>
+        <h6 class="card-subtitle mb-2 text-muted anchored">Who should use it</h6>
+        <p class="card-text">Students, researchers, and faculty who manage literature reviews, academic writing, or citation-heavy teaching materials.</p>
+      </div>
+      <div class="card-body pt-0">
+        <a href="https://www.zotero.org/download/" class="card-link" target="_blank" rel="noopener">Download Zotero</a>
+      </div>
+    </div>
+  </div>
 
-    <article class="card" style="margin-bottom:16px;">
-      <div class="card__header">
-        <h3 class="card__title" style="font-size:19px;">Quarto</h3>
-        <span class="badge badge--info">Teaching &amp; Publishing</span>
+  <div class="g-col-12 g-col-md-6 g-col-lg-6 d-flex">
+    <div class="card h-100">
+      <div class="card-header">LibreOffice</div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="badge">Free &amp; open-source</span>
+        </div>
+        <p class="card-text">A complete Microsoft Office alternative: Writer for documents, Calc for spreadsheets, and Impress for presentations. Reads and writes .docx, .xlsx, and .pptx formats without conversion loss in most cases.</p>
+        <h6 class="card-subtitle mb-2 text-muted anchored">Who should use it</h6>
+        <p class="card-text">Students and instructors who want a fully open-source office suite for everyday writing, spreadsheets, and slide preparation.</p>
       </div>
-      <p class="card__body">The publishing system behind the statistics teaching suite. It is used to produce the book, companion site, lecture decks, worked examples, and related teaching materials from a single source project. Quarto keeps content and output format separate, which makes it well suited to reproducible teaching and structured publishing workflows.</p>
-      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Anyone producing textbooks, course materials, technical reports, or academic papers who wants reproducible, version-controlled outputs.</p>
-      <div class="card__footer">
-        <span></span>
-        <a href="https://quarto.org/docs/get-started/" class="link-action link-action--cta" target="_blank" rel="noopener">Get started with Quarto <span class="arrow">→</span></a>
+      <div class="card-body pt-0">
+        <a href="https://www.libreoffice.org/download/download-libreoffice/" class="card-link" target="_blank" rel="noopener">Download LibreOffice</a>
       </div>
-    </article>
+    </div>
+  </div>
 
-    <article class="card" style="margin-bottom:16px;">
-      <div class="card__header">
-        <h3 class="card__title" style="font-size:19px;">Zotero</h3>
-        <span class="badge badge--info">Research</span>
-      </div>
-      <p class="card__body">Reference management software that captures references directly from browser pages, PDFs, and DOI lookups. Generates citations and bibliographies in APA, MLA, Chicago, and hundreds of journal-specific formats. The Word and LibreOffice plugins handle in-text citations automatically and help reduce formatting errors.</p>
-      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Students, researchers, and faculty who manage literature reviews, academic writing, or citation-heavy teaching materials.</p>
-      <div class="card__footer">
-        <span></span>
-        <a href="https://www.zotero.org/download/" class="link-action link-action--cta" target="_blank" rel="noopener">Download Zotero <span class="arrow">→</span></a>
-      </div>
-    </article>
+</div>
+</section>
+<section id="reproducible-research-and-teaching" class="level2">
+<h2 class="anchored" data-anchor-id="reproducible-research-and-teaching">Reproducible research and teaching</h2>
+<div class="grid mb-4">
 
-    <article class="card">
-      <div class="card__header">
-        <h3 class="card__title" style="font-size:19px;">LibreOffice</h3>
-        <span class="badge badge--info">Teaching</span>
+  <div class="g-col-12 g-col-md-6 g-col-lg-6 d-flex">
+    <div class="card h-100">
+      <div class="card-header">Git</div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="badge">Free &amp; open-source</span>
+        </div>
+        <p class="card-text">The version-control system behind reproducible teaching and research workflows. Keeps manuscripts, slides, datasets, and code in a traceable history and allows teaching materials to be rebuilt from known states.</p>
+        <h6 class="card-subtitle mb-2 text-muted anchored">Who should use it</h6>
+        <p class="card-text">Anyone maintaining textbooks, lecture materials, code, or analysis scripts who wants version history, safer collaboration, and repeatable release workflows.</p>
       </div>
-      <p class="card__body">A complete Microsoft Office alternative: Writer for documents, Calc for spreadsheets, and Impress for presentations, maintained by the Document Foundation. Reads and writes .docx, .xlsx, and .pptx formats without conversion loss in most cases.</p>
-      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Students and instructors who want a fully open-source office suite for everyday writing, spreadsheets, and slide preparation.</p>
-      <div class="card__footer">
-        <span></span>
-        <a href="https://www.libreoffice.org/download/download-libreoffice/" class="link-action link-action--cta" target="_blank" rel="noopener">Download LibreOffice <span class="arrow">→</span></a>
+      <div class="card-body pt-0">
+        <a href="https://git-scm.com/downloads" class="card-link" target="_blank" rel="noopener">Download Git</a>
       </div>
-    </article>
-  </section>
+    </div>
+  </div>
 
-  <!-- Reproducible Research -->
-  <section class="section">
-    <div class="eyebrow">05 &middot; Reproducible Research &amp; Teaching</div>
-
-    <article class="card" style="margin-bottom:16px;">
-      <div class="card__header">
-        <h3 class="card__title" style="font-size:19px;">Git</h3>
-        <span class="badge badge--info">Research &amp; Publishing</span>
+  <div class="g-col-12 g-col-md-6 g-col-lg-6 d-flex">
+    <div class="card h-100">
+      <div class="card-header">WebR</div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="badge">Free &amp; open-source</span>
+        </div>
+        <p class="card-text">WebR compiles R to WebAssembly, allowing R code to run directly in a web browser with no server, no installation, and no account. Particularly effective for interactive statistical examples with live parameter changes.</p>
+        <h6 class="card-subtitle mb-2 text-muted anchored">Who should use it</h6>
+        <p class="card-text">Instructors and authors who want interactive browser-based statistical examples without requiring students to install software first.</p>
       </div>
-      <p class="card__body">Git is the version-control system behind reproducible teaching and research workflows. It keeps manuscripts, slides, datasets, and code in a traceable history, makes collaboration reviewable, and allows teaching materials to be rebuilt from known states. It can be used locally or paired with open-source forges such as Gitea, Forgejo, or self-hosted GitLab CE.</p>
-      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Anyone maintaining textbooks, lecture materials, code, or analysis scripts who wants version history, safer collaboration, and repeatable release workflows.</p>
-      <div class="card__footer">
-        <span></span>
-        <a href="https://git-scm.com/downloads" class="link-action link-action--cta" target="_blank" rel="noopener">Download Git <span class="arrow">→</span></a>
+      <div class="card-body pt-0">
+        <a href="https://docs.r-wasm.org/webr/latest/" class="card-link" target="_blank" rel="noopener">WebR documentation</a>
       </div>
-    </article>
+    </div>
+  </div>
 
-    <article class="card">
-      <div class="card__header">
-        <h3 class="card__title" style="font-size:19px;">WebR</h3>
-        <span class="badge badge--info">Teaching</span>
-      </div>
-      <p class="card__body">WebR compiles R to WebAssembly, allowing R code to run directly in a web browser with no server, no installation, and no account. It is particularly effective for interactive statistical examples because readers can experiment with parameters and see results change in real time. Quarto has native WebR support via the quarto-webr extension.</p>
-      <p class="card__body" style="margin-top:10px;"><strong style="color:var(--ink);">Who should use it:</strong> Instructors and authors who want interactive browser-based statistical examples without requiring students to install software first.</p>
-      <div class="card__footer">
-        <span></span>
-        <a href="https://docs.r-wasm.org/webr/latest/" class="link-action link-action--cta" target="_blank" rel="noopener">WebR documentation <span class="arrow">→</span></a>
-      </div>
-    </article>
-  </section>
+</div>
 
-</main>
 
-<footer class="site-footer">
-  <div class="site-footer__inner">
-    <span class="monogram">MAS</span>
-    <p style="font-size:14px;color:var(--ink-muted);margin:0;">Mohammed Ali Sharafuddin, Senior Lecturer, Qasim Ibrahim School of Business, Villa College, Malé, Maldives.</p>
-    <span class="site-footer__meta">Updated May 2026</span>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/mohammedalisharafuddin\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Mohammed Ali Sharafuddin, Senior Lecturer, Qasim Ibrahim School of Business, Villa College, Malé, Maldives.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p><a href="https://orcid.org/0000-0001-5247-2964">ORCID</a> · <a href="https://github.com/MohammedAliSharafuddin">GitHub</a> · <a href="https://scholar.google.com/citations?user=DgaDtq4AAAAJ&amp;hl=en&amp;oi=ao">Google Scholar</a></p>
+</div>
   </div>
 </footer>
 
-<script>
-(function(){
-  var btn=document.getElementById('theme-toggle');
-  if(!btn)return;
-  function sync(){
-    var dark=document.documentElement.getAttribute('data-theme')==='dark';
-    btn.textContent=dark?'Light':'Dark';
-    btn.setAttribute('aria-pressed',String(dark));
-  }
-  sync();
-  btn.addEventListener('click',function(){
-    var dark=document.documentElement.getAttribute('data-theme')==='dark';
-    var next=dark?'light':'dark';
-    document.documentElement.setAttribute('data-theme',next);
-    localStorage.setItem('theme',next);
-    sync();
-  });
-})();
-</script>
-<script>
-(function(){
-  var toggle=document.getElementById('nav-toggle');
-  var links=document.getElementById('site-nav-links');
-  if(!toggle||!links)return;
-  toggle.addEventListener('click',function(){
-    var open=links.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded',String(open));
-    toggle.classList.toggle('is-open',open);
-  });
-  links.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click',function(){
-      links.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded','false');
-      toggle.classList.remove('is-open');
-    });
-  });
-})();
-</script>
-</body>
-</html>
+
+
+
+</body></html>

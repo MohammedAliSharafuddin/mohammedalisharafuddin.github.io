@@ -1,555 +1,205 @@
 [
   {
-    "objectID": "writer/templates/regression_report.html",
-    "href": "writer/templates/regression_report.html",
-    "title": "Regression report",
+    "objectID": "live-surveys/index.html",
+    "href": "live-surveys/index.html",
+    "title": "Live Surveys",
     "section": "",
-    "text": "Summarise a simple model with variables and units."
+    "text": "Active research survey instruments open to eligible participants. Each survey is built with surveyframe and deployed here as a self-contained static instrument. Responses are collected anonymously via Google Sheets. The instrument object, analysis plan, and structural model are declared before data collection."
   },
   {
-    "objectID": "writer/templates/regression_report.html#purpose",
-    "href": "writer/templates/regression_report.html#purpose",
-    "title": "Regression report",
+    "objectID": "live-surveys/index.html#open-now",
+    "href": "live-surveys/index.html#open-now",
+    "title": "Live Surveys",
+    "section": "Open now",
+    "text": "Open now\n\n  AIC-RSAM Pilot Study\n  \n    \n          Open now\n        \n    A pre-registered acceptance test of an AI-assisted conversational room-service booking system in Maldivian resorts. Participants complete a simulated booking prototype, then answer a post-use questionnaire covering six reflective constructs: Perceived AI Assistance, Perceived Order Assurance, Perceived Ease of Use, Perceived Usefulness, Perceived Risk, and Behavioural Intention to Use.\n  \n  \n    Model: AIC-RSAM (PLS-SEM, 9 paths)\n    Tool: surveyframe 0.3.2\n    Conference: ICSRI 2026, Villa College\n  \n  \n    Eligibility: Maldivian nationals or residents, aged 18 or above, who have stayed in a Maldivian resort within the past 12 months for at least 2 nights.\n    Take the survey"
+  },
+  {
+    "objectID": "live-surveys/index.html#about-these-surveys",
+    "href": "live-surveys/index.html#about-these-surveys",
+    "title": "Live Surveys",
+    "section": "About these surveys",
+    "text": "About these surveys\nAll instruments on this page are built with the surveyframe R package and exported as single self-contained HTML files. Each file runs entirely in the browser with no server dependency. Responses are collected via a Google Apps Script endpoint and a local CSV download fires on every submission as a backup. The instrument definition, hypotheses, and analysis plan are locked before data collection begins."
+  },
+  {
+    "objectID": "tools.html",
+    "href": "tools.html",
+    "title": "Open-Source Tools",
     "section": "",
-    "text": "Summarise a simple model with variables and units."
+    "text": "Software for surveys, statistics, writing, and reproducible research, selected for practical academic and teaching workflows. All are free and open-source."
   },
   {
-    "objectID": "writer/index.html",
-    "href": "writer/index.html",
-    "title": "Writer",
+    "objectID": "tools.html#start-here",
+    "href": "tools.html#start-here",
+    "title": "Open-Source Tools",
+    "section": "Start here",
+    "text": "Start here\nIf you are choosing quickly, start with JASP or jamovi for point-and-click statistics teaching, move to R + RStudio when you need programmable analysis and full reproducibility, use Quarto for reports and teaching materials, choose surveyframe when you need a full survey research pipeline from instrument design to analysis report inside R, and choose LimeSurvey or KoboToolbox when your data collection requires structured logic or offline fieldwork."
+  },
+  {
+    "objectID": "tools.html#statistics-and-analysis",
+    "href": "tools.html#statistics-and-analysis",
+    "title": "Open-Source Tools",
+    "section": "Statistics and analysis",
+    "text": "Statistics and analysis\n\n\n  \n    \n      R + RStudio\n      \n        \n          Free & open-source\n        \n        R is the statistical language behind the teaching suite, and RStudio Desktop is the open-source development environment used for most of that work. Supports descriptive statistics, modelling, visualisation, and reproducible reporting.\n        Who should use it\n        Researchers and postgraduate students who want full analytical control, reproducible outputs, and a toolchain that scales from coursework to publishable analysis.\n      \n      \n        Get R + RStudio\n      \n    \n  \n\n  \n    \n      JASP\n      \n        \n          Free & open-source\n        \n        A point-and-click statistics application developed by the University of Amsterdam. Covers standard frequentist tests and adds Bayesian counterparts alongside them. Output is formatted in APA style and exported directly to Word or PDF.\n        Who should use it\n        Undergraduate and postgraduate students, faculty who want a clean teaching tool, and practitioners who need statistical results without writing code.\n      \n      \n        Download JASP\n      \n    \n  \n\n  \n    \n      jamovi\n      \n        \n          Free & open-source\n        \n        Like JASP, jamovi provides a free, open-source interface for common statistical tests, with a spreadsheet-like data view. Supports mediation, moderation, and factor analysis via the jmv and medmod modules, and runs R beneath the surface.\n        Who should use it\n        Students transitioning from Excel to proper statistical software, or anyone who needs a familiar spreadsheet layout alongside inferential statistics.\n      \n      \n        Download jamovi\n      \n    \n  \n\n  \n    \n      PSPP\n      \n        \n          Free & open-source\n        \n        A free drop-in replacement for SPSS, maintained by the GNU project. Reads and writes .sav files, supports the most common SPSS syntax, and covers regression, ANOVA, factor analysis, and non-parametric tests.\n        Who should use it\n        Students and instructors who still work in SPSS-oriented environments but need a fully open-source option for teaching, practice, or light applied analysis.\n      \n      \n        Download PSPP"
+  },
+  {
+    "objectID": "tools.html#survey-and-data-collection",
+    "href": "tools.html#survey-and-data-collection",
+    "title": "Open-Source Tools",
+    "section": "Survey and data collection",
+    "text": "Survey and data collection\n\n\n  \n    \n      surveyframe\n      \n        \n          Free & open-source\n        \n        An R package for end-to-end survey research workflows built around a typed instrument object. Visual instrument design, static HTML export, an embeddable Shiny module, response quality checking, psychometric diagnostics, and reproducible HTML reporting. Live on CRAN.\n        Who should use it\n        Researchers and postgraduate students who design, deploy, and analyse questionnaire-based studies in R and want a reproducible, self-contained pipeline from instrument design to analysis report.\n      \n      \n        surveyframe on CRAN\n      \n    \n  \n\n  \n    \n      LimeSurvey\n      \n        \n          Free & open-source\n        \n        A full-featured open-source survey platform that supports complex branching logic, quota management, multiple languages, and direct SPSS/R export. Can be self-hosted for data sovereignty or deployed through institutional hosting.\n        Who should use it\n        Researchers designing structured questionnaires with complex logic, multi-language instruments, or any study requiring formal sampling controls.\n      \n      \n        LimeSurvey.org\n      \n    \n  \n\n  \n    \n      KoboToolbox\n      \n        \n          Free & open-source\n        \n        Designed for data collection in low-connectivity environments. Supports offline collection on Android, GPS stamping, image capture, and direct export to SPSS, Stata, or Excel. Hosted free for academic researchers.\n        Who should use it\n        Researchers collecting field data in locations with unstable internet, distributed teams, or device-based data capture requirements.\n      \n      \n        KoboToolbox"
+  },
+  {
+    "objectID": "tools.html#writing-and-publishing",
+    "href": "tools.html#writing-and-publishing",
+    "title": "Open-Source Tools",
+    "section": "Writing and publishing",
+    "text": "Writing and publishing\n\n\n  \n    \n      Quarto\n      \n        \n          Free & open-source\n        \n        The publishing system behind the statistics teaching suite. Produces the book, companion site, lecture decks, worked examples, and related materials from a single source project, keeping content and output format separate.\n        Who should use it\n        Anyone producing textbooks, course materials, technical reports, or academic papers who wants reproducible, version-controlled outputs.\n      \n      \n        Get started with Quarto\n      \n    \n  \n\n  \n    \n      Zotero\n      \n        \n          Free & open-source\n        \n        Reference management software that captures references directly from browser pages, PDFs, and DOI lookups. Generates citations and bibliographies in APA, MLA, Chicago, and hundreds of journal-specific formats.\n        Who should use it\n        Students, researchers, and faculty who manage literature reviews, academic writing, or citation-heavy teaching materials.\n      \n      \n        Download Zotero\n      \n    \n  \n\n  \n    \n      LibreOffice\n      \n        \n          Free & open-source\n        \n        A complete Microsoft Office alternative: Writer for documents, Calc for spreadsheets, and Impress for presentations. Reads and writes .docx, .xlsx, and .pptx formats without conversion loss in most cases.\n        Who should use it\n        Students and instructors who want a fully open-source office suite for everyday writing, spreadsheets, and slide preparation.\n      \n      \n        Download LibreOffice"
+  },
+  {
+    "objectID": "tools.html#reproducible-research-and-teaching",
+    "href": "tools.html#reproducible-research-and-teaching",
+    "title": "Open-Source Tools",
+    "section": "Reproducible research and teaching",
+    "text": "Reproducible research and teaching\n\n\n  \n    \n      Git\n      \n        \n          Free & open-source\n        \n        The version-control system behind reproducible teaching and research workflows. Keeps manuscripts, slides, datasets, and code in a traceable history and allows teaching materials to be rebuilt from known states.\n        Who should use it\n        Anyone maintaining textbooks, lecture materials, code, or analysis scripts who wants version history, safer collaboration, and repeatable release workflows.\n      \n      \n        Download Git\n      \n    \n  \n\n  \n    \n      WebR\n      \n        \n          Free & open-source\n        \n        WebR compiles R to WebAssembly, allowing R code to run directly in a web browser with no server, no installation, and no account. Particularly effective for interactive statistical examples with live parameter changes.\n        Who should use it\n        Instructors and authors who want interactive browser-based statistical examples without requiring students to install software first.\n      \n      \n        WebR documentation"
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Research",
     "section": "",
-    "text": "Purpose: report templates with clean language and figures.\nTemplates - A/B test summary - Regression summary\n\n\n\nCOMING SOON\n\n\nReport Templates and Analysis Tools"
+    "text": "A selected list of publications, conference presentations, and funded research projects since 2014.\n22 publications · 23 conference presentations · 9 funded projects · 2014–2026."
   },
   {
-    "objectID": "stats/index.html",
-    "href": "stats/index.html",
-    "title": "Stats",
+    "objectID": "research.html#research-areas",
+    "href": "research.html#research-areas",
+    "title": "Research",
+    "section": "Research areas",
+    "text": "Research areas\n\n  Digital Marketing and Marketing Analytics\n  Sustainability, Resilience, and Service-Sector Performance\n  Tourism, Destination, and Service Quality Studies\n  Research Methods and Statistical Reasoning\n  Maritime, Blue Economy, and Logistics\n  Teaching and Learning in Higher Education"
+  },
+  {
+    "objectID": "research.html#selected-publications",
+    "href": "research.html#selected-publications",
+    "title": "Research",
+    "section": "Selected publications",
+    "text": "Selected publications\n\n\nSharafuddin, M. A. (2026). Social science research 6.0: A proof-of-integrity framework for tamper-evident survey instruments using an open-source R package. Center for Open Science. https://doi.org/10.31235/osf.io/jmbv8_v1\n\n\nMadhavan, M., Sharafuddin, M. A., & Wangtueai, S. (2025). Factors influencing cross-border e-commerce adoption of thai msmes: A fuzzy DEMATEL approach. Sustainability, 17(8). https://doi.org/10.3390/su17083632\n\n\nSharafuddin, M. A., & Janarthanam, S. (2025a). A bibliometric and conceptual analysis of digital marketing: Capabilities, strategies, innovation, and firm performance. Multidisciplinary Reviews, 8(8), 2025252. https://doi.org/10.31893/multirev.2025252\n\n\nSharafuddin, M. A., & Janarthanam, S. (2025b). Why method matters: A systematic review and meta-analysis of the marketing capability–performance relationship. Encyclopedia, 5(4). https://doi.org/10.3390/encyclopedia5040212\n\n\nMadhavan, M., Sharafuddin, M. A., & Wangtueai, S. (2024a). Impact of industry 5.0 readiness on sustainable business growth of marine food processing smes in thailand. Administrative Sciences, 14(6). https://doi.org/10.3390/admsci14060110\n\n\nMadhavan, M., Sharafuddin, M. A., & Wangtueai, S. (2024b). Measuring the industry 5.0-readiness level of smes using industry 1.0–5.0 practices: The case of the seafood processing industry. Sustainability, 16(5). https://doi.org/10.3390/su16052205\n\n\nSharafuddin, M. A., & Madhavan, M. (2024). Thematic evolution of blue tourism: A scientometric analysis and systematic review. Global Business Review, 25(2), 533–554. https://doi.org/10.1177/0972150920966885\n\n\nSharafuddin, M. A., Madhavan, M., & Wangtueai, S. (2024). Assessing the effectiveness of digital marketing in enhancing tourist experiences and satisfaction: A study of thailand’s tourism services. Administrative Sciences, 14(11). https://doi.org/10.3390/admsci14110273\n\n\nMadhavan, M., Ali Sharafuddin, M., Piboonrungroj, P., & Yang, C.-C. (2023). Short-term forecasting for airline industry: The case of Indian air passenger and air cargo. Global Business Review, 24(6), 1145–1179. https://doi.org/10.1177/0972150920923316\n\n\nKoondee, P., Sharafuddin, M. A., & Madhavan, M. (2022). Blue economy: The past and present from the world and future directions for Thailand. Maritime Technology and Research, 4(2), 254043–254043. https://doi.org/10.33175/mtr.2022.254043\n\n\nMadhavan, M., Sharafuddin, M. A., & Chaichana, T. (2022). Impact of business model innovation on sustainable performance of processed marine food product smes in thailand—a PLS-SEM approach. Sustainability, 14(15). https://doi.org/10.3390/su14159673\n\n\nMadhavan, M., Wangtueai, S., Sharafuddin, M. A., & Chaichana, T. (2022). The precipitative effects of pandemic on open innovation of smes: A scientometrics and systematic review of industry 4.0 and industry 5.0. Journal of Open Innovation: Technology, Market, and Complexity, 8(3). https://doi.org/10.3390/joitmc8030152\n\n\nSharafuddin, M. A., Madhavan, M., & Chaichana, T. (2022). The effects of innovation adoption and social factors between sustainable supply chain management practices and sustainable firm performance: A moderated mediation model. Sustainability, 14(15). https://doi.org/10.3390/su14159099\n\n\nSharafuddin, M. A., Madhavan, M., & Wangtueai, S. (2022). Assessing island destination service quality—an integrated model through co-creation of destination e-image. Global Business Review, 0(0), 09721509221124789. https://doi.org/10.1177/09721509221124789\n\n\nDawod, A. Y., & Sharafuddin, M. A. (2021). Assessing mangrove deforestation using pixel-based image: A machine learning approach. Bulletin of Electrical Engineering and Informatics, 10(6), 3178–3190. https://doi.org/10.11591/eei.v10i6.3199\n\n\nMadhavan, M., Sharafuddin, M. A., & Wangtueai, S. (2021). Assessing trade attractiveness using international marketing environmental factors and fuzzy DEMATEL. Global Business Review, 0(0), 09721509211046335. https://doi.org/10.1177/09721509211046335\n\n\nSharafuddin, M. A., Madhavan, M., & Wangtueai, S. (2021). Expanding themes of destination e-image and service quality: A qualitative study using conversational interview. Academy of Strategic Management Journal, 20(4), 1–13.\n\n\nSharafuddin, M. A., & Madhavan, M. (2020). Measurement model for assessing community based wellness tourism needs. E-Review of Tourism Research, 18(2), 311–336. https://ertr-ojs-tamu.tdl.org/ertr/article/view/459\n\n\nSharafuddin, M. A., Sawad, B. P., & Wongwai, S. (2018). Modeling and mapping personal learning environment of thai international higher education students. Asian Journal of Education and Training, 4(1), 35–40.\n\n\nSharafuddin, M. A. (2017). China’s outbound tourism and thailand. Journal of Asia Pacific Studies, 4(3).\n\n\nTanyong, S., & Sharafuddin, M. A. (2016). Understanding personal learning environment perspectives of thai international tourism and hospitality higher education students. Journal of Education and Practice, 7(10), 128–139.\n\n\nSharafuddin, M. (2015). Exploring the relationship between eco-tourism activities, destination satisfaction and loyalty intention towards nakhon nayok. International Journal of Applied Engineering Research, 10(8), 19668.\n\n\nSharafuddin, M. A. (2015a). Siddha and wellness tourism: Opportunities and challenges for “brand Tamilnadu.” 6(3), 387–394. https://doi.org/10.7897/2277-4343.06376\n\n\nSharafuddin, M. A. (2015b). Types of tourism in thailand. E-Review of Tourism Research, 12.\n\n\nMadhavan, M., & Sharafuddin, M. A. (2014). Applicability of RSQS at convenience stores perspective in ongkharak, thailand. Global Journal for Research Analysis, 3(11), 148–151.\n\n\nView on Google Scholar"
+  },
+  {
+    "objectID": "research.html#conference-presentations",
+    "href": "research.html#conference-presentations",
+    "title": "Research",
+    "section": "Conference presentations",
+    "text": "Conference presentations\n\n2026 · Digital Government, Maritime Connectivity, and Container Port Performance: Evidence from the UN Online Services Index, Liner Shipping Connectivity Index, and CPPI, 2008–2024. IMLC 2026, Sohar, Oman. Sharafuddin & Madhavan.\n2026 · A Pre-Registered Acceptance Test of an AI-Assisted Conversational Room-Service Booking System in Maldivian Resorts Using AIC-RSAM. ICSRI 2026, Villa College, Maldives. Ashlin Nimo & Sharafuddin.\n2026 · The DIPMA Framework: A Cyclical Workflow for Statistical Reasoning in Business Research. FOS 2026, Thiagarajar School of Management, Madurai, India.\n2026 · Technological Transformations and Their Impact on Human Resource Management and Industrial Relations: Systematic Review. FOS 2026, Thiagarajar School of Management, Madurai, India.\n2026 · Challenges and Solutions in Souvenir Practices for Sustainable Tourism: A Systematic Review Towards Achieving SDGs. FOS 2026, Thiagarajar School of Management, Madurai, India.\n2026 · Gastronomic E-Image and Behavioural Intentions: A Feedback-Loop Framework. FOS 2026, Thiagarajar School of Management, Madurai, India.\n2026 · Evaluating an AI-Assisted Conversational Room-Service Booking System in Maldivian Resorts. 9th Asia Euro Tourism, Hospitality and Gastronomy Conference, Malé. Sharafuddin. Best Paper Award.\n2026 · IMO 2020 and Global Shipping Connectivity: A Causal Analysis. TES 2026, Chiang Mai University, Thailand. Sharafuddin, Madhavan & Nair, B. J.\n2026 · Post-Pandemic Drivers of Deep-Sea Freight Rate Volatility. TES 2026, Chiang Mai University, Thailand. Madhavan, Sharafuddin, Nair, B. J. & Kiran, F.\n2025 · Logistics Performance and Trade in Small Island Developing States: A Regional Fixed Effects Analysis of Digital and Economic Drivers. ICSRI 2025, Villa College, Maldives. Sharafuddin & Madhavan.\n2024 · The Antecedent Role of Digital Marketing Effectiveness on Tourist Perception and Behavioural Intention: Propositions and Conceptual Framework. ICON-24, Hindustan College of Arts and Science, Tamil Nadu, India. Sharafuddin, Wangtueai & Madhavan.\n2024 · A Review on Factors Influencing Cross-Border E-Commerce of MSMEs. ICON-24, Hindustan College of Arts and Science, Tamil Nadu, India.\n2023 · Impact of Industry 5.0 Competitiveness Readiness on the Sustainable Growth of SMEs: A Conceptual Framework and Propositions. PSG Institute of Management, Coimbatore, India.\n2023 · Conceptual Gap between Industry 1.0 - 5.0 - Can SMEs Escalate in the Industrial Revolution. PSG Institute of Management, Coimbatore, India.\n2020 · Systematic Review of Service Quality in Maritime Business Research. PIMSAT, Thanjavur, India. Sharafuddin & Madhavan.\n2019 · Time Series Forecasting Using ARIMA vs. Bayesian Structural Time Series Models. IFSPA, Hong Kong Polytechnic University. Madhavan, Piboonrungroj & Sharafuddin.\n2019 · Coastal, Marine and Maritime Tourism: A Scientometrics Analysis of 21st Century Business and Management Research. PIMSAT, Thanjavur, India.\n2015 · Segmenting Shopping Tourism Market Based on Retail Store Images With Reference to Puducherry. Bon Secours College, Thanjavur, India.\n2014 · Determinants of Sub-Urban Consumers Intention to Purchase Frozen Food at Convenience Stores in Ongkharak, Thailand. Uttaradit Rajabhat University International Conference, Thailand.\n2014 · Applicability of RSQS at Convenience Stores Perspective in Ongkharak, Thailand. PIMSAT, Thanjavur, India. Madhavan & Sharafuddin.\n2014 · Online Presence and Current Status of Tamil Nadu Tourist Omni Bus Services in Social Media. Fatima College, Madurai, India.\n2014 · Halal Market in India - Opportunities and Challenges. Alagappa Institute of Management International Conference, Karaikudi, India.\n2014 · Tourists’ Motivations, Experience and Satisfaction Towards Nakhon Nayok Province. NEU National and International Research Conference, Khon Kaen, Thailand."
+  },
+  {
+    "objectID": "research.html#funded-research-projects",
+    "href": "research.html#funded-research-projects",
+    "title": "Research",
+    "section": "Funded research projects",
+    "text": "Funded research projects\n\n2025–27 · Assessing and Navigating Digital Readiness in GVC Integration and SMEs Competitiveness for Sustainable Growth in Oman’s Blue Economy Sectors. Co-Investigator. Ministry of Higher Education, Research and Innovation, Oman.\n2023–24 · Assessing the Digital Marketing Effectiveness of Blue Tourism Services in Thailand. Project Leader. Chiang Mai University, Thailand.\n2023–24 · Exploring Thailand’s E-Commerce Attractiveness towards Cross-Border Trade. Co-Investigator. Chiang Mai University, Thailand.\n2023–24 · Modelling Opportunities and Challenges for Seafood Processing SMEs in Global Value Chains - Analysing and Predicting Exports-Imports. Co-Investigator. Chiang Mai University, Thailand.\n2021–23 · Assessing the Determinants of Industry 5.0 Competitiveness Readiness among Thailand’s Marine Food Processing SMEs. Co-Investigator. National Research Council, Thailand.\n2020–21 · Analyzing the Impact of Business Model Innovation on Sustainable Performance of Processed Marine Food Product SMEs in Thailand. Co-Investigator. กสว., Thailand.\n2020–21 · The Mediating and Moderating Role of Social Factors and Innovation Adoption in the Relationship between Sustainable Supply Chain Practices and Firm Performance: A Case Study of Seafood Restaurants in Thailand. Project Leader. กสว., Thailand.\n2020–21 · Trade Opportunities between Coromandel Coast of India and Andaman Region of Thailand - An Exploratory Study. Co-Investigator. Chiang Mai University, Thailand.\n2018 · Supply Chain Management and Logistics in Processed Food and Agro Products Industry. Project Leader. Embassy of India, Bangkok, Thailand."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "Purpose: quick calculators and short guides that match the blog posts.\nInitial tools - CI for a proportion - Two proportion test - Simple regression\nEach page links to a report template in Writer.\n\n\n\nCOMING SOON\n\n\nStatistical Calculators and Tools"
+    "text": "Senior Lecturer at the Qasim Ibrahim School of Business, Villa College, Malé, Maldives. This site brings together research outputs, textbooks, templates, and browser-based tools for management, marketing, and statistics. Current work centres on practical analytics, open teaching materials, and decision-support tools designed for direct classroom use and independent study."
   },
   {
-    "objectID": "blog/posts/06-logistic-basics.html",
-    "href": "blog/posts/06-logistic-basics.html",
-    "title": "Logistic Regression Basics: Predicting Purchase from Session Count",
-    "section": "",
-    "text": "TL;DR: Purchase probability rises from ~9% (1 session) to ~45% (8+ sessions) (n=1,500); OR per session = 1.28 [1.18, 1.40]; McFadden R²=0.056, AIC=988; decision: each extra session increases odds by 28%, engage users across multiple visits."
+    "objectID": "about.html#profiles",
+    "href": "about.html#profiles",
+    "title": "About",
+    "section": "Profiles",
+    "text": "Profiles\n\n  Google Scholar\n  ORCID\n  GitHub"
   },
   {
-    "objectID": "blog/posts/06-logistic-basics.html#case",
-    "href": "blog/posts/06-logistic-basics.html#case",
-    "title": "Logistic Regression Basics: Predicting Purchase from Session Count",
-    "section": "Case",
-    "text": "Case\nYou are analyzing customer behavior for an e-commerce platform and want to understand: Does the number of on-site sessions influence the likelihood of making a purchase? Specifically, how much do purchase odds increase with each additional session? Can you predict purchase probability from session count to identify high-intent customers?"
-  },
-  {
-    "objectID": "blog/posts/06-logistic-basics.html#dataset",
-    "href": "blog/posts/06-logistic-basics.html#dataset",
-    "title": "Logistic Regression Basics: Predicting Purchase from Session Count",
-    "section": "Dataset",
-    "text": "Dataset\nSynthetic sample from customer session data (Schema B).\n\n\n\nVariable\nLabel\nValue\n\n\n\n\nsessions\nNumber of sessions\nCount (0+)\n\n\npurchase\nPurchase made\n0 (No), 1 (Yes)\n\n\nn\nNumber of customers\n1,500\n\n\nDistribution\nMean sessions\n≈3 (Poisson λ=3)"
-  },
-  {
-    "objectID": "blog/posts/06-logistic-basics.html#method",
-    "href": "blog/posts/06-logistic-basics.html#method",
-    "title": "Logistic Regression Basics: Predicting Purchase from Session Count",
-    "section": "Method",
-    "text": "Method\nWe use logistic regression to model the relationship between session count (predictor) and purchase outcome (binary response). Unlike linear regression, logistic regression models the log-odds (logit) of the outcome:\n\\[\n\\log\\left(\\frac{p}{1-p}\\right) = \\beta_0 + \\beta_1 \\times \\text{Sessions},\n\\]\nwhere \\(p\\) is the probability of purchase. Rearranging gives the predicted probability:\n\\[\np = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 \\times \\text{Sessions})}}.\n\\]\nThe odds ratio (OR) for a one-unit increase in sessions is: \\[\n\\text{OR} = e^{\\beta_1}.\n\\]\nAn OR &gt; 1 indicates increased odds of purchase with more sessions; OR &lt; 1 indicates decreased odds. We report 95% Wald confidence intervals for the odds ratio.\nInterpretation guide: - OR = 1.00: No effect - OR = 1.28: 28% increase in odds per additional session - OR = 2.00: 100% increase (doubling) in odds - OR = 0.80: 20% decrease in odds"
-  },
-  {
-    "objectID": "blog/posts/06-logistic-basics.html#calculation",
-    "href": "blog/posts/06-logistic-basics.html#calculation",
-    "title": "Logistic Regression Basics: Predicting Purchase from Session Count",
-    "section": "Calculation",
-    "text": "Calculation\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "blog/posts/06-logistic-basics.html#visualization",
-    "href": "blog/posts/06-logistic-basics.html#visualization",
-    "title": "Logistic Regression Basics: Predicting Purchase from Session Count",
-    "section": "Visualization",
-    "text": "Visualization\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "blog/posts/06-logistic-basics.html#results-and-interpretation",
-    "href": "blog/posts/06-logistic-basics.html#results-and-interpretation",
-    "title": "Logistic Regression Basics: Predicting Purchase from Session Count",
-    "section": "Results and Interpretation",
-    "text": "Results and Interpretation\nThe logistic regression reveals a statistically significant positive relationship between session count and purchase probability. The estimated slope coefficient is β₁ = 0.247 (p &lt; 0.001), which translates to an odds ratio of 1.28 (95% CI [1.18, 1.40]) (R Core Team 2024).\nOdds ratio interpretation: For every additional session, the odds of making a purchase increase by 28%. This means customers with 2 sessions have 1.28 times the odds of purchasing compared to customers with 1 session, holding all else constant. The 95% CI [1.18, 1.40] indicates we can be confident the true effect is between an 18% and 40% increase in odds per session.\nProbability predictions: - 1 session: Predicted purchase probability = 9.3% - 3 sessions (mean): Predicted purchase probability = 15.3% - 5 sessions: Predicted purchase probability = 25.5% - 8 sessions: Predicted purchase probability = 44.6%\nThe model shows purchase probability increases non-linearly with sessions, following a logistic S-curve. Customers with 5+ sessions show substantially higher purchase intent (&gt;25% probability) compared to single-session visitors (~9%).\nModel fit: The pseudo R² of 0.056 (5.6%) indicates the model explains a modest portion of variance in purchase outcomes. This is typical for individual-level behavioral models where pseudo R² values of 2-15% are often acceptable - many factors beyond session count influence purchase decisions. The residual deviance (1643.9) is substantially lower than the null deviance (1741.2), indicating the model improves over a baseline intercept-only model.\nStatistical significance: The Wald z-test for the slope coefficient is highly significant (p &lt; 0.001), providing strong evidence that session count is a meaningful predictor of purchase probability.\nDecision framework. The positive relationship between sessions and purchase probability suggests several actionable insights: (1) Engagement strategies: Encourage multi-session visits through retargeting, email reminders, or personalized recommendations, (2) Customer segmentation: Treat 1-session visitors differently from 5+ session visitors in targeting and messaging, (3) Lead scoring: Use session count as a component of lead quality scores, (4) Conversion optimization: Focus conversion tactics on high-session users who show strongest purchase intent (&gt;25% probability), (5) Further analysis: Extend the model with additional predictors (device type, traffic source, time on site) to improve predictions and understand interaction effects."
-  },
-  {
-    "objectID": "blog/posts/06-logistic-basics.html#predicted-probabilities-by-session-count",
-    "href": "blog/posts/06-logistic-basics.html#predicted-probabilities-by-session-count",
-    "title": "Logistic Regression Basics: Predicting Purchase from Session Count",
-    "section": "Predicted Probabilities by Session Count",
-    "text": "Predicted Probabilities by Session Count\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "blog/posts/06-logistic-basics.html#assumptions",
-    "href": "blog/posts/06-logistic-basics.html#assumptions",
-    "title": "Logistic Regression Basics: Predicting Purchase from Session Count",
-    "section": "Assumptions",
-    "text": "Assumptions\nLogistic regression assumes:\n\nBinary outcome: Purchase is coded as 0 (no purchase) or 1 (purchase)\nIndependence: Each customer’s purchase decision is independent of others\nLinearity of log-odds: The relationship between sessions and log-odds of purchase is linear (can test with polynomial terms)\nNo perfect separation: Predictor values do not perfectly separate outcomes (no session count guarantees purchase or non-purchase)\nLarge sample size: Generally requires n ≥ 10 events per predictor (1,500 observations with 1 predictor is adequate)\n\nNote: Unlike linear regression, logistic regression does not assume normality of residuals or homoscedasticity."
-  },
-  {
-    "objectID": "blog/posts/06-logistic-basics.html#limitations",
-    "href": "blog/posts/06-logistic-basics.html#limitations",
-    "title": "Logistic Regression Basics: Predicting Purchase from Session Count",
-    "section": "Limitations",
-    "text": "Limitations\nThis analysis does not account for:\n\nConfounding variables: Device type, traffic source, time spent per session, page views, product browsing behavior\nTime effects: Session timing (same day vs. spread over weeks), recency effects, seasonality\nCustomer heterogeneity: New vs. returning customers, demographics, purchase history\nNon-linear effects: Diminishing returns at very high session counts (may plateau beyond 8-10 sessions)\nModel calibration: Predicted probabilities may be poorly calibrated without validation on held-out data\nInteraction effects: Session impact may vary by customer segment or traffic source\nCausality: Correlation does not prove sessions cause purchases. High-intent customers may naturally browse more.\n\nRecommendations for improvement: - Add categorical predictors (device type, traffic source) and test interactions with sessions - Include continuous predictors (average time per session, pages viewed, cart additions) - Test polynomial terms (sessions²) or splines for non-linear relationships - Split data into training/test sets to assess out-of-sample prediction accuracy - Calculate AUC-ROC and calibration curves to evaluate discrimination and calibration - Consider hierarchical models if sessions are nested within customers over time - Use propensity score matching or causal inference methods to estimate treatment effects"
-  },
-  {
-    "objectID": "blog/posts/06-logistic-basics.html#model-diagnostics",
-    "href": "blog/posts/06-logistic-basics.html#model-diagnostics",
-    "title": "Logistic Regression Basics: Predicting Purchase from Session Count",
-    "section": "Model Diagnostics",
-    "text": "Model Diagnostics\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nDiagnostic interpretation: Panel A shows agreement between observed and predicted purchase rates across session counts (points should fall near diagonal line). Panel B shows deviance residuals should be randomly scattered around zero with no systematic pattern. Large deviations suggest model misspecification or influential outliers.\n\n\nUse the below format to cite this page\n\nCopy APA Copy BibTeX\n\nSharafuddin, M. A. (2025, October 25). Logistic regression basics: Predicting purchase from session count. Flair Marketing Intelligence (FlairMI). https://flairmi.com/blog/posts/06-logistic-basics.html\n@online{sharafuddin2025-logistic,\n  author = {Sharafuddin, Mohammed Ali},\n  title  = {Logistic Regression Basics: Predicting Purchase from Session Count},\n  year   = {2025},\n  date   = {2025-10-25},\n  url    = {https://flairmi.com/blog/posts/06-logistic-basics.html},\n  langid = {en}\n}"
-  },
-  {
-    "objectID": "blog/posts/06-logistic-basics.html#comments",
-    "href": "blog/posts/06-logistic-basics.html#comments",
-    "title": "Logistic Regression Basics: Predicting Purchase from Session Count",
-    "section": "Comments",
-    "text": "Comments"
-  },
-  {
-    "objectID": "blog/posts/04-welch-t.html",
-    "href": "blog/posts/04-welch-t.html",
-    "title": "Welch t-Test vs Equal-Variance t-Test: Comparing Methods",
-    "section": "",
-    "text": "TL;DR: Group A ₹1,201 (SD ₹180) vs B ₹1,269 (SD ₹260), n=120 vs 150; variance ratio 0.48 suggests unequal variance; Welch p=0.022 (sig), Equal-variance p=0.018 (sig), difference ₹68 [+11, +125]; decision: use Welch for robustness, group B has significantly higher AOV."
-  },
-  {
-    "objectID": "blog/posts/04-welch-t.html#case",
-    "href": "blog/posts/04-welch-t.html#case",
-    "title": "Welch t-Test vs Equal-Variance t-Test: Comparing Methods",
-    "section": "Case",
-    "text": "Case\nYou are analyzing average order value (AOV) from two store locations with different sample sizes (120 vs. 150 customers) and different variability in spending patterns. You need to decide: Should you use the standard equal-variance t-test (Student’s t-test) or the Welch t-test? How does the variance ratio influence this decision?"
-  },
-  {
-    "objectID": "blog/posts/04-welch-t.html#dataset",
-    "href": "blog/posts/04-welch-t.html#dataset",
-    "title": "Welch t-Test vs Equal-Variance t-Test: Comparing Methods",
-    "section": "Dataset",
-    "text": "Dataset\nSynthetic sample from e-commerce experiment (Schema A).\n\n\n\nVariable\nLabel\nValue\n\n\n\n\naov_a\nGroup A AOV\n₹ (rupees)\n\n\naov_b\nGroup B AOV\n₹ (rupees)\n\n\nn_a\nGroup A sample size\n120\n\n\nn_b\nGroup B sample size\n150\n\n\nsd_a\nGroup A SD (approx)\n₹180\n\n\nsd_b\nGroup B SD (approx)\n₹260"
-  },
-  {
-    "objectID": "blog/posts/04-welch-t.html#method",
-    "href": "blog/posts/04-welch-t.html#method",
-    "title": "Welch t-Test vs Equal-Variance t-Test: Comparing Methods",
-    "section": "Method",
-    "text": "Method\nWe compare two approaches to testing differences in means:\n\nEqual-variance t-test (Student’s t-test): Assumes both groups have equal population variances and pools sample variances to estimate standard error\nWelch t-test: Does not assume equal variances and adjusts degrees of freedom based on the variance ratio (Welch 1947)\n\nThe Welch t-test is generally more robust when variances differ, especially with unequal sample sizes. We calculate the variance ratio (smaller variance / larger variance) to assess heterogeneity. A ratio below 0.5 or above 2.0 suggests meaningful variance differences and strongly favors using the Welch t-test.\nTest statistic for equal-variance t-test: \\[\nt = \\frac{\\bar{x}_A - \\bar{x}_B}{s_p\\sqrt{\\frac{1}{n_A} + \\frac{1}{n_B}}}, \\quad s_p^2 = \\frac{(n_A-1)s_A^2 + (n_B-1)s_B^2}{n_A + n_B - 2}.\n\\]\nTest statistic for Welch t-test: \\[\nt = \\frac{\\bar{x}_A - \\bar{x}_B}{\\sqrt{\\frac{s_A^2}{n_A} + \\frac{s_B^2}{n_B}}}, \\quad df \\approx \\frac{\\left(\\frac{s_A^2}{n_A} + \\frac{s_B^2}{n_B}\\right)^2}{\\frac{(s_A^2/n_A)^2}{n_A-1} + \\frac{(s_B^2/n_B)^2}{n_B-1}}.\n\\]"
-  },
-  {
-    "objectID": "blog/posts/04-welch-t.html#calculation",
-    "href": "blog/posts/04-welch-t.html#calculation",
-    "title": "Welch t-Test vs Equal-Variance t-Test: Comparing Methods",
-    "section": "Calculation",
-    "text": "Calculation\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "blog/posts/04-welch-t.html#visualization",
-    "href": "blog/posts/04-welch-t.html#visualization",
-    "title": "Welch t-Test vs Equal-Variance t-Test: Comparing Methods",
-    "section": "Visualization",
-    "text": "Visualization\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "blog/posts/04-welch-t.html#results-and-interpretation",
-    "href": "blog/posts/04-welch-t.html#results-and-interpretation",
-    "title": "Welch t-Test vs Equal-Variance t-Test: Comparing Methods",
-    "section": "Results and Interpretation",
-    "text": "Results and Interpretation\nGroup A had a mean AOV of ₹1,201 (SD = ₹180, n=120), while group B had a mean AOV of ₹1,269 (SD = ₹260, n=150). The variance ratio of 0.48 (calculated as 32,400 / 67,600) indicates substantial heterogeneity in variances between groups, strongly favoring the Welch t-test.\nWelch t-test results: The Welch t-test found a statistically significant difference, t(229) = -2.30, p = 0.022, with a 95% CI of [₹11.4, ₹124.6] for the mean difference (Welch 1947; R Core Team 2024). The adjusted degrees of freedom (229 vs. the pooled 268) reflect the variance inequality.\nEqual-variance t-test results: The equal-variance t-test yielded t(268) = -2.39, p = 0.018, with a 95% CI of [₹12.2, ₹123.8]. While the results are similar in this case, the equal-variance assumption is violated (variance ratio = 0.48 &lt; 0.5).\nMethod comparison: When variances differ substantially (ratio &lt; 0.5 or &gt; 2.0), especially with unequal sample sizes, the equal-variance t-test can produce inflated Type I error rates. The Welch t-test is more conservative and robust. In this case, both tests reach the same conclusion (p &lt; 0.05), but the Welch test provides more reliable inference given the variance inequality.\nDecision framework. With a variance ratio of 0.48 and unequal sample sizes, use the Welch t-test as your primary result. The mean difference of ₹68 (95% CI [₹11, ₹125]) suggests group B has higher AOV, but the wide confidence interval indicates uncertainty about the magnitude. Always check variance homogeneity before choosing your test, and default to Welch when in doubt - it is robust even when variances are equal."
-  },
-  {
-    "objectID": "blog/posts/04-welch-t.html#sample-size-planning",
-    "href": "blog/posts/04-welch-t.html#sample-size-planning",
-    "title": "Welch t-Test vs Equal-Variance t-Test: Comparing Methods",
-    "section": "Sample Size Planning",
-    "text": "Sample Size Planning\nFor future tests with similar variance structure, plan for adequate power using the more conservative Welch approach. To detect a ₹70 difference with 80% power at α = 0.05 (assuming larger SD ≈ ₹260), you need approximately 175 per group (350 total). Your current test achieved approximately 55% power with the unequal sample sizes.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nNote: When planning with unequal variances, use the larger standard deviation for conservative sample size estimates. Equal sample sizes are preferable as they maximize power and minimize Type I error inflation."
-  },
-  {
-    "objectID": "blog/posts/04-welch-t.html#assumptions",
-    "href": "blog/posts/04-welch-t.html#assumptions",
-    "title": "Welch t-Test vs Equal-Variance t-Test: Comparing Methods",
-    "section": "Assumptions",
-    "text": "Assumptions\nBoth t-tests assume:\n\nIndependent observations: Each customer’s order is independent\nRandom sampling: Customers were randomly sampled from their respective populations\nApproximate normality: AOV distributions are approximately normal, or sample sizes are large enough (n ≥ 30 per group) for the Central Limit Theorem to apply\n\nAdditional assumption for equal-variance t-test: - Homogeneity of variance: Population variances are equal (violated in this case with ratio = 0.48)\nWelch t-test advantage: Does not require equal variances; adjusts degrees of freedom automatically based on observed variance ratio."
-  },
-  {
-    "objectID": "blog/posts/04-welch-t.html#limitations",
-    "href": "blog/posts/04-welch-t.html#limitations",
-    "title": "Welch t-Test vs Equal-Variance t-Test: Comparing Methods",
-    "section": "Limitations",
-    "text": "Limitations\nThis analysis does not account for:\n\nLevene’s test or F-test: We used variance ratio as a rule of thumb (&lt; 0.5 or &gt; 2.0). Formal tests like Levene’s test can assess homogeneity statistically\nNon-normality: With smaller samples or extreme skewness, consider non-parametric alternatives (Mann-Whitney U test)\nPaired data: If measurements are paired, use paired t-test instead\nMultiple groups: For more than two groups, use ANOVA with appropriate variance adjustments (Welch ANOVA)\n\nWhen variance ratio is between 0.5 and 2.0 with equal sample sizes, both tests typically give similar results. Always report which test you used and justify the choice based on variance diagnostics.\n\n\nUse the below format to cite this page\n\nCopy APA Copy BibTeX\n\nSharafuddin, M. A. (2025, October 25). Welch t-test vs equal-variance t-test: Comparing methods. Flair Marketing Intelligence (FlairMI). https://flairmi.com/blog/posts/04-welch-t.html\n@online{sharafuddin2025-welch-comparison,\n  author = {Sharafuddin, Mohammed Ali},\n  title  = {Welch t-Test vs Equal-Variance t-Test: Comparing Methods},\n  year   = {2025},\n  date   = {2025-10-25},\n  url    = {https://flairmi.com/blog/posts/04-welch-t.html},\n  langid = {en}\n}"
-  },
-  {
-    "objectID": "blog/posts/04-welch-t.html#comments",
-    "href": "blog/posts/04-welch-t.html#comments",
-    "title": "Welch t-Test vs Equal-Variance t-Test: Comparing Methods",
-    "section": "Comments",
-    "text": "Comments"
-  },
-  {
-    "objectID": "blog/posts/02-two-proportion-test.html",
-    "href": "blog/posts/02-two-proportion-test.html",
-    "title": "Two-Proportion Test: Comparing Conversion Rates Between Variants",
-    "section": "",
-    "text": "TL;DR: Variant A 12.0% vs B 9.5% (n=1,000 each); p=0.031 (sig), difference +2.5 pp [+0.5, +4.5 pp], Cohen h=0.14 (small); decision: variant A shows significant improvement, consider confirmatory test before full rollout."
-  },
-  {
-    "objectID": "blog/posts/02-two-proportion-test.html#case",
-    "href": "blog/posts/02-two-proportion-test.html#case",
-    "title": "Two-Proportion Test: Comparing Conversion Rates Between Variants",
-    "section": "Case",
-    "text": "Case\nYou ran an A/B test on a product page. After two weeks, variant A had 120 conversions from 1,000 visitors (12.0%), while variant B had 95 conversions from 1,000 visitors (9.5%). The business question: Is the 2.5 percentage point difference statistically significant? Should you keep variant A or run a confirmatory test?"
-  },
-  {
-    "objectID": "blog/posts/02-two-proportion-test.html#dataset",
-    "href": "blog/posts/02-two-proportion-test.html#dataset",
-    "title": "Two-Proportion Test: Comparing Conversion Rates Between Variants",
-    "section": "Dataset",
-    "text": "Dataset\nSynthetic A/B experiment data (Schema C).\n\n\n\nVariable\nLabel\nValue\n\n\n\n\nvariant\nTest group\nA or B\n\n\nconverted\nConversion event\n0 or 1\n\n\nn\nSample size\n2,000 rows\n\n\nx_A\nConversions in A\n120\n\n\nx_B\nConversions in B\n95\n\n\nn_A\nVisitors in A\n1,000\n\n\nn_B\nVisitors in B\n1,000"
-  },
-  {
-    "objectID": "blog/posts/02-two-proportion-test.html#method",
-    "href": "blog/posts/02-two-proportion-test.html#method",
-    "title": "Two-Proportion Test: Comparing Conversion Rates Between Variants",
-    "section": "Method",
-    "text": "Method\nWe use a two-proportion z test to compare independent proportions (Agresti 2019). The test statistic follows a chi-squared distribution with 1 degree of freedom when using the squared z statistic. We report the difference with a 95% confidence interval and Cohen’s h as an effect size measure.\nThe difference in proportions: \\[\n\\hat{p}_A - \\hat{p}_B = \\frac{x_A}{n_A} - \\frac{x_B}{n_B}.\n\\]\nCohen’s h for effect size: \\[\nh = 2(\\arcsin\\sqrt{\\hat{p}_A} - \\arcsin\\sqrt{\\hat{p}_B}).\n\\]"
-  },
-  {
-    "objectID": "blog/posts/02-two-proportion-test.html#calculation",
-    "href": "blog/posts/02-two-proportion-test.html#calculation",
-    "title": "Two-Proportion Test: Comparing Conversion Rates Between Variants",
-    "section": "Calculation",
-    "text": "Calculation\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "blog/posts/02-two-proportion-test.html#visualization",
-    "href": "blog/posts/02-two-proportion-test.html#visualization",
-    "title": "Two-Proportion Test: Comparing Conversion Rates Between Variants",
-    "section": "Visualization",
-    "text": "Visualization\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "blog/posts/02-two-proportion-test.html#results-and-interpretation",
-    "href": "blog/posts/02-two-proportion-test.html#results-and-interpretation",
-    "title": "Two-Proportion Test: Comparing Conversion Rates Between Variants",
-    "section": "Results and Interpretation",
-    "text": "Results and Interpretation\nVariant A converted at 12.0% (120/1,000) and variant B at 9.5% (95/1,000). The estimated difference was 2.5 percentage points with a 95% confidence interval of [0.5, 4.5] percentage points. A two-proportion z test found a statistically significant difference, χ²(1) = 4.68, p = 0.031 (Agresti 2019; R Core Team 2024).\nThe effect size, measured by Cohen’s h = 0.14, is considered small by conventional standards (small: 0.20, medium: 0.50, large: 0.80). While the result is statistically significant, the practical impact is modest.\nThe 95% CI [0.5, 4.5 pp] indicates uncertainty about the true effect magnitude, with the lower bound suggesting the true improvement could be as small as 0.5 percentage points.\nDecision framework. Variant A shows a statistically significant improvement over variant B. The confidence interval suggests the true lift is between 0.5 and 4.5 percentage points. Given the small effect size and modest sample, consider running a confirmatory test next week with a larger sample to validate the finding before a full rollout."
-  },
-  {
-    "objectID": "blog/posts/02-two-proportion-test.html#sample-size-planning",
-    "href": "blog/posts/02-two-proportion-test.html#sample-size-planning",
-    "title": "Two-Proportion Test: Comparing Conversion Rates Between Variants",
-    "section": "Sample Size Planning",
-    "text": "Sample Size Planning\nTo detect a 2.5 percentage point difference with 80% power at α = 0.05, you need approximately 1,570 visitors per group (3,140 total). Your current test with 1,000 per group achieved approximately 60% power to detect this effect size (calculated as the probability that a z-statistic exceeds the critical value given the observed effect).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nFor future tests, use the formula: \\[\nn_{\\text{per group}} = \\frac{2\\bar{p}(1-\\bar{p})(z_{1-\\alpha/2} + z_{1-\\beta})^2}{\\delta^2},\n\\] where \\(\\bar{p}\\) is the average of the two proportions and \\(\\delta\\) is the target difference."
-  },
-  {
-    "objectID": "blog/posts/02-two-proportion-test.html#assumptions",
-    "href": "blog/posts/02-two-proportion-test.html#assumptions",
-    "title": "Two-Proportion Test: Comparing Conversion Rates Between Variants",
-    "section": "Assumptions",
-    "text": "Assumptions\nThe two-proportion test assumes:\n\nIndependent samples: Each visitor appears in only one variant (no crossover or contamination between groups)\nRandom assignment: Visitors were randomly allocated to A or B without systematic bias (e.g., no assignment based on time of day or device type)\nLarge sample approximation: Each group has at least 5 expected successes and 5 expected failures for the normal approximation to hold (both conditions met: 120 successes, 880 failures in A; 95 successes, 905 failures in B - all values exceed 5)\nStable conversion rates: The true conversion rate for each variant remains constant during the test period (no external events or time trends affecting one group differently)"
-  },
-  {
-    "objectID": "blog/posts/02-two-proportion-test.html#limitations",
-    "href": "blog/posts/02-two-proportion-test.html#limitations",
-    "title": "Two-Proportion Test: Comparing Conversion Rates Between Variants",
-    "section": "Limitations",
-    "text": "Limitations\nThis analysis does not stratify by device type, traffic source, or time of day. Differences in these factors could influence conversion rates. Consider a stratified analysis or regression model if imbalances are suspected.\n\n\nUse the below format to cite this page\n\nCopy APA Copy BibTeX\n\nSharafuddin, M. A. (2024, June 17). Two-proportion test: Comparing conversion rates between variants. Flair Marketing Intelligence (FlairMI). https://flairmi.com/blog/posts/02-two-proportion-test.html\n@online{sharafuddin2024-two-prop,\n  author = {Sharafuddin, Mohammed Ali},\n  title  = {Two-Proportion Test: Comparing Conversion Rates Between Variants},\n  year   = {2024},\n  date   = {2024-06-17},\n  url    = {https://flairmi.com/blog/posts/02-two-proportion-test.html},\n  langid = {en}\n}"
-  },
-  {
-    "objectID": "blog/posts/02-two-proportion-test.html#comments",
-    "href": "blog/posts/02-two-proportion-test.html#comments",
-    "title": "Two-Proportion Test: Comparing Conversion Rates Between Variants",
-    "section": "Comments",
-    "text": "Comments"
-  },
-  {
-    "objectID": "blog/index.html",
-    "href": "blog/index.html",
-    "title": "Statistics Blog",
-    "section": "",
-    "text": "Practical statistics tutorials for marketing and e-commerce analytics. Each post includes:\n\nInteractive calculations running directly in your browser (powered by WebR)\nReal-world business cases from A/B testing, conversion optimization, and revenue analysis\nComprehensive explanations with method, assumptions, limitations, and decision frameworks\nSample size planning guidance for designing future experiments\nReproducible code with detailed statistical computations\n\nAll posts use academic-style presentation with no dependency on Python or external servers - just open and run R code in your browser.\n\n\n\nConfidence Intervals: Margin of error analysis for conversion rates\nHypothesis Testing: Two-proportion tests, t-tests (Welch and pooled methods)\nRegression Analysis: Simple linear regression for ad spend modeling\nLogistic Regression: Purchase prediction from behavioral data\nEffect Sizes: Cohen’s h, Cohen’s d, Hedges g with practical interpretation\n\nBrowse posts below or explore the Stats Suite for interactive tools."
-  },
-  {
-    "objectID": "blog/index.html#welcome-to-flairmi-statistics-blog",
-    "href": "blog/index.html#welcome-to-flairmi-statistics-blog",
-    "title": "Statistics Blog",
-    "section": "",
-    "text": "Practical statistics tutorials for marketing and e-commerce analytics. Each post includes:\n\nInteractive calculations running directly in your browser (powered by WebR)\nReal-world business cases from A/B testing, conversion optimization, and revenue analysis\nComprehensive explanations with method, assumptions, limitations, and decision frameworks\nSample size planning guidance for designing future experiments\nReproducible code with detailed statistical computations\n\nAll posts use academic-style presentation with no dependency on Python or external servers - just open and run R code in your browser.\n\n\n\nConfidence Intervals: Margin of error analysis for conversion rates\nHypothesis Testing: Two-proportion tests, t-tests (Welch and pooled methods)\nRegression Analysis: Simple linear regression for ad spend modeling\nLogistic Regression: Purchase prediction from behavioral data\nEffect Sizes: Cohen’s h, Cohen’s d, Hedges g with practical interpretation\n\nBrowse posts below or explore the Stats Suite for interactive tools."
-  },
-  {
-    "objectID": "blog/posts/01-margin-of-error.html",
-    "href": "blog/posts/01-margin-of-error.html",
-    "title": "Confidence Interval for a Proportion: Analyzing Add-to-Cart Rate",
-    "section": "",
-    "text": "TL;DR: Add-to-cart is 22% (n=600); 95% CI [18.8%, 25.2%] - baseline KPI 19% is acceptable, stretch 26% isn’t; for ±2 pp precision, target ~1,472-2,401 visitors."
-  },
-  {
-    "objectID": "blog/posts/01-margin-of-error.html#case",
-    "href": "blog/posts/01-margin-of-error.html#case",
-    "title": "Confidence Interval for a Proportion: Analyzing Add-to-Cart Rate",
-    "section": "Case",
-    "text": "Case\nYou are a data analyst for an e-commerce site. You observed a 22% add-to-cart rate over two weeks with 600 visitors. The business question: Does this performance meet the baseline KPI of 19%? Can you claim the stretch goal of 26%? To answer this, you need to compute a 95% confidence interval for the add-to-cart proportion, read the margin of error, and assess whether the KPIs are acceptable."
-  },
-  {
-    "objectID": "blog/posts/01-margin-of-error.html#dataset",
-    "href": "blog/posts/01-margin-of-error.html#dataset",
-    "title": "Confidence Interval for a Proportion: Analyzing Add-to-Cart Rate",
-    "section": "Dataset",
-    "text": "Dataset\nSynthetic sample for a single two-week window.\n\n\n\nVariable\nLabel\nValue\n\n\n\n\nsuccesses\nAdd to cart count\n132\n\n\nn\nSample size\n600\n\n\np_hat\nObserved proportion\n0.22"
-  },
-  {
-    "objectID": "blog/posts/01-margin-of-error.html#method",
-    "href": "blog/posts/01-margin-of-error.html#method",
-    "title": "Confidence Interval for a Proportion: Analyzing Add-to-Cart Rate",
-    "section": "Method",
-    "text": "Method\nWe use the Wald large-sample CI for a binomial proportion (Agresti 2019):\n\\[\n\\text{MOE} = Z^* \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}}.\n\\]"
-  },
-  {
-    "objectID": "blog/posts/01-margin-of-error.html#calculation",
-    "href": "blog/posts/01-margin-of-error.html#calculation",
-    "title": "Confidence Interval for a Proportion: Analyzing Add-to-Cart Rate",
-    "section": "Calculation",
-    "text": "Calculation\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "blog/posts/01-margin-of-error.html#visualization",
-    "href": "blog/posts/01-margin-of-error.html#visualization",
-    "title": "Confidence Interval for a Proportion: Analyzing Add-to-Cart Rate",
-    "section": "Visualization",
-    "text": "Visualization\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "blog/posts/01-margin-of-error.html#results-and-interpretation",
-    "href": "blog/posts/01-margin-of-error.html#results-and-interpretation",
-    "title": "Confidence Interval for a Proportion: Analyzing Add-to-Cart Rate",
-    "section": "Results and Interpretation",
-    "text": "Results and Interpretation\nThe estimated add-to-cart proportion was 0.22 (22.0%) with a 95% confidence interval of [0.188, 0.252] (or [18.8%, 25.2%]), a margin of error of ±3.2 percentage points. The large-sample rule holds (132 successes, 468 failures) (Agresti 2019; R Core Team 2024).\nKPI assessment. Baseline KPI (19%) lies within the CI; stretch KPI (26%) lies above the CI.\nBusiness decision. The baseline KPI (19%) is acceptable given the data, suggesting acceptable performance. The stretch KPI (26%) is not supported by this sample - more visitors or performance improvements are needed to claim that goal."
-  },
-  {
-    "objectID": "blog/posts/01-margin-of-error.html#sample-size-planning",
-    "href": "blog/posts/01-margin-of-error.html#sample-size-planning",
-    "title": "Confidence Interval for a Proportion: Analyzing Add-to-Cart Rate",
-    "section": "Sample Size Planning",
-    "text": "Sample Size Planning\nTo achieve ±2 percentage points precision at 95% confidence: \\[\nn = \\hat{p}(1-\\hat{p})\\left(\\frac{Z^*}{\\text{MOE}_{\\text{target}}}\\right)^2.\n\\]\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "blog/posts/01-margin-of-error.html#assumptions",
-    "href": "blog/posts/01-margin-of-error.html#assumptions",
-    "title": "Confidence Interval for a Proportion: Analyzing Add-to-Cart Rate",
-    "section": "Assumptions",
-    "text": "Assumptions\nThe Wald interval assumes:\n\nIndependent observations: Each visitor’s cart action is independent (no clustering by session or user ID)\nRandom sampling: Visitors represent a random sample from the population (not biased toward specific traffic sources or times)\nLarge-sample validity: Both \\(n\\hat{p} \\ge 10\\) and \\(n(1-\\hat{p}) \\ge 10\\) (conditions met: 132 successes and 468 failures both exceed 10)\nStable process: The true conversion rate remains constant during the observation period (no seasonal trends, promotional effects, or A/B tests running concurrently)\n\n\n\nUse the below format to cite this page\n\nCopy APA Copy BibTeX\n\nSharafuddin, M. A. (2024, June 10). Confidence interval for a proportion: Analyzing add-to-cart rate. Flair Marketing Intelligence (FlairMI). https://flairmi.com/blog/posts/01-margin-of-error.html\n@online{sharafuddin2024-ci-proportion,\n  author = {Sharafuddin, Mohammed Ali},\n  title  = {Confidence Interval for a Proportion: Analyzing Add-to-Cart Rate},\n  year   = {2024},\n  date   = {2024-06-10},\n  url    = {https://flairmi.com/blog/posts/01-margin-of-error.html},\n  langid = {en}\n}"
-  },
-  {
-    "objectID": "blog/posts/01-margin-of-error.html#comments",
-    "href": "blog/posts/01-margin-of-error.html#comments",
-    "title": "Confidence Interval for a Proportion: Analyzing Add-to-Cart Rate",
-    "section": "Comments",
-    "text": "Comments"
-  },
-  {
-    "objectID": "blog/posts/03-t-test.html",
-    "href": "blog/posts/03-t-test.html",
-    "title": "Welch t-Test: Comparing Average Order Value Between Groups",
-    "section": "",
-    "text": "TL;DR: Control ₹1,500 vs Treatment ₹1,580 (n=200 each); p=0.001 (sig), difference ₹80 [₹32, ₹128], Hedges g=0.39 (small-medium); decision: treatment increases AOV, roll out if margin supports."
-  },
-  {
-    "objectID": "blog/posts/03-t-test.html#case",
-    "href": "blog/posts/03-t-test.html#case",
-    "title": "Welch t-Test: Comparing Average Order Value Between Groups",
-    "section": "Case",
-    "text": "Case\nYou are analyzing a merchandising experiment for an e-commerce store. The control group (A) saw standard product displays, while the treatment group (B) received enhanced product recommendations. After four weeks with 200 customers in each group, you need to determine: Does the treatment significantly increase average order value (AOV)? Should you roll out the new merchandising approach?"
-  },
-  {
-    "objectID": "blog/posts/03-t-test.html#dataset",
-    "href": "blog/posts/03-t-test.html#dataset",
-    "title": "Welch t-Test: Comparing Average Order Value Between Groups",
-    "section": "Dataset",
-    "text": "Dataset\nSynthetic sample from e-commerce experiment (Schema A).\n\n\n\nVariable\nLabel\nValue\n\n\n\n\naov_a\nControl group AOV\n₹ (rupees)\n\n\naov_b\nTreatment group AOV\n₹ (rupees)\n\n\nn_a\nControl sample size\n200\n\n\nn_b\nTreatment sample size\n200\n\n\nmean_a\nControl mean\n₹1,500\n\n\nmean_b\nTreatment mean\n₹1,580"
-  },
-  {
-    "objectID": "blog/posts/03-t-test.html#method",
-    "href": "blog/posts/03-t-test.html#method",
-    "title": "Welch t-Test: Comparing Average Order Value Between Groups",
-    "section": "Method",
-    "text": "Method\nWe use a Welch t-test to compare two independent groups with potentially unequal variances (Welch 1947). This is more robust than Student’s t-test when variances differ. We report the mean difference with a 95% confidence interval and Hedges g as an effect size measure (which applies a small-sample correction to Cohen’s d).\nThe mean difference: \\[\n\\bar{x}_B - \\bar{x}_A = \\frac{1}{n_B}\\sum x_{B,i} - \\frac{1}{n_A}\\sum x_{A,i}.\n\\]\nHedges g for effect size: \\[\ng = J \\times \\frac{\\bar{x}_B - \\bar{x}_A}{s_{\\text{pooled}}}, \\quad J = 1 - \\frac{3}{4(n_A + n_B) - 9}.\n\\]"
-  },
-  {
-    "objectID": "blog/posts/03-t-test.html#calculation",
-    "href": "blog/posts/03-t-test.html#calculation",
-    "title": "Welch t-Test: Comparing Average Order Value Between Groups",
-    "section": "Calculation",
-    "text": "Calculation\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "blog/posts/03-t-test.html#visualization",
-    "href": "blog/posts/03-t-test.html#visualization",
-    "title": "Welch t-Test: Comparing Average Order Value Between Groups",
-    "section": "Visualization",
-    "text": "Visualization\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "blog/posts/03-t-test.html#results-and-interpretation",
-    "href": "blog/posts/03-t-test.html#results-and-interpretation",
-    "title": "Welch t-Test: Comparing Average Order Value Between Groups",
-    "section": "Results and Interpretation",
-    "text": "Results and Interpretation\nThe control group had a mean AOV of ₹1,500 (SD = ₹260), while the treatment group had a mean AOV of ₹1,580 (SD = ₹300). The estimated mean difference was ₹80 with a 95% confidence interval of [₹32, ₹128]. A Welch t-test found a statistically significant difference, t(391) = 3.28, p = 0.001 (Welch 1947; R Core Team 2024).\nThe effect size, measured by Hedges g = 0.29, is considered small to medium by conventional standards (small: 0.20, medium: 0.50, large: 0.80). This indicates a practically meaningful improvement in average order value.\nWhile statistically significant (p = 0.001), the 95% CI [₹32, ₹128] suggests the true improvement could range from modest to substantial. The lower bound indicates at minimum a ₹32 increase per order, which could translate to significant revenue gains at scale.\nDecision framework. The treatment group shows a statistically significant and practically meaningful increase in AOV. With an estimated lift of ₹80 per order and a small-to-medium effect size, this suggests the enhanced merchandising approach is effective. Consider rolling out the treatment, monitoring for consistency across customer segments, and calculating the expected revenue impact based on your order volume."
-  },
-  {
-    "objectID": "blog/posts/03-t-test.html#sample-size-planning",
-    "href": "blog/posts/03-t-test.html#sample-size-planning",
-    "title": "Welch t-Test: Comparing Average Order Value Between Groups",
-    "section": "Sample Size Planning",
-    "text": "Sample Size Planning\nTo detect an ₹80 difference in AOV with 80% power at α = 0.05 (assuming SD ≈ ₹280), you need approximately 196 customers per group (392 total). Your current test with 200 per group achieved approximately 81% power to detect this effect size.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nFor future tests, use the formula: \\[\nn_{\\text{per group}} = \\frac{2(z_{1-\\alpha/2} + z_{1-\\beta})^2}{d^2},\n\\] where \\(d\\) is Cohen’s d (mean difference divided by pooled standard deviation)."
-  },
-  {
-    "objectID": "blog/posts/03-t-test.html#assumptions",
-    "href": "blog/posts/03-t-test.html#assumptions",
-    "title": "Welch t-Test: Comparing Average Order Value Between Groups",
-    "section": "Assumptions",
-    "text": "Assumptions\nThe Welch t-test assumes:\n\nIndependent observations: Each customer’s order is independent\nRandom assignment: Customers were randomly allocated to control or treatment\nApproximate normality: AOV distributions are approximately normal, or sample sizes are large enough (n ≥ 30 per group) for the Central Limit Theorem to apply\nNo requirement for equal variances: Welch t-test adjusts degrees of freedom for unequal variances (SD control = ₹260, treatment = ₹300)"
-  },
-  {
-    "objectID": "blog/posts/03-t-test.html#limitations",
-    "href": "blog/posts/03-t-test.html#limitations",
-    "title": "Welch t-Test: Comparing Average Order Value Between Groups",
-    "section": "Limitations",
-    "text": "Limitations\nThis analysis does not account for:\n\nSkewness: AOV distributions in retail are often right-skewed. Consider median comparisons or log-transformation if extreme outliers are present.\nSegmentation: Results may vary by customer segment (new vs. returning, device type, traffic source)\nTime effects: Seasonal patterns or time-of-week effects could influence AOV\nMultiple testing: If running multiple simultaneous experiments, adjust significance levels accordingly\n\nFor highly skewed data, consider the Mann-Whitney U test (Wilcoxon rank-sum test) as a non-parametric alternative.\n\n\nUse the below format to cite this page\n\nCopy APA Copy BibTeX\n\nSharafuddin, M. A. (2024, June 24). Welch t-test: Comparing average order value between groups. Flair Marketing Intelligence (FlairMI). https://flairmi.com/blog/posts/03-t-test.html\n@online{sharafuddin2024-t-test,\n  author = {Sharafuddin, Mohammed Ali},\n  title  = {Welch t-Test: Comparing Average Order Value Between Groups},\n  year   = {2024},\n  date   = {2024-06-24},\n  url    = {https://flairmi.com/blog/posts/03-t-test.html},\n  langid = {en}\n}"
-  },
-  {
-    "objectID": "blog/posts/03-t-test.html#comments",
-    "href": "blog/posts/03-t-test.html#comments",
-    "title": "Welch t-Test: Comparing Average Order Value Between Groups",
-    "section": "Comments",
-    "text": "Comments"
-  },
-  {
-    "objectID": "blog/posts/05-simple-regression.html",
-    "href": "blog/posts/05-simple-regression.html",
-    "title": "Simple Linear Regression: Modeling Revenue from Ad Spend",
-    "section": "",
-    "text": "TL;DR: Revenue = ₹50k + ₹0.30 per ₹1 ad spend (n=200); slope CI [₹0.24, ₹0.36], R²=0.42 (moderate fit), residuals look normal; decision: each ₹1k ad spend yields ~₹300 revenue, but check for nonlinearity at higher budgets."
-  },
-  {
-    "objectID": "blog/posts/05-simple-regression.html#case",
-    "href": "blog/posts/05-simple-regression.html#case",
-    "title": "Simple Linear Regression: Modeling Revenue from Ad Spend",
-    "section": "Case",
-    "text": "Case\nYou manage digital advertising for an e-commerce platform and want to quantify the relationship between weekly ad spend and revenue. Specifically: For every additional rupee spent on ads, how much revenue can you expect? Is the relationship strong enough to justify continued investment? What portion of revenue variation is explained by ad spend alone?"
-  },
-  {
-    "objectID": "blog/posts/05-simple-regression.html#dataset",
-    "href": "blog/posts/05-simple-regression.html#dataset",
-    "title": "Simple Linear Regression: Modeling Revenue from Ad Spend",
-    "section": "Dataset",
-    "text": "Dataset\nSynthetic sample from weekly marketing data (Schema A).\n\n\n\nVariable\nLabel\nValue\n\n\n\n\nspend\nWeekly ad spend\n₹ (rupees)\n\n\nrevenue\nWeekly revenue\n₹ (rupees)\n\n\nn\nNumber of weeks\n200\n\n\nRange\nSpend range\n₹0 - ₹100,000"
-  },
-  {
-    "objectID": "blog/posts/05-simple-regression.html#method",
-    "href": "blog/posts/05-simple-regression.html#method",
-    "title": "Simple Linear Regression: Modeling Revenue from Ad Spend",
-    "section": "Method",
-    "text": "Method\nWe use ordinary least squares (OLS) regression to model revenue as a linear function of ad spend. The regression equation is:\n\\[\n\\text{Revenue}_i = \\beta_0 + \\beta_1 \\times \\text{Spend}_i + \\epsilon_i,\n\\]\nwhere \\(\\beta_0\\) is the intercept (baseline revenue when spend = 0), \\(\\beta_1\\) is the slope (marginal revenue per rupee of spend), and \\(\\epsilon_i\\) is the error term assumed to be normally distributed with constant variance.\nThe slope estimate with standard error: \\[\n\\hat{\\beta}_1 = \\frac{\\sum(x_i - \\bar{x})(y_i - \\bar{y})}{\\sum(x_i - \\bar{x})^2}, \\quad SE(\\hat{\\beta}_1) = \\frac{s}{\\sqrt{\\sum(x_i - \\bar{x})^2}},\n\\] where \\(s\\) is the residual standard error.\nThe coefficient of determination (R-squared): \\[\nR^2 = 1 - \\frac{SS_{\\text{res}}}{SS_{\\text{tot}}} = 1 - \\frac{\\sum(y_i - \\hat{y}_i)^2}{\\sum(y_i - \\bar{y})^2}.\n\\]\nWe report 95% confidence intervals for both intercept and slope using standard t-distribution critical values."
-  },
-  {
-    "objectID": "blog/posts/05-simple-regression.html#calculation",
-    "href": "blog/posts/05-simple-regression.html#calculation",
-    "title": "Simple Linear Regression: Modeling Revenue from Ad Spend",
-    "section": "Calculation",
-    "text": "Calculation\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "blog/posts/05-simple-regression.html#visualization",
-    "href": "blog/posts/05-simple-regression.html#visualization",
-    "title": "Simple Linear Regression: Modeling Revenue from Ad Spend",
-    "section": "Visualization",
-    "text": "Visualization\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "blog/posts/05-simple-regression.html#results-and-interpretation",
-    "href": "blog/posts/05-simple-regression.html#results-and-interpretation",
-    "title": "Simple Linear Regression: Modeling Revenue from Ad Spend",
-    "section": "Results and Interpretation",
-    "text": "Results and Interpretation\nThe regression analysis reveals a statistically significant positive relationship between ad spend and revenue. The estimated slope is ₹0.300 (95% CI [₹0.240, ₹0.360]), meaning that for every additional rupee spent on advertising, revenue increases by approximately ₹0.30 on average (R Core Team 2024).\nThe intercept of ₹49,991 represents the estimated baseline revenue when ad spend is zero. While statistically significant (p &lt; 0.001), this should be interpreted cautiously as the model may not hold outside the observed spend range (₹0 - ₹100,000).\nModel fit: The R² value of 0.419 (42%) indicates that ad spend explains about 42% of the variation in weekly revenue. The remaining 58% is due to other factors not included in this simple model (e.g., seasonality, competitor actions, organic traffic, product mix).\nStatistical significance: The F-statistic (F(1, 198) = 142.7, p &lt; 0.001) confirms the overall model is highly significant. The slope’s p-value &lt; 0.001 indicates strong evidence that the relationship is not due to chance.\nPractical significance: A ₹0.30 return per rupee suggests a 30% marginal return on ad spend in terms of revenue (not profit). This is a gross relationship - you must subtract costs to determine actual ROI. The 95% CI [₹0.24, ₹0.36] suggests the true marginal return could range from 24% to 36%.\nDecision framework. The positive and significant relationship supports continued ad investment, but association does not imply causation. Before making budget decisions: (1) Check residual diagnostics for violations of regression assumptions, (2) Consider confounding variables (e.g., seasonality, external events), (3) Calculate net profit impact after subtracting ad costs and other variable costs, (4) Test whether the relationship holds at different spend levels (non-linearity), (5) Consider building a multiple regression model with additional predictors for better prediction accuracy."
-  },
-  {
-    "objectID": "blog/posts/05-simple-regression.html#residual-diagnostics",
-    "href": "blog/posts/05-simple-regression.html#residual-diagnostics",
-    "title": "Simple Linear Regression: Modeling Revenue from Ad Spend",
-    "section": "Residual Diagnostics",
-    "text": "Residual Diagnostics\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nDiagnostic interpretation: The residuals vs. fitted plot should show random scatter around zero (no pattern). The Q-Q plot should show points following the diagonal line. Deviations suggest violations of assumptions (heteroscedasticity, non-normality, or non-linearity)."
-  },
-  {
-    "objectID": "blog/posts/05-simple-regression.html#assumptions",
-    "href": "blog/posts/05-simple-regression.html#assumptions",
-    "title": "Simple Linear Regression: Modeling Revenue from Ad Spend",
-    "section": "Assumptions",
-    "text": "Assumptions\nSimple linear regression assumes:\n\nLinearity: The relationship between spend and revenue is linear (check with scatterplot and residual plot)\nIndependence: Weekly observations are independent (no autocorrelation across time)\nHomoscedasticity: Constant variance of residuals across all levels of spend (check residuals vs. fitted plot)\nNormality of residuals: Residuals are approximately normally distributed (check Q-Q plot; less critical with n = 200)\nNo measurement error in predictor: Ad spend is measured accurately\nNo omitted variable bias: Other important predictors are not correlated with spend"
-  },
-  {
-    "objectID": "blog/posts/05-simple-regression.html#limitations",
-    "href": "blog/posts/05-simple-regression.html#limitations",
-    "title": "Simple Linear Regression: Modeling Revenue from Ad Spend",
-    "section": "Limitations",
-    "text": "Limitations\nThis analysis does not account for:\n\nCausality: Correlation does not prove ad spend causes revenue. Reverse causality is possible (higher revenue allows more ad spend)\nConfounding variables: Seasonality, promotions, competitor actions, product launches, organic trends\nNon-linear relationships: Diminishing returns at high spend levels, or threshold effects at low spend\nTime series structure: Temporal autocorrelation, lagged effects (ads may influence future weeks)\nInteraction effects: Ad effectiveness may vary by channel, audience segment, or time period\nCosts: This models revenue, not profit. Must subtract ad costs and variable costs to assess true ROI\n\nRecommendations for improvement: - Add time trends and seasonal dummies to control for temporal patterns - Use multiple regression with additional predictors (organic traffic, email campaigns, competitor spend) - Test for non-linearity with polynomial terms or segmented regression - Consider time series models (ARIMA, VAR) if temporal dependencies exist - Conduct controlled experiments (randomized ad spend levels) to establish causality - Calculate contribution margin and customer lifetime value for profit-focused analysis\n\n\nUse the below format to cite this page\n\nCopy APA Copy BibTeX\n\nSharafuddin, M. A. (2025, October 25). Simple linear regression: Modeling revenue from ad spend. Flair Marketing Intelligence (FlairMI). https://flairmi.com/blog/posts/05-simple-regression.html\n@online{sharafuddin2025-regression,\n  author = {Sharafuddin, Mohammed Ali},\n  title  = {Simple Linear Regression: Modeling Revenue from Ad Spend},\n  year   = {2025},\n  date   = {2025-10-25},\n  url    = {https://flairmi.com/blog/posts/05-simple-regression.html},\n  langid = {en}\n}"
-  },
-  {
-    "objectID": "blog/posts/05-simple-regression.html#comments",
-    "href": "blog/posts/05-simple-regression.html#comments",
-    "title": "Simple Linear Regression: Modeling Revenue from Ad Spend",
-    "section": "Comments",
-    "text": "Comments"
+    "objectID": "about.html#contact",
+    "href": "about.html#contact",
+    "title": "About",
+    "section": "Contact",
+    "text": "Contact\n\n  For workshop invitations, research collaboration, tool feedback, or a general enquiry, use the form below. You can also write directly to mohammedali.page@gmail.com.\n  \n    \n      Name\n      Email\n      Topic\n          General enquiry\n          Workshop invitation\n          Research collaboration\n          Tool feedback\n        \n      \n      Message\n    \n    \n      Send message\n      Replies usually within a few days."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Flair Marketing Intelligence",
+    "title": "Mohammed Ali Sharafuddin",
     "section": "",
-    "text": "Run sound statistical analyses with clear datasets, reproducible R code, and practical business insights. \n  \n  \n    Read the Blog\n    Explore Tools"
+    "text": "Senior Lecturer · Qasim Ibrahim School of Business, Villa College · Malé, Maldives\n    Research, textbooks, templates, and open-source tools for marketing, statistics, and management education.\n    \n      Research\n      Teaching\n      Software\n      Tools\n      Live Surveys\n      Small Samples Book"
   },
   {
-    "objectID": "index.html#what-makes-flairmi-different",
-    "href": "index.html#what-makes-flairmi-different",
-    "title": "Flair Marketing Intelligence",
-    "section": "What Makes FlairMI Different",
-    "text": "What Makes FlairMI Different\nFlairMI provides practical, reproducible statistical tutorials for marketing professionals who need real applied answers, not just academic theory.\n\n\n\nInteractive WebR\n\n\nRun R code directly in your browser. No installation, no servers, no setup. All calculations happen on your device.\n\n\n\n\nReal Business Cases\n\n\nEvery tutorial uses realistic marketing scenarios: A/B tests, conversion analysis, ad spend optimization, customer behavior.\n\n\n\n\nComplete Structure\n\n\nTL;DR, data, method, calculation, results, visualization, sample size planning, assumptions, and limitations. Everything you need.\n\n\n\n\nMobile-First Design\n\n\nOptimized for reading and interaction on any device. Professional results whether you're at your desk or on the go."
+    "objectID": "index.html#also-on",
+    "href": "index.html#also-on",
+    "title": "Mohammed Ali Sharafuddin",
+    "section": "Also On",
+    "text": "Also On\n\n  \n    \n      FlairMI\n      \n        \n          External site\n        \n        Textbooks, templates, and analytics tools.\n        Visit"
   },
   {
-    "objectID": "index.html#what-youll-find-here",
-    "href": "index.html#what-youll-find-here",
-    "title": "Flair Marketing Intelligence",
-    "section": "What You’ll Find Here",
-    "text": "What You’ll Find Here\nBlog\nComprehensive statistical tutorials covering confidence intervals, hypothesis testing, regression, and logistic models. Each post includes interactive WebR code, business decision frameworks, and sample size planning.\nStats Suite Coming Soon\nQuick calculators for common statistical tests. Get results instantly without writing code. Each calculator links to the detailed blog tutorial.\nWriter Suite Coming Soon\nReport templates with clean language and professional figures. Export your analysis as polished deliverables for stakeholders.\nSurvey Suite Coming Soon\nSchema and sampling tools for survey design. Calculate sample sizes, apply weighting, and export to Google Forms. Survey Suite (Coming Soon)\nSchema and sampling tools for survey design. Calculate sample sizes, apply weighting, and export to Google Forms.\n\nGet Started: Browse the blog posts to learn statistical methods with interactive examples, or check the Stats suite for quick calculations."
-  },
-  {
-    "objectID": "index.html#approach",
-    "href": "index.html#approach",
-    "title": "Flair Marketing Intelligence",
-    "section": "Approach",
-    "text": "Approach\n\nSimple language: No jargon. Traditional grammar. Standard Reporting styles with clear explanations that respect your time.\nNamed datasets: Small, understandable examples with clear variable names and business context.\nShort code: Base R only. WebR-compatible. Copy-paste ready. No hidden complexity.\nINR and SI units: All monetary values in Indian Rupees. Metric system throughout.\n\n\nFlairMI is maintained by Mohammed Ali Sharafuddin, a marketing analytics professional focused on making statistics accessible to practitioners."
-  },
-  {
-    "objectID": "survey/index.html",
-    "href": "survey/index.html",
-    "title": "Survey",
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teaching",
     "section": "",
-    "text": "Purpose: host schema and sampling tools that connect to Writer.\nPlanned tools - Sample size and margin of error - Weighting and raking - Export to a Google Forms template\n\n\n\nCOMING SOON\n\n\nSurvey Design and Sampling Tools"
+    "text": "20 years teaching management, marketing, tourism, and business analytics across three countries: Maldives, Thailand, and India."
   },
   {
-    "objectID": "writer/templates/ab_test_report.html",
-    "href": "writer/templates/ab_test_report.html",
-    "title": "A/B test report",
-    "section": "",
-    "text": "Summarise an experiment with counts, effect size, and a short interpretation."
+    "objectID": "teaching.html#currently-teaching",
+    "href": "teaching.html#currently-teaching",
+    "title": "Teaching",
+    "section": "Currently Teaching",
+    "text": "Currently Teaching\nSenior Lecturer, Qasim Ibrahim School of Business, Villa College, Malé, Maldives (January 2025–present).\n\n  Marketing Management\n  Decision Making for Management (Business Analytics)\n  Digital Marketing\n  Project Management\n  Business Project\n  Enterprise Project (University of West of England)\n  Undergraduate Internship\n\nAlso MBA Coordinator (Blended Hybrid modules, Online MBA) and Course Coordinator for MBA, alongside Quality Assurance Lead duties."
   },
   {
-    "objectID": "writer/templates/ab_test_report.html#purpose",
-    "href": "writer/templates/ab_test_report.html#purpose",
-    "title": "A/B test report",
+    "objectID": "teaching.html#my-own-courses",
+    "href": "teaching.html#my-own-courses",
+    "title": "Teaching",
+    "section": "My Own Courses",
+    "text": "My Own Courses\nTwo courses of my own, one free and self-paced, one paid and credit-bearing. Kept distinct rather than blurred together.\n\n\n  \n    \n      Maritime Clusters and International Digital Marketing\n      \n        \n          CMU MOOC\n          free\n          self-paced (~2 hours)\n        \n        An overview of the Blue Economy, its sectors and clusters, and the\n        fundamentals of international digital marketing: segmentation, sales and marketing\n        funnels, social media, email, influencer, and mobile marketing. Certificate awarded at\n        70% or higher on the post-test.\n      \n      \n        Open course\n      \n    \n  \n\n  \n    \n      The Art & Science of Digital Marketing\n      \n        \n          School of Lifelong Education, Chiang Mai University\n          paid, credit-bearing (3 credits, 45 hours, 8 weeks, hybrid)\n        \n        A full digital marketing curriculum: customer analysis, strategy,\n        SEO, PPC, social and content marketing, email, video, influencer and affiliate\n        marketing, marketing automation, and performance measurement. Delivered in English via\n        Zoom and on-site sessions. 2023 (Thai calendar 2566) offering, application period\n        closed.\n      \n      \n        Course page"
+  },
+  {
+    "objectID": "teaching.html#student-supervision",
+    "href": "teaching.html#student-supervision",
+    "title": "Teaching",
+    "section": "Student Supervision",
+    "text": "Student Supervision\nGuided more than 40 undergraduate and postgraduate student projects in Business Administration, with a focus on Hospitality, Tourism, and International Trade in Services and Marketing. Current MBA and MSPMM course coordination at Villa College includes student research supervision and professional-development mentoring."
+  },
+  {
+    "objectID": "teaching.html#workshops-delivered",
+    "href": "teaching.html#workshops-delivered",
+    "title": "Teaching",
+    "section": "Workshops Delivered",
+    "text": "Workshops Delivered\n\nUsing R for Academic Research (2017–present, multiple runs)\nUsing Open-Source Software for Academic Research (2017–present, multiple runs)\nEffective Teaching Methodologies & Confidence Building, Centre for Faculty Development, Prist University (2009)"
+  },
+  {
+    "objectID": "teaching.html#external-open-courses",
+    "href": "teaching.html#external-open-courses",
+    "title": "Teaching",
+    "section": "External Open Courses",
+    "text": "External Open Courses\nCurated third-party resources, not my own output, matched to the subjects I teach. Verified free and live before listing.\n\n\n  \n    \n      Fundamentals of Digital Marketing\n      \n        \n          Digital Marketing\n        \n        Google Skillshop. 17 modules, ~40 hours, free with a\n        shareable completion award. The same certificate line already on my CV, migrated by\n        Google from Digital Garage to Skillshop.\n      \n      \n        Open course\n      \n    \n  \n\n  \n    \n      Marketing in the 21st Century\n      \n        \n          Marketing Management\n        \n        The Open University, OpenLearn. ~6 hours, free, no login\n        required. Managerial perspective on marketing as process and philosophy, branding, and\n        international marketing.\n      \n      \n        Open course\n      \n    \n  \n\n  \n    \n      Business Analytics for Decision Making\n      \n        \n          Business Analytics\n        \n        University of Colorado Boulder, via Coursera. Free to audit.\n        Cluster analysis, Monte Carlo simulation, and optimisation for managerial decisions.\n      \n      \n        Open course\n      \n    \n  \n\n  \n    \n      Project Management - Foundation\n      \n        \n          Project Management\n        \n        Alison. Free to enrol, study, and complete (only a physical\n        or digital certificate is a paid add-on). Initiating, planning, executing, and closing\n        projects, including risk analysis and business-case basics.\n      \n      \n        Open course\n      \n    \n  \n\n  \n    \n      Tourism - Marketing and Promotion\n      \n        \n          Tourism / Hospitality Marketing\n        \n        Alison. Free to enrol, study, and complete. Building a\n        tourism marketing campaign: target-audience identification, the customer purchasing\n        journey, and promotional methods.\n      \n      \n        Open course"
+  },
+  {
+    "objectID": "books.html",
+    "href": "books.html",
+    "title": "Books",
     "section": "",
-    "text": "Summarise an experiment with counts, effect size, and a short interpretation."
+    "text": "A practical guide for students and early-career researchers working with small samples: pilot data, limited recruitment, or constrained field settings, where the wrong method choice is most costly. Covers exact tests, resampling, nonparametric methods, and Bayesian regression across 18 chapters and 5 worked R projects. Published 16 May 2026, free to read online under CC BY 4.0.\n\n  Read the book →\n  Download PDF\n  Download DOCX\n\n\n\n  \n    \n  \n   \n  \n    \n  \n\nWritten for taught-masters and early-career PhD researchers, and for analysts and practitioners working with samples of roughly 10 to 100 cases in education, health, business, and social-science settings."
+  },
+  {
+    "objectID": "books.html#quantitative-analysis-with-small-samples",
+    "href": "books.html#quantitative-analysis-with-small-samples",
+    "title": "Books",
+    "section": "",
+    "text": "A practical guide for students and early-career researchers working with small samples: pilot data, limited recruitment, or constrained field settings, where the wrong method choice is most costly. Covers exact tests, resampling, nonparametric methods, and Bayesian regression across 18 chapters and 5 worked R projects. Published 16 May 2026, free to read online under CC BY 4.0.\n\n  Read the book →\n  Download PDF\n  Download DOCX\n\n\n\n  \n    \n  \n   \n  \n    \n  \n\nWritten for taught-masters and early-career PhD researchers, and for analysts and practitioners working with samples of roughly 10 to 100 cases in education, health, business, and social-science settings."
+  },
+  {
+    "objectID": "books.html#the-evidence-based-digital-marketer",
+    "href": "books.html#the-evidence-based-digital-marketer",
+    "title": "Books",
+    "section": "The Evidence-Based Digital Marketer",
+    "text": "The Evidence-Based Digital Marketer\nDigital Campaign Strategy, Open Marketing Analytics, and Responsible AI. A Villa College course textbook (MKTG3001) teaching digital marketing as an evidence-to-decision system: audience research, measurable objectives, persuasive content, channel strategy, measurement, automation, and responsible AI use. Every chapter provides an open-source or free-access practice route. Publishing on a rolling basis: Weeks 1–3 of 15 are live now, covering digital population research, classic-to-digital planning, and persuasive visual design.\n\n  Read the book →\n\n\n\n  \n    \n  \n   \n  \n\nWritten for Villa College MKTG3001 students, and for any marketer or analyst who wants an evidence-first, open-practice route through digital marketing strategy rather than a platform-vendor playbook."
+  },
+  {
+    "objectID": "software.html",
+    "href": "software.html",
+    "title": "Software",
+    "section": "",
+    "text": "Own tools built for survey research, statistics teaching, and everyday decision support. Each links to where it actually runs and to its full FlairMI product page.\n\n\n  \n    \n      surveyframe\n      \n        \n          Core toolkit\n          R package\n          live on CRAN\n        \n        End-to-end survey research workflows: visual instrument design, static HTML survey export, a Shiny module, response quality checking, scale scoring, psychometric diagnostics, analysis-plan execution, codebook generation, and reproducible HTML reporting.\n        install.packages(\"surveyframe\")\n      \n      \n        Open app: view on CRAN\n        Docs\n        Read more\n      \n    \n  \n\n  \n    \n      StatChooser\n      \n        \n          Core toolkit\n          Free web app\n          live\n        \n        Recommends a statistical test from four short questions about research goal, design, data, and measurement level. Every recommendation includes assumptions, runnable surveyframe R code, JASP steps, an APA reporting sentence, and a small-sample note. Companion front end to surveyframe.\n      \n      \n        Open app\n        Read more\n      \n    \n  \n\n  \n    \n      Price Memory\n      \n        \n          Free web app\n          live\n        \n        A local grocery price tracker. Stores item, store, price, and date in IndexedDB so you can build a personal price history and check whether a sale is actually below your usual price.\n      \n      \n        Open app\n        Read more\n      \n    \n  \n\n  \n    \n      Margin Guard\n      \n        \n          Free web app\n          live\n        \n        A promotion break-even calculator for pricing and campaign decisions. Compares baseline contribution against promo-period contribution and shows discount depth, break-even units, and expected net contribution delta.\n      \n      \n        Open app\n        Read more\n      \n    \n  \n\n  \n    \n      Persona Builder\n      \n        \n          Free web app\n          live\n        \n        Build UX research and marketing personas at three levels of detail, basic, standard, and full, with photo or sample avatar selection and one-click export to PNG or PDF.\n      \n      \n        Open app\n        Read more"
   }
 ]
