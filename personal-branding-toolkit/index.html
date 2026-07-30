@@ -205,6 +205,26 @@ select:focus {
   background: #D5DBE1;
 }
 
+/* Bottom-of-section Previous/Next nav, mirroring the top tab strip so
+   long sections do not require scrolling back up to move on. */
+.section-nav-footer {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #E4E9ED;
+}
+.section-nav-footer .btn {
+  margin-bottom: 10px;
+}
+.section-nav-footer .btn-nav-next {
+  margin-left: auto;
+}
+@media (min-width: 600px) {
+  .section-nav-footer {
+    display: flex;
+    gap: 10px;
+  }
+}
+
 .checkbox-group {
   display: flex;
   align-items: flex-start;
@@ -545,7 +565,8 @@ tr:hover {
 }
 
 @media print {
-  .nav-tabs-wrap, .btn, .cv-editor, header {
+  .nav-tabs-wrap, .btn, .cv-editor, header,
+  #progressCard, #kpiCard, .toast, .section-nav-footer {
     display: none !important;
   }
   .cv-builder-container {
@@ -580,7 +601,7 @@ tr:hover {
 <div class="container">
 
   <!-- Progress Bar -->
-  <div class="card">
+  <div class="card" id="progressCard">
     <h2>Your Progress</h2>
     <div class="progress-bar">
       <div class="progress-fill" id="progressBar" style="width: 0%">0% Complete</div>
@@ -601,7 +622,7 @@ tr:hover {
   </div>
 
   <!-- Workshop KPIs -->
-  <div class="card">
+  <div class="card" id="kpiCard">
     <h2>Workshop KPIs</h2>
     <div class="kpi-grid">
       <div class="kpi-card">
@@ -657,6 +678,9 @@ tr:hover {
         <label for="careerGoals">Short-term Career Goals (1-2 years)</label>
         <textarea id="careerGoals" placeholder="In the next 1-2 years, I want to ___, by doing ___." oninput="saveData()"></textarea>
       </div>
+    </div>
+    <div class="section-nav-footer">
+      <button class="btn btn-primary btn-nav-next" onclick="goToSection('cv')">Next &rarr;</button>
     </div>
   </section>
 
@@ -730,6 +754,10 @@ tr:hover {
         </div>
       </div>
     </div>
+    <div class="section-nav-footer">
+      <button class="btn btn-secondary" onclick="goToSection('positioning')">&larr; Previous</button>
+      <button class="btn btn-primary btn-nav-next" onclick="goToSection('linkedin')">Next &rarr;</button>
+    </div>
   </section>
 
   <!-- Section 3: LinkedIn Profile -->
@@ -791,6 +819,10 @@ tr:hover {
         <label for="liConsistency">CV and LinkedIn profile tell a consistent story</label>
       </div>
     </div>
+    <div class="section-nav-footer">
+      <button class="btn btn-secondary" onclick="goToSection('cv')">&larr; Previous</button>
+      <button class="btn btn-primary btn-nav-next" onclick="goToSection('network')">Next &rarr;</button>
+    </div>
   </section>
 
   <!-- Section 4: Professional Network -->
@@ -849,6 +881,10 @@ tr:hover {
         <label for="netEngage">Made first professional post/comment</label>
       </div>
     </div>
+    <div class="section-nav-footer">
+      <button class="btn btn-secondary" onclick="goToSection('linkedin')">&larr; Previous</button>
+      <button class="btn btn-primary btn-nav-next" onclick="goToSection('audit')">Next &rarr;</button>
+    </div>
   </section>
 
   <!-- Section 5: Digital Footprint Audit -->
@@ -899,6 +935,10 @@ tr:hover {
         <label for="auditConsistency">Ensured consistent professional image across platforms</label>
       </div>
     </div>
+    <div class="section-nav-footer">
+      <button class="btn btn-secondary" onclick="goToSection('network')">&larr; Previous</button>
+      <button class="btn btn-primary btn-nav-next" onclick="goToSection('portfolio')">Next &rarr;</button>
+    </div>
   </section>
 
   <!-- Section 6: Portfolio Summary -->
@@ -920,6 +960,9 @@ tr:hover {
         <button class="btn btn-secondary" onclick="document.getElementById('importFile').click()">Load Portfolio File</button>
         <input type="file" id="importFile" accept=".json" style="display:none" onchange="importPortfolio(this.files[0])">
       </div>
+    </div>
+    <div class="section-nav-footer">
+      <button class="btn btn-secondary" onclick="goToSection('audit')">&larr; Previous</button>
     </div>
   </section>
 
@@ -1058,6 +1101,8 @@ function escapeHtml(value) {
 }
 
 // Navigation
+const SECTION_ORDER = ['positioning', 'cv', 'linkedin', 'network', 'audit', 'portfolio'];
+
 function showSection(sectionId, btn) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
@@ -1067,6 +1112,16 @@ function showSection(sectionId, btn) {
   if (sectionId === 'portfolio') {
     renderPortfolioSummary();
   }
+}
+
+// Bottom-of-section Previous/Next buttons reuse showSection so the top
+// tab strip stays in sync, then scroll up so the newly active section
+// is visible without the user having to scroll back manually.
+function goToSection(sectionId) {
+  const index = SECTION_ORDER.indexOf(sectionId);
+  const tabButton = document.querySelectorAll('.nav-tab')[index];
+  showSection(sectionId, tabButton);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Data Management
