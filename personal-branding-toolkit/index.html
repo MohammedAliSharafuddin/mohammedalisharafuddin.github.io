@@ -272,22 +272,27 @@ tr:hover {
   background: #F4F6F8;
 }
 
+/* Label sits above the bar rather than inside the fill: at low
+   percentages the fill is only a few pixels wide, and text centred
+   inside a near-empty flex box renders past its edges with almost no
+   colour behind it instead of shrinking to fit. */
+.progress-label {
+  font-weight: 600;
+  color: #0B3A78;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  display: block;
+}
 .progress-bar {
   background: #E4E9ED;
   border-radius: 10px;
-  height: 26px;
-  margin: 16px 0;
+  height: 14px;
+  margin: 0 0 16px 0;
   overflow: hidden;
 }
 .progress-fill {
   background: linear-gradient(90deg, #0B3A78, #16B3B1);
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-weight: 600;
-  font-size: 0.85rem;
   transition: width 0.5s;
 }
 
@@ -603,8 +608,9 @@ tr:hover {
   <!-- Progress Bar -->
   <div class="card" id="progressCard">
     <h2>Your Progress</h2>
+    <span class="progress-label" id="progressLabel">0% Complete</span>
     <div class="progress-bar">
-      <div class="progress-fill" id="progressBar" style="width: 0%">0% Complete</div>
+      <div class="progress-fill" id="progressBar" style="width: 0%"></div>
     </div>
     <p>Complete each section to build your professional brand portfolio.</p>
 
@@ -1847,7 +1853,7 @@ function updateProgress() {
 
   const percentage = Math.round((completed / total) * 100);
   document.getElementById('progressBar').style.width = percentage + '%';
-  document.getElementById('progressBar').textContent = percentage + '% Complete';
+  document.getElementById('progressLabel').textContent = percentage + '% Complete';
 
   renderKpiCards();
 }
