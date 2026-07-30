@@ -1,0 +1,1886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Branding Toolkit - Master's Programme</title>
+<style>
+/* ---------------------------------------------------------------
+   Mobile-first stylesheet. Base rules below target small phone
+   screens (~360-400px). Layout upgrades (multi-column grids, more
+   generous spacing) are added only inside min-width media queries
+   further down, never removed for larger screens.
+   Palette: FlairMI navy (#0B3A78) and teal (#16B3B1).
+--------------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #1F2A37;
+  background: #F4F6F8;
+}
+header {
+  background: #0B3A78;
+  color: #fff;
+  padding: 16px;
+  text-align: center;
+}
+header h1 {
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+header p {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* Nav tabs: horizontally scrollable strip with a fade hint so it
+   reads as scrollable on a phone rather than looking cut off. */
+.nav-tabs-wrap {
+  position: relative;
+  background: #082C5C;
+}
+.nav-tabs-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 28px;
+  background: linear-gradient(to right, rgba(8,44,92,0), rgba(8,44,92,0.9));
+  pointer-events: none;
+}
+.nav-tabs {
+  display: flex;
+  background: transparent;
+  padding: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.nav-tab {
+  padding: 13px 14px;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  transition: background 0.2s;
+  min-height: 44px;
+}
+.nav-tab .tab-num {
+  display: none;
+}
+.nav-tab:hover {
+  background: #0B3A78;
+}
+.nav-tab.active {
+  background: #16B3B1;
+  color: #062038;
+  font-weight: 700;
+}
+.nav-tab.tab-dimmed {
+  opacity: 0.5;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px;
+}
+.section {
+  display: none;
+  animation: fadeIn 0.4s;
+}
+.section.active {
+  display: block;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(11,58,120,0.1);
+}
+.card h2 {
+  color: #0B3A78;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #16B3B1;
+  font-size: 1.2rem;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 7px;
+  color: #40505F;
+  font-size: 0.92rem;
+}
+input[type="text"],
+input[type="email"],
+input[type="url"],
+textarea,
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #D5DBE1;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #fff;
+  color: #1F2A37;
+}
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #16B3B1;
+  box-shadow: 0 0 0 3px rgba(22,179,177,0.2);
+}
+
+/* Buttons: minimum 44px touch target height, full-width by default
+   on mobile so a thumb cannot miss or double-tap the wrong one. */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 13px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.98rem;
+  font-weight: 600;
+  margin-right: 0;
+  margin-bottom: 10px;
+  min-height: 44px;
+  transition: background 0.2s;
+  text-align: center;
+}
+.btn-primary {
+  background: #0B3A78;
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #082C5C;
+}
+.btn-success {
+  background: #16B3B1;
+  color: #062038;
+}
+.btn-success:hover {
+  background: #119492;
+}
+.btn-danger {
+  background: #E74C3C;
+  color: #fff;
+}
+.btn-danger:hover {
+  background: #C0392B;
+}
+.btn-secondary {
+  background: #E4E9ED;
+  color: #0B3A78;
+}
+.btn-secondary:hover {
+  background: #D5DBE1;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+.checkbox-group input[type="checkbox"] {
+  margin-right: 12px;
+  margin-top: 3px;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  accent-color: #16B3B1;
+  cursor: pointer;
+}
+.checkbox-group label {
+  margin: 0;
+  font-weight: normal;
+  cursor: pointer;
+  font-size: 0.95rem;
+  padding-top: 1px;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-top: 18px;
+  -webkit-overflow-scrolling: touch;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 480px;
+}
+th, td {
+  padding: 11px;
+  text-align: left;
+  border-bottom: 1px solid #E4E9ED;
+  font-size: 0.9rem;
+}
+th {
+  background: #0B3A78;
+  color: #fff;
+  font-weight: 600;
+}
+tr:hover {
+  background: #F4F6F8;
+}
+
+.progress-bar {
+  background: #E4E9ED;
+  border-radius: 10px;
+  height: 26px;
+  margin: 16px 0;
+  overflow: hidden;
+}
+.progress-fill {
+  background: linear-gradient(90deg, #0B3A78, #16B3B1);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: width 0.5s;
+}
+
+/* Network add-contact row: one field per line on mobile */
+.net-add-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* CV Builder: editor above preview by default on mobile */
+.cv-builder-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+.cv-editor {
+  background: #fff;
+  padding: 14px;
+  border-radius: 8px;
+  max-height: none;
+  overflow-y: visible;
+}
+.cv-preview {
+  background: #fff;
+  padding: 14px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(11,58,120,0.1);
+  max-height: none;
+  overflow-y: visible;
+}
+.cv-preview-content {
+  font-family: Georgia, serif;
+  line-height: 1.6;
+}
+.cv-header {
+  text-align: center;
+  border-bottom: 2px solid #0B3A78;
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+}
+.cv-header h1 {
+  font-size: 1.5rem;
+  color: #0B3A78;
+  margin-bottom: 5px;
+}
+.cv-header .title {
+  font-size: 1rem;
+  color: #16B3B1;
+  margin-bottom: 10px;
+}
+.cv-header .contact {
+  font-size: 0.85rem;
+  color: #666;
+}
+.cv-section {
+  margin-bottom: 18px;
+}
+.cv-section h3 {
+  color: #0B3A78;
+  border-bottom: 1px solid #16B3B1;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+.cv-entry {
+  margin-bottom: 15px;
+}
+.cv-entry-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 3px;
+  gap: 4px;
+}
+.cv-entry-org {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.entry-form {
+  border: 1px solid #E4E9ED;
+  padding: 14px;
+  margin-bottom: 14px;
+  border-radius: 6px;
+  background: #FAFBFC;
+}
+.entry-form h4 {
+  margin-bottom: 10px;
+  color: #0B3A78;
+  font-size: 1rem;
+}
+.entry-form label {
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+.entry-form .form-group {
+  margin-bottom: 12px;
+}
+.entry-form .btn-danger {
+  width: auto;
+  display: inline-block;
+  padding: 9px 18px;
+}
+
+.network-category {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.category-academic { background: #0B3A78; color: #fff; }
+.category-industry { background: #16B3B1; color: #062038; }
+.category-alumni { background: #9b59b6; color: #fff; }
+.category-peer { background: #f39c12; color: #fff; }
+.category-recruiter { background: #E74C3C; color: #fff; }
+
+.toast {
+  position: fixed;
+  bottom: 16px;
+  left: 14px;
+  right: 14px;
+  background: #0B3A78;
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  display: none;
+  animation: slideIn 0.3s;
+  z-index: 1000;
+  font-size: 0.92rem;
+  text-align: center;
+}
+.sync-status {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 8px;
+  display: block;
+}
+.sync-status.error {
+  color: #C0392B;
+}
+.sync-status.ok {
+  color: #119492;
+}
+
+.workshop-banner {
+  display: none;
+  background: #EAF6F6;
+  border: 1px solid #16B3B1;
+  border-radius: 6px;
+  padding: 14px;
+  margin-top: 14px;
+  font-size: 0.9rem;
+  color: #0B3A78;
+}
+.workshop-banner.visible {
+  display: block;
+}
+#workshopToggleBtn {
+  width: auto;
+  display: inline-block;
+  padding: 9px 16px;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+.kpi-card {
+  border: 1px solid #E4E9ED;
+  border-radius: 8px;
+  padding: 16px;
+  background: #FAFBFC;
+}
+.kpi-card h4 {
+  color: #0B3A78;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+.kpi-status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.kpi-status.pending {
+  background: #fdecea;
+  color: #C0392B;
+}
+.kpi-status.complete {
+  background: #e3f7f6;
+  color: #119492;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(80px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ---------------------------------------------------------------
+   Progressive enhancement for larger screens. Nothing above is
+   undone here, only expanded: more side padding, side-by-side
+   layouts, inline buttons, larger type.
+--------------------------------------------------------------- */
+@media (min-width: 600px) {
+  header {
+    padding: 24px 20px;
+  }
+  header h1 {
+    font-size: 1.8rem;
+  }
+  .container {
+    padding: 20px;
+  }
+  .card {
+    padding: 22px;
+  }
+  .nav-tab {
+    padding: 15px 22px;
+    font-size: 0.95rem;
+  }
+  .nav-tab .tab-num {
+    display: inline;
+  }
+  .btn {
+    display: inline-block;
+    width: auto;
+    margin-right: 10px;
+  }
+  #workshopToggleBtn {
+    display: inline-block;
+  }
+  .net-add-row {
+    grid-template-columns: 2fr 1fr 1fr auto;
+    align-items: stretch;
+  }
+  .net-add-row .btn {
+    width: auto;
+  }
+  .toast {
+    left: auto;
+    right: 20px;
+    bottom: 20px;
+    text-align: left;
+  }
+}
+
+@media (min-width: 900px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  .cv-builder-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .cv-editor,
+  .cv-preview {
+    padding: 20px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .kpi-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media print {
+  .nav-tabs-wrap, .btn, .cv-editor, header {
+    display: none !important;
+  }
+  .cv-builder-container {
+    display: block;
+  }
+  .cv-preview {
+    box-shadow: none;
+    padding: 0;
+    max-height: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Personal Branding Toolkit</h1>
+  <p>Master's Programme - Professional Development Workshop</p>
+</header>
+
+<div class="nav-tabs-wrap">
+<nav class="nav-tabs">
+  <button class="nav-tab active" onclick="showSection('positioning', this)"><span class="tab-num">1.</span> Positioning</button>
+  <button class="nav-tab" onclick="showSection('cv', this)"><span class="tab-num">2.</span> CV Builder</button>
+  <button class="nav-tab" onclick="showSection('linkedin', this)"><span class="tab-num">3.</span> LinkedIn</button>
+  <button class="nav-tab" onclick="showSection('network', this)"><span class="tab-num">4.</span> Network</button>
+  <button class="nav-tab" onclick="showSection('audit', this)"><span class="tab-num">5.</span> Digital Audit</button>
+  <button class="nav-tab" onclick="showSection('portfolio', this)"><span class="tab-num">6.</span> Portfolio</button>
+</nav>
+</div>
+
+<div class="container">
+
+  <!-- Progress Bar -->
+  <div class="card">
+    <h2>Your Progress</h2>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressBar" style="width: 0%">0% Complete</div>
+    </div>
+    <p>Complete each section to build your professional brand portfolio.</p>
+
+    <div id="workshopBanner" class="workshop-banner">
+      <strong>Workshop mode (30 minutes):</strong> 5 min Positioning &middot; 15 min CV essentials &middot; 5 min LinkedIn &middot; 5 min buffer.
+      Network and Digital Audit are homework for after the session, so those tabs are dimmed for now.
+      <div style="margin-top: 10px;">
+        <button class="btn btn-secondary" id="workshopToggleBtn" style="margin: 0; padding: 6px 14px; font-size: 0.85rem;" onclick="toggleWorkshopMode()">Switch to full toolkit</button>
+      </div>
+    </div>
+
+    <div style="margin-top: 15px;">
+      <span id="syncStatus" class="sync-status"></span>
+    </div>
+  </div>
+
+  <!-- Workshop KPIs -->
+  <div class="card">
+    <h2>Workshop KPIs</h2>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <h4>KPI 1: Professional CV</h4>
+        <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">Name, title, summary, one experience entry, one education entry.</p>
+        <span class="kpi-status" id="kpi1Status">Not started</span>
+      </div>
+      <div class="kpi-card">
+        <h4>KPI 2: Follow Villa College on LinkedIn</h4>
+        <p style="font-size: 0.85rem; margin-bottom: 12px;">
+          <a href="https://www.linkedin.com/company/villacollege/posts/?feedView=all" target="_blank" rel="noopener noreferrer">Open Villa College's LinkedIn page</a>
+        </p>
+        <div class="checkbox-group" style="margin-bottom: 10px;">
+          <input type="checkbox" id="kpiFollowLinkedIn" onchange="saveData()">
+          <label for="kpiFollowLinkedIn">I have followed the page</label>
+        </div>
+        <span class="kpi-status" id="kpi2Status">Not started</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 1: Strategic Positioning -->
+  <section id="positioning" class="section active">
+    <div class="card">
+      <h2>Strategic Positioning</h2>
+      <p style="margin-bottom: 20px;">Define your professional identity and career trajectory before building your CV.</p>
+      
+      <div class="form-group">
+        <label for="targetRole">Target Role/Position</label>
+        <input type="text" id="targetRole" placeholder="e.g., Data Scientist, Management Consultant, Research Analyst" oninput="saveData()">
+      </div>
+      
+      <div class="form-group">
+        <label for="targetIndustry">Target Industry/Sector</label>
+        <input type="text" id="targetIndustry" placeholder="e.g., Technology, Finance, Healthcare, Academia" oninput="saveData()">
+      </div>
+      
+      <div class="form-group">
+        <label for="valueProposition">Professional Value Proposition</label>
+        <textarea id="valueProposition" placeholder="I bring ___ years of experience in ___, with particular strength in ___ and ___." oninput="saveData()"></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="keyStrengths">Key Strengths (Top 5)</label>
+        <textarea id="keyStrengths" placeholder="1. ___
+2. ___
+3. ___
+4. ___
+5. ___" oninput="saveData()"></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="careerGoals">Short-term Career Goals (1-2 years)</label>
+        <textarea id="careerGoals" placeholder="In the next 1-2 years, I want to ___, by doing ___." oninput="saveData()"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: CV Builder -->
+  <section id="cv" class="section">
+    <div class="cv-builder-container">
+      <div class="cv-editor">
+        <h2>CV Editor</h2>
+        
+        <div class="form-group">
+          <label for="cvName">Full Name</label>
+          <input type="text" id="cvName" oninput="updateCV()">
+        </div>
+        
+        <div class="form-group">
+          <label for="cvTitle">Professional Title</label>
+          <input type="text" id="cvTitle" placeholder="e.g., MBA Candidate | Data Analyst" oninput="updateCV()">
+        </div>
+        
+        <div class="form-group">
+          <label for="cvEmail">Email</label>
+          <input type="email" id="cvEmail" oninput="updateCV()">
+        </div>
+        
+        <div class="form-group">
+          <label for="cvPhone">Phone</label>
+          <input type="text" id="cvPhone" oninput="updateCV()">
+        </div>
+        
+        <div class="form-group">
+          <label for="cvLinkedIn">LinkedIn URL</label>
+          <input type="url" id="cvLinkedIn" oninput="updateCV()">
+        </div>
+        
+        <div class="form-group">
+          <label for="cvSummary">Professional Summary</label>
+          <textarea id="cvSummary" oninput="updateCV()"></textarea>
+        </div>
+        
+        <h3>Experience</h3>
+        <div id="experienceContainer"></div>
+        <button class="btn btn-primary" onclick="addExperience()">+ Add Experience</button>
+        
+        <h3 style="margin-top: 20px;">Education</h3>
+        <div id="educationContainer"></div>
+        <button class="btn btn-primary" onclick="addEducation()">+ Add Education</button>
+        
+        <h3 style="margin-top: 20px;">Projects</h3>
+        <div id="projectsContainer"></div>
+        <button class="btn btn-primary" onclick="addProject()">+ Add Project</button>
+        
+        <h3 style="margin-top: 20px;">Publications</h3>
+        <div id="publicationsContainer"></div>
+        <button class="btn btn-primary" onclick="addPublication()">+ Add Publication</button>
+        
+        <h3 style="margin-top: 20px;">Skills</h3>
+        <div class="form-group">
+          <label for="cvSkills">Skills (comma separated)</label>
+          <textarea id="cvSkills" placeholder="List your skills separated by commas" oninput="updateCV()"></textarea>
+        </div>
+        
+        <div style="margin-top: 20px;">
+          <button class="btn btn-success" onclick="downloadPDF()">Download PDF</button>
+          <button class="btn btn-secondary" onclick="resetCV()">Reset CV</button>
+        </div>
+      </div>
+      
+      <div class="cv-preview">
+        <div id="cvPreviewContent" class="cv-preview-content">
+          <!-- CV Preview will be rendered here -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: LinkedIn Profile -->
+  <section id="linkedin" class="section">
+    <div class="card">
+      <h2>LinkedIn Profile Builder</h2>
+      <p style="margin-bottom: 20px;">Use your CV as the foundation for a compelling LinkedIn profile.</p>
+      
+      <div class="form-group">
+        <label for="liHeadline">Professional Headline (120 characters max)</label>
+        <input type="text" id="liHeadline" maxlength="120" placeholder="e.g., MBA Candidate | Aspiring Product Manager | Tech Enthusiast" oninput="saveData()">
+      </div>
+      
+      <div class="form-group">
+        <label for="liAbout">About Section (2600 characters max)</label>
+        <textarea id="liAbout" maxlength="2600" placeholder="Write a compelling narrative about your professional journey, skills, and aspirations." oninput="saveData()"></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="liURL">Custom LinkedIn URL</label>
+        <input type="text" id="liURL" placeholder="linkedin.com/in/yourname" oninput="saveData()">
+      </div>
+      
+      <h3 style="margin-top: 30px;">Profile Checklist</h3>
+      <div class="checkbox-group">
+        <input type="checkbox" id="liPhoto" onchange="saveData()">
+        <label for="liPhoto">Professional photograph (business attire, neutral background)</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="liBanner" onchange="saveData()">
+        <label for="liBanner">Custom banner image related to your industry</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="liEducation" onchange="saveData()">
+        <label for="liEducation">Education section complete with activities and societies</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="liExperience" onchange="saveData()">
+        <label for="liExperience">Work experience with detailed descriptions</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="liSkills" onchange="saveData()">
+        <label for="liSkills">At least 10 relevant skills added</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="liEndorsements" onchange="saveData()">
+        <label for="liEndorsements">Skills endorsed by connections</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="liRecommendations" onchange="saveData()">
+        <label for="liRecommendations">At least 2 recommendations from colleagues/professors</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="liProjects" onchange="saveData()">
+        <label for="liProjects">Academic and professional projects showcased</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="liConsistency" onchange="saveData()">
+        <label for="liConsistency">CV and LinkedIn profile tell a consistent story</label>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Professional Network -->
+  <section id="network" class="section">
+    <div class="card">
+      <h2>Professional Network Map</h2>
+      <p style="margin-bottom: 20px;">Build and track your professional connections strategically.</p>
+      
+      <div class="net-add-row">
+        <input type="text" id="netName" placeholder="Contact Name" aria-label="Contact Name">
+        <select id="netCategory" aria-label="Contact Category">
+          <option value="Academic">Academic</option>
+          <option value="Industry">Industry</option>
+          <option value="Alumni">Alumni</option>
+          <option value="Peer">Peer</option>
+          <option value="Recruiter">Recruiter</option>
+        </select>
+        <input type="text" id="netAction" placeholder="Next Action" aria-label="Next Action">
+        <button class="btn btn-primary" onclick="addNetworkContact()">Add Contact</button>
+      </div>
+      
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Next Action</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="networkTable"></tbody>
+        </table>
+      </div>
+      
+      <h3 style="margin-top: 30px;">Networking Goals</h3>
+      <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;">Following Villa College on LinkedIn is tracked as KPI 2 at the top of this page.</p>
+      <div class="checkbox-group">
+        <input type="checkbox" id="netFaculty" onchange="saveData()">
+        <label for="netFaculty">Follow relevant faculty/school page</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="netAlumni3" onchange="saveData()">
+        <label for="netAlumni3">Identified 3 alumni in target roles</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="netProf5" onchange="saveData()">
+        <label for="netProf5">Connected with 5 industry professionals</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="netAssoc" onchange="saveData()">
+        <label for="netAssoc">Joined 2 professional associations</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="netEngage" onchange="saveData()">
+        <label for="netEngage">Made first professional post/comment</label>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Digital Footprint Audit -->
+  <section id="audit" class="section">
+    <div class="card">
+      <h2>Digital Footprint Audit</h2>
+      <p style="margin-bottom: 20px;">Review and clean your online presence before building your professional brand.</p>
+      
+      <h3>Privacy & Security</h3>
+      <div class="checkbox-group">
+        <input type="checkbox" id="auditPrivacy" onchange="saveData()">
+        <label for="auditPrivacy">Reviewed privacy settings on all social media accounts</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="auditPasswords" onchange="saveData()">
+        <label for="auditPasswords">Updated passwords for professional accounts</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="auditTwoFactor" onchange="saveData()">
+        <label for="auditTwoFactor">Enabled two-factor authentication on LinkedIn</label>
+      </div>
+      
+      <h3 style="margin-top: 30px;">Content Review</h3>
+      <div class="checkbox-group">
+        <input type="checkbox" id="auditSocial" onchange="saveData()">
+        <label for="auditSocial">Removed unprofessional content from social media</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="auditGoogle" onchange="saveData()">
+        <label for="auditGoogle">Googled yourself to check public information</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="auditPhotos" onchange="saveData()">
+        <label for="auditPhotos">Reviewed and tagged professional photos</label>
+      </div>
+      
+      <h3 style="margin-top: 30px;">Professional Presence</h3>
+      <div class="checkbox-group">
+        <input type="checkbox" id="auditEmail" onchange="saveData()">
+        <label for="auditEmail">Created professional email address (firstname.lastname@domain)</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="auditPortfolio" onchange="saveData()">
+        <label for="auditPortfolio">Set up online portfolio/GitHub (if applicable)</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="auditConsistency" onchange="saveData()">
+        <label for="auditConsistency">Ensured consistent professional image across platforms</label>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Portfolio Summary -->
+  <section id="portfolio" class="section">
+    <div class="card">
+      <h2>Your Personal Brand Portfolio</h2>
+      <p style="margin-bottom: 20px;">Review and export your complete professional branding materials.</p>
+      
+      <div id="portfolioSummary"></div>
+      
+      <div style="margin-top: 30px;">
+        <button class="btn btn-success" onclick="exportPortfolio()">Export Complete Portfolio</button>
+        <button class="btn btn-primary" onclick="window.print()">Print Portfolio</button>
+      </div>
+
+      <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #E4E9ED;">
+        <h3 style="font-size: 1rem; color: #0B3A78; margin-bottom: 8px;">Continuing on a different device?</h3>
+        <p style="font-size: 0.88rem; color: #666; margin-bottom: 14px;">This tool saves automatically as you type, but only on the device and browser you are using right now. If you are picking this up on a different computer, or your browser data was cleared, load the file you exported earlier to bring your work back.</p>
+        <button class="btn btn-secondary" onclick="document.getElementById('importFile').click()">Load Portfolio File</button>
+        <input type="file" id="importFile" accept=".json" style="display:none" onchange="importPortfolio(this.files[0])">
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="toast" id="toast">Data saved successfully!</div>
+
+<script>
+const STORAGE_KEY = 'mas_personal_branding_toolkit_v1';
+const SESSION_ID_KEY = 'mas_personal_branding_toolkit_v1_session';
+
+// Set this to a deployed Google Apps Script Web App URL to sync data to a
+// Google Sheet backend. Leave blank to keep the toolkit working purely
+// with localStorage and manual export/import.
+const SHEETS_SYNC_URL = 'https://script.google.com/macros/s/AKfycbzx2ZOhSDvD6bRL1PmcXOmRYvUU0UnqnXSr0u3dy-O3uNtEwFvha-RjRTtKPktABs6L6Q/exec';
+
+// A stable anonymous ID for this browser, generated once and reused for
+// every sync so the Apps Script can update one row per student instead of
+// appending a new row on every keystroke-triggered save.
+function getSessionId() {
+  let id = localStorage.getItem(SESSION_ID_KEY);
+  if (!id) {
+    id = 'sess_' + Date.now() + '_' + Math.random().toString(36).slice(2, 10);
+    localStorage.setItem(SESSION_ID_KEY, id);
+  }
+  return id;
+}
+
+let appData = {
+  positioning: {},
+  cv: {
+    name: '', title: '', email: '', phone: '', linkedin: '',
+    summary: '', skills: '',
+    experience: [], education: [], projects: [], publications: []
+  },
+  linkedin: {},
+  network: [],
+  audit: {},
+  completed: {},
+  workshopMode: true,
+  kpi: { followedLinkedIn: false }
+};
+
+let saveTimeout = null;
+let heartbeatInterval = null;
+
+// Initialize
+function init() {
+  loadData();
+  renderAll();
+  applyWorkshopModeUI();
+  updateProgress();
+  renderKpiCards();
+  startHeartbeatSync();
+  window.addEventListener('beforeunload', flushSyncOnUnload);
+}
+
+// Keep the Sheet row fresh across a long workshop even if the student
+// stops typing for a while. Fires every 5 minutes, comfortably covering
+// a 3+ hour session without flooding the sheet with rows.
+function startHeartbeatSync() {
+  if (!SHEETS_SYNC_URL) return;
+  if (heartbeatInterval) clearInterval(heartbeatInterval);
+  heartbeatInterval = setInterval(syncToSheet, 5 * 60 * 1000);
+}
+
+// Best-effort final write when the tab is closing. sendBeacon is used
+// instead of fetch because the browser guarantees it a chance to send
+// even as the page unloads, where a normal fetch could get cancelled.
+function flushSyncOnUnload() {
+  if (!SHEETS_SYNC_URL) return;
+  try {
+    const payload = JSON.stringify(Object.assign({ sessionId: getSessionId() }, appData));
+    navigator.sendBeacon(SHEETS_SYNC_URL, new Blob([payload], { type: 'text/plain' }));
+  } catch (e) {
+    // Best effort only, ignore failures here
+  }
+}
+
+// Toggle between the 30-minute workshop path (Positioning, CV, LinkedIn only)
+// and the full toolkit (all six tabs weighted equally)
+function toggleWorkshopMode() {
+  appData.workshopMode = !appData.workshopMode;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+  applyWorkshopModeUI();
+  updateProgress();
+}
+
+function applyWorkshopModeUI() {
+  const banner = document.getElementById('workshopBanner');
+  const btn = document.getElementById('workshopToggleBtn');
+  const networkTab = document.querySelectorAll('.nav-tab')[3];
+  const auditTab = document.querySelectorAll('.nav-tab')[4];
+
+  if (appData.workshopMode) {
+    if (banner) banner.classList.add('visible');
+    if (btn) btn.textContent = 'Switch to full toolkit';
+    if (networkTab) networkTab.classList.add('tab-dimmed');
+    if (auditTab) auditTab.classList.add('tab-dimmed');
+  } else {
+    if (banner) banner.classList.remove('visible');
+    if (btn) btn.textContent = 'Switch to 30-minute workshop mode';
+    if (networkTab) networkTab.classList.remove('tab-dimmed');
+    if (auditTab) auditTab.classList.remove('tab-dimmed');
+  }
+}
+
+// KPI 1: a usable professional CV exists (name, title, summary, one role, one degree)
+// KPI 2: the student has followed the Villa College LinkedIn page
+function renderKpiCards() {
+  const cv = appData.cv;
+  const kpi1Done = Boolean(cv.name && cv.summary && cv.experience.length >= 1 && cv.education.length >= 1);
+  const kpi1El = document.getElementById('kpi1Status');
+  if (kpi1El) {
+    kpi1El.textContent = kpi1Done ? 'Complete' : 'Not started';
+    kpi1El.className = 'kpi-status ' + (kpi1Done ? 'complete' : 'pending');
+  }
+
+  const kpi2Done = Boolean(appData.kpi && appData.kpi.followedLinkedIn);
+  const kpi2El = document.getElementById('kpi2Status');
+  if (kpi2El) {
+    kpi2El.textContent = kpi2Done ? 'Complete' : 'Not started';
+    kpi2El.className = 'kpi-status ' + (kpi2Done ? 'complete' : 'pending');
+  }
+}
+
+// Escape untrusted text before it goes into innerHTML or an attribute
+function escapeHtml(value) {
+  if (value === null || value === undefined) return '';
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// Navigation
+function showSection(sectionId, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(sectionId).classList.add('active');
+  if (btn) btn.classList.add('active');
+
+  if (sectionId === 'portfolio') {
+    renderPortfolioSummary();
+  }
+}
+
+// Data Management
+function loadData() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved) {
+    try {
+      appData = JSON.parse(saved);
+    } catch (e) {
+      console.error('Saved data was corrupted, starting fresh.', e);
+    }
+  }
+}
+
+function saveData() {
+  // Save positioning
+  appData.positioning = {
+    targetRole: document.getElementById('targetRole')?.value || '',
+    targetIndustry: document.getElementById('targetIndustry')?.value || '',
+    valueProposition: document.getElementById('valueProposition')?.value || '',
+    keyStrengths: document.getElementById('keyStrengths')?.value || '',
+    careerGoals: document.getElementById('careerGoals')?.value || ''
+  };
+  
+  // Save LinkedIn
+  appData.linkedin = {
+    headline: document.getElementById('liHeadline')?.value || '',
+    about: document.getElementById('liAbout')?.value || '',
+    url: document.getElementById('liURL')?.value || '',
+    checklist: {
+      photo: document.getElementById('liPhoto')?.checked || false,
+      banner: document.getElementById('liBanner')?.checked || false,
+      education: document.getElementById('liEducation')?.checked || false,
+      experience: document.getElementById('liExperience')?.checked || false,
+      skills: document.getElementById('liSkills')?.checked || false,
+      endorsements: document.getElementById('liEndorsements')?.checked || false,
+      recommendations: document.getElementById('liRecommendations')?.checked || false,
+      projects: document.getElementById('liProjects')?.checked || false,
+      consistency: document.getElementById('liConsistency')?.checked || false
+    }
+  };
+  
+  // Save network checklist
+  appData.networkChecklist = {
+    faculty: document.getElementById('netFaculty')?.checked || false,
+    alumni3: document.getElementById('netAlumni3')?.checked || false,
+    prof5: document.getElementById('netProf5')?.checked || false,
+    assoc: document.getElementById('netAssoc')?.checked || false,
+    engage: document.getElementById('netEngage')?.checked || false
+  };
+
+  // Save KPI 2 (follow Villa College on LinkedIn)
+  appData.kpi = {
+    followedLinkedIn: document.getElementById('kpiFollowLinkedIn')?.checked || false
+  };
+  
+  // Save audit
+  appData.audit = {
+    privacy: document.getElementById('auditPrivacy')?.checked || false,
+    passwords: document.getElementById('auditPasswords')?.checked || false,
+    twoFactor: document.getElementById('auditTwoFactor')?.checked || false,
+    social: document.getElementById('auditSocial')?.checked || false,
+    google: document.getElementById('auditGoogle')?.checked || false,
+    photos: document.getElementById('auditPhotos')?.checked || false,
+    email: document.getElementById('auditEmail')?.checked || false,
+    portfolio: document.getElementById('auditPortfolio')?.checked || false,
+    consistency: document.getElementById('auditConsistency')?.checked || false
+  };
+  
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+  updateProgress();
+  scheduleSavedFeedback();
+}
+
+// Debounce the toast and the remote sync so rapid typing does not fire
+// either on every keystroke.
+function scheduleSavedFeedback() {
+  clearTimeout(saveTimeout);
+  saveTimeout = setTimeout(() => {
+    showToast();
+    syncToSheet();
+  }, 600);
+}
+
+// CV Functions
+function updateCV() {
+  appData.cv.name = document.getElementById('cvName').value;
+  appData.cv.title = document.getElementById('cvTitle').value;
+  appData.cv.email = document.getElementById('cvEmail').value;
+  appData.cv.phone = document.getElementById('cvPhone').value;
+  appData.cv.linkedin = document.getElementById('cvLinkedIn').value;
+  appData.cv.summary = document.getElementById('cvSummary').value;
+  appData.cv.skills = document.getElementById('cvSkills').value;
+  
+  renderCVPreview();
+  saveData();
+}
+
+function renderCVPreview() {
+  const cv = appData.cv;
+
+  const skills = (cv.skills || '')
+    .split(',')
+    .map(s => s.trim())
+    .filter(Boolean);
+
+  let contactHtml = '';
+  if (cv.email) contactHtml += `<div class="cv-contact-item">${escapeHtml(cv.email)}</div>`;
+  if (cv.phone) contactHtml += `<div class="cv-contact-item">${escapeHtml(cv.phone)}</div>`;
+  if (cv.linkedin) contactHtml += `<div class="cv-contact-item">${escapeHtml(cv.linkedin)}</div>`;
+
+  let educationHtml = '';
+  cv.education.forEach(edu => {
+    educationHtml += `
+      <div style="margin-bottom: 15px;">
+        <div style="font-weight: 600;">${escapeHtml(edu.degree)}</div>
+        ${edu.institution ? `<div style="font-size: 0.9rem; opacity: 0.9;">${escapeHtml(edu.institution)}</div>` : ''}
+        ${edu.period ? `<div style="font-size: 0.85rem; opacity: 0.8;">${escapeHtml(edu.period)}</div>` : ''}
+      </div>`;
+  });
+
+  const skillsHtml = skills.map(s => `<div class="cv-skill-item">${escapeHtml(s)}</div>`).join('');
+
+  let experienceHtml = '';
+  cv.experience.forEach(exp => {
+    const bullets = (exp.details || '').split(String.fromCharCode(10)).map(l => l.trim()).filter(Boolean);
+    const bulletHtml = bullets.length
+      ? `<ul>${bullets.map(b => `<li>${escapeHtml(b)}</li>`).join('')}</ul>`
+      : '';
+    experienceHtml += `
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <div class="cv-entry-title">${escapeHtml(exp.title)}</div>
+          <div class="cv-entry-period">${escapeHtml(exp.period)}</div>
+        </div>
+        ${exp.company ? `<div class="cv-entry-company">${escapeHtml(exp.company)}</div>` : ''}
+        ${bulletHtml}
+      </div>`;
+  });
+
+  let projectsHtml = '';
+  if (cv.projects.length) {
+    projectsHtml += `<div class="cv-section-title">Projects</div>`;
+    cv.projects.forEach(proj => {
+      projectsHtml += `
+        <div class="cv-entry">
+          <div class="cv-entry-title">${escapeHtml(proj.title)}</div>
+          ${proj.details ? `<p>${escapeHtml(proj.details).replace(new RegExp(String.fromCharCode(10), 'g'), '<br>')}</p>` : ''}
+        </div>`;
+    });
+  }
+
+  let publicationsHtml = '';
+  if (cv.publications.length) {
+    publicationsHtml += `<div class="cv-section-title">Publications</div>`;
+    cv.publications.forEach(pub => {
+      publicationsHtml += `
+        <div class="cv-entry">
+          <div class="cv-entry-title">${escapeHtml(pub.title)}</div>
+          ${pub.details ? `<p>${escapeHtml(pub.details).replace(new RegExp(String.fromCharCode(10), 'g'), '<br>')}</p>` : ''}
+        </div>`;
+    });
+  }
+
+  const html = `
+  <div class="cv-modern-two-column">
+    <style>
+    /* Mobile-first: single column by default, dark panel stacks
+       above the main content on narrow screens. Two-column layout
+       only kicks in once there is enough width for it (600px+). */
+    .cv-modern-two-column {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      line-height: 1.6;
+    }
+    .cv-left-col {
+      background: #0B3A78;
+      color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .cv-left-col h3 {
+      color: #16B3B1;
+      border-bottom: 2px solid #16B3B1;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .cv-left-col .name {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+    .cv-left-col .title {
+      font-size: 0.95rem;
+      color: #16B3B1;
+      margin-bottom: 22px;
+      font-weight: 300;
+    }
+    .cv-contact-item {
+      margin-bottom: 12px;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      word-break: break-word;
+    }
+    .cv-contact-item:before {
+      content: "\\2022";
+      color: #16B3B1;
+      margin-right: 10px;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .cv-skill-item {
+      background: rgba(22,179,177,0.18);
+      padding: 5px 10px;
+      margin-bottom: 8px;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      display: inline-block;
+    }
+    .cv-right-col {
+      padding: 4px;
+    }
+    .cv-section-title {
+      color: #0B3A78;
+      font-size: 1.15rem;
+      border-bottom: 2px solid #16B3B1;
+      padding-bottom: 7px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .cv-entry {
+      margin-bottom: 20px;
+    }
+    .cv-entry-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 4px;
+      margin-bottom: 5px;
+    }
+    .cv-entry-title {
+      font-weight: 700;
+      font-size: 1.02rem;
+      color: #0B3A78;
+    }
+    .cv-entry-period {
+      color: #16B3B1;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .cv-entry-company {
+      font-style: italic;
+      color: #666;
+      margin-bottom: 8px;
+    }
+    .cv-entry ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .cv-entry li {
+      margin-bottom: 5px;
+    }
+    @media (min-width: 600px) {
+      .cv-modern-two-column {
+        grid-template-columns: 1fr 2fr;
+        gap: 30px;
+      }
+      .cv-left-col {
+        padding: 30px;
+      }
+      .cv-right-col {
+        padding: 20px;
+      }
+    }
+    </style>
+
+    <div class="cv-left-col">
+      <div class="name">${escapeHtml(cv.name) || 'Your Name'}</div>
+      ${cv.title ? `<div class="title">${escapeHtml(cv.title)}</div>` : ''}
+
+      ${contactHtml ? `<h3>Contact</h3>${contactHtml}` : ''}
+
+      ${cv.education.length ? `<h3>Education</h3>${educationHtml}` : ''}
+
+      ${skills.length ? `<h3>Skills</h3>${skillsHtml}` : ''}
+    </div>
+
+    <div class="cv-right-col">
+      ${cv.summary ? `<div class="cv-section-title">Professional Summary</div><p style="margin-bottom: 30px;">${escapeHtml(cv.summary).replace(new RegExp(String.fromCharCode(10), 'g'), '<br>')}</p>` : ''}
+
+      ${cv.experience.length ? `<div class="cv-section-title">Experience</div>${experienceHtml}` : ''}
+
+      ${projectsHtml}
+      ${publicationsHtml}
+    </div>
+  </div>`;
+
+  document.getElementById('cvPreviewContent').innerHTML = html;
+}
+
+function addExperience() {
+  appData.cv.experience.push({ title: '', company: '', period: '', details: '' });
+  renderExperienceForms();
+}
+
+function renderExperienceForms() {
+  const container = document.getElementById('experienceContainer');
+  container.innerHTML = '';
+  appData.cv.experience.forEach((exp, index) => {
+    const div = document.createElement('div');
+    div.className = 'entry-form';
+    div.innerHTML = `
+      <h4>Experience ${index + 1}</h4>
+      <div class="form-group">
+        <label>Job Title</label>
+        <input type="text" placeholder="Job Title" value="${escapeHtml(exp.title)}" oninput="updateExperience(${index}, 'title', this.value)">
+      </div>
+      <div class="form-group">
+        <label>Company</label>
+        <input type="text" placeholder="Company" value="${escapeHtml(exp.company)}" oninput="updateExperience(${index}, 'company', this.value)">
+      </div>
+      <div class="form-group">
+        <label>Period</label>
+        <input type="text" placeholder="Period (e.g., Jan 2020 - Present)" value="${escapeHtml(exp.period)}" oninput="updateExperience(${index}, 'period', this.value)">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea placeholder="Description" oninput="updateExperience(${index}, 'details', this.value)">${escapeHtml(exp.details)}</textarea>
+      </div>
+      <button class="btn btn-danger" onclick="removeExperience(${index})">Remove</button>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function updateExperience(index, field, value) {
+  appData.cv.experience[index][field] = value;
+  renderCVPreview();
+  saveData();
+}
+
+function removeExperience(index) {
+  appData.cv.experience.splice(index, 1);
+  renderExperienceForms();
+  renderCVPreview();
+  saveData();
+}
+
+function addEducation() {
+  appData.cv.education.push({ degree: '', institution: '', period: '', details: '' });
+  renderEducationForms();
+}
+
+function renderEducationForms() {
+  const container = document.getElementById('educationContainer');
+  container.innerHTML = '';
+  appData.cv.education.forEach((edu, index) => {
+    const div = document.createElement('div');
+    div.className = 'entry-form';
+    div.innerHTML = `
+      <h4>Education ${index + 1}</h4>
+      <div class="form-group">
+        <label>Degree</label>
+        <input type="text" placeholder="Degree" value="${escapeHtml(edu.degree)}" oninput="updateEducation(${index}, 'degree', this.value)">
+      </div>
+      <div class="form-group">
+        <label>Institution</label>
+        <input type="text" placeholder="Institution" value="${escapeHtml(edu.institution)}" oninput="updateEducation(${index}, 'institution', this.value)">
+      </div>
+      <div class="form-group">
+        <label>Period</label>
+        <input type="text" placeholder="Period" value="${escapeHtml(edu.period)}" oninput="updateEducation(${index}, 'period', this.value)">
+      </div>
+      <div class="form-group">
+        <label>Details</label>
+        <textarea placeholder="Details (activities, achievements)" oninput="updateEducation(${index}, 'details', this.value)">${escapeHtml(edu.details)}</textarea>
+      </div>
+      <button class="btn btn-danger" onclick="removeEducation(${index})">Remove</button>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function updateEducation(index, field, value) {
+  appData.cv.education[index][field] = value;
+  renderCVPreview();
+  saveData();
+}
+
+function removeEducation(index) {
+  appData.cv.education.splice(index, 1);
+  renderEducationForms();
+  renderCVPreview();
+  saveData();
+}
+
+function addProject() {
+  appData.cv.projects.push({ title: '', details: '' });
+  renderProjectForms();
+}
+
+function renderProjectForms() {
+  const container = document.getElementById('projectsContainer');
+  container.innerHTML = '';
+  appData.cv.projects.forEach((proj, index) => {
+    const div = document.createElement('div');
+    div.className = 'entry-form';
+    div.innerHTML = `
+      <h4>Project ${index + 1}</h4>
+      <div class="form-group">
+        <label>Project Title</label>
+        <input type="text" placeholder="Project Title" value="${escapeHtml(proj.title)}" oninput="updateProject(${index}, 'title', this.value)">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea placeholder="Description" oninput="updateProject(${index}, 'details', this.value)">${escapeHtml(proj.details)}</textarea>
+      </div>
+      <button class="btn btn-danger" onclick="removeProject(${index})">Remove</button>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function updateProject(index, field, value) {
+  appData.cv.projects[index][field] = value;
+  renderCVPreview();
+  saveData();
+}
+
+function removeProject(index) {
+  appData.cv.projects.splice(index, 1);
+  renderProjectForms();
+  renderCVPreview();
+  saveData();
+}
+
+function addPublication() {
+  appData.cv.publications.push({ title: '', details: '' });
+  renderPublicationForms();
+}
+
+function renderPublicationForms() {
+  const container = document.getElementById('publicationsContainer');
+  container.innerHTML = '';
+  appData.cv.publications.forEach((pub, index) => {
+    const div = document.createElement('div');
+    div.className = 'entry-form';
+    div.innerHTML = `
+      <h4>Publication ${index + 1}</h4>
+      <div class="form-group">
+        <label>Publication Title</label>
+        <input type="text" placeholder="Publication Title" value="${escapeHtml(pub.title)}" oninput="updatePublication(${index}, 'title', this.value)">
+      </div>
+      <div class="form-group">
+        <label>Authors, Journal, Year</label>
+        <textarea placeholder="Authors, Journal, Year" oninput="updatePublication(${index}, 'details', this.value)">${escapeHtml(pub.details)}</textarea>
+      </div>
+      <button class="btn btn-danger" onclick="removePublication(${index})">Remove</button>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function updatePublication(index, field, value) {
+  appData.cv.publications[index][field] = value;
+  renderCVPreview();
+  saveData();
+}
+
+function removePublication(index) {
+  appData.cv.publications.splice(index, 1);
+  renderPublicationForms();
+  renderCVPreview();
+  saveData();
+}
+
+function downloadPDF() {
+  window.print();
+}
+
+function resetCV() {
+  if (confirm('Are you sure you want to reset your CV? This will delete all CV data.')) {
+    appData.cv = {
+      name: '', title: '', email: '', phone: '', linkedin: '',
+      summary: '', skills: '',
+      experience: [], education: [], projects: [], publications: []
+    };
+    document.getElementById('cvName').value = '';
+    document.getElementById('cvTitle').value = '';
+    document.getElementById('cvEmail').value = '';
+    document.getElementById('cvPhone').value = '';
+    document.getElementById('cvLinkedIn').value = '';
+    document.getElementById('cvSummary').value = '';
+    document.getElementById('cvSkills').value = '';
+    renderExperienceForms();
+    renderEducationForms();
+    renderProjectForms();
+    renderPublicationForms();
+    renderCVPreview();
+    saveData();
+  }
+}
+
+// Network Functions
+function addNetworkContact() {
+  const name = document.getElementById('netName').value.trim();
+  const category = document.getElementById('netCategory').value;
+  const action = document.getElementById('netAction').value.trim();
+  
+  if (!name) {
+    alert('Please enter a contact name');
+    return;
+  }
+  
+  appData.network.push({ name, category, action });
+  document.getElementById('netName').value = '';
+  document.getElementById('netAction').value = '';
+  renderNetworkTable();
+  saveData();
+}
+
+function renderNetworkTable() {
+  const tbody = document.getElementById('networkTable');
+  tbody.innerHTML = '';
+  appData.network.forEach((contact, index) => {
+    const row = document.createElement('tr');
+    const categoryClass = `category-${contact.category.toLowerCase()}`;
+    row.innerHTML = `
+      <td>${escapeHtml(contact.name)}</td>
+      <td><span class="network-category ${categoryClass}">${escapeHtml(contact.category)}</span></td>
+      <td>${escapeHtml(contact.action)}</td>
+      <td><button class="btn btn-danger" style="padding: 5px 10px;" onclick="removeNetworkContact(${index})">Remove</button></td>
+    `;
+    tbody.appendChild(row);
+  });
+}
+
+function removeNetworkContact(index) {
+  const contact = appData.network[index];
+  if (!confirm(`Remove ${contact.name} from your network map?`)) return;
+  appData.network.splice(index, 1);
+  renderNetworkTable();
+  saveData();
+}
+
+// Portfolio Summary
+function renderPortfolioSummary() {
+  const summary = document.getElementById('portfolioSummary');
+  const pos = appData.positioning;
+  const cv = appData.cv;
+  const li = appData.linkedin;
+  
+  let html = '<div class="card" style="background: #f9f9f9;">';
+  html += '<h3>Professional Positioning</h3>';
+  html += `<p><strong>Target Role:</strong> ${escapeHtml(pos.targetRole) || 'Not specified'}</p>`;
+  html += `<p><strong>Target Industry:</strong> ${escapeHtml(pos.targetIndustry) || 'Not specified'}</p>`;
+  html += `<p><strong>Value Proposition:</strong> ${escapeHtml(pos.valueProposition) || 'Not specified'}</p>`;
+  html += '</div>';
+  
+  html += '<div class="card" style="background: #f9f9f9; margin-top: 20px;">';
+  html += '<h3>CV Summary</h3>';
+  html += `<p><strong>Name:</strong> ${escapeHtml(cv.name) || 'Not specified'}</p>`;
+  html += `<p><strong>Experience Entries:</strong> ${cv.experience.length}</p>`;
+  html += `<p><strong>Education Entries:</strong> ${cv.education.length}</p>`;
+  html += `<p><strong>Projects:</strong> ${cv.projects.length}</p>`;
+  html += `<p><strong>Publications:</strong> ${cv.publications.length}</p>`;
+  html += '</div>';
+  
+  html += '<div class="card" style="background: #f9f9f9; margin-top: 20px;">';
+  html += '<h3>LinkedIn Profile</h3>';
+  html += `<p><strong>Headline:</strong> ${escapeHtml(li.headline) || 'Not specified'}</p>`;
+  const checklistItems = Object.values(li.checklist || {}).filter(v => v).length;
+  html += `<p><strong>Profile Completion:</strong> ${checklistItems}/9 checklist items</p>`;
+  html += '</div>';
+  
+  html += '<div class="card" style="background: #f9f9f9; margin-top: 20px;">';
+  html += '<h3>Network Map</h3>';
+  html += `<p><strong>Total Contacts:</strong> ${appData.network.length}</p>`;
+  const byCategory = {};
+  appData.network.forEach(c => {
+    byCategory[c.category] = (byCategory[c.category] || 0) + 1;
+  });
+  for (const [cat, count] of Object.entries(byCategory)) {
+    html += `<p><strong>${escapeHtml(cat)}:</strong> ${count}</p>`;
+  }
+  html += '</div>';
+  
+  summary.innerHTML = html;
+}
+
+function exportPortfolio() {
+  const dataStr = JSON.stringify(appData, null, 2);
+  const dataBlob = new Blob([dataStr], { type: 'application/json' });
+  const url = URL.createObjectURL(dataBlob);
+  const link = document.createElement('a');
+  link.href = url;
+  const safeName = (appData.cv.name || 'student').replace(/[^a-z0-9]+/gi, '-').toLowerCase();
+  link.download = `personal-brand-portfolio-${safeName}.json`;
+  link.click();
+  URL.revokeObjectURL(url);
+  showToast();
+}
+
+// Import a previously exported JSON file and repopulate the whole toolkit
+function importPortfolio(file) {
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const parsed = JSON.parse(e.target.result);
+      appData = Object.assign({
+        positioning: {}, cv: { name: '', title: '', email: '', phone: '', linkedin: '', summary: '', skills: '', experience: [], education: [], projects: [], publications: [] },
+        linkedin: {}, network: [], audit: {}, networkChecklist: {},
+        workshopMode: true, kpi: { followedLinkedIn: false }
+      }, parsed);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+      renderAll();
+      applyWorkshopModeUI();
+      updateProgress();
+      showToast();
+    } catch (err) {
+      alert('That file could not be read as a portfolio export. Check it is the .json file downloaded from this toolkit.');
+    }
+  };
+  reader.readAsText(file);
+}
+
+// Optional Google Sheets sync. Only runs if SHEETS_SYNC_URL is set.
+// sessionId keeps every sync for this student updating one Sheet row
+// instead of appending a fresh row on every save.
+function syncToSheet(isRetry) {
+  if (!SHEETS_SYNC_URL) return;
+  const statusEl = document.getElementById('syncStatus');
+  if (statusEl && !isRetry) {
+    statusEl.textContent = 'Syncing...';
+    statusEl.className = 'sync-status';
+  }
+  const payload = Object.assign({ sessionId: getSessionId() }, appData);
+  fetch(SHEETS_SYNC_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(payload)
+  })
+    .then(res => res.json())
+    .then(() => {
+      if (statusEl) {
+        const now = new Date();
+        const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        statusEl.textContent = 'Synced to Google Sheet at ' + timeStr;
+        statusEl.className = 'sync-status ok';
+      }
+    })
+    .catch(err => {
+      console.error('Sheet sync failed', err);
+      if (!isRetry) {
+        // One retry after a short delay covers a brief wifi drop rather
+        // than losing the update for the rest of the session.
+        setTimeout(() => syncToSheet(true), 4000);
+        return;
+      }
+      if (statusEl) {
+        statusEl.textContent = 'Sync failed, data still saved locally on this device';
+        statusEl.className = 'sync-status error';
+      }
+    });
+}
+
+// Progress Tracking
+function updateProgress() {
+  let total = 0;
+  let completed = 0;
+
+  // Positioning (5 fields) - counted in both modes, this is the 5-minute block
+  total += 5;
+  if (appData.positioning.targetRole) completed++;
+  if (appData.positioning.targetIndustry) completed++;
+  if (appData.positioning.valueProposition) completed++;
+  if (appData.positioning.keyStrengths) completed++;
+  if (appData.positioning.careerGoals) completed++;
+
+  // CV essentials (5 fields) - counted in both modes, this is the 15-minute block
+  total += 5;
+  if (appData.cv.name) completed++;
+  if (appData.cv.email) completed++;
+  if (appData.cv.summary) completed++;
+  if (appData.cv.experience.length > 0) completed++;
+  if (appData.cv.education.length > 0) completed++;
+
+  if (appData.workshopMode) {
+    // 30-minute path: only the LinkedIn essentials that fit in 5 minutes.
+    // The 9-item polish checklist is homework, not part of the live target.
+    total += 2;
+    if (appData.linkedin.headline) completed++;
+    if (appData.linkedin.url) completed++;
+  } else {
+    // Full toolkit: every section counts, weighted equally.
+    total += 9;
+    if (appData.linkedin.checklist) {
+      completed += Object.values(appData.linkedin.checklist).filter(v => v).length;
+    }
+
+    // Network: 5 checklist items plus a bonus point for 3+ contacts,
+    // with the bonus point counted in the denominator too.
+    total += 6;
+    if (appData.networkChecklist) {
+      completed += Object.values(appData.networkChecklist).filter(v => v).length;
+    }
+    if (appData.network.length >= 3) completed++;
+
+    total += 9;
+    if (appData.audit) {
+      completed += Object.values(appData.audit).filter(v => v).length;
+    }
+  }
+
+  const percentage = Math.round((completed / total) * 100);
+  document.getElementById('progressBar').style.width = percentage + '%';
+  document.getElementById('progressBar').textContent = percentage + '% Complete';
+
+  renderKpiCards();
+}
+
+// Utilities
+function showToast() {
+  const toast = document.getElementById('toast');
+  toast.style.display = 'block';
+  setTimeout(() => {
+    toast.style.display = 'none';
+  }, 3000);
+}
+
+function renderAll() {
+  // Render positioning
+  if (appData.positioning) {
+    document.getElementById('targetRole').value = appData.positioning.targetRole || '';
+    document.getElementById('targetIndustry').value = appData.positioning.targetIndustry || '';
+    document.getElementById('valueProposition').value = appData.positioning.valueProposition || '';
+    document.getElementById('keyStrengths').value = appData.positioning.keyStrengths || '';
+    document.getElementById('careerGoals').value = appData.positioning.careerGoals || '';
+  }
+  
+  // Render CV
+  document.getElementById('cvName').value = appData.cv.name || '';
+  document.getElementById('cvTitle').value = appData.cv.title || '';
+  document.getElementById('cvEmail').value = appData.cv.email || '';
+  document.getElementById('cvPhone').value = appData.cv.phone || '';
+  document.getElementById('cvLinkedIn').value = appData.cv.linkedin || '';
+  document.getElementById('cvSummary').value = appData.cv.summary || '';
+  document.getElementById('cvSkills').value = appData.cv.skills || '';
+  
+  renderExperienceForms();
+  renderEducationForms();
+  renderProjectForms();
+  renderPublicationForms();
+  renderCVPreview();
+  
+  // Render LinkedIn
+  if (appData.linkedin) {
+    document.getElementById('liHeadline').value = appData.linkedin.headline || '';
+    document.getElementById('liAbout').value = appData.linkedin.about || '';
+    document.getElementById('liURL').value = appData.linkedin.url || '';
+    if (appData.linkedin.checklist) {
+      document.getElementById('liPhoto').checked = appData.linkedin.checklist.photo || false;
+      document.getElementById('liBanner').checked = appData.linkedin.checklist.banner || false;
+      document.getElementById('liEducation').checked = appData.linkedin.checklist.education || false;
+      document.getElementById('liExperience').checked = appData.linkedin.checklist.experience || false;
+      document.getElementById('liSkills').checked = appData.linkedin.checklist.skills || false;
+      document.getElementById('liEndorsements').checked = appData.linkedin.checklist.endorsements || false;
+      document.getElementById('liRecommendations').checked = appData.linkedin.checklist.recommendations || false;
+      document.getElementById('liProjects').checked = appData.linkedin.checklist.projects || false;
+      document.getElementById('liConsistency').checked = appData.linkedin.checklist.consistency || false;
+    }
+  }
+  
+  // Render KPI 2 checkbox
+  if (appData.kpi) {
+    document.getElementById('kpiFollowLinkedIn').checked = appData.kpi.followedLinkedIn || false;
+  }
+
+  // Render Network
+  renderNetworkTable();
+  if (appData.networkChecklist) {
+    document.getElementById('netFaculty').checked = appData.networkChecklist.faculty || false;
+    document.getElementById('netAlumni3').checked = appData.networkChecklist.alumni3 || false;
+    document.getElementById('netProf5').checked = appData.networkChecklist.prof5 || false;
+    document.getElementById('netAssoc').checked = appData.networkChecklist.assoc || false;
+    document.getElementById('netEngage').checked = appData.networkChecklist.engage || false;
+  }
+  
+  // Render Audit
+  if (appData.audit) {
+    document.getElementById('auditPrivacy').checked = appData.audit.privacy || false;
+    document.getElementById('auditPasswords').checked = appData.audit.passwords || false;
+    document.getElementById('auditTwoFactor').checked = appData.audit.twoFactor || false;
+    document.getElementById('auditSocial').checked = appData.audit.social || false;
+    document.getElementById('auditGoogle').checked = appData.audit.google || false;
+    document.getElementById('auditPhotos').checked = appData.audit.photos || false;
+    document.getElementById('auditEmail').checked = appData.audit.email || false;
+    document.getElementById('auditPortfolio').checked = appData.audit.portfolio || false;
+    document.getElementById('auditConsistency').checked = appData.audit.consistency || false;
+  }
+}
+
+// Initialize app
+init();
+</script>
+
+</body>
+</html>
