@@ -44,10 +44,11 @@
 
     var html =
       '<div class="flag-counter">' +
-      '<h2 class="flag-counter-title">Where readers come from</h2>' +
+      '<h2 class="flag-counter-title">' +
+      (data.title || "Where readers come from") + "</h2>" +
       '<p class="flag-counter-total">' +
-      num(data.total) + " visitors from " + num(list.length) +
-      (list.length === 1 ? " country" : " countries") +
+      num(data.total) + " " + (data.metric_label || "visitors") + " from " +
+      num(list.length) + (list.length === 1 ? " country" : " countries") +
       "</p><ul class=\"flag-counter-list\">";
 
     shown.forEach(function (c) {
@@ -70,6 +71,8 @@
       "analytics, updated when the site is rebuilt. No individual visitor is " +
       'identified. See the <a href="/privacy.html">privacy ' +
       "policy</a>.</p></div>";
+    html = html.replace("Aggregate counts from this site's analytics",
+      "Aggregate counts from " + (data.source_label || "this site's analytics"));
 
     mount.innerHTML = html;
   }
