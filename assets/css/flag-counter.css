@@ -1,0 +1,74 @@
+/* assets/css/flag-counter.css
+   Styles for the flag counter rendered by assets/js/flag-counter.js. */
+
+.flag-counter {
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 2rem 0;
+}
+
+.flag-counter-title {
+  font-size: 1.1rem;
+  margin: 0 0 .25rem 0;
+}
+
+.flag-counter-total {
+  margin: 0 0 1rem 0;
+  color: #56606a;
+  font-size: .95rem;
+}
+
+.flag-counter-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: .35rem 1.25rem;
+}
+
+.flag-counter-item {
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+  font-size: .95rem;
+  padding: .15rem 0;
+}
+
+/* The emoji fallback stack matters. Windows ships no country-flag glyphs, so
+   without a font that has them the code renders as 2 letter boxes. Twemoji
+   and Noto cover it where present, and the 2-letter fallback still reads. */
+.flag-counter-flag {
+  font-family: "Twemoji Country Flags", "Noto Color Emoji",
+    "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  font-size: 1.15rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.flag-counter-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flag-counter-count {
+  font-variant-numeric: tabular-nums;
+  color: #56606a;
+  flex-shrink: 0;
+}
+
+.flag-counter-rest,
+.flag-counter-note {
+  color: #56606a;
+  font-size: .85rem;
+  margin: .75rem 0 0 0;
+}
+
+.flag-counter-note {
+  border-top: 1px solid #eef0f2;
+  padding-top: .75rem;
+}

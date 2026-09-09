@@ -63,6 +63,13 @@
     "text": "Reproducible research and teaching\n\n\n  \n    \n      Git\n      \n        \n          Free & open-source\n        \n        The version-control system behind reproducible teaching and research workflows. Keeps manuscripts, slides, datasets, and code in a traceable history and allows teaching materials to be rebuilt from known states.\n        Who should use it\n        Anyone maintaining textbooks, lecture materials, code, or analysis scripts who wants version history, safer collaboration, and repeatable release workflows.\n      \n      \n        Download Git\n      \n    \n  \n\n  \n    \n      WebR\n      \n        \n          Free & open-source\n        \n        WebR compiles R to WebAssembly, allowing R code to run directly in a web browser with no server, no installation, and no account. Particularly effective for interactive statistical examples with live parameter changes.\n        Who should use it\n        Instructors and authors who want interactive browser-based statistical examples without requiring students to install software first.\n      \n      \n        WebR documentation"
   },
   {
+    "objectID": "tools.html#my-own-workshop-tool",
+    "href": "tools.html#my-own-workshop-tool",
+    "title": "Open-Source Tools",
+    "section": "My own workshop tool",
+    "text": "My own workshop tool\nThe one item on this page that is not a third-party download. Built in-house rather than curated.\n\n\n  \n    \n      Personal Branding Toolkit\n      \n        \n          Own build\n          Free, in-browser\n        \n        A six-part browser tool covering positioning, CV building, LinkedIn profile, professional network map, digital footprint audit, and a portfolio export. Built for the Personal Branding workshop in the Villa College Master's Programme. Work is saved automatically in the browser, with export to a file to continue on another device.\n        Who should use it\n        Master's Programme students working through the Personal Branding workshop, or anyone wanting a structured pass at CV, LinkedIn, and network before a job search.\n      \n      \n        Open the toolkit"
+  },
+  {
     "objectID": "research.html",
     "href": "research.html",
     "title": "Research",
@@ -117,6 +124,13 @@
     "title": "About",
     "section": "Contact",
     "text": "Contact\n\n  For workshop invitations, research collaboration, tool feedback, or a general enquiry, use the form below. You can also write directly to mohammedali.page@gmail.com.\n  \n    \n      Name\n      Email\n      Topic\n          General enquiry\n          Workshop invitation\n          Research collaboration\n          Tool feedback\n        \n      \n      Message\n    \n    \n      Send message\n      Replies usually within a few days."
+  },
+  {
+    "objectID": "about.html#where-readers-come-from",
+    "href": "about.html#where-readers-come-from",
+    "title": "About",
+    "section": "Where readers come from",
+    "text": "Where readers come from"
   },
   {
     "objectID": "index.html",

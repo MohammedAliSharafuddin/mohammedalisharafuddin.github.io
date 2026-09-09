@@ -9,6 +9,10 @@
 <meta name="author" content="Mohammed Ali Sharafuddin">
 <meta name="description" content="Active research survey instruments by Mohammed Ali Sharafuddin, built with surveyframe. Open to eligible participants.">
 
+<!-- no-title-prefix lets a single page own its whole title element. The
+     home page needs it. The SEOmator audit gave that page a self-contained
+     title, and Quarto would otherwise append the site name after it and
+     repeat the author twice in one line. -->
 <title>Live Surveys - Mohammed Ali Sharafuddin</title>
 <style>
 code{white-space: pre-wrap;}
@@ -74,11 +78,32 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<!-- The block below was applied by hand to the rendered HTML in the render
+     mirror by the SEOmator audit commit (4f87390, 2026-07-30) and existed
+     nowhere in this source, so any full render would have silently wiped the
+     whole audit. Back-ported here 2026-09-09. It reached only 7 of the 8
+     rendered pages when it was maintained by hand. live-surveys/index.html
+     never received it. Keeping it here is what makes it consistent.
+     The CSP allow-list must stay in step with what the site actually loads:
+     googletagmanager and google-analytics for GA4, formsubmit.co for the
+     contact form, and fonts.googleapis/gstatic for webfonts. -->
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../assets/images/favicon/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="../assets/images/favicon/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="../assets/images/favicon/apple-touch-icon.png" sizes="180x180">
+<meta name="theme-color" content="#0B3A78">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://formsubmit.co; base-uri 'self'; form-action 'self' https://formsubmit.co; frame-ancestors 'self'">
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://www.google-analytics.com">
+<link rel="llms.txt" href="../llms.txt">
 <meta name="robots" content="index,follow">
 <meta name="google-site-verification" content="__clvg1zlth9VpTJA0obgFwwiM2eF3sMekhOkMxjnhQ">
 <meta name="googlebot" content="index,follow">
 <meta name="bingbot" content="index,follow">
 <script defer="" src="../assets/js/ga4.js"></script>
+<link rel="stylesheet" href="../assets/css/flag-counter.css">
+<script defer="" src="../assets/js/flag-counter.js"></script>
 <script defer="" src="../assets/js/contact-form.js"></script>
 <script type="application/ld+json">
 [
