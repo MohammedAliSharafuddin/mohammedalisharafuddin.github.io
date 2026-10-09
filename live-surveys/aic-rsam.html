@@ -595,6 +595,10 @@ input,textarea,select{font-family:inherit;font-size:15px}
   outline:3px solid var(--deep);outline-offset:2px}
 
 /* Likert: numbered square buttons with tiny labels, single-colour theme */
+/* Announced by a screen reader, off screen for everyone else. Carries the
+   page heading that focus moves to on a page change. */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .likert-row{display:flex;gap:9px;overflow-x:auto;padding-bottom:2px}
 .likert-opt{flex:1;min-width:56px;display:flex;flex-direction:column;align-items:center;
   gap:4px;padding:10px 4px;min-height:58px;border:1px solid var(--cb);border-radius:6px;
@@ -683,6 +687,8 @@ textarea.inp-std:focus{border-color:var(--cp);box-shadow:0 0 0 3px color-mix(in 
   background:var(--cf);color:var(--t2);font-size:11px;display:flex;
   align-items:center;justify-content:center;cursor:pointer}
 .rank-mv:hover{border-color:var(--cp);color:var(--cp);background:var(--tint)}
+.rank-confirm{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:10px}
+.rank-status{font-size:13px;color:var(--t2)}
 
 /* Pairwise comparison (AHP/ANP Saaty scale, DEMATEL influence scale) */
 .pw-wrap{display:flex;flex-direction:column;gap:14px;margin-top:8px}
@@ -751,7 +757,18 @@ textarea.inp-std:focus{border-color:var(--cp);box-shadow:0 0 0 3px color-mix(in 
   .star-btn{font-size:31px}
   .prog-hdr{padding:9px 14px}
   .btn{padding:10px 20px}
-  .likert-opt{min-width:50px}
+  /* The strip stacks below 600px. Even at a 50px minimum, 7 options need
+     350px and the builder's 11-point NPS preset needs 550px before gaps, so
+     the full range cannot fit a 390px viewport and a participant saw part of
+     the scale with both endpoints off screen. Each option becomes a labelled
+     row, the same adaptation the matrix already makes, so every point of the
+     scale is visible and reachable without horizontal scrolling. */
+  .likert-row{flex-direction:column;gap:8px;overflow-x:visible}
+  .likert-opt{flex:none;width:100%;min-width:0;flex-direction:row;
+    align-items:center;justify-content:flex-start;gap:12px;
+    padding:12px 14px;min-height:44px;text-align:left}
+  .likert-num{font-size:16px;min-width:22px;text-align:center}
+  .likert-lbl{font-size:14px;max-width:none;flex:1}
 
   /* Matrix reflows into stacked row-cards below 600px: each matrix row
      becomes its own card and each column becomes a labelled tap target
@@ -801,7 +818,7 @@ textarea.inp-std:focus{border-color:var(--cp);box-shadow:0 0 0 3px color-mix(in 
 <div class="frame" id="app"></div>
 <div class="sf-footer">Built with <a href="https://cran.r-project.org/package=surveyframe" target="_blank" rel="noopener">surveyframe</a></div>
 
-<script type="application/json" id="sf-data">{"meta":{"title":"AIC-RSAM Post-Use Questionnaire","version":"0.1.0","description":"Post-use questionnaire completed immediately after the AIC-RSAM prototype booking session. Eligibility was confirmed by the prototype flow. Population: adults who have stayed at least one night in a Maldivian resort within the past 24 months and completed at least one booking in the prototype. Scope covers Maldivian nationals, expatriate residents of the Maldives, and international visitors.","authors":"Sharafuddin, M. A.","languages":"en","validated":false,"created_at":"2026-09-02T16:36:34Z"},"items":[{"id":"sec_profile","label":"Part 2: Respondent Profile","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":"A few background questions about your experience with the prototype.","page":1},{"id":"prof_resident_status","label":"Which of these best describes you?","type":"single_choice","required":true,"choice_set":"resident_status_cs","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":1},{"id":"prof_rs_frequency","label":"During your resort stay, how many times did you order or attempt to order room service?","type":"single_choice","required":true,"choice_set":"rs_freq_cs","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":1},{"id":"prof_smartphone","label":"Do you use a smartphone for online ordering or app-based services?","type":"single_choice","required":true,"choice_set":"yn","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":1},{"id":"prof_app_frequency","label":"In the past 3 months, how often did you use a food-ordering app (for example Avas, Zomato, Swiggy, or a resort's own app)?","type":"single_choice","required":true,"choice_set":"freq_cs","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":1},{"id":"prof_chatbot_prior","label":"Have you used a chatbot or conversational ordering system before?","type":"single_choice","required":true,"choice_set":"yn","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":1},{"id":"prof_nationality","label":"What is your nationality?","type":"single_choice","required":true,"choice_set":"nationality_cs","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":1},{"id":"prof_nationality_other","label":"Please specify your nationality","type":"text","required":true,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":1},{"id":"prof_travel_party","label":"Is anyone travelling with you on this stay?","type":"single_choice","required":true,"choice_set":"yn","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":1},{"id":"prof_age_group","label":"Age group","type":"single_choice","required":true,"choice_set":"age_grp_cs","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":1},{"id":"prof_gender","label":"Gender","type":"single_choice","required":true,"choice_set":"gender_cs","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":1},{"id":"sec_aia","label":"Section A: Perceived AI Assistance","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":"Please rate your agreement with the following statements about the AI features in the prototype. Use the scale: 1 = Strongly disagree, 5 = Strongly agree.","page":2},{"id":"aia_1","label":"The AI-assisted features helped me find suitable menu options more easily.","type":"likert","required":true,"choice_set":"agree5","scale_id":"aia","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":2},{"id":"aia_2","label":"The conversational guidance helped me express my food preferences clearly.","type":"likert","required":true,"choice_set":"agree5","scale_id":"aia","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":2},{"id":"aia_3","label":"The recommendations matched my likely needs well.","type":"likert","required":true,"choice_set":"agree5","scale_id":"aia","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":2},{"id":"aia_4","label":"The system reduced the effort needed to decide what to order.","type":"likert","required":true,"choice_set":"agree5","scale_id":"aia","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":2},{"id":"sec_poa","label":"Section B: Perceived Order Assurance","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":3},{"id":"poa_1","label":"I believe this system can record a room-service order accurately.","type":"likert","required":true,"choice_set":"agree5","scale_id":"poa","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":3},{"id":"poa_2","label":"I believe this system can reduce misunderstandings compared with telephone ordering.","type":"likert","required":true,"choice_set":"agree5","scale_id":"poa","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":3},{"id":"poa_3","label":"I believe this system can route the order correctly to the relevant hotel units.","type":"likert","required":true,"choice_set":"agree5","scale_id":"poa","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":3},{"id":"poa_4","label":"The confirmation process gave me confidence that the order was captured properly.","type":"likert","required":true,"choice_set":"agree5","scale_id":"poa","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":3},{"id":"sec_peou","label":"Section C: Perceived Ease of Use","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":4},{"id":"peou_1","label":"Learning to use this system would be easy for me.","type":"likert","required":true,"choice_set":"agree5","scale_id":"peou","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":4},{"id":"peou_2","label":"It was easy for me to complete an order using this system.","type":"likert","required":true,"choice_set":"agree5","scale_id":"peou","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":4},{"id":"peou_3","label":"The booking steps were clear and understandable.","type":"likert","required":true,"choice_set":"agree5","scale_id":"peou","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":4},{"id":"peou_4","label":"The overall interface was simple and user-friendly.","type":"likert","required":true,"choice_set":"agree5","scale_id":"peou","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":4},{"id":"sec_pu","label":"Section D: Perceived Usefulness","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":5},{"id":"pu_1","label":"This system would make room-service ordering faster.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pu","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":5},{"id":"pu_2","label":"This system would make room-service ordering more convenient.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pu","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":5},{"id":"pu_3","label":"This system would help reduce booking errors.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pu","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":5},{"id":"pu_4","label":"This system would be useful during a real resort stay.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pu","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":5},{"id":"sec_pr","label":"Section E: Perceived Risk","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":6},{"id":"pr_1","label":"I worry that the system may record the wrong order.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pr","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":6},{"id":"pr_2","label":"I worry that technical problems may interrupt the ordering process.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pr","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":6},{"id":"pr_3","label":"I worry that using this system may reduce access to staff assistance when needed.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pr","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":6},{"id":"pr_4","label":"I worry about the privacy or security of information entered into this system.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pr","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":6},{"id":"sec_bi","label":"Section F: Behavioural Intention to Use","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":7},{"id":"bi_1","label":"I would use this system if it were available in a resort room.","type":"likert","required":true,"choice_set":"agree5","scale_id":"bi","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":7},{"id":"bi_2","label":"I would choose this system for routine room-service requests if it were available.","type":"likert","required":true,"choice_set":"agree5","scale_id":"bi","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":7},{"id":"bi_3","label":"I would use this system again during future resort stays.","type":"likert","required":true,"choice_set":"agree5","scale_id":"bi","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":7},{"id":"bi_4","label":"I would recommend this system to other resort guests.","type":"likert","required":true,"choice_set":"agree5","scale_id":"bi","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":7},{"id":"sec_fe","label":"Section G: Feature Evaluation","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":"These items are for prototype refinement only and are not part of the structural model.","page":8},{"id":"fe_1","label":"Having both Quick Book and Conversational Book in the same system is useful.","type":"likert","required":false,"choice_set":"agree5","scale_id":"fe","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":8},{"id":"fe_2","label":"Quick Book is suitable when I already know what I want.","type":"likert","required":false,"choice_set":"agree5","scale_id":"fe","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":8},{"id":"fe_3","label":"Conversational Book is suitable when I need help deciding.","type":"likert","required":false,"choice_set":"agree5","scale_id":"fe","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":8},{"id":"fe_4","label":"I would like the option to switch between the two modes during ordering.","type":"likert","required":false,"choice_set":"agree5","scale_id":"fe","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":8},{"id":"fe_5","label":"The menu search function should remain available throughout the process.","type":"likert","required":false,"choice_set":"agree5","scale_id":"fe","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":8},{"id":"fe_6","label":"Visual menu cards would improve the ordering experience.","type":"likert","required":false,"choice_set":"agree5","scale_id":"fe","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":8},{"id":"sec_od","label":"Section H: Design Feedback","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":"Your written responses will be used for prototype refinement only.","page":9},{"id":"od_1","label":"What did you like most about the system?","type":"text","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":9},{"id":"od_2","label":"What should be improved before this system is tested in an actual resort?","type":"text","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":9}],"choices":[{"id":"agree5","values":[1,2,3,4,5],"labels":["Strongly disagree","Disagree","Neutral","Agree","Strongly agree"],"allow_other":false,"randomise":false},{"id":"freq_cs","values":["never","1_2_times","3_5_times","6_10_times","more_than_10"],"labels":["Never","1 to 2 times","3 to 5 times","6 to 10 times","More than 10 times"],"allow_other":false,"randomise":false},{"id":"age_grp_cs","values":["18_24","25_34","35_44","45_plus"],"labels":["18 to 24","25 to 34","35 to 44","45 and above"],"allow_other":false,"randomise":false},{"id":"gender_cs","values":["male","female","prefer_not"],"labels":["Male","Female","Prefer not to say"],"allow_other":false,"randomise":false},{"id":"yn","values":["yes","no"],"labels":["Yes","No"],"allow_other":false,"randomise":false},{"id":"resident_status_cs","values":["maldivian_national","expat_resident","international_visitor"],"labels":["Maldivian national","Expatriate resident in the Maldives","International visitor (tourist)"],"allow_other":false,"randomise":false},{"id":"rs_freq_cs","values":["none","1_time","2_3_times","4_plus"],"labels":["I did not order room service","1 time","2 to 3 times","4 or more times"],"allow_other":false,"randomise":false},{"id":"nationality_cs","values":["china","russia","uk","italy","germany","india","uae","usa","spain","france","other"],"labels":["China","Russia","United Kingdom","Italy","Germany","India","United Arab Emirates","United States","Spain","France","Other"],"allow_other":false,"randomise":false}],"scales":[{"id":"aia","label":"Perceived AI Assistance","items":["aia_1","aia_2","aia_3","aia_4"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null},{"id":"poa","label":"Perceived Order Assurance","items":["poa_1","poa_2","poa_3","poa_4"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null},{"id":"peou","label":"Perceived Ease of Use","items":["peou_1","peou_2","peou_3","peou_4"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null},{"id":"pu","label":"Perceived Usefulness","items":["pu_1","pu_2","pu_3","pu_4"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null},{"id":"pr","label":"Perceived Risk","items":["pr_1","pr_2","pr_3","pr_4"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null},{"id":"bi","label":"Behavioural Intention to Use","items":["bi_1","bi_2","bi_3","bi_4"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null},{"id":"fe","label":"Feature Evaluation","items":["fe_1","fe_2","fe_3","fe_4","fe_5","fe_6"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null}],"branching":[{"item_id":"prof_nationality","depends_on":"prof_resident_status","operator":"!=","value":"maldivian_national","action":"show"},{"item_id":"prof_nationality_other","depends_on":"prof_nationality","operator":"==","value":"other","action":"show"}],"checks":[],"designs":[],"analysis_plan":[{"id":"RQ1","research_question":"Which AIC-RSAM factors explain behavioural intention to use the AI-assisted room-service system, and which hypotheses (H1 to H9) are supported?","family":"measurement","method":"pls_sem","roles":{"model":"aic_rsam"},"options":{"alpha":0.05}},{"id":"RQ1a","research_question":"Do the six reflective construct scales demonstrate adequate internal consistency and convergent validity?","family":"measurement","method":"reliability_alpha","roles":{"items":["aia_1","aia_2","aia_3","aia_4","poa_1","poa_2","poa_3","poa_4","peou_1","peou_2","peou_3","peou_4","pu_1","pu_2","pu_3","pu_4","pr_1","pr_2","pr_3","pr_4","bi_1","bi_2","bi_3","bi_4"]},"options":{"alpha":0.05}},{"id":"RQ2","research_question":"How do participants evaluate the two-mode interface design (Quick Book and Conversational Book)?","family":"measurement","method":"reliability_alpha","roles":{"items":["fe_1","fe_2","fe_3","fe_4","fe_5","fe_6"]},"options":{"alpha":0.05}}],"models":[{"id":"aic_rsam","label":"AIC-RSAM: AI-Assisted Conversational Room-Service Acceptance Model","type":"pls_sem","engine":"seminr","measurement":{"constructs":[{"id":"aia","label":"Perceived AI Assistance","mode":"reflective","items":["aia_1","aia_2","aia_3","aia_4"],"weights":null},{"id":"poa","label":"Perceived Order Assurance","mode":"reflective","items":["poa_1","poa_2","poa_3","poa_4"],"weights":null},{"id":"peou","label":"Perceived Ease of Use","mode":"reflective","items":["peou_1","peou_2","peou_3","peou_4"],"weights":null},{"id":"pu","label":"Perceived Usefulness","mode":"reflective","items":["pu_1","pu_2","pu_3","pu_4"],"weights":null},{"id":"pr","label":"Perceived Risk","mode":"reflective","items":["pr_1","pr_2","pr_3","pr_4"],"weights":null},{"id":"bi","label":"Behavioural Intention to Use","mode":"reflective","items":["bi_1","bi_2","bi_3","bi_4"],"weights":null}]},"structural":{"paths":[{"from":"aia","to":"peou","label":"H1: AIA positively influences PEOU"},{"from":"aia","to":"pu","label":"H2: AIA positively influences PU"},{"from":"aia","to":"poa","label":"H3: AIA positively influences POA"},{"from":"peou","to":"pu","label":"H4: PEOU positively influences PU"},{"from":"peou","to":"bi","label":"H5: PEOU positively influences BI"},{"from":"poa","to":"pu","label":"H6: POA positively influences PU"},{"from":"poa","to":"bi","label":"H7: POA positively influences BI"},{"from":"pu","to":"bi","label":"H8: PU positively influences BI"},{"from":"pr","to":"bi","label":"H9: PR negatively influences BI"}],"covariances":[],"indirect":[]},"options":[]}],"render":{"mode":"standard","theme":"#0f766e","welcome":{"title":"Post-Use Questionnaire","intro_text":"You have completed the prototype booking session. Please answer the following questions based on your experience with the system. There are no right or wrong answers. All responses are anonymous.","consent_text":"I understand that my responses will be used for research purposes only, that participation is voluntary, and that I may stop at any time.","consent_required":true,"start_label":"Begin Questionnaire"},"thankyou":{"message":"Thank you for completing the questionnaire. Your responses have been saved. You may now close this window.","show_download":false},"header":{"institution":"AIC-RSAM Pilot Study","show_progress":true},"submit_label":"Submit Questionnaire"}}<\/script>
+<script type="application/json" id="sf-data">{"meta":{"title":"AIC-RSAM Post-Use Questionnaire","version":"0.1.0","description":"Post-use questionnaire completed immediately after the AIC-RSAM prototype booking session. Eligibility was confirmed by the prototype flow. Population: adults who have stayed at least one night in a Maldivian resort within the past 24 months and completed at least one booking in the prototype. Scope covers Maldivian nationals, expatriate residents of the Maldives, and international visitors.","authors":"Sharafuddin, M. A.","languages":"en","validated":false,"created_at":"2026-10-09T18:39:34Z"},"items":[{"id":"sec_profile","label":"Part 2: Respondent Profile","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":"A few background questions about your experience with the prototype.","page":1},{"id":"prof_resident_status","label":"Which of these best describes you?","type":"single_choice","required":true,"choice_set":"resident_status_cs","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":1},{"id":"prof_rs_frequency","label":"During your resort stay, how many times did you order or attempt to order room service?","type":"single_choice","required":true,"choice_set":"rs_freq_cs","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":1},{"id":"prof_smartphone","label":"Do you use a smartphone for online ordering or app-based services?","type":"single_choice","required":true,"choice_set":"yn","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":1},{"id":"prof_app_frequency","label":"In the past 3 months, how often did you use a food-ordering app (for example Avas, Zomato, Swiggy, or a resort's own app)?","type":"single_choice","required":true,"choice_set":"freq_cs","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":1},{"id":"prof_chatbot_prior","label":"Have you used a chatbot or conversational ordering system before?","type":"single_choice","required":true,"choice_set":"yn","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":1},{"id":"prof_nationality","label":"What is your nationality?","type":"single_choice","required":true,"choice_set":"nationality_cs","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":1},{"id":"prof_nationality_other","label":"Please specify your nationality","type":"text","required":true,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":1},{"id":"prof_travel_party","label":"Is anyone travelling with you on this stay?","type":"single_choice","required":true,"choice_set":"yn","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":1},{"id":"prof_age_group","label":"Age group","type":"single_choice","required":true,"choice_set":"age_grp_cs","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":1},{"id":"prof_gender","label":"Gender","type":"single_choice","required":true,"choice_set":"gender_cs","scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":1},{"id":"sec_aia","label":"Section A: Perceived AI Assistance","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":"Please rate your agreement with the following statements about the AI features in the prototype. Use the scale: 1 = Strongly disagree, 5 = Strongly agree.","page":2},{"id":"aia_1","label":"The AI-assisted features helped me find suitable menu options more easily.","type":"likert","required":true,"choice_set":"agree5","scale_id":"aia","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":2},{"id":"aia_2","label":"The conversational guidance helped me express my food preferences clearly.","type":"likert","required":true,"choice_set":"agree5","scale_id":"aia","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":2},{"id":"aia_3","label":"The recommendations matched my likely needs well.","type":"likert","required":true,"choice_set":"agree5","scale_id":"aia","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":2},{"id":"aia_4","label":"The system reduced the effort needed to decide what to order.","type":"likert","required":true,"choice_set":"agree5","scale_id":"aia","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":2},{"id":"sec_poa","label":"Section B: Perceived Order Assurance","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":3},{"id":"poa_1","label":"I believe this system can record a room-service order accurately.","type":"likert","required":true,"choice_set":"agree5","scale_id":"poa","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":3},{"id":"poa_2","label":"I believe this system can reduce misunderstandings compared with telephone ordering.","type":"likert","required":true,"choice_set":"agree5","scale_id":"poa","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":3},{"id":"poa_3","label":"I believe this system can route the order correctly to the relevant hotel units.","type":"likert","required":true,"choice_set":"agree5","scale_id":"poa","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":3},{"id":"poa_4","label":"The confirmation process gave me confidence that the order was captured properly.","type":"likert","required":true,"choice_set":"agree5","scale_id":"poa","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":3},{"id":"sec_peou","label":"Section C: Perceived Ease of Use","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":4},{"id":"peou_1","label":"Learning to use this system would be easy for me.","type":"likert","required":true,"choice_set":"agree5","scale_id":"peou","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":4},{"id":"peou_2","label":"It was easy for me to complete an order using this system.","type":"likert","required":true,"choice_set":"agree5","scale_id":"peou","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":4},{"id":"peou_3","label":"The booking steps were clear and understandable.","type":"likert","required":true,"choice_set":"agree5","scale_id":"peou","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":4},{"id":"peou_4","label":"The overall interface was simple and user-friendly.","type":"likert","required":true,"choice_set":"agree5","scale_id":"peou","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":4},{"id":"sec_pu","label":"Section D: Perceived Usefulness","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":5},{"id":"pu_1","label":"This system would make room-service ordering faster.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pu","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":5},{"id":"pu_2","label":"This system would make room-service ordering more convenient.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pu","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":5},{"id":"pu_3","label":"This system would help reduce booking errors.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pu","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":5},{"id":"pu_4","label":"This system would be useful during a real resort stay.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pu","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":5},{"id":"sec_pr","label":"Section E: Perceived Risk","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":6},{"id":"pr_1","label":"I worry that the system may record the wrong order.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pr","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":6},{"id":"pr_2","label":"I worry that technical problems may interrupt the ordering process.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pr","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":6},{"id":"pr_3","label":"I worry that using this system may reduce access to staff assistance when needed.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pr","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":6},{"id":"pr_4","label":"I worry about the privacy or security of information entered into this system.","type":"likert","required":true,"choice_set":"agree5","scale_id":"pr","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":6},{"id":"sec_bi","label":"Section F: Behavioural Intention to Use","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":7},{"id":"bi_1","label":"I would use this system if it were available in a resort room.","type":"likert","required":true,"choice_set":"agree5","scale_id":"bi","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":7},{"id":"bi_2","label":"I would choose this system for routine room-service requests if it were available.","type":"likert","required":true,"choice_set":"agree5","scale_id":"bi","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":7},{"id":"bi_3","label":"I would use this system again during future resort stays.","type":"likert","required":true,"choice_set":"agree5","scale_id":"bi","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":7},{"id":"bi_4","label":"I would recommend this system to other resort guests.","type":"likert","required":true,"choice_set":"agree5","scale_id":"bi","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":7},{"id":"sec_fe","label":"Section G: Feature Evaluation","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":"These items are for prototype refinement only and are not part of the structural model.","page":8},{"id":"fe_1","label":"Having both Quick Book and Conversational Book in the same system is useful.","type":"likert","required":false,"choice_set":"agree5","scale_id":"fe","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":8},{"id":"fe_2","label":"Quick Book is suitable when I already know what I want.","type":"likert","required":false,"choice_set":"agree5","scale_id":"fe","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":8},{"id":"fe_3","label":"Conversational Book is suitable when I need help deciding.","type":"likert","required":false,"choice_set":"agree5","scale_id":"fe","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":8},{"id":"fe_4","label":"I would like the option to switch between the two modes during ordering.","type":"likert","required":false,"choice_set":"agree5","scale_id":"fe","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":8},{"id":"fe_5","label":"The menu search function should remain available throughout the process.","type":"likert","required":false,"choice_set":"agree5","scale_id":"fe","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":8},{"id":"fe_6","label":"Visual menu cards would improve the ordering experience.","type":"likert","required":false,"choice_set":"agree5","scale_id":"fe","reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":8},{"id":"sec_od","label":"Section H: Design Feedback","type":"section_break","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":"Your written responses will be used for prototype refinement only.","page":9},{"id":"od_1","label":"What did you like most about the system?","type":"text","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":9},{"id":"od_2","label":"What should be improved before this system is tested in an actual resort?","type":"text","required":false,"choice_set":null,"scale_id":null,"reverse":false,"help":null,"placeholder":null,"matrix_items":null,"comparison_items":null,"comparison_scale":null,"slider_min":null,"slider_max":null,"slider_step":null,"rating_max":null,"rating_icon":null,"date_min":null,"date_max":null,"section_intro":null,"page":9}],"choices":[{"id":"agree5","values":[1,2,3,4,5],"labels":["Strongly disagree","Disagree","Neutral","Agree","Strongly agree"],"allow_other":false,"randomise":false},{"id":"freq_cs","values":["never","1_2_times","3_5_times","6_10_times","more_than_10"],"labels":["Never","1 to 2 times","3 to 5 times","6 to 10 times","More than 10 times"],"allow_other":false,"randomise":false},{"id":"age_grp_cs","values":["18_24","25_34","35_44","45_plus"],"labels":["18 to 24","25 to 34","35 to 44","45 and above"],"allow_other":false,"randomise":false},{"id":"gender_cs","values":["male","female","prefer_not"],"labels":["Male","Female","Prefer not to say"],"allow_other":false,"randomise":false},{"id":"yn","values":["yes","no"],"labels":["Yes","No"],"allow_other":false,"randomise":false},{"id":"resident_status_cs","values":["maldivian_national","expat_resident","international_visitor"],"labels":["Maldivian national","Expatriate resident in the Maldives","International visitor (tourist)"],"allow_other":false,"randomise":false},{"id":"rs_freq_cs","values":["none","1_time","2_3_times","4_plus"],"labels":["I did not order room service","1 time","2 to 3 times","4 or more times"],"allow_other":false,"randomise":false},{"id":"nationality_cs","values":["china","russia","uk","italy","germany","india","uae","usa","spain","france","other"],"labels":["China","Russia","United Kingdom","Italy","Germany","India","United Arab Emirates","United States","Spain","France","Other"],"allow_other":false,"randomise":false}],"scales":[{"id":"aia","label":"Perceived AI Assistance","items":["aia_1","aia_2","aia_3","aia_4"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null},{"id":"poa","label":"Perceived Order Assurance","items":["poa_1","poa_2","poa_3","poa_4"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null},{"id":"peou","label":"Perceived Ease of Use","items":["peou_1","peou_2","peou_3","peou_4"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null},{"id":"pu","label":"Perceived Usefulness","items":["pu_1","pu_2","pu_3","pu_4"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null},{"id":"pr","label":"Perceived Risk","items":["pr_1","pr_2","pr_3","pr_4"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null},{"id":"bi","label":"Behavioural Intention to Use","items":["bi_1","bi_2","bi_3","bi_4"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null},{"id":"fe","label":"Feature Evaluation","items":["fe_1","fe_2","fe_3","fe_4","fe_5","fe_6"],"method":"mean","min_valid":null,"reverse_items":null,"weights":null}],"branching":[{"item_id":"prof_nationality","depends_on":"prof_resident_status","operator":"!=","value":"maldivian_national","action":"show"},{"item_id":"prof_nationality_other","depends_on":"prof_nationality","operator":"==","value":"other","action":"show"}],"checks":[],"designs":[],"analysis_plan":[{"id":"RQ1","research_question":"Which AIC-RSAM factors explain behavioural intention to use the AI-assisted room-service system, and which hypotheses (H1 to H9) are supported?","family":"measurement","method":"pls_sem","roles":{"model":"aic_rsam"},"options":{"alpha":0.05}},{"id":"RQ1a","research_question":"Do the six reflective construct scales demonstrate adequate internal consistency and convergent validity?","family":"measurement","method":"reliability_alpha","roles":{"items":["aia_1","aia_2","aia_3","aia_4","poa_1","poa_2","poa_3","poa_4","peou_1","peou_2","peou_3","peou_4","pu_1","pu_2","pu_3","pu_4","pr_1","pr_2","pr_3","pr_4","bi_1","bi_2","bi_3","bi_4"]},"options":{"alpha":0.05}},{"id":"RQ2","research_question":"How do participants evaluate the two-mode interface design (Quick Book and Conversational Book)?","family":"measurement","method":"reliability_alpha","roles":{"items":["fe_1","fe_2","fe_3","fe_4","fe_5","fe_6"]},"options":{"alpha":0.05}}],"models":[{"id":"aic_rsam","label":"AIC-RSAM: AI-Assisted Conversational Room-Service Acceptance Model","type":"pls_sem","engine":"seminr","measurement":{"constructs":[{"id":"aia","label":"Perceived AI Assistance","mode":"reflective","items":["aia_1","aia_2","aia_3","aia_4"],"weights":null},{"id":"poa","label":"Perceived Order Assurance","mode":"reflective","items":["poa_1","poa_2","poa_3","poa_4"],"weights":null},{"id":"peou","label":"Perceived Ease of Use","mode":"reflective","items":["peou_1","peou_2","peou_3","peou_4"],"weights":null},{"id":"pu","label":"Perceived Usefulness","mode":"reflective","items":["pu_1","pu_2","pu_3","pu_4"],"weights":null},{"id":"pr","label":"Perceived Risk","mode":"reflective","items":["pr_1","pr_2","pr_3","pr_4"],"weights":null},{"id":"bi","label":"Behavioural Intention to Use","mode":"reflective","items":["bi_1","bi_2","bi_3","bi_4"],"weights":null}]},"structural":{"paths":[{"from":"aia","to":"peou","label":"H1: AIA positively influences PEOU"},{"from":"aia","to":"pu","label":"H2: AIA positively influences PU"},{"from":"aia","to":"poa","label":"H3: AIA positively influences POA"},{"from":"peou","to":"pu","label":"H4: PEOU positively influences PU"},{"from":"peou","to":"bi","label":"H5: PEOU positively influences BI"},{"from":"poa","to":"pu","label":"H6: POA positively influences PU"},{"from":"poa","to":"bi","label":"H7: POA positively influences BI"},{"from":"pu","to":"bi","label":"H8: PU positively influences BI"},{"from":"pr","to":"bi","label":"H9: PR negatively influences BI"}],"covariances":[],"indirect":[]},"options":[]}],"render":{"mode":"standard","theme":"#0f766e","welcome":{"title":"Post-Use Questionnaire","intro_text":"You have completed the prototype booking session. Please answer the following questions based on your experience with the system. There are no right or wrong answers. All responses are anonymous.","consent_text":"I understand that my responses will be used for research purposes only, that participation is voluntary, and that I may stop at any time.","consent_required":true,"start_label":"Begin Questionnaire"},"thankyou":{"message":"Thank you for completing the questionnaire. Your responses have been saved. You may now close this window.","show_download":false},"header":{"institution":"AIC-RSAM Pilot Study","show_progress":true},"submit_label":"Submit Questionnaire"}}<\/script>
 <script>
 'use strict';
 const SF       = JSON.parse(document.getElementById('sf-data').textContent);
@@ -881,7 +898,20 @@ function evaluate(op,actual,value){
   switch(op){
     case'==':return String(actual)===String(value);
     case'!=':return String(actual)!==String(value);
-    case'%in%':return value.split(',').map(function(s){return s.trim();}).includes(String(actual));
+    // \`value\` is a JSON array whenever sf_branch() was given a vector, which is
+    // the documented shape for %in%, and a comma-separated string when it came
+    // from a hand-written file or an older builder. Arrays have no .split, so
+    // assuming the string form threw and left the gated item hidden for good.
+    case'%in%':{
+      var vals=(Array.isArray(value)?value:String(value).split(',')).map(function(s){return String(s).trim();});
+      // A multi-select answer is stored comma-joined, so it is itself a set.
+      // Comparing the whole string meant selecting a and b matched no rule
+      // allowing either. Any selected value the rule allows satisfies it,
+      // which is what the Shiny evaluator does with the selected vector.
+      var given=String(actual).split(',').map(function(s){return s.trim();})
+        .filter(function(s){return s!=='';});
+      return given.some(function(g){return vals.includes(g);});
+    }
     case'>': return !isNaN(an)&&!isNaN(vn)&&an>vn;
     case'>=':return !isNaN(an)&&!isNaN(vn)&&an>=vn;
     case'<': return !isNaN(an)&&!isNaN(vn)&&an<vn;
@@ -909,7 +939,9 @@ function isVisible(itemId,seen){
 }
 
 // ── Helpers ────────────────────────────────────────────────────────────────
-function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+// esc(0) must be "0". Coercing with s||'' turned an option coded 0 into
+// value="", so a real answer was stored and validated as no answer.
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function h(tag,attrs,inner){return'<'+tag+' '+(attrs||'')+'>'+inner+'</'+tag+'>';}
 function wrapItem(item,inner){
   return'<div class="item'+(isVisible(item.id)?'':' hidden')+'" id="item_'+esc(item.id)+'" data-id="'+esc(item.id)+'">'
@@ -967,7 +999,8 @@ function renderTextBlock(item){
 }
 function renderLikert(item,cs){
   var saved=responses[item.id];
-  return'<div class="likert-row" role="radiogroup" aria-labelledby="q_'+esc(item.id)+'">'+cs.values.map(function(v,i){
+  return'<div class="likert-row" role="radiogroup" aria-labelledby="q_'+esc(item.id)+'"'
+    +' aria-describedby="err_'+esc(item.id)+'">'+cs.values.map(function(v,i){
     var checked=String(saved)===String(v);
     return'<label class="likert-opt"><input type="radio" name="'+esc(item.id)+'" value="'+esc(v)+'"'+(checked?' checked':'')
       +(item.required?' aria-required="true"':'')
@@ -978,7 +1011,10 @@ function renderLikert(item,cs){
 }
 function renderSingle(item,cs){
   var saved=responses[item.id];
-  return'<div class="choice-list">'+cs.values.map(function(v,i){
+  // A named radiogroup, so an option is announced with its question. Without
+  // it a screen reader read "Low" with nothing to say what was being asked.
+  return'<div class="choice-list" role="radiogroup" aria-labelledby="q_'+esc(item.id)+'"'
+    +' aria-describedby="err_'+esc(item.id)+'">'+cs.values.map(function(v,i){
     var checked=String(saved)===String(v);
     return'<label class="choice-opt"><input type="radio" name="'+esc(item.id)+'" value="'+esc(v)+'"'
       +(checked?' checked':'')+(item.required?' aria-required="true"':'')
@@ -988,7 +1024,9 @@ function renderSingle(item,cs){
 }
 function renderMulti(item,cs){
   var saved=(responses[item.id]||'').split(',').filter(Boolean);
-  return'<div class="choice-list">'+cs.values.map(function(v,i){
+  // A group, not a radiogroup: several answers are allowed here.
+  return'<div class="choice-list" role="group" aria-labelledby="q_'+esc(item.id)+'"'
+    +' aria-describedby="err_'+esc(item.id)+'">'+cs.values.map(function(v,i){
     var chk=saved.includes(String(v));
     return'<label class="choice-opt"><input type="checkbox" name="'+esc(item.id)+'" value="'+esc(v)+'"'
       +(chk?' checked':'')+(item.required?' aria-required="true"':'')
@@ -1027,6 +1065,20 @@ var SAATY_STEPS=[9,8,7,6,5,4,3,2,1,-2,-3,-4,-5,-6,-7,-8,-9];
 // DEMATEL unipolar strip: 0 (no influence) to 4 (very high influence).
 var INFLUENCE_STEPS=[0,1,2,3,4];
 var INFLUENCE_LABELS=['None','Low','Medium','High','Very high'];
+// Each comparison renders a radio strip and a select of the same anchors, and
+// the CSS shows one or the other by viewport width. Writing the response alone
+// left the hidden control on its render-time state, so crossing the breakpoint
+// after answering showed a selection the participant had changed. Both are
+// written from the response, so whichever becomes visible agrees with it.
+function setPairwise(rowKey,value){
+  setResp(rowKey,value);
+  var radios=document.querySelectorAll('input[type="radio"][name="'+rowKey+'"]');
+  if(radios&&radios.forEach){
+    radios.forEach(function(r){r.checked=String(r.value)===String(value);});
+  }
+  var sel=document.querySelector('select.pw-select[data-key="'+rowKey+'"]');
+  if(sel)sel.value=String(value);
+}
 function renderPairwiseRow(rowKey,leftLbl,rightLbl,steps,saved,influence){
   var names=steps.map(function(v,i){
     return influence?(INFLUENCE_LABELS[i]||String(v)):(v===1?'Equal':(v>0?(v+' ('+leftLbl+')'):((-v)+' ('+rightLbl+')')));
@@ -1037,7 +1089,7 @@ function renderPairwiseRow(rowKey,leftLbl,rightLbl,steps,saved,influence){
     return'<label class="pw-opt'+(isEqual?' pw-equal':'')+'"><input type="radio" name="'+esc(rowKey)+'" value="'+v+'"'
       +(checked?' checked':'')
       +' aria-label="'+esc(leftLbl)+' vs '+esc(rightLbl)+': '+esc(names[i])+'"'
-      +' onchange="setResp(\\''+esc(rowKey)+'\\','+v+')">'
+      +' onchange="setPairwise(\\''+esc(rowKey)+'\\','+v+')">'
       +(influence?'<span class="pw-lbl">'+esc(INFLUENCE_LABELS[i])+'</span>':'<span class="pw-num">'+esc(Math.abs(v))+'</span>')
       +'</label>';
   }).join('');
@@ -1051,8 +1103,9 @@ function renderPairwiseRow(rowKey,leftLbl,rightLbl,steps,saved,influence){
     +steps.map(function(v,i){
       return'<option value="'+v+'"'+(String(saved)===String(v)?' selected':'')+'>'+esc(names[i])+'</option>';
     }).join('');
-  var select='<select class="pw-select" aria-label="'+esc(leftLbl)+' vs '+esc(rightLbl)+'"'
-    +' onchange="setResp(\\''+esc(rowKey)+'\\',this.value)">'+selectOpts+'</select>';
+  var select='<select class="pw-select" data-key="'+esc(rowKey)+'"'
+    +' aria-label="'+esc(leftLbl)+' vs '+esc(rightLbl)+'"'
+    +' onchange="setPairwise(\\''+esc(rowKey)+'\\',this.value)">'+selectOpts+'</select>';
   return'<div class="pw-row"><div class="pw-heads"><span>'+esc(leftLbl)+'</span><span>'+esc(rightLbl)+'</span></div>'
     +'<div class="'+(influence?'pw-influence':'pw-strip')+'" role="radiogroup" aria-label="'+esc(leftLbl)+' vs '+esc(rightLbl)+'">'
     +opts+'</div>'+select+'</div>';
@@ -1109,51 +1162,49 @@ function renderCriteriaWeight(item){
     return'<div class="cw-row"><span class="cw-lbl">'+esc(crit)+'</span>'
       +'<input type="number" inputmode="numeric" class="inp-std cw-input" min="0" max="100" value="'+esc(saved)+'"'
       +' aria-label="Points for '+esc(crit)+'"'
-      +' oninput="clampCwInput(this,\\''+esc(item.id)+'\\');setResp(\\''+esc(rowKey)+'\\',this.value);updateCwTotal(\\''+esc(item.id)+'\\')"></div>';
+      +' oninput="setResp(\\''+esc(rowKey)+'\\',this.value);updateCwTotal(\\''+esc(item.id)+'\\')"></div>';
   }).join('');
   return'<div class="cw-wrap" id="cw_'+esc(item.id)+'">'+rows
-    +'<div class="cw-total" id="cwtotal_'+esc(item.id)+'">Total: 0 / 100</div></div>';
+    +'<div class="cw-total" id="cwtotal_'+esc(item.id)+'">'+cwTotalText(cwTotal(item))+'</div></div>';
 }
-// Clamps a single criteria-weight input to an integer 0-100, and also caps it
-// so it cannot push the running total past 100: the HTML \`max\` attribute
-// only affects the spinner arrows, not typed or pasted input, so without
-// this a respondent can type any value into every field regardless of what
-// the other fields already hold.
-function clampCwInput(input,itemId){
-  var raw=input.value.replace(/[^0-9]/g,'');
-  var val=raw===''?0:parseInt(raw,10);
-  if(val>100)val=100;
-  var wrap=document.getElementById('cw_'+itemId);
-  var others=0;
-  if(wrap){
-    wrap.querySelectorAll('input[type="number"]').forEach(function(inp){
-      if(inp!==input)others+=parseInt(inp.value,10)||0;
-    });
-  }
-  if(others+val>100)val=Math.max(0,100-others);
-  input.value=raw===''?'':String(val);
+// Constant-sum points are stored exactly as typed. Each entry must be a whole
+// number from 0 to 100 and the entries must total 100, and validatePage() says
+// so when they do not. Rewriting an entry on input turned 2.5 into 25, and
+// capping it against the other fields silently changed an allocation the
+// participant was part way through editing.
+function cwTotal(item){
+  var total=0,invalid=false,anyEntered=false;
+  (item.comparison_items||[]).forEach(function(crit){
+    var v=responses[item.id+'__'+crit];
+    var s=String(v==null?'':v).trim();
+    if(s==='')return;
+    anyEntered=true;
+    if(!/^[0-9]+$/.test(s)||parseInt(s,10)>100){invalid=true;return;}
+    total+=parseInt(s,10);
+  });
+  return{total:total,invalid:invalid,anyEntered:anyEntered};
+}
+function cwTotalText(t){
+  return t.invalid?'Use whole numbers from 0 to 100':'Total: '+t.total+' / 100';
 }
 function updateCwTotal(itemId){
-  var wrap=document.getElementById('cw_'+itemId);if(!wrap)return;
-  var inputs=wrap.querySelectorAll('input[type="number"]');
-  var total=0;inputs.forEach(function(inp){total+=parseInt(inp.value,10)||0;});
   var el=document.getElementById('cwtotal_'+itemId);
-  if(el){
-    el.textContent='Total: '+total+' / 100';
-    el.className='cw-total '+(total===100?'cw-ok':'cw-bad');
-  }
+  var item=SF.items.filter(function(i){return i.id===itemId;})[0];
+  if(!el||!item)return;
+  var t=cwTotal(item);
+  el.textContent=cwTotalText(t);
+  el.className='cw-total '+(!t.invalid&&t.total===100?'cw-ok':'cw-bad');
 }
 function renderNumeric(item){
   var saved=responses[item.id]||'';
-  // slider_min/slider_max double as hard bounds for numeric entry; values
-  // typed outside the range are clamped on change.
-  // Numbers bypass esc(): esc(0) would collapse to an empty string
+  // slider_min/slider_max are the bounds for numeric entry. What the
+  // participant types is stored as typed, and validatePage() asks for a
+  // correction when it is outside the bounds. Clamping on change rewrote a
+  // cleared field to the minimum, an answer nobody gave.
   var mn=item.slider_min!=null?' min="'+(+item.slider_min)+'"':'';
   var mx=item.slider_max!=null?' max="'+(+item.slider_max)+'"':'';
   return'<input type="number" class="inp-std inp-narrow" id="inp_'+esc(item.id)+'" value="'+esc(saved)+'"'+mn+mx+ariaFor(item)
-    +' onchange="if(this.min!==\\'\\'&&+this.value<+this.min)this.value=this.min;'
-    +'if(this.max!==\\'\\'&&+this.value>+this.max)this.value=this.max;'
-    +'setResp(\\''+esc(item.id)+'\\',this.value)">';
+    +' onchange="setResp(\\''+esc(item.id)+'\\',this.value)">';
 }
 function renderText(item){
   var saved=responses[item.id]||'';
@@ -1193,17 +1244,28 @@ function renderRating(item){
   var saved=parseInt(responses[item.id])||0;
   var stars='';
   for(var i=1;i<=mx;i++){
+    // Each star is a radio that reports its own state, so a participant
+    // returning to the question hears what they chose. The buttons used to
+    // announce "3 of 5" with no question name and no selected state at all.
     stars+='<button type="button" class="star-btn'+(i<=saved?' active':'')+'" data-id="'+esc(item.id)+'" data-v="'+i+'"'
+      +' role="radio" aria-checked="'+(i===saved?'true':'false')+'"'
       +' onclick="setRating(\\''+esc(item.id)+'\\','+i+','+mx+')"'
       +' aria-label="'+i+' of '+mx+'">'+icon+'</button>';
   }
-  return'<div class="star-row" id="stars_'+esc(item.id)+'">'+stars+'</div>';
+  return'<div class="star-row" id="stars_'+esc(item.id)+'" role="radiogroup"'
+    +' aria-labelledby="q_'+esc(item.id)+'"'
+    +' aria-describedby="err_'+esc(item.id)+'">'+stars+'</div>';
 }
 function renderRanking(item,cs){
   if(!rankOrders[item.id]){
     rankOrders[item.id]=cs.values.map(function(v,i){return{v:String(v),l:cs.labels[i]||String(v)};});
   }
   var order=rankOrders[item.id];
+  var confirmed=!!responses[item.id];
+  var status=confirmed
+    ?'<span class="rank-status" role="status">Your order is recorded.</span>'
+    :'<button type="button" class="btn btn-s rank-keep" onclick="rankConfirm(\\''+esc(item.id)+'\\')">Keep this order</button>'
+      +'<span class="rank-status" role="status">Drag the options or use the arrows, or keep the order shown.</span>';
   return'<div class="rank-list" id="rank_'+esc(item.id)+'" ondragover="event.preventDefault()">'+order.map(function(opt,i){
     return'<div class="rank-item" draggable="true" data-id="'+esc(item.id)+'" data-v="'+esc(opt.v)+'"'
       +' ondragstart="rankDragStart(event)" ondragover="rankDragOver(event)" ondrop="rankDrop(event,\\''+esc(item.id)+'\\')" ondragleave="this.classList.remove(\\'drag-over\\')">'
@@ -1217,7 +1279,8 @@ function renderRanking(item,cs){
       +' onclick="rankMove(\\''+esc(item.id)+'\\',\\''+esc(opt.v)+'\\',1)">&#9660;</button>'
       +'</span>'
       +'</div>';
-  }).join('')+'</div>';
+  }).join('')+'</div>'
+    +'<div class="rank-confirm">'+status+'</div>';
 }
 
 // ── Response handlers ──────────────────────────────────────────────────────
@@ -1241,8 +1304,17 @@ function setRating(id,val,max){
   var err=document.getElementById('err_'+id);
   if(err)err.classList.remove('show');
   var btns=document.querySelectorAll('.star-btn[data-id="'+id+'"]');
-  btns.forEach(function(b){b.classList.toggle('active',parseInt(b.dataset.v)<=val);});
-  updateProgress();
+  btns.forEach(function(b){
+    var v=parseInt(b.dataset.v);
+    b.classList.toggle('active',v<=val);
+    // The visual fill runs up to the choice; the reported state names the one
+    // chosen, which is what a screen reader announces.
+    if(b.setAttribute)b.setAttribute('aria-checked',v===val?'true':'false');
+  });
+  // Every other answer handler refreshes branching. Leaving it out here kept a
+  // question a rating reveals hidden until some other control was touched,
+  // while validation, which reads the same rules, still demanded an answer.
+  updateBranching();
 }
 function updateBranching(){
   SF.items.forEach(function(item){
@@ -1275,14 +1347,29 @@ function rankDrop(e,itemId){
   var tgtIdx=items.indexOf(e.currentTarget);
   if(srcIdx>tgtIdx)list.insertBefore(dragSrc,e.currentTarget);
   else list.insertBefore(dragSrc,e.currentTarget.nextSibling);
-  // Update numbers
-  [].slice.call(list.querySelectorAll('.rank-item')).forEach(function(el,i){
-    el.querySelector('.rank-num').textContent=i+1;
-  });
-  // Persist order
   var newOrder=[].slice.call(list.querySelectorAll('.rank-item')).map(function(el){return el.dataset.v;});
-  responses[itemId]=newOrder.join(',');
   dragSrc=null;
+  rankSetOrder(itemId,newOrder);
+  renderScreen();
+}
+// The one place a ranking changes. The displayed order (rankOrders) and the
+// recorded answer (responses) are written together. Writing only the answer
+// on a drag left the page showing one order while submitting another.
+function rankSetOrder(itemId,values){
+  var byV={};
+  (rankOrders[itemId]||[]).forEach(function(o){byV[o.v]=o;});
+  rankOrders[itemId]=values.map(function(v){return byV[String(v)];}).filter(Boolean);
+  responses[itemId]=rankOrders[itemId].map(function(o){return o.v;}).join(',');
+  var err=document.getElementById('err_'+itemId);
+  if(err)err.classList.remove('show');
+  updateBranching();
+}
+// Records the order on display as the participant's answer, for when the
+// order shown is already the one they would choose.
+function rankConfirm(itemId){
+  var order=rankOrders[itemId]; if(!order)return;
+  rankSetOrder(itemId,order.map(function(o){return o.v;}));
+  renderScreen();
 }
 // Keyboard alternative to drag: move an option one position up or down
 function rankMove(itemId,v,dir){
@@ -1290,8 +1377,9 @@ function rankMove(itemId,v,dir){
   var i=order.findIndex(function(o){return o.v===String(v);});
   var j=i+dir;
   if(i<0||j<0||j>=order.length)return;
-  var tmp=order[i];order[i]=order[j];order[j]=tmp;
-  responses[itemId]=order.map(function(o){return o.v;}).join(',');
+  var moved=order.map(function(o){return o.v;});
+  var tmp=moved[i];moved[i]=moved[j];moved[j]=tmp;
+  rankSetOrder(itemId,moved);
   renderScreen();
   var btn=document.querySelector('#rank_'+itemId+' .rank-item[data-v="'+v+'"] .rank-mv'+(dir<0?'':' + .rank-mv'));
   if(btn)btn.focus();
@@ -1313,33 +1401,49 @@ function validatePage(items){
       var err=document.getElementById('err_'+item.id);
       if(err){err.textContent=msg;err.classList.add('show');}
       if(ok){
-        var el=document.getElementById('item_'+item.id);
-        if(el)el.scrollIntoView({behavior:'smooth',block:'center'});
+        focusProblem(item.id);
       }
       ok=false;
     }
   });
-  // A criteria_weight total that isn't exactly 100 blocks page advance even
-  // if some points have been entered, matching the matrix/date pattern of
-  // checking a per-type invariant independent of the plain \`required\` flag.
-  // clampCwInput() already stops any single field or the running total from
-  // exceeding 100, so the only remaining failure mode here is an incomplete
-  // allocation (total < 100).
+  // A number typed outside a numeric item's bounds, or text that is not a
+  // number, is kept as typed and blocks the page until corrected, even on an
+  // optional item.
+  items.forEach(function(item){
+    if(item.type!=='numeric'||!isVisible(item.id))return;
+    var s=String(responses[item.id]==null?'':responses[item.id]).trim();
+    if(s==='')return;
+    var n=Number(s);
+    var hasMin=item.slider_min!=null,hasMax=item.slider_max!=null;
+    var msg='';
+    if(!isFinite(n))msg='Please enter a number.';
+    else if((hasMin&&n<+item.slider_min)||(hasMax&&n>+item.slider_max)){
+      msg=hasMin&&hasMax?'Please enter a number from '+(+item.slider_min)+' to '+(+item.slider_max)+'.'
+        :hasMin?'Please enter a number of '+(+item.slider_min)+' or more.'
+        :'Please enter a number of '+(+item.slider_max)+' or less.';
+    }
+    if(msg){
+      var err=document.getElementById('err_'+item.id);
+      if(err){err.textContent=msg;err.classList.add('show');}
+      if(ok){
+        focusProblem(item.id);
+      }
+      ok=false;
+    }
+  });
+  // A criteria_weight allocation must be whole numbers totalling exactly 100.
+  // Once any points are entered this applies even to an optional item.
   items.forEach(function(item){
     if(item.type!=='criteria_weight'||!isVisible(item.id))return;
-    var crits=item.comparison_items||[];
-    var total=0,anyEntered=false;
-    crits.forEach(function(crit){
-      var v=responses[item.id+'__'+crit];
-      if(v!==undefined&&v!==null&&String(v)!=='')anyEntered=true;
-      total+=parseInt(v,10)||0;
-    });
-    if((item.required||anyEntered)&&total!==100){
+    var t=cwTotal(item);
+    if(t.invalid||((item.required||t.anyEntered)&&t.total!==100)){
       var err=document.getElementById('err_'+item.id);
-      if(err){err.textContent='The points must add up to exactly 100 (currently '+total+').';err.classList.add('show');}
+      var cwMsg=t.invalid
+        ?'Enter a whole number from 0 to 100 for each option.'
+        :'The points must add up to exactly 100 (currently '+t.total+').';
+      if(err){err.textContent=cwMsg;err.classList.add('show');}
       if(ok){
-        var el=document.getElementById('item_'+item.id);
-        if(el)el.scrollIntoView({behavior:'smooth',block:'center'});
+        focusProblem(item.id);
       }
       ok=false;
     }
@@ -1347,45 +1451,15 @@ function validatePage(items){
   items.forEach(function(item){
     if(!item.required||!isVisible(item.id))return;
     var t=item.type;
-    var missing=false;
-    if(t==='matrix'){
-      (item.matrix_items||[]).forEach(function(row){
-        var key=item.id+'__'+row;
-        if(!responses[key]||responses[key]==='')missing=true;
-      });
-    } else if(t==='multiple_choice'){
-      var v=responses[item.id];
-      if(!v||v==='')missing=true;
-    } else if(t==='criteria_weight'){
-      (item.comparison_items||[]).forEach(function(crit){
-        var key=item.id+'__'+crit;
-        if(responses[key]===undefined||responses[key]===null||String(responses[key])==='')missing=true;
-      });
-    } else if(t==='pairwise_comparison'){
-      var comp=item.comparison_items||[];
-      var scale=item.comparison_scale||'saaty';
-      if(scale==='influence'){
-        for(var i=0;i<comp.length;i++)for(var j=0;j<comp.length;j++){
-          if(i===j)continue;
-          var key=item.id+'__'+comp[i]+'__to__'+comp[j];
-          if(responses[key]===undefined||responses[key]===null||String(responses[key])==='')missing=true;
-        }
-      }else{
-        for(var i=0;i<comp.length;i++)for(var j=i+1;j<comp.length;j++){
-          var key=item.id+'__'+comp[i]+'__vs__'+comp[j];
-          if(responses[key]===undefined||responses[key]===null||String(responses[key])==='')missing=true;
-        }
-      }
-    } else {
-      var v2=responses[item.id];
-      if(v2===null||v2===undefined||String(v2).trim()==='')missing=true;
-    }
+    var missing=!itemAnswered(item);
     if(missing){
       var err=document.getElementById('err_'+item.id);
-      if(err){err.textContent='This question is required.';err.classList.add('show');}
+      var reqMsg=t==='ranking'
+        ?'Please order the options, or choose Keep this order.'
+        :'This question is required.';
+      if(err){err.textContent=reqMsg;err.classList.add('show');}
       if(ok){
-        var el=document.getElementById('item_'+item.id);
-        if(el)el.scrollIntoView({behavior:'smooth',block:'center'});
+        focusProblem(item.id);
       }
       ok=false;
     }
@@ -1409,6 +1483,27 @@ function startSurvey(){
   currentPage=1;
   renderScreen();
 }
+// Scrolling alone told a keyboard or screen-reader user that something was
+// wrong somewhere off screen. Focus moves to the question with the problem, so
+// the error, which each group names through aria-describedby, is announced
+// with the control that has it.
+function focusProblem(itemId){
+  var el=document.getElementById('item_'+itemId);
+  if(!el)return;
+  if(el.scrollIntoView)el.scrollIntoView({behavior:'smooth',block:'center'});
+  var ctrl=el.querySelector?el.querySelector('input,select,textarea,button'):null;
+  var target=ctrl||el;
+  if(target.setAttribute&&!ctrl)target.setAttribute('tabindex','-1');
+  if(target.focus)target.focus();
+}
+// A page change replaces the whole card, so focus has to be placed again or it
+// sits on a button that no longer exists.
+function focusPageStart(){
+  var el=document.getElementById('page-heading');
+  if(!el)return;
+  if(el.setAttribute)el.setAttribute('tabindex','-1');
+  if(el.focus)el.focus();
+}
 function nextPage(){
   var items=pages[currentPage-1]||[];
   if(!validatePage(items))return;
@@ -1416,12 +1511,14 @@ function nextPage(){
   currentPage++;
   renderScreen();
   window.scrollTo({top:0,behavior:'smooth'});
+  focusPageStart();
 }
 function prevPage(){
   if(currentPage<=1)return;
   currentPage--;
   renderScreen();
   window.scrollTo({top:0,behavior:'smooth'});
+  focusPageStart();
 }
 
 // ── Submission ─────────────────────────────────────────────────────────────
@@ -1441,10 +1538,9 @@ function doSubmit(){
       // One column per option holding its rank (1 = top), so the data is
       // directly analysable without reshaping.
       var cs=choiceMap[item.choice_set]||{values:[]};
+      // An untouched ranking is unanswered, so its columns stay empty. The
+      // declared order is not a preference the participant expressed.
       var order=(responses[item.id]||'').split(',').filter(Boolean);
-      if(!order.length&&rankOrders[item.id]){
-        order=rankOrders[item.id].map(function(o){return o.v;});
-      }
       (cs.values||[]).forEach(function(v){
         var pos=order.indexOf(String(v));
         row[item.id+'__'+String(v)]=pos>=0?String(pos+1):'';
@@ -1509,18 +1605,39 @@ function doSubmit(){
   // response, a forced file download is unwanted noise, and even without
   // one the download is offered as a button, never forced.
   window._lastCsv={csv:csvStr,name:(SF.meta.title||'survey')+'_response_'+respId+'.csv'};
-  if(ENDPOINT){
-    // no-cors with a text/plain body: an application/json header triggers a
-    // CORS preflight that Google Apps Script never answers, so the POST is
-    // silently blocked in real deployments. Apps Script parses the body
-    // regardless of content type.
-    fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(row)})
-      .catch(function(){});
-  }
+  window._lastRow=row;
   screen='thankyou';
-  renderScreen();
+  if(ENDPOINT){
+    sendResponse(row);
+  }else{
+    deliveryState='local';
+    renderScreen();
+  }
   var wrap=document.getElementById('prog-bar-wrap');
   if(wrap)wrap.hidden=true;
+}
+// What is known about delivery, and no more. 'local' is a survey with no
+// collector, where the download is the only copy. 'sending' is in flight.
+// 'sent' means the request left the browser without error: the POST is
+// no-cors, so the collector's answer is unreadable and acceptance can never
+// be confirmed from here. 'failed' means fetch itself rejected, which used to
+// be discarded by an empty .catch() while the screen said the response had
+// been recorded.
+var deliveryState=null;
+function sendResponse(row){
+  deliveryState='sending';
+  renderScreen();
+  // no-cors with a text/plain body: an application/json header triggers a
+  // CORS preflight that Google Apps Script never answers, so the POST is
+  // silently blocked in real deployments. Apps Script parses the body
+  // regardless of content type.
+  fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(row)})
+    .then(function(){deliveryState='sent';renderScreen();})
+    .catch(function(){deliveryState='failed';renderScreen();});
+}
+function retrySubmission(){
+  if(!window._lastRow)return;
+  sendResponse(window._lastRow);
 }
 function toCsv(rows){
   if(!rows.length)return'';
@@ -1547,6 +1664,43 @@ function renderScreen(){
   else if(screen==='survey')renderSurvey();
   else renderThankyou();
 }
+function hasVal(key){
+  var v=responses[key];
+  return v!==undefined&&v!==null&&String(v).trim()!=='';
+}
+// Whether an item has been answered in full. Progress feedback and the
+// required-item walk both read this, so what a participant is told matches
+// what they are stopped for. Progress used to read the parent response key
+// for every type but matrix, and a pairwise or criteria-weight answer lives
+// in child keys, so a completed comparison counted as unanswered.
+function itemAnswered(item){
+  var t=item.type;
+  if(t==='matrix'){
+    var rows=item.matrix_items||[];
+    return rows.length>0&&rows.every(function(r){return hasVal(item.id+'__'+r);});
+  }
+  if(t==='criteria_weight'){
+    var crits=item.comparison_items||[];
+    return crits.length>0&&crits.every(function(c){return hasVal(item.id+'__'+c);});
+  }
+  if(t==='pairwise_comparison'){
+    var comp=item.comparison_items||[];
+    if(comp.length<2)return false;
+    var scale=item.comparison_scale||'saaty';
+    for(var i=0;i<comp.length;i++){
+      for(var j=0;j<comp.length;j++){
+        if(scale==='influence'){
+          if(i===j)continue;
+          if(!hasVal(item.id+'__'+comp[i]+'__to__'+comp[j]))return false;
+        }else if(j>i){
+          if(!hasVal(item.id+'__'+comp[i]+'__vs__'+comp[j]))return false;
+        }
+      }
+    }
+    return true;
+  }
+  return hasVal(item.id);
+}
 function updateProgress(){
   var wrap=document.getElementById('prog-bar-wrap');
   var bar=document.getElementById('progBar');
@@ -1568,17 +1722,7 @@ function updateProgress(){
       if(item.type==='section_break'||item.type==='text_block')return;
       if(!isVisible(item.id))return;
       total++;
-      if(item.type==='matrix'){
-        var rows=item.matrix_items||[];
-        var complete=rows.length>0&&rows.every(function(r){
-          var v=responses[item.id+'__'+r];
-          return v!=null&&v!=='';
-        });
-        if(complete)done++;
-      }else{
-        var v=responses[item.id];
-        if(v!=null&&v!=='')done++;
-      }
+      if(itemAnswered(item))done++;
     });
     if(total===0){wrap.hidden=true;return;}
     p=Math.round((done/total)*100);
@@ -1621,6 +1765,8 @@ function renderSurvey(){
     ?'<div class="q-eyebrow">Question '+currentPage+' of '+maxPage+'</div>'
     :'';
   el.innerHTML='<div class="card"><div class="card-body">'
+    +'<h2 id="page-heading" class="sr-only">'+esc(SF.meta.title)
+    +(maxPage>1?' \\u2014 page '+currentPage+' of '+maxPage:'')+'</h2>'
     +(currentPage===1?'<h1 class="wl-title" style="margin-bottom:6px">'+esc(SF.meta.title)+'</h1>'+(SF.meta.description?'<div style="color:var(--t2);font-size:14px;line-height:1.55;margin-bottom:22px">'+esc(SF.meta.description)+'</div>':''):'')
     +paginationInfo
     +'<div id="survey-err" class="err-banner">Please answer all required questions before continuing.</div>'
@@ -1634,26 +1780,78 @@ function renderThankyou(){
   // The download button appears when the designer enabled it, or whenever
   // no collector endpoint exists (the downloaded CSV is then the only copy
   // of the response, so it must stay reachable, as a choice, never forced).
-  var showDl=(TY.show_download||!ENDPOINT)&&window._lastCsv;
+  var failed=deliveryState==='failed';
+  // A no-cors POST is opaque, so 'sent' means the request left and nothing more.
+  // The collector may have replied "unmapped", or "error", or refused the write
+  // because the Sheets API is not enabled, and none of that is readable here.
+  // Receipt is therefore unconfirmed whenever a collector is configured, and the
+  // page must not assert storage it cannot observe.
+  var unconfirmed=deliveryState==='sent'&&!!ENDPOINT;
+  // A failed or unconfirmed send makes the download the only copy anyone can
+  // prove exists, so it is offered whatever the designer chose.
+  var showDl=(TY.show_download||!ENDPOINT||failed||unconfirmed)&&window._lastCsv;
   var offlineNote=(!ENDPOINT&&window._lastCsv)
     ?'<div class="ty-note">This survey has no online collector. Download your response below and return the file to the researcher.</div>':'';
+  var failNote=failed
+    ?'<div class="ty-note" role="alert">Your answers could not be sent. They are still held in this page. Try sending them again, or download the file below and return it to the researcher. Leaving or reloading this page loses them.</div>':'';
   var dlBtn=showDl
     ?'<button type="button" class="btn btn-p" onclick="downloadCsv(window._lastCsv.csv,window._lastCsv.name)">Download my response (CSV)</button>':'';
-  var again='<button type="button" class="btn btn-s" onclick="window.location.reload()">Submit another response</button>';
-  var cont=TY.redirect_url
+  var retryBtn=failed
+    ?'<button type="button" class="btn btn-p" onclick="retrySubmission()">Try sending again</button>':'';
+  // Starting over reloads, which discards the page's copy of the response. On a
+  // failed or unconfirmed send that copy is the only proof the answers exist, so
+  // the button is withheld, as it already was on failure. A researcher fielding
+  // on one shared device reloads the browser themselves, which is a deliberate
+  // act on their own device rather than a button beside "Download my response".
+  var again=(failed||unconfirmed)?'':'<button type="button" class="btn btn-s" onclick="restartSurvey()">Submit another response</button>';
+  var cont=(TY.redirect_url&&!failed)
     ?'<a class="btn btn-s" style="text-decoration:none" href="'+esc(TY.redirect_url)+'">Continue</a>':'';
+  var title=failed?'Almost done':'Thank You';
+  var icon=failed?'&#33;':'&#10004;';
+  // The package's own status wins on a failed or unconfirmed send. A designer's
+  // message is fixed text written before anyone knew how delivery would go, and
+  // a custom "your response has been recorded" put that claim on screen beside
+  // "cannot confirm", which is worse than either alone. Failure already
+  // overrode it; an unconfirmed send is the same case. A custom message is shown
+  // wherever nothing is being claimed about a collector, which is the
+  // download-only survey.
+  var msg=(failed||unconfirmed)
+    ?(failed?'Your answers are complete.'
+            :'Your answers have been sent. Thank you for participating.')
+    :(TY.message||'Your response has been recorded. Thank you for participating.');
+  var unconfirmedNote=unconfirmed
+    ?'<div class="ty-note">Your answers were sent, and this page cannot confirm '
+     +'the researcher’s collector stored them. Download the file below to '
+     +'keep a copy you can send on if you are asked for one.</div>':'';
   el.innerHTML='<div class="card"><div class="card-body">'
-    +'<div class="ty-ic">&#10004;</div>'
-    +'<div class="ty-title">Thank You</div>'
-    +'<div class="ty-msg">'+esc(TY.message||'Your response has been recorded. Thank you for participating.')+'</div>'
+    +'<div class="ty-ic">'+icon+'</div>'
+    +'<div class="ty-title">'+title+'</div>'
+    +'<div class="ty-msg">'+esc(msg)+'</div>'
+    +failNote
+    +unconfirmedNote
     +offlineNote
-    +'<div class="ty-acts">'+dlBtn+cont+again+'</div>'
+    +'<div class="ty-acts">'+retryBtn+dlBtn+cont+again+'</div>'
     +'</div></div>';
   // Auto-redirect only when nothing on this screen needs the respondent's
-  // attention (no download offer), so the file is never yanked away.
-  if(TY.redirect_url&&!showDl){
+  // attention (no download offer, no failed delivery), so the file is never
+  // yanked away and a failure is never redirected past. An unconfirmed send
+  // always offers the download, so it never auto-redirects either: the Continue
+  // link is still there for a participant who chooses to go on.
+  if(TY.redirect_url&&!showDl&&!failed&&deliveryState!=='sending'){
     setTimeout(function(){window.location.href=TY.redirect_url;},2500);
   }
+}
+// Reloading is the only way to clear the form for the next participant, and it
+// drops window._lastCsv with it. Where that copy is the only one anyone can
+// prove exists, the participant is asked before it goes.
+function restartSurvey(){
+  var atRisk=window._lastCsv&&(deliveryState==='failed'||
+    (deliveryState==='sent'&&!!ENDPOINT)||!ENDPOINT);
+  if(atRisk&&!confirm('Starting a new response clears this one from the page. '
+    +'If you have not used Download my response, that copy is lost. Continue?')){
+    return;
+  }
+  window.location.reload();
 }
 
 // ── Init ───────────────────────────────────────────────────────────────────

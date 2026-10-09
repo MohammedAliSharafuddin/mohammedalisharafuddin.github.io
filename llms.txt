@@ -6,8 +6,10 @@ https://mohammedalisharafuddin.github.io/ is the academic portfolio of
 Mohammed Ali Sharafuddin, Senior Lecturer at Qasim Ibrahim School of
 Business, Villa College, Malé, Maldives. ORCID: 0000-0001-5247-2964.
 
-Research areas: quantitative research methods, digital marketing, marketing
-analytics, small-sample statistics, management education.
+Research areas: maritime logistics, blue economy and international trade,
+digital marketing and marketing analytics, SMEs, innovation and Industry 5.0,
+cross-border e-commerce, tourism and destination management, research
+software, business research methods and small-sample statistics.
 
 Textbooks and free Excel templates are catalogued on FlairMI, not this
 site: https://flairmi.com/textbooks/index.html and
@@ -23,27 +25,18 @@ https://flairmi.com/templates/index.html.
 
 **StatChooser** (free web app, live)
 - Recommends a statistical test from four questions about research goal,
-  design, data, and measurement level. Companion to surveyframe.
+  design, data and measurement level. Companion to surveyframe.
 - App: https://mohammedalisharafuddin.github.io/statchooser/
-
-**Price Memory** (free web app, live)
-- Turns a household's own purchase log into a grocery price baseline.
-- App: https://mohammedalisharafuddin.github.io/price-memory/
-
-**Margin Guard** (free web app, live)
-- Checks whether a promotion can recover the contribution margin it gives away.
-- App: https://mohammedalisharafuddin.github.io/margin-guard/
-
-**Persona Builder** (free web app, live)
-- UX research and marketing persona card builder, PNG/PDF export.
-- App: https://flairmi.com/tools/persona-builder/
 
 Full software list: https://mohammedalisharafuddin.github.io/software.html
 
+Further browser tools, Excel templates and the Marketing Toolkit are on
+FlairMI: https://flairmi.com/products/index.html
+
 ## Research
 
-23 publications, 20 conference presentations, 9 funded research projects,
-2014-2026. Full list with DOIs: https://mohammedalisharafuddin.github.io/research.html
+Since 2014: 30+ publications, 24+ of them Scopus-indexed articles, 23+
+conference presentations and 9+ funded research projects. Full list with DOIs: https://mohammedalisharafuddin.github.io/research.html
 
 ## Open-source research tools
 
